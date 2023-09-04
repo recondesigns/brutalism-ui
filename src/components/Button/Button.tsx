@@ -7,7 +7,7 @@ type Props = {
 
 const StyledButton = styled.button`
   padding: 8px 12px;
-  background: gold;
+  background: blue;
   color: white;
   font-weight: bold;
   border-radius: 12px;
