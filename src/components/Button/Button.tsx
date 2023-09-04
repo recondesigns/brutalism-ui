@@ -6,7 +6,7 @@ type Props = {
 
 function Button({ label }: Props) {
   return (
-    <button>{label ? label : 'Click me'}</button>
+    <button style={{ background: 'dodgerblue' }}>{label ? label : 'Click me'}</button>
   )
 }
 
