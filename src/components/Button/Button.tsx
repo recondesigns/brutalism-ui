@@ -1,12 +1,21 @@
 import React from 'react'
+import styled from '@emotion/styled'
 
 type Props = {
   label?: string
 }
 
+const StyledButton = styled.button`
+  padding: 8px 12px;
+  background: gold;
+  color: white;
+  font-weight: bold;
+  border-radius: 12px;
+`
+
 function Button({ label }: Props) {
   return (
-    <button style={{ background: 'dodgerblue' }}>{label ? label : 'Click me'}</button>
+    <StyledButton>{label ? label : 'Click me'}</StyledButton>
   )
 }
 
