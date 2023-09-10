@@ -2,7 +2,7 @@
 
 # be-ubiquitous
 
-Some copy should go here and be a description of the project? The template calls it a "pitch" for some reason, though.
+PERSONAL PRACTICE PROJECT. Some copy should go here and be a description of the project? The template calls it a "pitch" for some reason, though.
 
 ## Table of contents
 
@@ -25,6 +25,8 @@ Some copy should go here and be a description of the project? The template calls
 </ul>
 
 ## Project Status
+
+PERSONAL PRACTICE PROJECT. I am just using this to learn practice things with Typescript.
 
 Some copy to discuss the project status should go here. Some copy to discuss the project status should go here. Some copy to discuss the project status should go here. Some copy to discuss the project status should go here.
 
