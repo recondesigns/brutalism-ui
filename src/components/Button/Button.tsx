@@ -12,7 +12,7 @@ const ButtonComponent = styled('button')`
   box-sizing: border-box;
   padding: 8px 16px;
   font-weight: bold;
-  background: #eb6e1f;
+  background: red;
   color: #ffffff;
   border: 2px solid #eb6e1f;
   border-radius: 3px;
