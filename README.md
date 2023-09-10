@@ -1,10 +1,34 @@
+<a name="top">
+
 # be-ubiquitous
 
 Some copy should go here and be a description of the project? The template calls it a "pitch" for some reason, though.
 
+## Table of contents
+
+<ul>
+  <li><a href="#be-ubiquitous">About the project</a></li>
+  <li><a href="#project-status">Project status</a></li>
+  <li><a href="#screen-shots">Screenshots</a></li>
+  <li>
+    <a href="#installation-and-setup-instructions">Installation and setup</a>
+    <ul>
+      <li>
+        <a href="#installation">Installation</a>
+      </li>
+      <li>
+        <a href="#usage">Usage</a>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+
 ## Project Status
 
 Some copy to discuss the project status should go here. Some copy to discuss the project status should go here. Some copy to discuss the project status should go here. Some copy to discuss the project status should go here.
+
+<p align="right"><a href="#top">Back to top</a></p>
 
 ## Screen Shots
 
@@ -12,15 +36,21 @@ Some copy to discuss the project status should go here. Some copy to discuss the
 
 Some copy to discuss the image should go here. Some copy to discuss the image should go here. Some copy to discuss the image should go here. Some copy to discuss the image should go here. Some copy to discuss the image should go here.
 
+<p align="right"><a href="#top">Back to top</a></p>
+
 ## Installation and Setup Instructions
 
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
+
+<p align="right"><a href="#top">Back to top</a></p>
 
 ### Installation:
 
 ```
 npm install be-ubiquitous
 ```
+
+<p align="right"><a href="#top">Back to top</a></p>
 
 ### Usage
 
@@ -39,6 +69,10 @@ export const Form = () => {
 }
 ```
 
-## Reflection
+<p align="right"><a href="#top">Back to top</a></p>
 
-Yea, so I just wanted to build a usable component library so that I could practice using Typescript and some other tools. I could add more of a reflection here later.
+## Acknowledgments
+
+Add some acknowledgmenst for the packages and stuff soon.
+
+<p align="right"><a href="#top">Back to top</a></p>
