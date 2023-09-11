@@ -8,22 +8,25 @@ type Props = React.ComponentProps<'button'> & {
   label?: string
 }
 
-const ButtonComponent = styled('button')`
-  box-sizing: border-box;
-  padding: 8px 16px;
-  font-weight: bold;
-  background: red;
-  color: #ffffff;
-  border: 2px solid #eb6e1f;
-  border-radius: 3px;
-
-  ,
-  &:hover {
-    color: #eb6e1f;
-    background: none;
-    border: 2px solid #eb6e1f;
-  }
-`
+const ButtonComponent = styled.button<Props>(
+  {
+    boxSizing: 'border-box',
+    fontWeight: 'bold',
+    borderRadius: '3px'
+  },
+  ({ theme }) => ({
+    padding: `8${theme.units.px} 16${theme.units.px}`,
+    fontFamily: theme.typography.button.fontFamily,
+    background: theme.colors.accent,
+    color: theme.colors.white,
+    border: `2${theme.units.px} solid ${theme.colors.accent}`,
+    borderRadius: `3${theme.units.px}`,
+    '&:hover': {
+      background: 'none',
+      color: theme.colors.accent
+    }
+  })
+)
 
 function Button({ label = "Submit", type }: Props) {
   return <ButtonComponent type={type ? type : 'button'}>{label}</ButtonComponent>
