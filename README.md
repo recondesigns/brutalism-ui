@@ -2,7 +2,7 @@
 
 # be-ubiquitous
 
-PERSONAL PRACTICE PROJECT. Some copy should go here and be a description of the project? The template calls it a "pitch" for some reason, though.
+PERSONAL PRACTICE PROJECT. I don't recommend using.
 
 ## Table of contents
 
@@ -26,30 +26,26 @@ PERSONAL PRACTICE PROJECT. Some copy should go here and be a description of the 
 
 ## Project Status
 
-PERSONAL PRACTICE PROJECT. I am just using this to learn practice things with Typescript.
-
-Some copy to discuss the project status should go here. Some copy to discuss the project status should go here. Some copy to discuss the project status should go here. Some copy to discuss the project status should go here.
+Will add copy later.
 
 <p align="right"><a href="#top">Back to top</a></p>
 
 ## Screen Shots
 
-[ PRETEND SCREEN SHOT IS HERE ]
-
-Some copy to discuss the image should go here. Some copy to discuss the image should go here. Some copy to discuss the image should go here. Some copy to discuss the image should go here. Some copy to discuss the image should go here.
+Will add copy later.
 
 <p align="right"><a href="#top">Back to top</a></p>
 
 ## Installation and Setup Instructions
 
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.
+Will add copy later.
 
 <p align="right"><a href="#top">Back to top</a></p>
 
 ### Installation:
 
 ```
-npm install be-ubiquitous
+npm install --save-dev be-ubiquitous
 ```
 
 <p align="right"><a href="#top">Back to top</a></p>
@@ -75,6 +71,6 @@ export const Form = () => {
 
 ## Acknowledgments
 
-Add some acknowledgmenst for the packages and stuff soon.
+Will add copy later.
 
 <p align="right"><a href="#top">Back to top</a></p>
