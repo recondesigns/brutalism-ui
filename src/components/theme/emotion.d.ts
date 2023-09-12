@@ -11,8 +11,8 @@ declare module '@emotion/react' {
       button: {
         fontFamily: string
         fontWeight: string
-        fontSize: number
-        lineHeight: number
+        fontSize: number | string
+        lineHeight: number | string
       }
     },
     units: {

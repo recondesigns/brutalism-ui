@@ -1,10 +1,12 @@
 import React from 'react'
-import { Preview } from "@storybook/react";
+import { Preview, Renderer } from "@storybook/react";
 import { withThemeFromJSXProvider } from '@storybook/addon-themes'
 import { ThemeProvider } from '@emotion/react'
 import { Global, css } from '@emotion/react';
 import { Title, Subtitle, Primary, ArgTypes, Stories } from '@storybook/blocks'
 import theme from '../src/components/theme/defaultTheme'
+import diamondbacksTheme from '../src/components/theme/teamThemes'
+import { bravesTheme, oriolesTheme } from '../src/components/theme/teamThemes';
 
 const GlobalStyles = () => (
   <Global styles={css`
@@ -42,9 +44,12 @@ const preview: Preview = {
     },
   },
   decorators: [
-    withThemeFromJSXProvider({
+    withThemeFromJSXProvider<Renderer>({
       themes: {
-        theme: theme
+        default: theme,
+        ['Diamondbacks']: diamondbacksTheme,
+        ['Braves']: bravesTheme,
+        ['Orioles']: oriolesTheme
       },
       defaultTheme: 'theme',
       Provider: ThemeProvider,
