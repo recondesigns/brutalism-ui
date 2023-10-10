@@ -15,15 +15,15 @@ const ButtonComponent = styled.button<Props>(
     borderRadius: '3px'
   },
   ({ theme }) => ({
-    padding: `8${theme.units.px} 16${theme.units.px}`,
-    fontFamily: theme.typography.button.fontFamily,
-    background: theme.colors.accent,
-    color: theme.colors.white,
-    border: `2${theme.units.px} solid ${theme.colors.accent}`,
-    borderRadius: `3${theme.units.px}`,
+    padding: `8px 16px`,
+    fontFamily: "'Helvetica Neue', 'Sans-serif'",
+    background: '#EB6E1F',
+    color: '#FFFFFF',
+    border: `2px solid #EB6E1F`,
+    borderRadius: `3px`,
     '&:hover': {
       background: 'none',
-      color: theme.colors.accent
+      color: '#EB6E1F'
     }
   })
 )
