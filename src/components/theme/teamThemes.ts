@@ -4,17 +4,17 @@ const diamonbacksTheme = {
     accent: '#E3D4AD',
     white: '#FFFFFF'
   },
-  typography: {
-    button: {
-      fontFamily: '',
-      fontWeight: '',
-      fontSize: '',
-      lineHeight: ''
-    }
-  },
-  units: {
-    px: 'px'
-  }
+  // typography: {
+  //   button: {
+  //     fontFamily: '',
+  //     fontWeight: '',
+  //     fontSize: '',
+  //     lineHeight: ''
+  //   }
+  // },
+  // units: {
+  //   px: 'px'
+  // }
 }
 
 export const bravesTheme = {
@@ -23,17 +23,17 @@ export const bravesTheme = {
     accent: '#CE1141',
     white: '#FFFFFF'
   },
-  typography: {
-    button: {
-      fontFamily: '',
-      fontWeight: '',
-      fontSize: '',
-      lineHeight: ''
-    }
-  },
-  units: {
-    px: 'px'
-  }
+  // typography: {
+  //   button: {
+  //     fontFamily: '',
+  //     fontWeight: '',
+  //     fontSize: '',
+  //     lineHeight: ''
+  //   }
+  // },
+  // units: {
+  //   px: 'px'
+  // }
 }
 
 export const oriolesTheme = {
@@ -42,17 +42,17 @@ export const oriolesTheme = {
     accent: '#DF4601',
     white: '#FFFFFF'
   },
-  typography: {
-    button: {
-      fontFamily: '',
-      fontWeight: '',
-      fontSize: '',
-      lineHeight: ''
-    }
-  },
-  units: {
-    px: 'px'
-  }
+  // typography: {
+  //   button: {
+  //     fontFamily: '',
+  //     fontWeight: '',
+  //     fontSize: '',
+  //     lineHeight: ''
+  //   }
+  // },
+  // units: {
+  //   px: 'px'
+  // }
 }
   
 export default diamonbacksTheme
