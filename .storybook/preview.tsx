@@ -1,21 +1,6 @@
 import React from 'react'
-import { Preview, Renderer } from "@storybook/react";
-import { withThemeFromJSXProvider } from '@storybook/addon-themes'
-import { ThemeProvider } from '@emotion/react'
-import { Global, css } from '@emotion/react';
-import { Title, Subtitle, Primary, ArgTypes, Stories } from '@storybook/blocks'
-import theme from '../src/components/theme/defaultTheme'
-import diamondbacksTheme from '../src/components/theme/teamThemes'
-import { bravesTheme, oriolesTheme } from '../src/components/theme/teamThemes';
-
-const GlobalStyles = () => (
-  <Global styles={css`
-    button {
-      font-family: 'Helvetica Neue', 'Sans-serif';
-    }
-  `} 
-  />
-)
+import { Preview } from "@storybook/react";
+import { Title, Subtitle,  Primary, ArgTypes, Stories } from '@storybook/blocks'
 
 const preview: Preview = {
   parameters: {
@@ -27,10 +12,11 @@ const preview: Preview = {
       },
     },
     docs: {
+      controls: { exclude: ['label']},
       toc: {
         title: 'Contents',
         disabled: false,
-        headingSelector: 'h1, h2, h3'
+        headingSelector: 'h2, h3'
       },
       page: () => (
         <>
@@ -38,24 +24,12 @@ const preview: Preview = {
           <Subtitle />
           <Primary />
           <ArgTypes />
+          <h3>A description block.</h3>
           <Stories />
         </>
       ),
     },
-  },
-  decorators: [
-    withThemeFromJSXProvider<Renderer>({
-      themes: {
-        default: theme,
-        ['Diamondbacks']: diamondbacksTheme,
-        ['Braves']: bravesTheme,
-        ['Orioles']: oriolesTheme
-      },
-      defaultTheme: 'theme',
-      Provider: ThemeProvider,
-      GlobalStyles: GlobalStyles
-    })
-  ]
+  }
 };
 
 export default preview;
