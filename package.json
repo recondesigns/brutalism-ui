@@ -1,6 +1,6 @@
 {
   "name": "be-ubiquitous",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This is where some documentation goes.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
