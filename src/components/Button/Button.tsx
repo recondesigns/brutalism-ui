@@ -9,7 +9,7 @@ export type ButtonProps = React.ComponentProps<'button'> & {
   /**
    * Desc for prop type.
    */
-  classname?: string
+  className?: string
 }
 
 const ButtonComponent = styled.button<ButtonProps>(
@@ -41,8 +41,8 @@ const ButtonComponent = styled.button<ButtonProps>(
   // })
 )
 
-function Button({ label = "Submit", type, classname, ...otherProps }: ButtonProps) {
-  return <ButtonComponent className={classname}  type={type ? type : 'button'} {...otherProps}>{label}</ButtonComponent>
+function Button({ label = "Submit", type, className, ...otherProps }: ButtonProps) {
+  return <ButtonComponent className={className} type={type ? type : 'button'} {...otherProps}>{label}</ButtonComponent>
 }
 
 export default Button
