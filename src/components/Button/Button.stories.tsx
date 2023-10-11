@@ -7,34 +7,37 @@ import Button from "./Button"
  */
 export const Default: StoryObj<typeof Button> = {
   render: (args) => <Button {...args} />,
-}
-
-export const Two: StoryObj<typeof Button> = {
-  ...Default,
   args: {
-    label: 'Two'
+    label: 'Hello'
   }
 }
 
-/**
- *  Here is a description for the default variants.
- */
-export const Three: StoryObj<typeof Button> = {
-  ...Default,
-  args: {
-    label: 'Three'
-  }
-}
+// export const Two: StoryObj<typeof Button> = {
+//   ...Default,
+//   args: {
+//     label: 'Two'
+//   }
+// }
 
 /**
  *  Here is a description for the default variants.
  */
-export const Four: StoryObj<typeof Button> = {
-  ...Default,
-  args: {
-    label: 'Four'
-  }
-}
+// export const Three: StoryObj<typeof Button> = {
+//   ...Default,
+//   args: {
+//     label: 'Three'
+//   }
+// }
+
+/**
+ *  Here is a description for the default variants.
+ */
+// export const Four: StoryObj<typeof Button> = {
+//   ...Default,
+//   args: {
+//     label: 'Four'
+//   }
+// }
 
 /**
  * Copy for component subtitle.

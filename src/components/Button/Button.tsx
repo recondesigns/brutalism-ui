@@ -41,8 +41,14 @@ const ButtonComponent = styled.button<ButtonProps>(
   // })
 )
 
-function Button({ label = "Submit", type, className, ...otherProps }: ButtonProps) {
-  return <ButtonComponent className={className} type={type ? type : 'button'} {...otherProps}>{label}</ButtonComponent>
+const Button = (props: ButtonProps) => {
+  return <ButtonComponent className={props.className}>{props.label}</ButtonComponent>
 }
 
 export default Button
+
+// function Button({ label = "Submit", type, className, ...otherProps }: ButtonProps) {
+//   return <ButtonComponent className={className} type={type ? type : 'button'} {...otherProps}>{label}</ButtonComponent>
+// }
+
+// export default Button
