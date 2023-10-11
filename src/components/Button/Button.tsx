@@ -1,14 +1,14 @@
 import React from "react"
 import styled from "@emotion/styled"
 
-type Props = React.ComponentProps<'button'> & {
+export type ButtonProps = React.ComponentProps<'button'> & {
   /**
    * This is a description of the label props.
    */
   label?: string
 }
 
-const ButtonComponent = styled.button<Props>(
+const ButtonComponent = styled.button<ButtonProps>(
   {
     boxSizing: 'border-box',
     fontWeight: 'bold',
@@ -28,7 +28,7 @@ const ButtonComponent = styled.button<Props>(
   })
 )
 
-function Button({ label = "Submit", type }: Props) {
+function Button({ label = "Submit", type }: ButtonProps) {
   return <ButtonComponent type={type ? type : 'button'}>{label}</ButtonComponent>
 }
 
