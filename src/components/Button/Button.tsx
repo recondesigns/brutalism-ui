@@ -28,8 +28,8 @@ const ButtonComponent = styled.button<ButtonProps>(
   })
 )
 
-function Button({ label = "Submit", type }: ButtonProps) {
-  return <ButtonComponent type={type ? type : 'button'}>{label}</ButtonComponent>
+function Button({ label = "Submit", type, ...otherProps }: ButtonProps) {
+  return <ButtonComponent type={type ? type : 'button'} {...otherProps}>{label}</ButtonComponent>
 }
 
 export default Button
