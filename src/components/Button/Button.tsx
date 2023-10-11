@@ -42,7 +42,7 @@ const ButtonComponent = styled.button<ButtonProps>(
 )
 
 const Button = (props: ButtonProps) => {
-  return <ButtonComponent className={props.className}>{props.label}</ButtonComponent>
+  return <ButtonComponent className={`${props.className}`}>{props.label}</ButtonComponent>
 }
 
 export default Button
