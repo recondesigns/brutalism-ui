@@ -1,32 +1,42 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { createButtonLabel } from "./utils"
 
-export type ButtonProps = React.ComponentProps<'button'> & {
+// React.ComponentProps<"button">
+export type ButtonProps = {
   /**
-   * This is a description of the label props.
+   * Applies a text string as a label for the Button.
+   *
+   * **Note**: The label prop will override the children prop if both are used.
    */
   label?: string
   /**
-   * Desc for prop type.
+   * Allows for custom CSS styles by applying a string as a classname to the button element.
    */
   className?: string
+  /**
+   * Child components can be passed to be used as the "label" of the Button.
+   *
+   * **Note**: The label prop will override the children prop if both are used.
+   */
+  children?: React.ReactNode | React.ReactElement | JSX.Element
 }
 
 const ButtonComponent = styled.button<ButtonProps>(
   {
-    boxSizing: 'border-box',
-    fontWeight: 'bold',
-    borderRadius: '3px',
+    boxSizing: "border-box",
+    fontWeight: "bold",
+    borderRadius: "3px",
     padding: `8px 16px`,
     fontFamily: "'Helvetica Neue', 'Sans-serif'",
-    background: '#EB6E1F',
-    color: '#FFFFFF',
+    background: "#EB6E1F",
+    color: "#FFFFFF",
     border: `2px solid #EB6E1F`,
-    '&:hover': {
-      background: 'none',
-      color: '#EB6E1F'
-    }
-  },
+    "&:hover": {
+      background: "none",
+      color: "#EB6E1F",
+    },
+  }
   // ({ theme }) => ({
   //   padding: `8px 16px`,
   //   fontFamily: "'Helvetica Neue', 'Sans-serif'",
@@ -41,14 +51,24 @@ const ButtonComponent = styled.button<ButtonProps>(
   // })
 )
 
-const Button = (props: ButtonProps) => {
-  return <ButtonComponent className={`${props.className}`}>{props.label}</ButtonComponent>
+function Button({
+  label,
+  type,
+  className,
+  children,
+  ...otherProps
+}: ButtonProps & React.ComponentProps<"button">) {
+  const buttonLabel = createButtonLabel(label, children)
+
+  return (
+    <ButtonComponent
+      className={className}
+      type={type ? type : "button"}
+      {...otherProps}
+    >
+      {buttonLabel}
+    </ButtonComponent>
+  )
 }
 
 export default Button
-
-// function Button({ label = "Submit", type, className, ...otherProps }: ButtonProps) {
-//   return <ButtonComponent className={className} type={type ? type : 'button'} {...otherProps}>{label}</ButtonComponent>
-// }
-
-// export default Button

@@ -24,7 +24,6 @@ const preview: Preview = {
           <Subtitle />
           <Primary />
           <ArgTypes />
-          <h3>A description block.</h3>
           <Stories />
         </>
       ),
