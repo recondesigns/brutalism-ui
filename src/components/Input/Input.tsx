@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 
-type InputProps = {
+type Props = {
   /**
    * Description copy for `label` prop.
    */
@@ -26,9 +26,19 @@ type InputProps = {
    * Description copy for `onchange` prop.
    */
   onchange?: () => void
+  /**
+   * Description copy for `caption` prop.
+   */
+  caption?: string
 }
 
+export type InputProps = Props & React.ComponentProps<"input">
+
 type LabelProps = {
+  hasError?: boolean
+}
+
+type CaptionProps = {
   hasError?: boolean
 }
 
@@ -44,6 +54,19 @@ const Label = styled.label<LabelProps>(
     fontFamily: "sans-serif",
     fontSize: "14px",
     lineHeight: "16px",
+  },
+  ({ hasError }) => ({
+    color: hasError ? "red" : "black",
+  })
+)
+
+const Caption = styled.caption<CaptionProps>(
+  {
+    marginTop: "8px",
+    fontFamily: "sans-serif",
+    fontSize: "12px",
+    lineHeight: "16px",
+    textAlign: 'left'
   },
   ({ hasError }) => ({
     color: hasError ? "red" : "black",
@@ -70,12 +93,13 @@ export default function Input({
   value,
   onchange,
   placeholder,
+  caption,
   disabled = false,
   hasError = false,
 }: InputProps) {
   return (
     <InputWrapper>
-      <Label hasError={hasError}>{label}</Label>
+      {label && (<Label hasError={hasError}>{label}</Label>)}
       <InputComponent
         value={value}
         placeholder={placeholder}
@@ -83,6 +107,7 @@ export default function Input({
         disabled={disabled}
         onChange={onchange}
       />
+      {caption && (<Caption hasError={hasError}>{caption}</Caption>)}
     </InputWrapper>
   )
 }

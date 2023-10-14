@@ -9,6 +9,7 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
     return (
       <Input
         value={value}
+        // @ts-expect-error Type '(e: React.ChangeEvent<HTMLInputElement>) => void' is not (delete for full error)
         onchange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }
@@ -67,8 +68,30 @@ export const Placeholder = {
 export const Errors = {
   ...InputStoryTemplate,
   args: {
-    label: "Label",
+    label: 'Label',
+    caption: 'Here is a caption',
     hasError: true,
+  },
+}
+
+/**
+ * Description copy for `Caption` story.
+ */
+export const Caption = {
+  ...InputStoryTemplate,
+  args: {
+    label: "Label",
+    caption: "Here is a caption.",
+  },
+}
+
+/**
+ * Description copy for `No Label` story.
+ */
+export const NoLabel = {
+  ...InputStoryTemplate,
+  args: {
+    caption: "This input has no label.",
   },
 }
 

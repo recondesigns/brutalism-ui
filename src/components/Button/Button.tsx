@@ -27,7 +27,7 @@ type Props = {
   type?: ButtonType
 }
 
-export type ButtonProps = Props & React.ComponentProps<"button">
+export type ButtonProps = Props & React.ComponentProps<'button'>
 
 const ButtonComponent = styled.button<ButtonProps>(
   {

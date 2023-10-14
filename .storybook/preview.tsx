@@ -12,7 +12,7 @@ const preview: Preview = {
       },
     },
     docs: {
-      controls: { exclude: ['label']},
+      // controls: { exclude: ['label']},
       toc: {
         title: 'Contents',
         disabled: false,
