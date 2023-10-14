@@ -43,6 +43,9 @@ const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
   tags: ["autodocs"],
+  argTypes: {
+    type: { control: 'select' }
+  }
 }
 
 export default meta
