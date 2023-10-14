@@ -1,19 +1,18 @@
-import React from "react"
 import { Meta, StoryObj } from "@storybook/react"
 import Button from "./Button"
 
 /**
  *  Here is a description for the default variants.
  */
-export const Default: StoryObj<typeof Button> = {
-  render: (args) => <Button {...args} />
+const ButtonStoryTemplate: StoryObj<typeof Button> = {
+  render: (args) => <Button {...args} />,
 }
 
 /**
  *  Here is a description for the default variants.
  */
 export const LabelProp: StoryObj<typeof Button> = {
-  ...Default,
+  ...ButtonStoryTemplate,
   args: {
     label: 'Label'
   }
@@ -23,7 +22,7 @@ export const LabelProp: StoryObj<typeof Button> = {
  *  Here is a description for the default variants.
  */
 export const CustomProp: StoryObj<typeof Button> = {
-  ...Default,
+  ...ButtonStoryTemplate,
   args: {
     children: <span>Howdy</span>
   }
@@ -33,7 +32,7 @@ export const CustomProp: StoryObj<typeof Button> = {
  *  Here is a description for the default variants.
  */
 export const ClassNameProp: StoryObj<typeof Button> = {
-  ...Default,
+  ...ButtonStoryTemplate,
   args: {
     label: 'Class name',
     className: 'BUC-Button'
