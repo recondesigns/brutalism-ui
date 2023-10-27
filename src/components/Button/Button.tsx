@@ -2,7 +2,7 @@ import React from "react"
 import styled from "@emotion/styled"
 import { createButtonLabel } from "./utils"
 
-type ButtonType = 'button' | 'submit' | 'reset'
+type ButtonType = "button" | "submit" | "reset"
 
 type Props = {
   /**
@@ -25,9 +25,14 @@ type Props = {
    * Copy for type prop.
    */
   type?: ButtonType
+  /**
+   * Copy for type prop.
+   */
+  disabled?: boolean
+  'data-testid'?: string
 }
 
-export type ButtonProps = Props & React.ComponentProps<'button'>
+export type ButtonProps = Props & React.ComponentProps<"button">
 
 const ButtonComponent = styled.button<ButtonProps>(
   {
@@ -43,19 +48,15 @@ const ButtonComponent = styled.button<ButtonProps>(
       background: "none",
       color: "#EB6E1F",
     },
-  }
-  // ({ theme }) => ({
-  //   padding: `8px 16px`,
-  //   fontFamily: "'Helvetica Neue', 'Sans-serif'",
-  //   background: '#EB6E1F',
-  //   color: '#FFFFFF',
-  //   border: `2px solid #EB6E1F`,
-  //   borderRadius: `3px`,
-  //   '&:hover': {
-  //     background: 'none',
-  //     color: '#EB6E1F'
-  //   }
-  // })
+  },
+  ({ disabled }) => ({
+    background: disabled ? 'lightgray' : 'intital',
+    "&:hover": {
+      background: "lightgray",
+      color: "#FFFFFF",
+      cursor: 'not-allowed'
+    }
+  })
 )
 
 function Button({
@@ -63,6 +64,7 @@ function Button({
   type,
   className,
   children,
+  disabled,
   ...otherProps
 }: ButtonProps) {
   const buttonLabel = createButtonLabel(label, children)
@@ -70,7 +72,10 @@ function Button({
   return (
     <ButtonComponent
       className={className}
-      type={!type ? 'button' : type}
+      label={label}
+      type={!type ? "button" : type}
+      disabled={disabled}
+      data-testid="button-data-testid"
       {...otherProps}
     >
       {buttonLabel}
