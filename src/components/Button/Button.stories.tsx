@@ -14,7 +14,9 @@ const ButtonStoryTemplate: StoryObj<typeof Button> = {
 export const LabelProp: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    label: 'Label'
+    label: 'Label',
+    // @ts-expect-error SFADS
+    'data-testid': 'TESTING-NOW'
   }
 }
 
