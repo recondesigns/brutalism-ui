@@ -70,6 +70,7 @@ function Button({
   return (
     <ButtonComponent
       className={className}
+      label={label}
       type={!type ? 'button' : type}
       {...otherProps}
     >
