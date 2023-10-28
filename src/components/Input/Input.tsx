@@ -95,19 +95,20 @@ export default function Input({
   placeholder,
   caption,
   disabled = false,
-  hasError = false,
+  hasError = false
 }: InputProps) {
   return (
-    <InputWrapper>
-      {label && (<Label hasError={hasError}>{label}</Label>)}
+    <InputWrapper data-testid="testid-input-wrapper">
+      {label && (<Label hasError={hasError} data-testid="testid-input-label">{label}</Label>)}
       <InputComponent
         value={value}
         placeholder={placeholder}
         hasError={hasError}
         disabled={disabled}
         onChange={onchange}
+        data-testid="testid-input"
       />
-      {caption && (<Caption hasError={hasError}>{caption}</Caption>)}
+      {caption && (<Caption hasError={hasError} data-testid="testid-input-caption">{caption}</Caption>)}
     </InputWrapper>
   )
 }
