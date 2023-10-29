@@ -66,7 +66,7 @@ const Caption = styled.caption<CaptionProps>(
     fontFamily: "sans-serif",
     fontSize: "12px",
     lineHeight: "16px",
-    textAlign: 'left'
+    textAlign: "left",
   },
   ({ hasError }) => ({
     color: hasError ? "red" : "black",
@@ -95,11 +95,15 @@ export default function Input({
   placeholder,
   caption,
   disabled = false,
-  hasError = false
+  hasError = false,
 }: InputProps) {
   return (
     <InputWrapper data-testid="testid-input-wrapper">
-      {label && (<Label hasError={hasError} data-testid="testid-input-label">{label}</Label>)}
+      {label && (
+        <Label hasError={hasError} data-testid="testid-input-label">
+          {label}
+        </Label>
+      )}
       <InputComponent
         value={value}
         placeholder={placeholder}
@@ -108,7 +112,11 @@ export default function Input({
         onChange={onchange}
         data-testid="testid-input"
       />
-      {caption && (<Caption hasError={hasError} data-testid="testid-input-caption">{caption}</Caption>)}
+      {caption && (
+        <Caption hasError={hasError} data-testid="testid-input-caption">
+          {caption}
+        </Caption>
+      )}
     </InputWrapper>
   )
 }
