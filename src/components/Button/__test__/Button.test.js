@@ -8,9 +8,9 @@ import Button from '../Button'
 expect.extend(matchers)
 
 describe('Button', () => {
-  afterEach(cleanup)
-
   describe('Rendering and props', () => {
+    afterEach(cleanup)
+
     it('should render a Button component', () => {
       const component = render(<Button><p>Example</p></Button>)
 
@@ -40,6 +40,8 @@ describe('Button', () => {
   })
 
   describe('disabled prop', () => {
+    afterEach(cleanup)
+
     it('should render a button without a disabled attribute', () => {
       const component = render(<Button />)
       const button = component.getByTestId('button-data-testid')
@@ -69,7 +71,7 @@ describe('Button', () => {
     })
 
     it('should override the onClick if button is disabled', () => {
-      const mockOnClick = jest.fn(() => console.log('Mock function fired'))
+      const mockOnClick = jest.fn(() => console.log('Mock onClick function fired'))
       const component = render(<Button disabled onClick={mockOnClick}  />)
       const button = component.getByTestId('button-data-testid')
 
@@ -79,6 +81,8 @@ describe('Button', () => {
     })
 
     describe('onClick prop', () => {
+      afterEach(cleanup)
+
       it('should pass an onClick to the button', () => {
         const mockOnClick = jest.fn(() => console.log('Mock function fired'))
         const component = render(<Button onClick={mockOnClick} />)
