@@ -2,7 +2,7 @@ import React from "react"
 import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render } from "@testing-library/react"
-import { fireEvent, userEvent } from '@testing-library/dom'
+import { fireEvent } from '@testing-library/dom'
 import Input from "../Input"
 
 expect.extend(matchers)

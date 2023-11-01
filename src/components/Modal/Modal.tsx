@@ -5,7 +5,7 @@ import ModalContainer from "./ModalContainer"
 
 export type ModalProps = {
   shouldCloseOnEsc?: boolean
-  children: React.ReactElement
+  children: React.ReactElement | React.ReactElement[]
 }
 
 const ModalComponent = styled("div")<ModalProps>({
@@ -20,7 +20,9 @@ export default function Modal({ children }: ModalProps) {
   return (
     <ModalComponent>
       <ModalOverlay>
-        <ModalContainer>{children}</ModalContainer>
+        <ModalContainer>
+          {children}
+        </ModalContainer>
       </ModalOverlay>
     </ModalComponent>
   )
