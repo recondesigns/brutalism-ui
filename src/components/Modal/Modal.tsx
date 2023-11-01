@@ -20,7 +20,9 @@ export default function Modal({ children }: ModalProps) {
   return (
     <ModalComponent>
       <ModalOverlay>
-        <ModalContainer>{children}</ModalContainer>
+        <ModalContainer>
+          {children}
+        </ModalContainer>
       </ModalOverlay>
     </ModalComponent>
   )

@@ -2,7 +2,7 @@ import React from "react"
 import styled from "@emotion/styled"
 
 export type ModalContainerProps = {
-  children: React.ReactElement
+  children: React.ReactElement | React.ReactElement[]
 }
 
 const Container = styled("div")<ModalContainerProps>({
