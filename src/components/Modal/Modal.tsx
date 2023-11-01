@@ -5,7 +5,7 @@ import ModalContainer from "./ModalContainer"
 
 export type ModalProps = {
   shouldCloseOnEsc?: boolean
-  children: React.ReactElement
+  children: React.ReactElement | React.ReactElement[]
 }
 
 const ModalComponent = styled("div")<ModalProps>({
