@@ -1,4 +1,4 @@
-import React from "react"
+import React, { HTMLAttributes } from "react"
 import styled from "@emotion/styled"
 
 type Props = {
@@ -32,17 +32,18 @@ type Props = {
   caption?: string
 }
 
-export type InputProps = Props & React.ComponentProps<"input">
+// export type InputProps = Props & React.ComponentProps<"input">
+export type InputProps = Props & HTMLAttributes<HTMLInputElement>
 
 type LabelProps = {
   hasError?: boolean
-}
+} & HTMLAttributes<HTMLLabelElement>
 
 type CaptionProps = {
   hasError?: boolean
 }
 
-const InputWrapper = styled.div({
+const InputWrapper = styled.div<HTMLAttributes<HTMLDivElement>>({
   padding: "12px 0px",
   display: "flex",
   flexDirection: "column",
@@ -60,7 +61,7 @@ const Label = styled.label<LabelProps>(
   })
 )
 
-const Caption = styled.caption<CaptionProps>(
+const Caption = styled.p<CaptionProps & HTMLAttributes<HTMLParagraphElement>>(
   {
     marginTop: "8px",
     fontFamily: "sans-serif",
