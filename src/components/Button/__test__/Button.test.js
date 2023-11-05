@@ -37,6 +37,66 @@ describe('Button', () => {
 
       expect(button).toHaveAttribute('label', 'Label')
     })
+
+    it('should render a primary styled button when "primary" is passed to variant prop', () => {
+      const component = render(<Button label='Label' variant='primary' />)
+      const button = component.getByTestId('button-data-testid')
+
+      expect(button).toHaveStyleRule('background', '#002D62')
+      expect(button).toHaveStyleRule('color', '#F2F2F2')
+      expect(button).toHaveStyleRule('border', 'none')
+      expect(button).toHaveStyleRule('box-shadow', '0px 6px 8px 0px rgba(13, 13, 13, 0.30)')
+    })
+
+    it('should render a secondary styled button when "secondary" is passed to variant prop', () => {
+      const component = render(<Button label='Label' variant='secondary' />)
+      const button = component.getByTestId('button-data-testid')
+
+      expect(button).toHaveStyleRule('background', 'none')
+      expect(button).toHaveStyleRule('color', '#002D62')
+      expect(button).toHaveStyleRule('border', '2px solid #002D62')
+      expect(button).toHaveStyleRule('box-shadow', 'none')
+    })
+
+    it('should render a text styled button when "text" is passed to variant prop', () => {
+      const component = render(<Button label='Label' variant='text' />)
+      const button = component.getByTestId('button-data-testid')
+
+      expect(button).toHaveStyleRule('background', 'none')
+      expect(button).toHaveStyleRule('color', '#002D62')
+      expect(button).toHaveStyleRule('border', 'none')
+      expect(button).toHaveStyleRule('box-shadow', 'none')
+    })
+  })
+
+  it('should render a disabled primary button', () => {
+    const component = render(<Button variant='primary' disabled />)
+    const button = component.getByTestId('button-data-testid')
+
+    expect(button).toHaveStyleRule('background', '#D9D9D9')
+    expect(button).toHaveStyleRule('color', '#808080')
+    expect(button).toHaveStyleRule('border', 'none')
+    expect(button).toHaveStyleRule('box-shadow', 'none')
+  })
+
+  it('should render a disabled secondary button', () => {
+    const component = render(<Button variant='secondary' disabled />)
+    const button = component.getByTestId('button-data-testid')
+
+    expect(button).toHaveStyleRule('background', 'none')
+    expect(button).toHaveStyleRule('color', '#808080')
+    expect(button).toHaveStyleRule('border', '2px solid #808080')
+    expect(button).toHaveStyleRule('box-shadow', 'none')
+  })
+
+  it('should render a disabled text button', () => {
+    const component = render(<Button variant='text' disabled />)
+    const button = component.getByTestId('button-data-testid')
+
+    expect(button).toHaveStyleRule('background', 'none')
+    expect(button).toHaveStyleRule('color', '#808080')
+    expect(button).toHaveStyleRule('border', 'none')
+    expect(button).toHaveStyleRule('box-shadow', 'none')
   })
 
   describe('disabled prop', () => {
@@ -54,20 +114,6 @@ describe('Button', () => {
       const button = component.getByTestId('button-data-testid')
 
       expect(button).toHaveAttribute('disabled')
-    })
-
-    it('should render a button with a disabled background styles', () => {
-      const component = render(<Button disabled />)
-      const button = component.getByTestId('button-data-testid')
-
-      expect(button).toHaveStyleRule('background', 'lightgray')
-    })
-
-    it('should render a button with a disabled label color styles', () => {
-      const component = render(<Button disabled />)
-      const button = component.getByTestId('button-data-testid')
-
-      expect(button).toHaveStyleRule('color', '#FFFFFF')
     })
 
     it('should override the onClick if button is disabled', () => {

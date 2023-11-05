@@ -74,6 +74,7 @@ const ButtonComponent = styled.button<ButtonProps>(
           color: !disabled ? "#002D62" : "#808080",
           border: `2px solid ${!disabled ? "#002D62" : "#808080"}`,
           cursor: !disabled ? "pointer" : "not-allowed",
+          boxShadow: 'none',
           "&:hover": {
             background: !disabled ? "rgba(212, 228, 247, 0.7)" : "none",
           },
@@ -87,6 +88,7 @@ const ButtonComponent = styled.button<ButtonProps>(
           color: !disabled ? "#002D62" : "#808080",
           border: "none",
           cursor: !disabled ? "pointer" : "not-allowed",
+          boxShadow: 'none',
           "&:hover": {
             background: !disabled ? "rgba(212, 228, 247, 0.7)" : "none",
           },
