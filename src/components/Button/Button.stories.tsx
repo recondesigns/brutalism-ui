@@ -75,6 +75,17 @@ export const ClassName: StoryObj<typeof Button> = {
   },
 };
 
+/**
+ *  Here is a description for the default variants.
+ */
+export const Disabled: StoryObj<typeof Button> = {
+  ...ButtonStoryTemplate,
+  args: {
+    label: "Button",
+    disabled: true
+  },
+};
+
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
