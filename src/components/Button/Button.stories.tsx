@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Button from "./Button";
+import { PhoneIcon } from "../../assets";
 
 /**
  *  Here is a description for the default variants.
@@ -83,6 +84,29 @@ export const Disabled: StoryObj<typeof Button> = {
   args: {
     label: "Button",
     disabled: true
+  },
+};
+
+/**
+ *  Here is a description for the default variants.
+ */
+export const LeftIcon: StoryObj<typeof Button> = {
+  ...ButtonStoryTemplate,
+  args: {
+    label: "Button",
+    shouldIncludeLeftIcon: <PhoneIcon />
+  },
+};
+
+/**
+ *  Here is a description for the default variants.
+ */
+export const RightIcon: StoryObj<typeof Button> = {
+  ...ButtonStoryTemplate,
+  args: {
+    label: "Button",
+    variant: 'secondary',
+    shouldIncludeRightIcon: <PhoneIcon />
   },
 };
 

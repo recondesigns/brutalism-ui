@@ -4,6 +4,7 @@ import { matchers } from '@emotion/jest'
 import { cleanup, render } from '@testing-library/react'
 import { fireEvent } from '@testing-library/dom'
 import Button from '../Button'
+import { AlertIcon } from '../../../assets'
 
 expect.extend(matchers)
 
@@ -97,6 +98,20 @@ describe('Button', () => {
     expect(button).toHaveStyleRule('color', '#808080')
     expect(button).toHaveStyleRule('border', 'none')
     expect(button).toHaveStyleRule('box-shadow', 'none')
+  })
+
+  it('should render a left icon', () => {
+    const component = render(<Button shouldIncludeLeftIcon={<AlertIcon data-testid="testid-button-left-icon" />} />)
+    const leftIcon = component.getByTestId('testid-button-left-icon')
+
+    expect(leftIcon).toBeTruthy()
+  })
+
+  it('should render a right icon', () => {
+    const component = render(<Button shouldIncludeRightIcon={<AlertIcon data-testid="testid-button-right-icon" />} />)
+    const rightIcon = component.getByTestId('testid-button-right-icon')
+
+    expect(rightIcon).toBeTruthy()
   })
 
   describe('disabled prop', () => {

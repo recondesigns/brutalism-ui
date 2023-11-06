@@ -34,7 +34,18 @@ type Props = {
    * Copy for type prop.
    */
   disabled?: boolean;
+  /**
+   * Copy for `data-testid` prop.
+   */
   "data-testid"?: string;
+  /**
+   * Copy for `shouldIncludeLeftIcon` prop.
+   */
+  shouldIncludeLeftIcon?: React.ReactElement;
+  /**
+   * Copy for `shouldIncludeRightIcon` prop.
+   */
+  shouldIncludeRightIcon?: React.ReactElement;
 };
 
 export type ButtonProps = Props & HTMLAttributes<HTMLButtonElement>;
@@ -46,7 +57,9 @@ const ButtonComponent = styled.button<ButtonProps>(
     fontFamily: "'Helvetica Neue', 'Sans-serif'",
     fontWeight: "bold",
     borderRadius: "4px",
-    // cursor: 'pointer'
+    display: "flex",
+    alignItems: "center",
+    gap: "4px",
   },
   ({ variant, disabled }) => {
     switch (variant) {
@@ -74,7 +87,7 @@ const ButtonComponent = styled.button<ButtonProps>(
           color: !disabled ? "#002D62" : "#808080",
           border: `2px solid ${!disabled ? "#002D62" : "#808080"}`,
           cursor: !disabled ? "pointer" : "not-allowed",
-          boxShadow: 'none',
+          boxShadow: "none",
           "&:hover": {
             background: !disabled ? "rgba(212, 228, 247, 0.7)" : "none",
           },
@@ -88,7 +101,7 @@ const ButtonComponent = styled.button<ButtonProps>(
           color: !disabled ? "#002D62" : "#808080",
           border: "none",
           cursor: !disabled ? "pointer" : "not-allowed",
-          boxShadow: 'none',
+          boxShadow: "none",
           "&:hover": {
             background: !disabled ? "rgba(212, 228, 247, 0.7)" : "none",
           },
@@ -107,9 +120,17 @@ function Button({
   className,
   children,
   disabled,
+  shouldIncludeLeftIcon,
+  shouldIncludeRightIcon,
   ...otherProps
 }: ButtonProps) {
   const buttonLabel = createButtonLabel(label, children);
+
+  if (shouldIncludeLeftIcon && shouldIncludeRightIcon) {
+    console.warn(
+      "The button component cannot have two icons. Both props will be ignore if shouldIncludeLeftIcon and shouldIncludeRightIcon, both, are used."
+    );
+  }
 
   return (
     <ButtonComponent
@@ -121,7 +142,9 @@ function Button({
       variant={variant}
       {...otherProps}
     >
+      {shouldIncludeLeftIcon && !shouldIncludeRightIcon ? shouldIncludeLeftIcon : null}
       {buttonLabel}
+      {shouldIncludeRightIcon && !shouldIncludeLeftIcon ? shouldIncludeRightIcon : null}
     </ButtonComponent>
   );
 }
