@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Meta, StoryObj } from "@storybook/react"
 import Input from "./Input"
+import { AlertIcon, PhoneIcon } from "../../assets"
 
 const InputStoryTemplate: StoryObj<typeof Input> = {
   render: (args) => {
@@ -25,20 +26,20 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
 export const Default = {
   ...InputStoryTemplate,
   args: {
-    label: "Label goes here",
-    placeholder: "Placeholder thing",
+    label: "Label"
+    // placeholder: "Placeholder thing",
   },
 }
 
 /**
  * Description copy for `Label` story.
  */
-export const Label = {
-  ...InputStoryTemplate,
-  args: {
-    label: "First name",
-  },
-}
+// export const Label = {
+//   ...InputStoryTemplate,
+//   args: {
+//     label: "First name",
+//   },
+// }
 
 /**
  * Description copy for `Disabled` story.
@@ -48,19 +49,20 @@ export const Disabled = {
   args: {
     label: "Label",
     disabled: true,
+    // hasError: true,
   },
 }
 
 /**
  * Description copy for `Placeholder` story.
  */
-export const Placeholder = {
-  ...InputStoryTemplate,
-  args: {
-    label: "Label",
-    placeholder: "Placeholder",
-  },
-}
+// export const Placeholder = {
+//   ...InputStoryTemplate,
+//   args: {
+//     label: "Label",
+//     placeholder: "Placeholder",
+//   },
+// }
 
 /**
  * Description copy for `Errors` story.
@@ -77,23 +79,23 @@ export const Errors = {
 /**
  * Description copy for `Caption` story.
  */
-export const Caption = {
-  ...InputStoryTemplate,
-  args: {
-    label: "Label",
-    caption: "Here is a caption.",
-  },
-}
+// export const Caption = {
+//   ...InputStoryTemplate,
+//   args: {
+//     label: "Label",
+//     caption: "Here is a caption.",
+//   },
+// }
 
 /**
  * Description copy for `No Label` story.
  */
-export const NoLabel = {
-  ...InputStoryTemplate,
-  args: {
-    caption: "This input has no label.",
-  },
-}
+// export const NoLabel = {
+//   ...InputStoryTemplate,
+//   args: {
+//     caption: "This input has no label.",
+//   },
+// }
 
 const meta: Meta<typeof Input> = {
   title: "Components/Input",

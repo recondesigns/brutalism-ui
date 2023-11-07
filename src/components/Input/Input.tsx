@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from "react"
+import { HTMLAttributes } from "react"
 import styled from "@emotion/styled"
 
 type Props = {
@@ -77,15 +77,22 @@ const Caption = styled.p<CaptionProps & HTMLAttributes<HTMLParagraphElement>>(
 const InputComponent = styled.input<InputProps>(
   {
     padding: "8px",
-    fontFamily: "sans-serif",
-    fontSize: "16px",
+    fontFamily: "Helvetica Neue",
+    fontSize: "20px",
     lineHeight: "18px",
-    background: "white",
     borderRadius: "4px",
+    "&:focus": {
+      outline: '1px solid #3391FF'
+    }
   },
-  ({ hasError, theme }) => ({
-    color: !hasError ? "black" : "red",
-    border: !hasError ? "1px solid black" : "1px solid red",
+  ({ hasError, disabled }) => ({
+    // TODO: Need to decide if I wasnt to keep this or not
+    // color: !hasError ? "black" : "red",
+    border: !hasError ? "1px solid #808080" : "1px solid red",
+    background: disabled && !hasError ? '#D9D9D9' : '#FFFFFF',
+    "&:not(:placeholder-shown)": {
+      border: !hasError ? '1px solid #0D0D0D' : '1px solid red'
+    }
   })
 )
 
@@ -93,7 +100,7 @@ export default function Input({
   label,
   value,
   onchange,
-  placeholder,
+  placeholder = ' ',
   caption,
   disabled = false,
   hasError = false,

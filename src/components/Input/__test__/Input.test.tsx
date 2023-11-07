@@ -30,7 +30,7 @@ describe("Input", () => {
 
       expect(component.queryByTestId('testid-input-wrapper')).not.toBeNull()
       expect(component.queryByTestId('testid-input-label')).toBeNull()
-      expect(component.queryByTestId('testid-input')).not.toHaveAttribute('placeholder')
+      expect(component.queryByTestId('testid-input')).toHaveAttribute('placeholder', ' ')
       expect(component.queryByTestId('testid-input-caption')).toBeNull()
     })
 
