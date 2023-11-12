@@ -65,7 +65,7 @@ const ButtonComponent = styled.button<ButtonProps>(
         switch (variant) {
         case 'primary':
             return {
-                background: !disabled ? '#002D62' : '#D9D9D9',
+                background: 'red',
                 color: !disabled ? '#F2F2F2' : '#808080',
                 border: 'none',
                 boxShadow: !disabled
