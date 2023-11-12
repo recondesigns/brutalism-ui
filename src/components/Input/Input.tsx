@@ -46,7 +46,6 @@ type CaptionProps = {
 const InputWrapper = styled.div<HTMLAttributes<HTMLDivElement>>({
   padding: '12px 0px',
   display: 'flex',
-  background: 'green',
   flexDirection: 'column',
 })
 
