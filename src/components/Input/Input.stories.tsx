@@ -21,7 +21,7 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
 }
 
 /**
- * Description copy for `Default` story.
+ * Description copy for `Default` story and here is change.
  */
 export const Default = {
   ...InputStoryTemplate,
