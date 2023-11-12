@@ -1,6 +1,6 @@
 const createButtonLabel = (labelProp: any, childrenProp: any) => {
   if (!labelProp && !childrenProp) {
-    return "Submit"
+    return 'Submit'
   }
 
   if (labelProp) {

@@ -1,5 +1,5 @@
-import { HTMLAttributes } from "react"
-import styled from "@emotion/styled"
+import React, { HTMLAttributes } from 'react'
+import styled from '@emotion/styled'
 
 type Props = {
   /**
@@ -44,53 +44,53 @@ type CaptionProps = {
 }
 
 const InputWrapper = styled.div<HTMLAttributes<HTMLDivElement>>({
-  padding: "12px 0px",
-  display: "flex",
-  flexDirection: "column",
+  padding: '12px 0px',
+  display: 'flex',
+  flexDirection: 'column',
 })
 
 const Label = styled.label<LabelProps>(
   {
-    marginBottom: "8px",
-    fontFamily: "sans-serif",
-    fontSize: "14px",
-    lineHeight: "16px",
+    marginBottom: '8px',
+    fontFamily: 'sans-serif',
+    fontSize: '14px',
+    lineHeight: '16px',
   },
   ({ hasError }) => ({
-    color: hasError ? "red" : "black",
+    color: hasError ? 'red' : 'black',
   })
 )
 
 const Caption = styled.p<CaptionProps & HTMLAttributes<HTMLParagraphElement>>(
   {
-    marginTop: "8px",
-    fontFamily: "sans-serif",
-    fontSize: "12px",
-    lineHeight: "16px",
-    textAlign: "left",
+    marginTop: '8px',
+    fontFamily: 'sans-serif',
+    fontSize: '12px',
+    lineHeight: '16px',
+    textAlign: 'left',
   },
   ({ hasError }) => ({
-    color: hasError ? "red" : "black",
+    color: hasError ? 'red' : 'black',
   })
 )
 
 const InputComponent = styled.input<InputProps>(
   {
-    padding: "8px",
-    fontFamily: "Helvetica Neue",
-    fontSize: "20px",
-    lineHeight: "18px",
-    borderRadius: "4px",
-    "&:focus": {
+    padding: '8px',
+    fontFamily: 'Helvetica Neue',
+    fontSize: '20px',
+    lineHeight: '18px',
+    borderRadius: '4px',
+    '&:focus': {
       outline: '1px solid #3391FF'
     }
   },
   ({ hasError, disabled }) => ({
     // TODO: Need to decide if I wasnt to keep this or not
     // color: !hasError ? "black" : "red",
-    border: !hasError ? "1px solid #808080" : "1px solid red",
+    border: !hasError ? '1px solid #808080' : '1px solid red',
     background: disabled && !hasError ? '#D9D9D9' : '#FFFFFF',
-    "&:not(:placeholder-shown)": {
+    '&:not(:placeholder-shown)': {
       border: !hasError ? '1px solid #0D0D0D' : '1px solid red'
     }
   })

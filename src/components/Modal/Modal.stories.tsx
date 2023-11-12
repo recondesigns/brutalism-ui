@@ -1,14 +1,14 @@
-import { Meta, StoryObj } from "@storybook/react"
-import Modal, { ModalProps } from "./Modal"
-import ModalFooter from "./ModalFooter"
-import { Button, Input } from "../../components"
+import { Meta, StoryObj } from '@storybook/react'
+import Modal from './Modal'
+import ModalFooter from './ModalFooter'
+import { Button, Input } from '../../components'
 
 export const Default: StoryObj<typeof Modal> = {
   render: (args) => <Modal {...args} />,
   args: {
     children: (
-      <form style={{ padding: "12px" }}>
-        <h4 style={{ margin: "0px" }}>Form title</h4>
+      <form style={{ padding: '12px' }}>
+        <h4 style={{ margin: '0px' }}>Form title</h4>
         <Input
           label="Label goes here"
           onchange={() => {}}
@@ -37,8 +37,8 @@ export const Custom: StoryObj<typeof Modal> = {
   args: {
     children: (
       <>
-        <form style={{ padding: "12px" }}>
-          <h4 style={{ margin: "0px" }}>Form title</h4>
+        <form style={{ padding: '12px' }}>
+          <h4 style={{ margin: '0px' }}>Form title</h4>
           <Input
             label="Label goes here"
             onchange={() => {}}
@@ -54,14 +54,14 @@ export const Custom: StoryObj<typeof Modal> = {
 }
 
 const meta: Meta<typeof Modal> = {
-  title: "Components/Modal",
+  title: 'Components/Modal',
   component: Modal,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   decorators: [
     (ModalStory) => (
       <div
         style={{
-          height: "400px",
+          height: '400px',
         }}
       >
         <ModalStory />

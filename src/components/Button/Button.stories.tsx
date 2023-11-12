@@ -1,13 +1,13 @@
-import { Meta, StoryObj } from "@storybook/react";
-import Button from "./Button";
-import { PhoneIcon } from "../../assets";
+import { Meta, StoryObj } from '@storybook/react'
+import Button from './Button'
+import { PhoneIcon } from '../../assets'
 
 /**
  *  Here is a description for the default variants.
  */
 const ButtonStoryTemplate: StoryObj<typeof Button> = {
   render: (args) => <Button {...args} />,
-};
+}
 
 /**
  *  Here is a description for the default variants.
@@ -15,11 +15,11 @@ const ButtonStoryTemplate: StoryObj<typeof Button> = {
 export const Primary: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    label: "Button",
-    variant: "primary",
-    onClick: () => alert("Click was fired."),
+    label: 'Button',
+    variant: 'primary',
+    onClick: () => alert('Click was fired.'),
   },
-};
+}
 
 /**
  *  Here is a description for the default variants.
@@ -27,11 +27,11 @@ export const Primary: StoryObj<typeof Button> = {
 export const Secondary: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    label: "Button",
-    variant: "secondary",
-    onClick: () => alert("Click was fired."),
+    label: 'Button',
+    variant: 'secondary',
+    onClick: () => alert('Click was fired.'),
   },
-};
+}
 
 /**
  *  Here is a description for the default variants.
@@ -39,11 +39,11 @@ export const Secondary: StoryObj<typeof Button> = {
 export const Text: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    label: "Button",
-    variant: "text",
-    onClick: () => alert("Click was fired."),
+    label: 'Button',
+    variant: 'text',
+    onClick: () => alert('Click was fired.'),
   },
-};
+}
 
 /**
  *  Here is a description for the default variants.
@@ -51,9 +51,9 @@ export const Text: StoryObj<typeof Button> = {
 export const Label: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    label: "Button",
+    label: 'Button',
   },
-};
+}
 
 /**
  *  Here is a description for the default variants.
@@ -63,7 +63,7 @@ export const Children: StoryObj<typeof Button> = {
   args: {
     children: <span>Howdy</span>,
   },
-};
+}
 
 /**
  *  Here is a description for the default variants.
@@ -71,10 +71,10 @@ export const Children: StoryObj<typeof Button> = {
 export const ClassName: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    label: "Button",
-    className: "BUC-Button",
+    label: 'Button',
+    className: 'BUC-Button',
   },
-};
+}
 
 /**
  *  Here is a description for the default variants.
@@ -82,10 +82,10 @@ export const ClassName: StoryObj<typeof Button> = {
 export const Disabled: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    label: "Button",
+    label: 'Button',
     disabled: true
   },
-};
+}
 
 /**
  *  Here is a description for the default variants.
@@ -93,10 +93,10 @@ export const Disabled: StoryObj<typeof Button> = {
 export const LeftIcon: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    label: "Button",
+    label: 'Button',
     shouldIncludeLeftIcon: <PhoneIcon />
   },
-};
+}
 
 /**
  *  Here is a description for the default variants.
@@ -104,20 +104,20 @@ export const LeftIcon: StoryObj<typeof Button> = {
 export const RightIcon: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    label: "Button",
+    label: 'Button',
     variant: 'secondary',
     shouldIncludeRightIcon: <PhoneIcon />
   },
-};
+}
 
 const meta: Meta<typeof Button> = {
-  title: "Components/Button",
+  title: 'Components/Button',
   component: Button,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
-    variant: { control: "inline-radio" },
-    type: { control: "select" },
+    variant: { control: 'inline-radio' },
+    type: { control: 'select' },
   },
-};
+}
 
-export default meta;
+export default meta

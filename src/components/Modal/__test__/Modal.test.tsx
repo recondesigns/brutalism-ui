@@ -1,9 +1,9 @@
-import React from "react"
-import "@testing-library/jest-dom"
-import { matchers } from "@emotion/jest"
-import { cleanup, render } from "@testing-library/react"
+import React from 'react'
+import '@testing-library/jest-dom'
+import { matchers } from '@emotion/jest'
+import { cleanup, render } from '@testing-library/react'
 import { fireEvent } from '@testing-library/dom'
-import ModalFooter from "../ModalFooter"
+import ModalFooter from '../ModalFooter'
 
 expect.extend(matchers)
 
@@ -11,19 +11,19 @@ const mockOnClick = jest.fn(() => console.log('Mock onClick function fired.'))
 
 const singleFooterAction = {
   primaryAction: {
-    buttonLabel: "primary",
+    buttonLabel: 'primary',
     onclick: mockOnClick,
   }
 }
 
 const multipleFooterActions = {
   primaryAction: {
-    buttonLabel: "primary",
-    onclick: () => console.log("Primary button clicked"),
+    buttonLabel: 'primary',
+    onclick: () => console.log('Primary button clicked'),
   },
   secondaryAction: {
-    buttonLabel: "secondary",
-    onclick: () => console.log("Secondary button clicked"),
+    buttonLabel: 'secondary',
+    onclick: () => console.log('Secondary button clicked'),
   },
 }
 

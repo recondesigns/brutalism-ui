@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import { Meta, StoryObj } from "@storybook/react"
-import Input from "./Input"
-import { AlertIcon, PhoneIcon } from "../../assets"
+import React, { useState } from 'react'
+import { Meta, StoryObj } from '@storybook/react'
+import Input from './Input'
+// import { AlertIcon, PhoneIcon } from '../../assets'
 
 const InputStoryTemplate: StoryObj<typeof Input> = {
   render: (args) => {
-    const [value, setValue] = useState("")
+    const [value, setValue] = useState('')
 
     return (
       <Input
@@ -26,7 +26,7 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
 export const Default = {
   ...InputStoryTemplate,
   args: {
-    label: "Label"
+    label: 'Label'
     // placeholder: "Placeholder thing",
   },
 }
@@ -47,7 +47,7 @@ export const Default = {
 export const Disabled = {
   ...InputStoryTemplate,
   args: {
-    label: "Label",
+    label: 'Label',
     disabled: true,
     // hasError: true,
   },
@@ -98,9 +98,9 @@ export const Errors = {
 // }
 
 const meta: Meta<typeof Input> = {
-  title: "Components/Input",
+  title: 'Components/Input',
   component: Input,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 }
 
 export default meta

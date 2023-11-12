@@ -1,15 +1,15 @@
-import React from "react"
-import styled from "@emotion/styled"
-import ModalOverlay from "./ModalOverlay"
-import ModalContainer from "./ModalContainer"
+import React from 'react'
+import styled from '@emotion/styled'
+import ModalOverlay from './ModalOverlay'
+import ModalContainer from './ModalContainer'
 
 export type ModalProps = {
   shouldCloseOnEsc?: boolean
   children: React.ReactElement | React.ReactElement[]
 }
 
-const ModalComponent = styled("div")<ModalProps>({
-  position: "absolute",
+const ModalComponent = styled('div')<ModalProps>({
+  position: 'absolute',
   top: 0,
   right: 0,
   bottom: 0,
