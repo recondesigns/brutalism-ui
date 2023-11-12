@@ -6,15 +6,15 @@ export type CardProps = {
 }
 
 const CardContainer = styled('div')(
-    {
-        border: '2px solid orange'
-    }
+  {
+    border: '2px solid orange'
+  }
 )
 
 export default function Card({ shouldHavePadding = false }: CardProps) {
-    console.log(555, shouldHavePadding)
+  console.log(555, shouldHavePadding)
 
-    return (
-        <CardContainer>Card</CardContainer>
-    )
+  return (
+    <CardContainer>Card</CardContainer>
+  )
 }
