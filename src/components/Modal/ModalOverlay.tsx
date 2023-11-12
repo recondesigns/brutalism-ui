@@ -6,14 +6,14 @@ export type ModalOverlayProps = {
 }
 
 const Overlay = styled('div')<ModalOverlayProps>({
-    position: 'relative',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background: 'rgba(0, 0, 0, 0.15)',
+  position: 'relative',
+  height: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  background: 'rgba(0, 0, 0, 0.15)',
 })
 
 export default function ModalOverlay({ children }: ModalOverlayProps) {
-    return <Overlay>{children}</Overlay>
+  return <Overlay>{children}</Overlay>
 }
