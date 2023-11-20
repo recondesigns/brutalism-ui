@@ -7,8 +7,7 @@ export type CardProps = {
 
 const CardContainer = styled('div')(
   {
-    padding: '20px',
-    border: '2px solid green'
+    border: '2px solid orange'
   }
 )
 
