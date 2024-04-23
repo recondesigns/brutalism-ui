@@ -1,4 +1,7 @@
-const createButtonLabel = (labelProp: any, childrenProp: any) => {
+const createButtonLabel = (
+  labelProp: string | undefined,
+  childrenProp: React.ReactNode
+) => {
   if (!labelProp && !childrenProp) {
     return 'Submit'
   }

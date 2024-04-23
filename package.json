@@ -1,6 +1,6 @@
 {
   "name": "be-ubiquitous",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "This is where some documentation goes.",
   "scripts": {
     "test": "jest",
