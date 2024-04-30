@@ -1,119 +1,126 @@
 import { Meta, StoryObj } from "@storybook/react"
 import Button from "./Button"
-import { PhoneIcon } from "../../assets"
 
-/**
- *  Here is a description for the default variants.
- */
 const ButtonStoryTemplate: StoryObj<typeof Button> = {
   render: (args) => <Button {...args} />,
 }
 
 /**
- *  Here is a description for the default variants.
+ *  Here is a description for the variant story.
  */
-export const Primary: StoryObj<typeof Button> = {
+export const Variant: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
     variant: "primary",
-    size: "medium",
-    fullWidth: false,
     label: "Button",
-    className: "test-class-name",
-    disabled: true,
-    onClick: () => alert('Click was fired.'),
+    onClick: () => alert("Click was fired."),
+  },
+  parameters: {
+    controls: {
+      exclude: [
+        "size",
+        "className",
+        "disabled",
+        "fullWidth",
+        "onClick",
+        "type",
+      ],
+    },
   },
 }
 
 /**
- *  Here is a description for the default variants.
+ *  Here is a description for the size story.
  */
-// export const Secondary: StoryObj<typeof Button> = {
-//   ...ButtonStoryTemplate,
-//   args: {
-//     label: 'Button',
-//     variant: 'secondary',
-//     onClick: () => alert('Click was fired.'),
-//   },
-// }
+export const Size: StoryObj<typeof Button> = {
+  ...ButtonStoryTemplate,
+  args: {
+    variant: "primary",
+    size: "large",
+    label: "Button",
+    onClick: () => alert("Click was fired."),
+  },
+  parameters: {
+    controls: {
+      exclude: ["className", "disabled", "fullWidth", "onClick", "type"],
+    },
+  },
+}
 
 /**
- *  Here is a description for the default variants.
+ *  Here is a description for the fullWidth story.
  */
-// export const Text: StoryObj<typeof Button> = {
-//   ...ButtonStoryTemplate,
-//   args: {
-//     label: 'Button',
-//     variant: 'text',
-//     onClick: () => alert('Click was fired.'),
-//   },
-// }
+export const FullWidth: StoryObj<typeof Button> = {
+  ...ButtonStoryTemplate,
+  args: {
+    variant: "primary",
+    size: "large",
+    fullWidth: true,
+    label: "Button",
+    onClick: () => alert("Click was fired."),
+  },
+  parameters: {
+    controls: {
+      exclude: ["size", "onClick", "type", "className", "disabled"],
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div>
+        <Story />
+      </div>
+    ),
+  ],
+}
 
 /**
- *  Here is a description for the default variants.
+ *  Here is a description for the disabled story.
  */
-// export const Label: StoryObj<typeof Button> = {
-//   ...ButtonStoryTemplate,
-//   args: {
-//     label: 'Button',
-//   },
-// }
+export const Disabled: StoryObj<typeof Button> = {
+  ...ButtonStoryTemplate,
+  args: {
+    variant: "primary",
+    disabled: true,
+    label: "Button",
+    onClick: () => alert("Click was fired."),
+  },
+  parameters: {
+    controls: {
+      exclude: ["size", "className", "fullWidth", "onClick", "type"],
+    },
+  },
+}
 
 /**
- *  Here is a description for the default variants.
+ *  Here is a description for the Kitchen sink story.
  */
-// export const Children: StoryObj<typeof Button> = {
-//   ...ButtonStoryTemplate,
-//   args: {
-//     children: <span>Howdy</span>,
-//   },
-// }
+export const KitchenSink: StoryObj<typeof Button> = {
+  ...ButtonStoryTemplate,
+  args: {
+    variant: "primary",
+    size: "medium",
+    fullWidth: true,
+    label: "Button",
+    disabled: false,
+    onClick: () => alert("Click was fired."),
+  },
+  parameters: {
+    controls: {
+      exclude: ["onClick", "type", "className"],
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div>
+        <Story />
+      </div>
+    ),
+  ],
+}
 
 /**
- *  Here is a description for the default variants.
+ * Here is a description.
  */
-// export const ClassName: StoryObj<typeof Button> = {
-//   ...ButtonStoryTemplate,
-//   args: {
-//     label: 'Button',
-//     className: 'BUC-Button',
-//   },
-// }
-
-/**
- *  Here is a description for the default variants.
- */
-// export const Disabled: StoryObj<typeof Button> = {
-//   ...ButtonStoryTemplate,
-//   args: {
-//     label: 'Button',
-//     disabled: true
-//   },
-// }
-
-/**
- *  Here is a description for the default variants.
- */
-// export const LeftIcon: StoryObj<typeof Button> = {
-//   ...ButtonStoryTemplate,
-//   args: {
-//     label: 'Button',
-//     shouldIncludeLeftIcon: <PhoneIcon />
-//   },
-// }
-
-/**
- *  Here is a description for the default variants.
- */
-// export const RightIcon: StoryObj<typeof Button> = {
-//   ...ButtonStoryTemplate,
-//   args: {
-//     label: 'Button',
-//     variant: 'secondary',
-//     shouldIncludeRightIcon: <PhoneIcon />
-//   },
-// }
-
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,

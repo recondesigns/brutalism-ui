@@ -1,22 +1,22 @@
-import React from 'react'
-import { Preview } from "@storybook/react";
-import { Title, Subtitle,  Primary, ArgTypes, Stories } from '@storybook/blocks'
+import React from "react"
+import { Preview } from "@storybook/react"
+import { Title, Subtitle, Primary, ArgTypes, Stories } from "@storybook/blocks"
 
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
+      sort: "requiredFirst",
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
       },
     },
     docs: {
-      // controls: { exclude: ['label']},
       toc: {
-        title: 'Contents',
+        title: "Contents",
         disabled: false,
-        headingSelector: 'h2, h3'
+        headingSelector: "h2, h3",
       },
       page: () => (
         <>
@@ -28,7 +28,7 @@ const preview: Preview = {
         </>
       ),
     },
-  }
-};
+  },
+}
 
-export default preview;
+export default preview
