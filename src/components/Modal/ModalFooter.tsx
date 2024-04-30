@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { Button } from '../../components'
+// import { Button } from '../../components'
 
 export type ModalFooterProps = {
   actions: {
@@ -22,12 +22,12 @@ const FooterContainer = styled('div')({
   gap: '12px',
 })
 
-export default function ModalFooter({ actions }: ModalFooterProps) {
-  const { primaryAction, secondaryAction } = actions
+export default function ModalFooter() {
+  // const { primaryAction, secondaryAction } = actions
 
   return (
     <FooterContainer data-testid="testid-modal-footer-container">
-      <Button
+      {/* <Button
         data-testid="testid-modal-footer-primary-button"
         onClick={primaryAction?.onclick}
       >
@@ -40,7 +40,7 @@ export default function ModalFooter({ actions }: ModalFooterProps) {
         >
           {secondaryAction?.buttonLabel}
         </Button>
-      )}
+      )} */}
     </FooterContainer>
   )
 }
