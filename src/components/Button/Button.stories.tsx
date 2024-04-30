@@ -1,5 +1,5 @@
-import { Meta, StoryObj } from "@storybook/react"
-import Button from "./Button"
+import { Meta, StoryObj } from '@storybook/react'
+import Button from './Button'
 
 const ButtonStoryTemplate: StoryObj<typeof Button> = {
   render: (args) => <Button {...args} />,
@@ -11,19 +11,19 @@ const ButtonStoryTemplate: StoryObj<typeof Button> = {
 export const Variant: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    variant: "primary",
-    label: "Button",
-    onClick: () => alert("Click was fired."),
+    variant: 'primary',
+    label: 'Button',
+    onClick: () => alert('Click was fired.'),
   },
   parameters: {
     controls: {
       exclude: [
-        "size",
-        "className",
-        "disabled",
-        "fullWidth",
-        "onClick",
-        "type",
+        'size',
+        'className',
+        'disabled',
+        'fullWidth',
+        'onClick',
+        'type',
       ],
     },
   },
@@ -35,14 +35,14 @@ export const Variant: StoryObj<typeof Button> = {
 export const Size: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    variant: "primary",
-    size: "large",
-    label: "Button",
-    onClick: () => alert("Click was fired."),
+    variant: 'primary',
+    size: 'large',
+    label: 'Button',
+    onClick: () => alert('Click was fired.'),
   },
   parameters: {
     controls: {
-      exclude: ["className", "disabled", "fullWidth", "onClick", "type"],
+      exclude: ['className', 'disabled', 'fullWidth', 'onClick', 'type'],
     },
   },
 }
@@ -53,15 +53,15 @@ export const Size: StoryObj<typeof Button> = {
 export const FullWidth: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    variant: "primary",
-    size: "large",
+    variant: 'primary',
+    size: 'large',
     fullWidth: true,
-    label: "Button",
-    onClick: () => alert("Click was fired."),
+    label: 'Button',
+    onClick: () => alert('Click was fired.'),
   },
   parameters: {
     controls: {
-      exclude: ["size", "onClick", "type", "className", "disabled"],
+      exclude: ['size', 'onClick', 'type', 'className', 'disabled'],
     },
   },
   decorators: [
@@ -79,14 +79,14 @@ export const FullWidth: StoryObj<typeof Button> = {
 export const Disabled: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    variant: "primary",
+    variant: 'primary',
     disabled: true,
-    label: "Button",
-    onClick: () => alert("Click was fired."),
+    label: 'Button',
+    onClick: () => alert('Click was fired.'),
   },
   parameters: {
     controls: {
-      exclude: ["size", "className", "fullWidth", "onClick", "type"],
+      exclude: ['size', 'className', 'fullWidth', 'onClick', 'type'],
     },
   },
 }
@@ -97,16 +97,16 @@ export const Disabled: StoryObj<typeof Button> = {
 export const KitchenSink: StoryObj<typeof Button> = {
   ...ButtonStoryTemplate,
   args: {
-    variant: "primary",
-    size: "medium",
+    variant: 'primary',
+    size: 'medium',
     fullWidth: true,
-    label: "Button",
+    label: 'Button',
     disabled: false,
-    onClick: () => alert("Click was fired."),
+    onClick: () => alert('Click was fired.'),
   },
   parameters: {
     controls: {
-      exclude: ["onClick", "type", "className"],
+      exclude: ['onClick', 'type', 'className'],
     },
   },
   decorators: [
@@ -122,12 +122,12 @@ export const KitchenSink: StoryObj<typeof Button> = {
  * Here is a description.
  */
 const meta: Meta<typeof Button> = {
-  title: "Components/Button",
+  title: 'Components/Button',
   component: Button,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
-    variant: { control: "inline-radio" },
-    type: { control: "select" },
+    variant: { control: 'inline-radio' },
+    type: { control: 'select' },
   },
 }
 

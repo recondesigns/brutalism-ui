@@ -5,9 +5,9 @@
   "description": "A brutalist component library.",
   "repository": "https://github.com/recondesigns/be-ubiquitous",
   "contributors": [
-    { 
-      "name": "Stedman", 
-      "url": "https://github.com/recondesigns" 
+    {
+      "name": "Stedman",
+      "url": "https://github.com/recondesigns"
     }
   ],
   "license": "MIT",
@@ -73,7 +73,6 @@
   ],
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@fontsource/roboto": "^5.0.13",
     "@testing-library/dom": "^9.3.3",
     "@testing-library/jest-dom": "^6.1.4",
     "dotenv": "^16.3.1",
