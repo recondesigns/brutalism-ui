@@ -1,7 +1,16 @@
 {
   "name": "be-ubiquitous",
-  "version": "1.0.16",
-  "description": "This is where some documentation goes.",
+  "version": "0.0.5",
+  "author": "Stedman",
+  "description": "A brutalist component library.",
+  "repository": "https://github.com/recondesigns/be-ubiquitous",
+  "contributors": [
+    { 
+      "name": "Stedman", 
+      "url": "https://github.com/recondesigns" 
+    }
+  ],
+  "license": "MIT",
   "scripts": {
     "test": "jest",
     "storybook": "storybook dev -p 6002",
@@ -11,8 +20,6 @@
     "build": "npm run svgr && npm run lint && rollup -c",
     "chromatic": "npx chromatic --exit-zero-on-changes"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.22.14",
     "@babel/preset-react": "^7.22.5",
