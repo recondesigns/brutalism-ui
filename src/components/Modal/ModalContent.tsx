@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 
 export type ModalContainerProps = {
   children: React.ReactElement | React.ReactElement[]
-}
+} & React.HTMLAttributes<HTMLDivElement>
 
 const Container = styled("div")<ModalContainerProps>({
   // height: '100%',
@@ -13,6 +13,9 @@ const Container = styled("div")<ModalContainerProps>({
   // border: '2px solid green',
 })
 
-export default function ModalContent({ children }: ModalContainerProps) {
-  return <Container>{children}</Container>
+export default function ModalContent({
+  children,
+  ...otherProps
+}: ModalContainerProps) {
+  return <Container {...otherProps}>{children}</Container>
 }

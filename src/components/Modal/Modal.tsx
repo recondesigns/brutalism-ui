@@ -39,15 +39,22 @@ const ModalScrim = styled("div")({
 export type ModalProps = {
   // shouldCloseOnEsc?: boolean
   isOpen?: boolean
+  shouldFitContent?: boolean
   children: React.ReactElement | React.ReactElement[]
 }
 
-export default function Modal({ isOpen = false, children }: ModalProps) {
+export default function Modal({
+  isOpen = false,
+  shouldFitContent = false,
+  children,
+}: ModalProps) {
   return (
     <ThemeProvider theme={defaultTheme}>
       <ModalWrapper isOpen={isOpen}>
         <ModalScrim>
-          <ModalDialog>{children}</ModalDialog>
+          <ModalDialog shouldFitContent={shouldFitContent}>
+            {children}
+          </ModalDialog>
         </ModalScrim>
       </ModalWrapper>
     </ThemeProvider>

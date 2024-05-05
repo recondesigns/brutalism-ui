@@ -3,15 +3,22 @@ import styled from "@emotion/styled"
 import { ThemeProvider } from "@emotion/react"
 import { defaultTheme } from "../emotionTheme"
 
-const ModalDialogWrapper = styled("div")(
+type ModalDialogWrapperProps = {
+  shouldFitContent?: boolean
+}
+
+const ModalDialogWrapper = styled("div")<ModalDialogWrapperProps>(
   {
     position: "static",
     padding: "20px 20px 20px 20px",
-    width: "60%",
     maxHeight: "80%",
     background: "white",
     overflow: "scroll",
   },
+  ({ shouldFitContent }) => ({
+    maxWidth: !shouldFitContent ? "40%" : "none",
+    width: !shouldFitContent ? "100%" : "auto",
+  }),
   ({ theme }) => ({
     border: `1px solid ${theme.palette.common.border}`,
     borderRadius: theme.shape.borderRadius,
@@ -19,14 +26,20 @@ const ModalDialogWrapper = styled("div")(
   })
 )
 
-type Props = {
+type ModalDialogProps = {
+  shouldFitContent?: boolean
   children: React.ReactElement | React.ReactElement[]
 }
 
-export default function ModalDialog({ children }: Props) {
+export default function ModalDialog({
+  shouldFitContent = false,
+  children,
+}: ModalDialogProps) {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ModalDialogWrapper>{children}</ModalDialogWrapper>
+      <ModalDialogWrapper shouldFitContent={shouldFitContent}>
+        {children}
+      </ModalDialogWrapper>
     </ThemeProvider>
   )
 }
