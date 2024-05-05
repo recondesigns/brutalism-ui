@@ -2,6 +2,8 @@ import React from "react"
 import styled from "@emotion/styled"
 import { ThemeProvider } from "@emotion/react"
 import ModalDialog from "./ModalDialog"
+import ModalHeader from "./ModalHeader"
+import ModalContent from "./ModalContent"
 import { defaultTheme } from "../emotionTheme"
 
 type ModalWrapperProps = {
@@ -36,14 +38,14 @@ const ModalScrim = styled("div")({
   // border: '3px solid red'
 })
 
-export type ModalProps = {
+type ModalProps = {
   // shouldCloseOnEsc?: boolean
   isOpen?: boolean
   shouldFitContent?: boolean
   children: React.ReactElement | React.ReactElement[]
 }
 
-export default function Modal({
+function Modal({
   isOpen = false,
   shouldFitContent = false,
   children,
@@ -60,3 +62,5 @@ export default function Modal({
     </ThemeProvider>
   )
 }
+
+export { Modal, ModalHeader, ModalContent }
