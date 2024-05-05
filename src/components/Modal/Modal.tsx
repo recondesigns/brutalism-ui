@@ -1,40 +1,40 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { ThemeProvider } from "@emotion/react"
-import ModalDialog from "./ModalDialog"
-import ModalHeader from "./ModalHeader"
-import ModalContent from "./ModalContent"
-import { defaultTheme } from "../emotionTheme"
+import React from 'react'
+import styled from '@emotion/styled'
+import { ThemeProvider } from '@emotion/react'
+import ModalDialog from './ModalDialog'
+import ModalHeader from './ModalHeader'
+import ModalContent from './ModalContent'
+import { defaultTheme } from '../emotionTheme'
 
 type ModalWrapperProps = {
   isOpen?: boolean
 }
 
-const ModalWrapper = styled("div")<ModalWrapperProps>(
+const ModalWrapper = styled('div')<ModalWrapperProps>(
   {
-    boxSizing: "border-box",
-    width: "100%",
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    boxSizing: 'border-box',
+    width: '100%',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     // border: '2px solid orange'
   },
   ({ isOpen }) => ({
-    display: !isOpen ? "none" : "block",
+    display: !isOpen ? 'none' : 'block',
   })
 )
 
-const ModalScrim = styled("div")({
-  position: "absolute",
+const ModalScrim = styled('div')({
+  position: 'absolute',
   top: 0,
   right: 0,
   bottom: 0,
   left: 0,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  background: "rgba(0, 0, 0, 0.15)",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  background: 'rgba(0, 0, 0, 0.15)',
   // border: '3px solid red'
 })
 

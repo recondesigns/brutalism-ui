@@ -1,17 +1,17 @@
-import React from "react"
-import { Meta, StoryObj } from "@storybook/react"
-import { Modal } from "./Modal"
-import ModalHeader from "./ModalHeader"
-import ModalContent from "./ModalContent"
-import ModalFooter from "./ModalFooter"
-import Button from "../Button"
+import React from 'react'
+import { Meta, StoryObj } from '@storybook/react'
+import { Modal } from './Modal'
+import ModalHeader from './ModalHeader'
+import ModalContent from './ModalContent'
+import ModalFooter from './ModalFooter'
+import Button from '../Button'
 
 const meta: Meta<typeof Modal> = {
-  title: "Components/Modal",
+  title: 'Components/Modal',
   component: Modal,
   parameters: {
     controls: {
-      exclude: ["isOpen", "shouldFitContent"],
+      exclude: ['isOpen', 'shouldFitContent'],
     },
   },
 }
@@ -24,13 +24,13 @@ export const Default: StoryObj<typeof Modal> = {
       <>
         <div
           style={{
-            padding: "0px 0px 24px 0px",
-            display: "flex",
-            justifyContent: "center",
+            padding: '0px 0px 24px 0px',
+            display: 'flex',
+            justifyContent: 'center',
           }}
         >
           <Button
-            label={!isModalOpen ? "Open modal" : "Close modal"}
+            label={!isModalOpen ? 'Open modal' : 'Close modal'}
             variant="secondary"
             onClick={() => setIsModalOpen(!isModalOpen)}
           />
@@ -41,10 +41,10 @@ export const Default: StoryObj<typeof Modal> = {
             onClose={() => setIsModalOpen(!isModalOpen)}
           />
           <ModalContent>
-            <h3 style={{ fontFamily: "sans-serif", margin: "0px 0px 8px 0px" }}>
+            <h3 style={{ fontFamily: 'sans-serif', margin: '0px 0px 8px 0px' }}>
               Heading level four
             </h3>
-            <p style={{ fontFamily: "sans-serif", margin: "0px 0px 4px 0px" }}>
+            <p style={{ fontFamily: 'sans-serif', margin: '0px 0px 4px 0px' }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
               mollitia, molestiae quas vel sint commodi repudiandae consequuntur
               voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -68,13 +68,13 @@ export const FitContent: StoryObj<typeof Modal> = {
       <>
         <div
           style={{
-            padding: "0px 0px 24px 0px",
-            display: "flex",
-            justifyContent: "center",
+            padding: '0px 0px 24px 0px',
+            display: 'flex',
+            justifyContent: 'center',
           }}
         >
           <Button
-            label={!isModalOpen ? "Open modal" : "Close modal"}
+            label={!isModalOpen ? 'Open modal' : 'Close modal'}
             variant="secondary"
             onClick={() => setIsModalOpen(!isModalOpen)}
           />
@@ -84,11 +84,11 @@ export const FitContent: StoryObj<typeof Modal> = {
             title="Modal title"
             onClose={() => setIsModalOpen(!isModalOpen)}
           />
-          <ModalContent style={{ width: "280px" }}>
-            <h3 style={{ fontFamily: "sans-serif", margin: "0px 0px 8px 0px" }}>
+          <ModalContent style={{ width: '280px' }}>
+            <h3 style={{ fontFamily: 'sans-serif', margin: '0px 0px 8px 0px' }}>
               Heading level four
             </h3>
-            <p style={{ fontFamily: "sans-serif", margin: "0px 0px 4px 0px" }}>
+            <p style={{ fontFamily: 'sans-serif', margin: '0px 0px 4px 0px' }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
               mollitia, molestiae quas vel sint commodi repudiandae consequuntur
               voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -104,13 +104,6 @@ export const FitContent: StoryObj<typeof Modal> = {
   },
 }
 
-const footerActions = {
-  primaryAction: {
-    buttonLabel: "first",
-    onclick: () => alert("first action"),
-  },
-}
-
 export const Footer: StoryObj<typeof Modal> = {
   render: (args) => {
     const [isModalOpen, setIsModalOpen] = React.useState(true)
@@ -119,13 +112,13 @@ export const Footer: StoryObj<typeof Modal> = {
       <>
         <div
           style={{
-            padding: "0px 0px 24px 0px",
-            display: "flex",
-            justifyContent: "center",
+            padding: '0px 0px 24px 0px',
+            display: 'flex',
+            justifyContent: 'center',
           }}
         >
           <Button
-            label={!isModalOpen ? "Open modal" : "Close modal"}
+            label={!isModalOpen ? 'Open modal' : 'Close modal'}
             variant="secondary"
             onClick={() => setIsModalOpen(!isModalOpen)}
           />
@@ -136,10 +129,10 @@ export const Footer: StoryObj<typeof Modal> = {
             onClose={() => setIsModalOpen(!isModalOpen)}
           />
           <ModalContent>
-            <h3 style={{ fontFamily: "sans-serif", margin: "0px 0px 8px 0px" }}>
+            <h3 style={{ fontFamily: 'sans-serif', margin: '0px 0px 8px 0px' }}>
               Heading level four
             </h3>
-            <p style={{ fontFamily: "sans-serif", margin: "0px 0px 4px 0px" }}>
+            <p style={{ fontFamily: 'sans-serif', margin: '0px 0px 4px 0px' }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
               mollitia, molestiae quas vel sint commodi repudiandae consequuntur
               voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -149,7 +142,7 @@ export const Footer: StoryObj<typeof Modal> = {
           <ModalFooter
             actions={{
               primaryAction: {
-                buttonLabel: "Close modal",
+                buttonLabel: 'Close modal',
                 onclick: () => setIsModalOpen(!isModalOpen),
               },
             }}
