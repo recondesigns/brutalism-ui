@@ -1,29 +1,66 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import ModalOverlay from './ModalOverlay'
-import ModalContainer from './ModalContainer'
+import { ThemeProvider } from '@emotion/react'
+import ModalDialog from './ModalDialog'
+import ModalHeader from './ModalHeader'
+import ModalContent from './ModalContent'
+import { defaultTheme } from '../emotionTheme'
 
-export type ModalProps = {
-  shouldCloseOnEsc?: boolean
-  children: React.ReactElement | React.ReactElement[]
+type ModalWrapperProps = {
+  isOpen?: boolean
 }
 
-const ModalComponent = styled('div')<ModalProps>({
+const ModalWrapper = styled('div')<ModalWrapperProps>(
+  {
+    boxSizing: 'border-box',
+    width: '100%',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // border: '2px solid orange'
+  },
+  ({ isOpen }) => ({
+    display: !isOpen ? 'none' : 'block',
+  })
+)
+
+const ModalScrim = styled('div')({
   position: 'absolute',
   top: 0,
   right: 0,
   bottom: 0,
   left: 0,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  background: 'rgba(0, 0, 0, 0.15)',
+  // border: '3px solid red'
 })
 
-export default function Modal({ children }: ModalProps) {
+type ModalProps = {
+  // shouldCloseOnEsc?: boolean
+  isOpen?: boolean
+  shouldFitContent?: boolean
+  children: React.ReactElement | React.ReactElement[]
+}
+
+function Modal({
+  isOpen = false,
+  shouldFitContent = false,
+  children,
+}: ModalProps) {
   return (
-    <ModalComponent>
-      <ModalOverlay>
-        <ModalContainer>
-          {children}
-        </ModalContainer>
-      </ModalOverlay>
-    </ModalComponent>
+    <ThemeProvider theme={defaultTheme}>
+      <ModalWrapper isOpen={isOpen}>
+        <ModalScrim>
+          <ModalDialog shouldFitContent={shouldFitContent}>
+            {children}
+          </ModalDialog>
+        </ModalScrim>
+      </ModalWrapper>
+    </ThemeProvider>
   )
 }
+
+export { Modal, ModalHeader, ModalContent }
