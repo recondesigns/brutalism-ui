@@ -28,6 +28,7 @@ const ModalDialogWrapper = styled('div')<ModalDialogWrapperProps>(
 
 type ModalDialogProps = {
   shouldFitContent?: boolean
+  onClick?: any
   children: React.ReactElement | React.ReactElement[]
 }
 

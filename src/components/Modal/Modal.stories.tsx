@@ -33,7 +33,7 @@ export const Default: StoryObj<typeof Modal> = {
             {!isModalOpen ? "Open modal" : "Close modal"}
           </Button>
         </div>
-        <Modal {...args} isOpen={isModalOpen}>
+        <Modal {...args} isOpen={isModalOpen} onClose={setIsModalOpen}>
           <ModalHeader
             title="Modal title"
             onClose={() => setIsModalOpen(!isModalOpen)}
@@ -55,6 +55,7 @@ export const Default: StoryObj<typeof Modal> = {
   },
   args: {
     shouldFitContent: false,
+    closeOutsideClick: true,
   },
 }
 
