@@ -12,8 +12,8 @@ const Text = styled.label<TextProps>(
     fontSize: "15px",
     lineHeight: "16px",
   },
-  ({ hasError }) => ({
-    color: hasError ? "red" : "black",
+  ({ theme, hasError }) => ({
+    color: hasError ? theme.palette.error.main : "black",
   })
 )
 

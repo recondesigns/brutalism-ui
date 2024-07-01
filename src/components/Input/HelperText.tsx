@@ -13,8 +13,8 @@ const Text = styled.p<TextProps>(
     lineHeight: "20px",
     textAlign: "left",
   },
-  ({ hasError }) => ({
-    color: hasError ? "red" : "black",
+  ({ theme, hasError }) => ({
+    color: hasError ? theme.palette.error.main : "black",
   })
 )
 
