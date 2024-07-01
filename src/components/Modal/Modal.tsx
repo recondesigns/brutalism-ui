@@ -35,7 +35,6 @@ const ModalScrim = styled('div')({
   justifyContent: 'center',
   alignItems: 'center',
   background: 'rgba(0, 0, 0, 0.15)',
-  // border: '3px solid red'
 })
 
 type ModalProps = {
