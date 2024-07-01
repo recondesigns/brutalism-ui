@@ -29,11 +29,9 @@ export const Default: StoryObj<typeof Modal> = {
             justifyContent: "center",
           }}
         >
-          <Button
-            label={!isModalOpen ? "Open modal" : "Close modal"}
-            // variant="secondary"
-            onClick={() => setIsModalOpen(!isModalOpen)}
-          />
+          <Button onClick={() => setIsModalOpen(!isModalOpen)}>
+            {!isModalOpen ? "Open modal" : "Close modal"}
+          </Button>
         </div>
         <Modal {...args} isOpen={isModalOpen}>
           <ModalHeader
@@ -73,10 +71,9 @@ export const FitContent: StoryObj<typeof Modal> = {
             justifyContent: "center",
           }}
         >
-          <Button
-            label={!isModalOpen ? "Open modal" : "Close modal"}
-            onClick={() => setIsModalOpen(!isModalOpen)}
-          />
+          <Button onClick={() => setIsModalOpen(!isModalOpen)}>
+            {!isModalOpen ? "Open modal" : "Close modal"}
+          </Button>
         </div>
         <Modal {...args} isOpen={isModalOpen}>
           <ModalHeader
@@ -116,10 +113,9 @@ export const Footer: StoryObj<typeof Modal> = {
             justifyContent: "center",
           }}
         >
-          <Button
-            label={!isModalOpen ? "Open modal" : "Close modal"}
-            onClick={() => setIsModalOpen(!isModalOpen)}
-          />
+          <Button onClick={() => setIsModalOpen(!isModalOpen)}>
+            {!isModalOpen ? "Open modal" : "Close modal"}
+          </Button>
         </div>
         <Modal {...args} isOpen={isModalOpen}>
           <ModalHeader
