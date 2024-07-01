@@ -1,9 +1,25 @@
-// import React from 'react'
-// import '@testing-library/jest-dom'
-// import { matchers } from '@emotion/jest'
-// import { cleanup, render } from '@testing-library/react'
-// import { fireEvent } from '@testing-library/dom'
-// import ModalFooter from '../ModalFooter'
+import React from 'react'
+import '@testing-library/jest-dom'
+import { matchers } from '@emotion/jest'
+import { cleanup, render, screen } from '@testing-library/react'
+import { Modal } from '../Modal'
+
+expect.extend(matchers)
+
+describe('Props', () => {
+  afterEach(cleanup)
+
+  it('should render when isOpen is true', () => {
+    render(
+      <Modal isOpen data-testid="modal-test">
+        <p>Modal children</p>
+      </Modal>
+    )
+    const modal = screen.getByTestId('modal-test')
+
+    expect(modal).toBeInTheDocument()
+  })
+})
 
 // expect.extend(matchers)
 

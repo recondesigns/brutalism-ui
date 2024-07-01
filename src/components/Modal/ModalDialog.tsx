@@ -28,6 +28,7 @@ const ModalDialogWrapper = styled('div')<ModalDialogWrapperProps>(
 
 type ModalDialogProps = {
   shouldFitContent?: boolean
+  onClick?: any
   children: React.ReactElement | React.ReactElement[]
 }
 
@@ -37,7 +38,7 @@ export default function ModalDialog({
 }: ModalDialogProps) {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ModalDialogWrapper shouldFitContent={shouldFitContent}>
+      <ModalDialogWrapper shouldFitContent={shouldFitContent} role="dialog">
         {children}
       </ModalDialogWrapper>
     </ThemeProvider>

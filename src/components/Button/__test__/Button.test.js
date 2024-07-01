@@ -1,158 +1,123 @@
 import React from 'react'
 import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
-import { cleanup, render } from '@testing-library/react'
-import { fireEvent } from '@testing-library/dom'
+import { cleanup, render, fireEvent, screen } from '@testing-library/react'
 import Button from '../Button'
 import { AlertIcon } from '../../../assets'
 
 expect.extend(matchers)
 
-describe('Button', () => {
-  describe('Rendering and props', () => {
-    afterEach(cleanup)
+const component = <Button data-testid="button-test">Send</Button>
 
-    it('should render a Button component', () => {
-      const component = render(<Button><p>Example</p></Button>)
+describe('Props', () => {
+  afterEach(cleanup)
 
-      expect(component.getByTestId('button-data-testid')).toBeTruthy()
-    })
+  it('should render a Button component', () => {
+    render(component)
+    const button = screen.getByTestId('button-test')
 
-    it('should render a string for the label if passed to the label prop', () => {
-      const component = render(<Button label='Label' />)
-      const button = component.getByTestId('button-data-testid')
-
-      expect(button).toHaveAttribute('label', 'Label')
-    })
-
-    it('should render a child component for the label if passed to the children prop', () => {
-      const component = render(<Button><p>Button</p></Button>)
-      const button = component.getByTestId('button-data-testid')
-
-      expect(button).not.toHaveAttribute('label', 'Label')
-    })
-
-    it('should render a string for the label if children are passed for the label and a string is passed to the label prop', () => {
-      const component = render(<Button label="Label"><p>Button</p></Button>)
-      const button = component.getByTestId('button-data-testid')
-
-      expect(button).toHaveAttribute('label', 'Label')
-    })
-
-    it('should render a primary styled button when "primary" is passed to variant prop', () => {
-      const component = render(<Button label='Label' variant='primary' />)
-      const button = component.getByTestId('button-data-testid')
-
-      expect(button).toHaveStyleRule('background', '#002D62')
-      expect(button).toHaveStyleRule('color', '#F2F2F2')
-      expect(button).toHaveStyleRule('border', 'none')
-      expect(button).toHaveStyleRule('box-shadow', '0px 6px 8px 0px rgba(13, 13, 13, 0.30)')
-    })
-
-    it('should render a secondary styled button when "secondary" is passed to variant prop', () => {
-      const component = render(<Button label='Label' variant='secondary' />)
-      const button = component.getByTestId('button-data-testid')
-
-      expect(button).toHaveStyleRule('background', 'none')
-      expect(button).toHaveStyleRule('color', '#002D62')
-      expect(button).toHaveStyleRule('border', '2px solid #002D62')
-      expect(button).toHaveStyleRule('box-shadow', 'none')
-    })
-
-    it('should render a text styled button when "text" is passed to variant prop', () => {
-      const component = render(<Button label='Label' variant='text' />)
-      const button = component.getByTestId('button-data-testid')
-
-      expect(button).toHaveStyleRule('background', 'none')
-      expect(button).toHaveStyleRule('color', '#002D62')
-      expect(button).toHaveStyleRule('border', 'none')
-      expect(button).toHaveStyleRule('box-shadow', 'none')
-    })
+    expect(button).toBeInTheDocument()
+    expect(button).not.toHaveAttribute('disabled')
+    expect(button).toHaveStyleRule('width', 'auto')
   })
 
-  it('should render a disabled primary button', () => {
-    const component = render(<Button variant='primary' disabled />)
-    const button = component.getByTestId('button-data-testid')
+  it('should render \'Send\' as the button text', () => {
+    render(component)
+    const button = screen.getByTestId('button-test')
 
-    expect(button).toHaveStyleRule('background', '#D9D9D9')
-    expect(button).toHaveStyleRule('color', '#808080')
-    expect(button).toHaveStyleRule('border', 'none')
-    expect(button).toHaveStyleRule('box-shadow', 'none')
+    expect(button).toBeInTheDocument()
+    expect(button).toHaveTextContent('Send')
   })
 
-  it('should render a disabled secondary button', () => {
-    const component = render(<Button variant='secondary' disabled />)
-    const button = component.getByTestId('button-data-testid')
+  it('should render a button with a background color of #E5A6FF', () => {
+    render(component)
+    const button = screen.getByTestId('button-test')
 
-    expect(button).toHaveStyleRule('background', 'none')
-    expect(button).toHaveStyleRule('color', '#808080')
-    expect(button).toHaveStyleRule('border', '2px solid #808080')
-    expect(button).toHaveStyleRule('box-shadow', 'none')
+    expect(button).toBeInTheDocument()
+    expect(button).toHaveStyleRule('background', '#E5A6FF')
   })
 
-  it('should render a disabled text button', () => {
-    const component = render(<Button variant='text' disabled />)
-    const button = component.getByTestId('button-data-testid')
+  it('should render a button with the disabled attribute', () => {
+    render(
+      <Button disabled data-testid="button-test">
+        Send
+      </Button>
+    )
+    const button = screen.getByTestId('button-test')
 
-    expect(button).toHaveStyleRule('background', 'none')
-    expect(button).toHaveStyleRule('color', '#808080')
-    expect(button).toHaveStyleRule('border', 'none')
-    expect(button).toHaveStyleRule('box-shadow', 'none')
+    expect(button).toHaveAttribute('disabled')
+  })
+
+  it('should render a button with 100% width', () => {
+    render(
+      <Button disabled isFullWidth data-testid="button-test">
+        Send
+      </Button>
+    )
+    const button = screen.getByTestId('button-test')
+
+    expect(button).toHaveStyleRule('width', '100%')
   })
 
   it('should render a left icon', () => {
-    const component = render(<Button shouldIncludeLeftIcon={<AlertIcon data-testid="testid-button-left-icon" />} />)
-    const leftIcon = component.getByTestId('testid-button-left-icon')
+    render(
+      <Button
+        leftIcon={<AlertIcon data-testid="button-icon-test" />}
+        data-testid="button-test"
+      >
+        Send
+      </Button>
+    )
+    const icon = screen.getByTestId('button-icon-test')
 
-    expect(leftIcon).toBeTruthy()
+    expect(icon).toBeInTheDocument()
   })
 
-  it('should render a right icon', () => {
-    const component = render(<Button shouldIncludeRightIcon={<AlertIcon data-testid="testid-button-right-icon" />} />)
-    const rightIcon = component.getByTestId('testid-button-right-icon')
+  it('should fire the onClick when clicked', () => {
+    const mockOnClick = jest.fn()
+    render(
+      <Button data-testid="button-test" onClick={mockOnClick}>
+        Send
+      </Button>
+    )
+    const button = screen.getByTestId('button-test')
 
-    expect(rightIcon).toBeTruthy()
+    fireEvent.click(button)
+
+    expect(mockOnClick).toHaveBeenCalled()
   })
 
-  describe('disabled prop', () => {
-    afterEach(cleanup)
+  it('should not fire the onClick when clicked and button is disabled', () => {
+    const mockOnClick = jest.fn()
+    render(
+      <Button disabled data-testid="button-test" onClick={mockOnClick}>
+        Send
+      </Button>
+    )
+    const button = screen.getByTestId('button-test')
 
-    it('should render a button without a disabled attribute', () => {
-      const component = render(<Button />)
-      const button = component.getByTestId('button-data-testid')
+    fireEvent.click(button)
 
-      expect(button).not.toHaveAttribute('disabled')
+    expect(mockOnClick).not.toHaveBeenCalled()
+  })
+
+  it('should change button color to #DA80FF when hovered', () => {
+    render(component)
+    const button = screen.getByTestId('button-test')
+
+    expect(button).toHaveStyleRule('background', '#E5A6FF')
+    expect(button).toHaveStyleRule('background', '#DA80FF', {
+      target: ':hover',
     })
+  })
 
-    it('should render a button with a disabled attribute', () => {
-      const component = render(<Button disabled />)
-      const button = component.getByTestId('button-data-testid')
+  it('should change button color to #D266FF when active', () => {
+    render(component)
+    const button = screen.getByTestId('button-test')
 
-      expect(button).toHaveAttribute('disabled')
-    })
-
-    it('should override the onClick if button is disabled', () => {
-      const mockOnClick = jest.fn(() => console.log('Mock onClick function fired'))
-      const component = render(<Button disabled onClick={mockOnClick}  />)
-      const button = component.getByTestId('button-data-testid')
-
-      fireEvent.click(button)
-
-      expect(mockOnClick).not.toHaveBeenCalled()
-    })
-
-    describe('onClick prop', () => {
-      afterEach(cleanup)
-
-      it('should pass an onClick to the button', () => {
-        const mockOnClick = jest.fn(() => console.log('Mock function fired'))
-        const component = render(<Button onClick={mockOnClick} />)
-        const button = component.getByTestId('button-data-testid')
-
-        fireEvent.click(button)
-
-        expect(mockOnClick).toHaveBeenCalled()
-      })
+    expect(button).toHaveStyleRule('background', '#E5A6FF')
+    expect(button).toHaveStyleRule('background', '#D266FF', {
+      target: ':active',
     })
   })
 })

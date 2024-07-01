@@ -1,62 +1,51 @@
-import { defaultTheme } from '../emotionTheme'
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
-type ButtonSize = 'small' | 'medium' | 'large'
+const setSize = (size: Size) => {
+  switch (size) {
+  case 'xs':
+    return {
+      paddingTop: '4px',
+      paddingRight: '4px',
+      paddingBottom: '4px',
+      paddingLeft: '4px',
+    }
+  case 'sm':
+    return {
+      paddingTop: '6px',
+      paddingRight: '6px',
+      paddingBottom: '6px',
+      paddingLeft: '6px',
+    }
+  case 'md':
+    return {
+      paddingTop: '8px',
+      paddingRight: '8px',
+      paddingBottom: '8px',
+      paddingLeft: '8px',
+    }
+  case 'lg':
+    return {
+      paddingTop: '12px',
+      paddingRight: '12px',
+      paddingBottom: '12px',
+      paddingLeft: '12px',
+    }
+  case 'xl':
+    return {
+      paddingTop: '16px',
+      paddingRight: '16px',
+      paddingBottom: '16px',
+      paddingLeft: '16px',
+    }
 
-function setButtonSize(buttonSize: ButtonSize) {
-  let width, height
-
-  switch (buttonSize) {
-  case 'small':
-    width = '140px'
-    height = '32px'
-    break
-  case 'medium':
-    width = '176px'
-    height = '40px'
-    break
-  case 'large':
   default:
-    width = '232px'
-    height = '48px'
-    break
+    return {
+      paddingTop: '12px',
+      paddingRight: '12px',
+      paddingBottom: '12px',
+      paddingLeft: '12px',
+    }
   }
-
-  return { width, height }
 }
 
-type ButtonVariant = 'primary' | 'secondary' | 'ghost'
-
-function setButtonVariant(buttonVariant: ButtonVariant) {
-  let backgroundColor, border, contrastColor, isShadowVisible
-
-  switch (buttonVariant) {
-  case 'primary':
-    backgroundColor = defaultTheme.palette.primary.main
-    border = `1px solid ${defaultTheme.palette.common.border}`
-    contrastColor = defaultTheme.palette.primary.contrastColor
-    isShadowVisible = true
-    break
-  case 'secondary':
-    backgroundColor = 'none'
-    border = `1px solid ${defaultTheme.palette.primary.main}`
-    contrastColor = defaultTheme.palette.primary.main
-    isShadowVisible = false
-    break
-  case 'ghost':
-    backgroundColor = 'none'
-    border = 'none'
-    contrastColor = defaultTheme.palette.primary.main
-    isShadowVisible = false
-    break
-  default:
-    backgroundColor = defaultTheme.palette.primary.main
-    border = `1px solid ${defaultTheme.palette.common.border}`
-    contrastColor = defaultTheme.palette.primary.contrastColor
-    isShadowVisible = true
-    break
-  }
-
-  return { backgroundColor, border, contrastColor, isShadowVisible }
-}
-
-export { setButtonSize, setButtonVariant }
+export { setSize }

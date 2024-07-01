@@ -21,7 +21,6 @@ const FooterContainer = styled('div')({
   display: 'flex',
   justifyContent: 'flex-end',
   gap: '12px',
-  // border: '1px solid orange'
 })
 
 export default function ModalFooter({ actions }: ModalFooterProps) {
@@ -33,17 +32,18 @@ export default function ModalFooter({ actions }: ModalFooterProps) {
         <Button
           data-testid="testid-modal-footer-primary-button"
           onClick={primaryAction?.onclick}
-          size="small"
-          label={primaryAction?.buttonLabel}
-        />
+          size="sm"
+        >
+          {primaryAction?.buttonLabel}
+        </Button>
         {secondaryAction && (
           <Button
             data-testid="testid-modal-footer-secondary-button"
             onClick={secondaryAction?.onclick}
-            label={secondaryAction?.buttonLabel}
-            size="small"
-            variant="secondary"
-          />
+            size="sm"
+          >
+            {secondaryAction?.buttonLabel}
+          </Button>
         )}
       </FooterContainer>
     </ThemeProvider>

@@ -3,16 +3,29 @@ const palette = {
     surface: '#DBFF80',
     on: '#000000',
     border: '#000000',
-    shadow: '#000000'
+    shadow: '#000000',
+    black: '#000000',
+    white: '#FFFFFF',
   },
   primary: {
+    light: '#F6E0FF',
     main: '#E5A6FF',
-    contrastColor: 'white'
+    dark: '#DA80FF',
+    darker: '#D266FF',
+    contrastText: '#000000',
+  },
+  success: {
+    main: '#8DFF8C',
+    contrastText: '#000000',
+  },
+  warning: {
+    main: '#FF8673',
+    contrastText: '#000000',
   },
   error: {
-    main: '#FF8673',
-    contrastColor: 'white'
-  }
+    main: '#FF4F58',
+    contrastText: '#000000',
+  },
 }
 
 const elevation = {
@@ -25,11 +38,17 @@ const elevation = {
 }
 
 const typography = {
-  fontFamily: 'sans-serif'
+  fontFamily: 'sans-serif',
+  button: {
+    fontFamily: 'sans-serif',
+    fontWeight: 700,
+    fontSize: '16px',
+    lineHeight: '24px',
+  },
 }
 
 const shape = {
-  borderRadius: '4px'
+  borderRadius: '4px',
 }
 
 const spacing = {
@@ -41,7 +60,7 @@ const spacing = {
   large: '32px',
   xlarge: '48px',
   xxlarge: '96px',
-  gutter: '24px'
+  gutter: '24px',
 }
 
 export const defaultTheme = {
@@ -49,5 +68,5 @@ export const defaultTheme = {
   elevation,
   typography,
   shape,
-  spacing
+  spacing,
 }

@@ -18,15 +18,15 @@ const preview: Preview = {
         disabled: false,
         headingSelector: "h2, h3",
       },
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Primary />
-          <ArgTypes />
-          <Stories />
-        </>
-      ),
+      // page: () => (
+      //   <>
+      //     <Title />
+      //     <Subtitle />
+      //     <Primary />
+      //     <ArgTypes />
+      //     <Stories />
+      //   </>
+      // ),
     },
   },
 }

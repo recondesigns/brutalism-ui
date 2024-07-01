@@ -1,7 +1,15 @@
 import React, { useState } from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import Input from './Input'
-// import { AlertIcon, PhoneIcon } from '../../assets'
+
+/**
+ * Description copy for the component.
+ */
+const meta: Meta<typeof Input> = {
+  title: 'Components/Input',
+  component: Input,
+  tags: ['autodocs'],
+}
 
 const InputStoryTemplate: StoryObj<typeof Input> = {
   render: (args) => {
@@ -14,6 +22,9 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
         onchange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }
+        id="inputStory"
+        name="inputStory"
+        type="text"
         {...args}
       />
     )
@@ -26,81 +37,74 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
 export const Default = {
   ...InputStoryTemplate,
   args: {
-    label: 'Label'
-    // placeholder: "Placeholder thing",
+    // label: "Label",
   },
 }
 
 /**
- * Description copy for `Label` story.
+ * Description copy for `Label` story and here is change.
  */
-// export const Label = {
-//   ...InputStoryTemplate,
-//   args: {
-//     label: "First name",
-//   },
-// }
+export const Label = {
+  ...InputStoryTemplate,
+  args: {
+    label: 'Label',
+  },
+}
 
 /**
- * Description copy for `Disabled` story.
+ * Description copy for `HelpText` story and here is change.
+ */
+export const HelpText = {
+  ...InputStoryTemplate,
+  args: {
+    helperText: 'This input has helper text and no label.',
+  },
+}
+
+/**
+ * Description copy for `Errors` story and here is change.
+ */
+export const Errors = {
+  ...InputStoryTemplate,
+  args: {
+    label: 'Label',
+    hasError: true,
+    helperText: 'This input has errors.',
+  },
+}
+
+/**
+ * Description copy for `Disabled` story and here is change.
  */
 export const Disabled = {
   ...InputStoryTemplate,
   args: {
     label: 'Label',
     disabled: true,
-    // hasError: true,
   },
 }
 
 /**
- * Description copy for `Placeholder` story.
+ * Description copy for `Placeholder` story and here is change.
  */
-// export const Placeholder = {
-//   ...InputStoryTemplate,
-//   args: {
-//     label: "Label",
-//     placeholder: "Placeholder",
-//   },
-// }
-
-/**
- * Description copy for `Errors` story.
- */
-export const Errors = {
+export const Placeholder = {
   ...InputStoryTemplate,
   args: {
     label: 'Label',
-    caption: 'Here is a caption',
-    hasError: true,
+    placeholder: 'placeholder',
   },
 }
 
 /**
- * Description copy for `Caption` story.
+ * Description copy for `KitchenSink` story and here is change.
  */
-// export const Caption = {
-//   ...InputStoryTemplate,
-//   args: {
-//     label: "Label",
-//     caption: "Here is a caption.",
-//   },
-// }
-
-/**
- * Description copy for `No Label` story.
- */
-// export const NoLabel = {
-//   ...InputStoryTemplate,
-//   args: {
-//     caption: "This input has no label.",
-//   },
-// }
-
-const meta: Meta<typeof Input> = {
-  title: 'Components/Input',
-  component: Input,
-  tags: ['autodocs'],
+export const KitchenSink = {
+  ...InputStoryTemplate,
+  args: {
+    label: 'Label',
+    // placeholder: 'placeholder',
+    helperText: 'This input has errors.',
+  },
 }
 
 export default meta
