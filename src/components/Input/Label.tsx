@@ -3,13 +3,13 @@ import styled from "@emotion/styled"
 
 type TextProps = {
   hasError?: boolean
-} & React.HTMLAttributes<HTMLParagraphElement>
+} & React.HTMLAttributes<HTMLLabelElement>
 
 const Text = styled.label<TextProps>(
   {
     marginBottom: "8px",
     fontFamily: "sans-serif",
-    fontSize: "14px",
+    fontSize: "15px",
     lineHeight: "16px",
   },
   ({ hasError }) => ({
@@ -22,6 +22,14 @@ type LabelProps = {
   children: string
 }
 
-export default function InputLabel({ hasError, children }: LabelProps) {
-  return <Text hasError={hasError}>{children}</Text>
+export default function InputLabel({
+  hasError,
+  children,
+  ...otherProps
+}: LabelProps) {
+  return (
+    <Text hasError={hasError} {...otherProps}>
+      {children}
+    </Text>
+  )
 }

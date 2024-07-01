@@ -9,8 +9,8 @@ const Text = styled.p<TextProps>(
   {
     marginTop: "8px",
     fontFamily: "sans-serif",
-    fontSize: "12px",
-    lineHeight: "16px",
+    fontSize: "14px",
+    lineHeight: "20px",
     textAlign: "left",
   },
   ({ hasError }) => ({
@@ -23,6 +23,14 @@ type HelperTextProps = {
   children: string
 }
 
-export default function HelperText({ hasError, children }: HelperTextProps) {
-  return <Text hasError={hasError}>{children}</Text>
+export default function HelperText({
+  hasError,
+  children,
+  ...otherProps
+}: HelperTextProps) {
+  return (
+    <Text hasError={hasError} {...otherProps}>
+      {children}
+    </Text>
+  )
 }

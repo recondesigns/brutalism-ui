@@ -1,8 +1,15 @@
 import React, { useState } from "react"
 import { Meta, StoryObj } from "@storybook/react"
 import Input from "./Input"
-import HelperText from "./HelperText"
-// import { AlertIcon, PhoneIcon } from '../../assets'
+
+/**
+ * Description copy for the component.
+ */
+const meta: Meta<typeof Input> = {
+  title: "Components/Input",
+  component: Input,
+  tags: ["autodocs"],
+}
 
 const InputStoryTemplate: StoryObj<typeof Input> = {
   render: (args) => {
@@ -15,6 +22,9 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
         onchange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }
+        id="inputStory"
+        name="inputStory"
+        type="text"
         {...args}
       />
     )
@@ -31,13 +41,19 @@ export const Default = {
   },
 }
 
+/**
+ * Description copy for `Label` story and here is change.
+ */
 export const Label = {
   ...InputStoryTemplate,
   args: {
-    label: "Label"
+    label: "Label",
   },
 }
 
+/**
+ * Description copy for `HelpText` story and here is change.
+ */
 export const HelpText = {
   ...InputStoryTemplate,
   args: {
@@ -45,35 +61,50 @@ export const HelpText = {
   },
 }
 
+/**
+ * Description copy for `Errors` story and here is change.
+ */
 export const Errors = {
   ...InputStoryTemplate,
   args: {
-    label: 'Label',
+    label: "Label",
     hasError: true,
     helperText: "This input has errors.",
   },
 }
 
+/**
+ * Description copy for `Disabled` story and here is change.
+ */
 export const Disabled = {
   ...InputStoryTemplate,
   args: {
-    label: 'Label',
+    label: "Label",
     disabled: true,
   },
 }
 
+/**
+ * Description copy for `Placeholder` story and here is change.
+ */
 export const Placeholder = {
   ...InputStoryTemplate,
   args: {
-    label: 'Label',
-    placeholder: 'placeholder',
+    label: "Label",
+    placeholder: "placeholder",
   },
 }
 
-const meta: Meta<typeof Input> = {
-  title: "Components/Input",
-  component: Input,
-  tags: ["autodocs"],
+/**
+ * Description copy for `KitchenSink` story and here is change.
+ */
+export const KitchenSink = {
+  ...InputStoryTemplate,
+  args: {
+    label: "Label",
+    // placeholder: 'placeholder',
+    helperText: "This input has errors.",
+  },
 }
 
 export default meta
