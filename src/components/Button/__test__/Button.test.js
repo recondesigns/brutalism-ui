@@ -1,123 +1,123 @@
 import React from "react"
 import "@testing-library/jest-dom"
 import { matchers } from "@emotion/jest"
-import { cleanup, render, fireEvent } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
-// import { userEvent } from "@storybook/testing-library"
-// import { fireEvent } from "@testing-library/dom"
+import { cleanup, render, fireEvent, screen } from "@testing-library/react"
 import Button from "../Button"
 import { AlertIcon } from "../../../assets"
 
 expect.extend(matchers)
 
+const component = <Button data-testid="button-test">Send</Button>
+
 describe("Props", () => {
   afterEach(cleanup)
 
   it("should render a Button component", () => {
-    const component = render(<Button data-testid="button-test">Button</Button>)
-    const button = component.getByTestId("button-test")
+    render(component)
+    const button = screen.getByTestId("button-test")
 
     expect(button).toBeInTheDocument()
+    expect(button).not.toHaveAttribute("disabled")
+    expect(button).toHaveStyleRule("width", "auto")
   })
 
   it("should render 'Send' as the button text", () => {
-    const component = render(<Button data-testid="button-test">Send</Button>)
-    const button = component.getByTestId("button-test")
+    render(component)
+    const button = screen.getByTestId("button-test")
 
     expect(button).toBeInTheDocument()
     expect(button).toHaveTextContent("Send")
   })
 
   it("should render a button with a background color of #E5A6FF", () => {
-    const component = render(<Button data-testid="button-test">Send</Button>)
-    const button = component.getByTestId("button-test")
+    render(component)
+    const button = screen.getByTestId("button-test")
 
     expect(button).toBeInTheDocument()
     expect(button).toHaveStyleRule("background", "#E5A6FF")
   })
 
-  // it("should render a left icon", () => {
-  //   const component = render(
-  //     <Button
-  //       shouldIncludeLeftIcon={
-  //         <AlertIcon data-testid="testid-button-left-icon" />
-  //       }
-  //     />
-  //   )
-  //   const leftIcon = component.getByTestId("testid-button-left-icon")
+  it("should render a button with the disabled attribute", () => {
+    render(
+      <Button disabled data-testid="button-test">
+        Send
+      </Button>
+    )
+    const button = screen.getByTestId("button-test")
 
-  //   expect(leftIcon).toBeTruthy()
-  // })
-})
+    expect(button).toHaveAttribute("disabled")
+  })
 
-describe("Interactions", () => {
-  afterEach(cleanup)
+  it("should render a button with 100% width", () => {
+    render(
+      <Button disabled isFullWidth data-testid="button-test">
+        Send
+      </Button>
+    )
+    const button = screen.getByTestId("button-test")
 
-  xit("should change background to #DA80FF on hover", async () => {
-    function setup(jsx) {
-      return {
-        user: userEvent.setup(),
-        ...render(jsx),
-      }
-    }
+    expect(button).toHaveStyleRule("width", "100%")
+  })
 
-    const user = setup(<Button data-testid="button-test">Send</Button>)
-    const button = user.getByTestId("button-test")
+  it("should render a left icon", () => {
+    render(
+      <Button
+        leftIcon={<AlertIcon data-testid="button-icon-test" />}
+        data-testid="button-test"
+      >
+        Send
+      </Button>
+    )
+    const icon = screen.getByTestId("button-icon-test")
 
-    expect(button).toBeInTheDocument()
+    expect(icon).toBeInTheDocument()
+  })
+
+  it("should fire the onClick when clicked", () => {
+    const mockOnClick = jest.fn(() => console.log("Mock function fired."))
+    render(
+      <Button data-testid="button-test" onClick={mockOnClick}>
+        Send
+      </Button>
+    )
+    const button = screen.getByTestId("button-test")
+
+    fireEvent.click(button)
+
+    expect(mockOnClick).toHaveBeenCalled()
+  })
+
+  it("should not fire the onClick when clicked and button is disabled", () => {
+    const mockOnClick = jest.fn(() => console.log("Mock function fired."))
+    render(
+      <Button disabled data-testid="button-test" onClick={mockOnClick}>
+        Send
+      </Button>
+    )
+    const button = screen.getByTestId("button-test")
+
+    fireEvent.click(button)
+
+    expect(mockOnClick).not.toHaveBeenCalled()
+  })
+
+  it("should change button color to #DA80FF when hovered", () => {
+    render(component)
+    const button = screen.getByTestId("button-test")
+
     expect(button).toHaveStyleRule("background", "#E5A6FF")
+    expect(button).toHaveStyleRule("background", "#DA80FF", {
+      target: ":hover",
+    })
+  })
 
-    await userEvent.hover(button)
+  it("should change button color to #D266FF when active", () => {
+    render(component)
+    const button = screen.getByTestId("button-test")
 
-    expect(button).toHaveStyleRule("background", "#DA80FF")
-
-    // fireEvent.mouseEnter(button)
-
-    // expect(button).toHaveStyleRule('background', '#DA80FF')
+    expect(button).toHaveStyleRule("background", "#E5A6FF")
+    expect(button).toHaveStyleRule("background", "#D266FF", {
+      target: ":active",
+    })
   })
 })
-
-// describe("disabled prop", () => {
-//   afterEach(cleanup)
-
-//   it("should render a button without a disabled attribute", () => {
-//     const component = render(<Button />)
-//     const button = component.getByTestId("button-data-testid")
-
-//     expect(button).not.toHaveAttribute("disabled")
-//   })
-
-//   it("should render a button with a disabled attribute", () => {
-//     const component = render(<Button disabled />)
-//     const button = component.getByTestId("button-data-testid")
-
-//     expect(button).toHaveAttribute("disabled")
-//   })
-
-//   it("should override the onClick if button is disabled", () => {
-//     const mockOnClick = jest.fn(() =>
-//       console.log("Mock onClick function fired")
-//     )
-//     const component = render(<Button disabled onClick={mockOnClick} />)
-//     const button = component.getByTestId("button-data-testid")
-
-//     fireEvent.click(button)
-
-//     expect(mockOnClick).not.toHaveBeenCalled()
-//   })
-
-//   describe("onClick prop", () => {
-//     afterEach(cleanup)
-
-//     it("should pass an onClick to the button", () => {
-//       const mockOnClick = jest.fn(() => console.log("Mock function fired"))
-//       const component = render(<Button onClick={mockOnClick} />)
-//       const button = component.getByTestId("button-data-testid")
-
-//       fireEvent.click(button)
-
-//       expect(mockOnClick).toHaveBeenCalled()
-//     })
-//   })
-// })
-// })
