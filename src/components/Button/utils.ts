@@ -33,7 +33,7 @@ function setButtonVariant(buttonVariant: ButtonVariant) {
   case 'primary':
     backgroundColor = defaultTheme.palette.primary.main
     border = `1px solid ${defaultTheme.palette.common.border}`
-    contrastColor = defaultTheme.palette.primary.contrastColor
+    contrastColor = defaultTheme.palette.primary.contrastText
     isShadowVisible = true
     break
   case 'secondary':
@@ -51,7 +51,7 @@ function setButtonVariant(buttonVariant: ButtonVariant) {
   default:
     backgroundColor = defaultTheme.palette.primary.main
     border = `1px solid ${defaultTheme.palette.common.border}`
-    contrastColor = defaultTheme.palette.primary.contrastColor
+    contrastColor = defaultTheme.palette.primary.contrastText
     isShadowVisible = true
     break
   }
