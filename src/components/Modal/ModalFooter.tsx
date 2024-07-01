@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
-import { Button } from '../../components'
-import { defaultTheme } from '../emotionTheme'
+import styled from "@emotion/styled"
+import { ThemeProvider } from "@emotion/react"
+import { Button } from "../../components"
+import { defaultTheme } from "../emotionTheme"
 
 export type ModalFooterProps = {
   actions: {
@@ -16,12 +16,11 @@ export type ModalFooterProps = {
   }
 }
 
-const FooterContainer = styled('div')({
-  padding: '32px 0px 0px 0px',
-  display: 'flex',
-  justifyContent: 'flex-end',
-  gap: '12px',
-  // border: '1px solid orange'
+const FooterContainer = styled("div")({
+  padding: "32px 0px 0px 0px",
+  display: "flex",
+  justifyContent: "flex-end",
+  gap: "12px",
 })
 
 export default function ModalFooter({ actions }: ModalFooterProps) {
@@ -33,17 +32,18 @@ export default function ModalFooter({ actions }: ModalFooterProps) {
         <Button
           data-testid="testid-modal-footer-primary-button"
           onClick={primaryAction?.onclick}
-          size="small"
-          label={primaryAction?.buttonLabel}
-        />
+          size="sm"
+        >
+          {primaryAction?.buttonLabel}
+        </Button>
         {secondaryAction && (
           <Button
             data-testid="testid-modal-footer-secondary-button"
             onClick={secondaryAction?.onclick}
-            label={secondaryAction?.buttonLabel}
-            size="small"
-            variant="secondary"
-          />
+            size="sm"
+          >
+            {secondaryAction?.buttonLabel}
+          </Button>
         )}
       </FooterContainer>
     </ThemeProvider>
