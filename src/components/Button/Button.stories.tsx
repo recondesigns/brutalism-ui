@@ -1,133 +1,63 @@
-import { Meta, StoryObj } from '@storybook/react'
-import Button from './Button'
+import { Meta, StoryObj } from "@storybook/react"
+import Button from "./Button"
+import { CloseIcon } from "../../assets"
 
-const ButtonStoryTemplate: StoryObj<typeof Button> = {
+/**
+ *  Here is a descreption for the component.
+ */
+const meta: Meta<typeof Button> = {
+  title: "Components/Button",
+  component: Button,
+  tags: ["autodocs"],
+}
+
+/**
+ *  Here is a description for the Default story.
+ */
+export const Default: StoryObj<typeof Button> = {
   render: (args) => <Button {...args} />,
-}
-
-/**
- *  Here is a description for the variant story.
- */
-export const Variant: StoryObj<typeof Button> = {
-  ...ButtonStoryTemplate,
   args: {
-    variant: 'primary',
-    label: 'Button',
-    onClick: () => alert('Click was fired.'),
-  },
-  parameters: {
-    controls: {
-      exclude: [
-        'size',
-        'className',
-        'disabled',
-        'fullWidth',
-        'onClick',
-        'type',
-      ],
-    },
+    label: "Button",
+    size: "lg",
+    isFullWidth: false,
+    disabled: false,
+    onClick: () => console.log("Button clicked."),
   },
 }
 
 /**
- *  Here is a description for the size story.
- */
-export const Size: StoryObj<typeof Button> = {
-  ...ButtonStoryTemplate,
-  args: {
-    variant: 'primary',
-    size: 'large',
-    label: 'Button',
-    onClick: () => alert('Click was fired.'),
-  },
-  parameters: {
-    controls: {
-      exclude: ['className', 'disabled', 'fullWidth', 'onClick', 'type'],
-    },
-  },
-}
-
-/**
- *  Here is a description for the fullWidth story.
+ *  Here is a description for the FullWidth story.
  */
 export const FullWidth: StoryObj<typeof Button> = {
-  ...ButtonStoryTemplate,
+  render: (args) => <Button {...args} />,
   args: {
-    variant: 'primary',
-    size: 'large',
-    fullWidth: true,
-    label: 'Button',
-    onClick: () => alert('Click was fired.'),
+    label: "Button",
+    isFullWidth: true,
+    onClick: () => console.log("Button clicked."),
   },
-  parameters: {
-    controls: {
-      exclude: ['size', 'onClick', 'type', 'className', 'disabled'],
-    },
+}
+
+/**
+ *  Here is a description for the LeftIcon story.
+ */
+export const LeftIcon: StoryObj<typeof Button> = {
+  render: (args) => <Button {...args} />,
+  args: {
+    label: "Button",
+    leftIcon: <CloseIcon />,
+    onClick: () => console.log("Button clicked."),
   },
-  decorators: [
-    (Story) => (
-      <div>
-        <Story />
-      </div>
-    ),
-  ],
 }
 
 /**
  *  Here is a description for the disabled story.
  */
 export const Disabled: StoryObj<typeof Button> = {
-  ...ButtonStoryTemplate,
+  render: (args) => <Button {...args} />,
   args: {
-    variant: 'primary',
+    label: "Button",
     disabled: true,
-    label: 'Button',
-    onClick: () => alert('Click was fired.'),
-  },
-  parameters: {
-    controls: {
-      exclude: ['size', 'className', 'fullWidth', 'onClick', 'type'],
-    },
-  },
-}
-
-/**
- *  Here is a description for the Kitchen sink story.
- */
-export const KitchenSink: StoryObj<typeof Button> = {
-  ...ButtonStoryTemplate,
-  args: {
-    variant: 'primary',
-    size: 'medium',
-    fullWidth: true,
-    label: 'Button',
-    disabled: false,
-    onClick: () => alert('Click was fired.'),
-  },
-  parameters: {
-    controls: {
-      exclude: ['onClick', 'type', 'className'],
-    },
-  },
-  decorators: [
-    (Story) => (
-      <div>
-        <Story />
-      </div>
-    ),
-  ],
-}
-
-/**
- * Here is a description.
- */
-const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
-  component: Button,
-  tags: ['autodocs'],
-  argTypes: {
-    variant: { control: 'inline-radio' },
-    type: { control: 'select' },
+    onClick: () => console.log("Button clicked."),
   },
 }
 
