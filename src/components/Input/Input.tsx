@@ -1,5 +1,7 @@
-import React, { HTMLAttributes } from 'react'
-import styled from '@emotion/styled'
+import React, { HTMLAttributes } from "react"
+import styled from "@emotion/styled"
+import InputLabel from "./Label"
+import HelperText from "./HelperText"
 
 type Props = {
   /**
@@ -29,70 +31,34 @@ type Props = {
   /**
    * Description copy for `caption` prop.
    */
-  caption?: string
+  helperText?: string
 }
 
-// export type InputProps = Props & React.ComponentProps<"input">
 export type InputProps = Props & HTMLAttributes<HTMLInputElement>
 
-type LabelProps = {
-  hasError?: boolean
-} & HTMLAttributes<HTMLLabelElement>
-
-type CaptionProps = {
-  hasError?: boolean
-}
-
 const InputWrapper = styled.div<HTMLAttributes<HTMLDivElement>>({
-  padding: '12px 0px',
-  display: 'flex',
-  flexDirection: 'column',
+  padding: "12px 0px",
+  display: "flex",
+  flexDirection: "column",
 })
-
-const Label = styled.label<LabelProps>(
-  {
-    marginBottom: '8px',
-    fontFamily: 'sans-serif',
-    fontSize: '14px',
-    lineHeight: '16px',
-  },
-  ({ hasError }) => ({
-    color: hasError ? 'red' : 'black',
-  })
-)
-
-const Caption = styled.p<CaptionProps & HTMLAttributes<HTMLParagraphElement>>(
-  {
-    marginTop: '8px',
-    fontFamily: 'sans-serif',
-    fontSize: '12px',
-    lineHeight: '16px',
-    textAlign: 'left',
-  },
-  ({ hasError }) => ({
-    color: hasError ? 'red' : 'black',
-  })
-)
 
 const InputComponent = styled.input<InputProps>(
   {
-    padding: '8px',
-    fontFamily: 'Helvetica Neue',
-    fontSize: '20px',
-    lineHeight: '18px',
-    borderRadius: '4px',
-    '&:focus': {
-      outline: '1px solid #3391FF'
-    }
+    padding: "8px",
+    fontFamily: "Helvetica Neue",
+    fontSize: "20px",
+    lineHeight: "18px",
+    borderRadius: "4px",
+    "&:focus": {
+      outline: "1px solid #3391FF",
+    },
   },
   ({ hasError, disabled }) => ({
-    // TODO: Need to decide if I wasnt to keep this or not
-    // color: !hasError ? "black" : "red",
-    border: !hasError ? '1px solid #808080' : '1px solid red',
-    background: disabled && !hasError ? '#D9D9D9' : '#FFFFFF',
-    '&:not(:placeholder-shown)': {
-      border: !hasError ? '1px solid #0D0D0D' : '1px solid red'
-    }
+    border: !hasError ? "1px solid #808080" : "1px solid red",
+    background: disabled && !hasError ? "#D9D9D9" : "#FFFFFF",
+    "&:not(:placeholder-shown)": {
+      border: !hasError ? "1px solid #0D0D0D" : "1px solid red",
+    },
   })
 )
 
@@ -100,18 +66,14 @@ export default function Input({
   label,
   value,
   onchange,
-  placeholder = ' ',
-  caption,
+  placeholder = " ",
+  helperText,
   disabled = false,
   hasError = false,
 }: InputProps) {
   return (
     <InputWrapper data-testid="testid-input-wrapper">
-      {label && (
-        <Label hasError={hasError} data-testid="testid-input-label">
-          {label}
-        </Label>
-      )}
+      {label && <InputLabel hasError={hasError}>{label}</InputLabel>}
       <InputComponent
         value={value}
         placeholder={placeholder}
@@ -120,11 +82,7 @@ export default function Input({
         onChange={onchange}
         data-testid="testid-input"
       />
-      {caption && (
-        <Caption hasError={hasError} data-testid="testid-input-caption">
-          {caption}
-        </Caption>
-      )}
+      {helperText && <HelperText hasError={hasError}>{helperText}</HelperText>}
     </InputWrapper>
   )
 }

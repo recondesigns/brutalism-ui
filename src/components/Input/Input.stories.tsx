@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import { Meta, StoryObj } from '@storybook/react'
-import Input from './Input'
+import React, { useState } from "react"
+import { Meta, StoryObj } from "@storybook/react"
+import Input from "./Input"
+import HelperText from "./HelperText"
 // import { AlertIcon, PhoneIcon } from '../../assets'
 
 const InputStoryTemplate: StoryObj<typeof Input> = {
   render: (args) => {
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState("")
 
     return (
       <Input
@@ -26,81 +27,53 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
 export const Default = {
   ...InputStoryTemplate,
   args: {
-    label: 'Label'
-    // placeholder: "Placeholder thing",
+    // label: "Label",
   },
 }
 
-/**
- * Description copy for `Label` story.
- */
-// export const Label = {
-//   ...InputStoryTemplate,
-//   args: {
-//     label: "First name",
-//   },
-// }
+export const Label = {
+  ...InputStoryTemplate,
+  args: {
+    label: "Label"
+  },
+}
 
-/**
- * Description copy for `Disabled` story.
- */
+export const HelpText = {
+  ...InputStoryTemplate,
+  args: {
+    helperText: "This input has helper text and no label.",
+  },
+}
+
+export const Errors = {
+  ...InputStoryTemplate,
+  args: {
+    label: 'Label',
+    hasError: true,
+    helperText: "This input has errors.",
+  },
+}
+
 export const Disabled = {
   ...InputStoryTemplate,
   args: {
     label: 'Label',
     disabled: true,
-    // hasError: true,
   },
 }
 
-/**
- * Description copy for `Placeholder` story.
- */
-// export const Placeholder = {
-//   ...InputStoryTemplate,
-//   args: {
-//     label: "Label",
-//     placeholder: "Placeholder",
-//   },
-// }
-
-/**
- * Description copy for `Errors` story.
- */
-export const Errors = {
+export const Placeholder = {
   ...InputStoryTemplate,
   args: {
     label: 'Label',
-    caption: 'Here is a caption',
-    hasError: true,
+    placeholder: 'placeholder',
   },
 }
 
-/**
- * Description copy for `Caption` story.
- */
-// export const Caption = {
-//   ...InputStoryTemplate,
-//   args: {
-//     label: "Label",
-//     caption: "Here is a caption.",
-//   },
-// }
-
-/**
- * Description copy for `No Label` story.
- */
-// export const NoLabel = {
-//   ...InputStoryTemplate,
-//   args: {
-//     caption: "This input has no label.",
-//   },
-// }
-
 const meta: Meta<typeof Input> = {
-  title: 'Components/Input',
+  title: "Components/Input",
   component: Input,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 }
 
 export default meta
