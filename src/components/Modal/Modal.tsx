@@ -80,6 +80,7 @@ function Modal({
   closeOutsideClick = false,
   shouldFitContent = false,
   children,
+  ...otherProps
 }: ModalProps) {
   React.useEffect(() => {
     const handleEsc = (e: any) => {
@@ -108,7 +109,7 @@ function Modal({
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ModalWrapper isOpen={isOpen}>
+      <ModalWrapper isOpen={isOpen} {...otherProps}>
         <ModalScrim onClick={outsideClick}>
           <ModalDialog
             onClick={(e: React.MouseEvent) => e.stopPropagation()}
