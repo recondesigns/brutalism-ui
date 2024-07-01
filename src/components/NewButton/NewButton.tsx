@@ -12,6 +12,15 @@ type StyledButtonProps = {
 } & React.HTMLAttributes<HTMLButtonElement>
 
 const StyledButton = styled("button")<StyledButtonProps>(
+  {
+    display: "flex",
+    alignItems: "center",
+    gap: "4px",
+    "&:disabled": {
+      opacity: "50%",
+      cursor: "not-allowed",
+    },
+  },
   ({ size }) => ({
     paddingTop: size && setSize(size).paddingTop,
     paddingRight: size && setSize(size).paddingRight,
@@ -43,13 +52,7 @@ const StyledButton = styled("button")<StyledButtonProps>(
         ? `${theme.elevation.none} ${theme.elevation.none} 0px 0px ${theme.palette.common.shadow}`
         : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
     },
-  }),
-  {
-    "&:disabled": {
-      opacity: "50%",
-      cursor: "not-allowed",
-    },
-  }
+  })
 )
 
 type Props = {
@@ -64,6 +67,7 @@ export default function NewButton({
   label,
   size = "lg",
   disabled = false,
+  leftIcon,
   onClick,
   ...otherProps
 }: Props) {
@@ -75,6 +79,7 @@ export default function NewButton({
         onClick={onClick}
         {...otherProps}
       >
+        {leftIcon && leftIcon}
         {label}
       </StyledButton>
     </ThemeProvider>
