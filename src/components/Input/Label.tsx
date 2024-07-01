@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "@emotion/styled"
+import React from 'react'
+import styled from '@emotion/styled'
 
 type TextProps = {
   hasError?: boolean
@@ -7,13 +7,13 @@ type TextProps = {
 
 const Text = styled.label<TextProps>(
   {
-    marginBottom: "8px",
-    fontFamily: "sans-serif",
-    fontSize: "15px",
-    lineHeight: "16px",
+    marginBottom: '8px',
+    fontFamily: 'sans-serif',
+    fontSize: '15px',
+    lineHeight: '16px',
   },
   ({ theme, hasError }) => ({
-    color: hasError ? theme.palette.error.main : "black",
+    color: hasError ? theme.palette.error.main : 'black',
   })
 )
 

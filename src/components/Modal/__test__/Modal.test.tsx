@@ -1,21 +1,21 @@
-import React from "react"
-import "@testing-library/jest-dom"
-import { matchers } from "@emotion/jest"
-import { cleanup, render, fireEvent, screen } from "@testing-library/react"
-import { Modal } from "../Modal"
+import React from 'react'
+import '@testing-library/jest-dom'
+import { matchers } from '@emotion/jest'
+import { cleanup, render, screen } from '@testing-library/react'
+import { Modal } from '../Modal'
 
 expect.extend(matchers)
 
-describe("Props", () => {
+describe('Props', () => {
   afterEach(cleanup)
 
-  it("should render when isOpen is true", () => {
+  it('should render when isOpen is true', () => {
     render(
       <Modal isOpen data-testid="modal-test">
         <p>Modal children</p>
       </Modal>
     )
-    const modal = screen.getByTestId("modal-test")
+    const modal = screen.getByTestId('modal-test')
 
     expect(modal).toBeInTheDocument()
   })
