@@ -37,22 +37,70 @@ const ModalScrim = styled("div")({
 })
 
 type ModalProps = {
-  // shouldCloseOnEsc?: boolean
+  /**
+   *  Here is a descreption for the isOpen prop.
+   *
+   * @default false
+   */
   isOpen?: boolean
+  /**
+   *  Here is a descreption for the onClose prop.
+   */
   onClose?: any
+  /**
+   *  Here is a descreption for the closeOnEsc prop.
+   *
+   * @default false
+   */
+  closeOnEsc?: boolean
+  /**
+   *  Here is a descreption for the closeOutsideClick prop.
+   *
+   * @default false
+   */
   closeOutsideClick?: boolean
+  /**
+   *  Here is a descreption for the shouldFitContent prop.
+   *
+   * @default false
+   */
   shouldFitContent?: boolean
+  /**
+   *  Here is a descreption for the children prop.
+   *
+   * @default false
+   */
   children: React.ReactElement | React.ReactElement[]
 }
 
 function Modal({
   isOpen = false,
   onClose,
+  closeOnEsc = false,
   closeOutsideClick = false,
   shouldFitContent = false,
   children,
 }: ModalProps) {
-  const outsideClick = (e: React.MouseEvent) => {
+  React.useEffect(() => {
+    const handleEsc = (e: any) => {
+      if (closeOnEsc && e.key === "Escape") {
+        console.log(e.key)
+        onClose(!isOpen)
+      }
+    }
+
+    if (isOpen) {
+      // console.log('modal is open')
+      document.addEventListener("keydown", handleEsc)
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEsc)
+    }
+    // console.log('fired')
+  }, [isOpen])
+
+  const outsideClick = () => {
     if (closeOutsideClick) {
       onClose(!isOpen)
     }
