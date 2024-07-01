@@ -77,17 +77,17 @@ const StyledButton = styled("button")<StyledButtonProps>(
 
 export type ButtonProps = {
   /**
-   *  Here is a description for the label prop.
-   */
-  label: string
-  /**
    *  Here is a description for the leftIcon prop.
    */
   leftIcon?: React.ReactNode
+  /**
+   *  Here is a description for the data-testid prop.
+   */
+  "data-testid"?: string
 } & StyledButtonProps
 
 export default function Button({
-  label,
+  children,
   size = "lg",
   disabled = false,
   isFullWidth = false,
@@ -106,7 +106,7 @@ export default function Button({
         {...otherProps}
       >
         {leftIcon && leftIcon}
-        {label}
+        {children}
       </StyledButton>
     </ThemeProvider>
   )

@@ -17,7 +17,7 @@ const meta: Meta<typeof Button> = {
 export const Default: StoryObj<typeof Button> = {
   render: (args) => <Button {...args} />,
   args: {
-    label: "Button",
+    children: "Button",
     size: "lg",
     isFullWidth: false,
     disabled: false,
@@ -31,7 +31,7 @@ export const Default: StoryObj<typeof Button> = {
 export const FullWidth: StoryObj<typeof Button> = {
   render: (args) => <Button {...args} />,
   args: {
-    label: "Button",
+    children: "Button",
     isFullWidth: true,
     onClick: () => console.log("Button clicked."),
   },
@@ -43,7 +43,7 @@ export const FullWidth: StoryObj<typeof Button> = {
 export const LeftIcon: StoryObj<typeof Button> = {
   render: (args) => <Button {...args} />,
   args: {
-    label: "Button",
+    children: "Button",
     leftIcon: <CloseIcon />,
     onClick: () => console.log("Button clicked."),
   },
@@ -55,7 +55,7 @@ export const LeftIcon: StoryObj<typeof Button> = {
 export const Disabled: StoryObj<typeof Button> = {
   render: (args) => <Button {...args} />,
   args: {
-    label: "Button",
+    children: "Button",
     disabled: true,
     onClick: () => console.log("Button clicked."),
   },
