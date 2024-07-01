@@ -5,6 +5,7 @@ import { CloseIcon } from "../../assets"
 const meta: Meta<typeof NewButton> = {
   title: "Experimental/Button",
   component: NewButton,
+  tags: ["autodocs"],
 }
 
 export const Default: StoryObj<typeof NewButton> = {
@@ -17,14 +18,23 @@ export const Default: StoryObj<typeof NewButton> = {
   },
 }
 
+export const FullWidth: StoryObj<typeof NewButton> = {
+  render: (args) => <NewButton {...args} />,
+  args: {
+    label: "Button",
+    isFullWidth: true,
+    onClick: () => console.log("Button clicked."),
+  },
+}
+
 export const LeftIcon: StoryObj<typeof NewButton> = {
-    render: (args) => <NewButton {...args} />,
-    args: {
-      label: "Button",
-      leftIcon: <CloseIcon />,
-      onClick: () => console.log("Button clicked."),
-    },
-  }
+  render: (args) => <NewButton {...args} />,
+  args: {
+    label: "Button",
+    leftIcon: <CloseIcon />,
+    onClick: () => console.log("Button clicked."),
+  },
+}
 
 export const Disabled: StoryObj<typeof NewButton> = {
   render: (args) => <NewButton {...args} />,

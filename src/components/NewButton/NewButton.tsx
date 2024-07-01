@@ -8,12 +8,14 @@ type Size = "xs" | "sm" | "md" | "lg" | "xl"
 
 type StyledButtonProps = {
   size: Size
+  isFullWidth?: boolean
   disabled?: boolean
 } & React.HTMLAttributes<HTMLButtonElement>
 
 const StyledButton = styled("button")<StyledButtonProps>(
   {
     display: "flex",
+    justifyContent: "center",
     alignItems: "center",
     gap: "4px",
     "&:disabled": {
@@ -26,6 +28,9 @@ const StyledButton = styled("button")<StyledButtonProps>(
     paddingRight: size && setSize(size).paddingRight,
     paddingBottom: size && setSize(size).paddingBottom,
     paddingLeft: size && setSize(size).paddingLeft,
+  }),
+  ({ isFullWidth }) => ({
+    width: isFullWidth ? "100%" : "auto",
   }),
   ({ theme, disabled }) => ({
     fontFamily: theme.typography.fontFamily,
@@ -57,16 +62,14 @@ const StyledButton = styled("button")<StyledButtonProps>(
 
 type Props = {
   label: string
-  hasErrors?: boolean
-  helperText?: string
   leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
 } & StyledButtonProps
 
 export default function NewButton({
   label,
   size = "lg",
   disabled = false,
+  isFullWidth = false,
   leftIcon,
   onClick,
   ...otherProps
@@ -75,6 +78,7 @@ export default function NewButton({
     <ThemeProvider theme={defaultTheme}>
       <StyledButton
         size={size}
+        isFullWidth={isFullWidth}
         disabled={disabled}
         onClick={onClick}
         {...otherProps}
