@@ -1,10 +1,10 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { ThemeProvider } from "@emotion/react"
-import { setSize } from "./utils"
-import { defaultTheme } from "../emotionTheme"
+import React from 'react'
+import styled from '@emotion/styled'
+import { ThemeProvider } from '@emotion/react'
+import { setSize } from './utils'
+import { defaultTheme } from '../emotionTheme'
 
-type Size = "xs" | "sm" | "md" | "lg" | "xl"
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 type StyledButtonProps = {
   /**
@@ -27,15 +27,15 @@ type StyledButtonProps = {
   disabled?: boolean
 } & React.HTMLAttributes<HTMLButtonElement>
 
-const StyledButton = styled("button")<StyledButtonProps>(
+const StyledButton = styled('button')<StyledButtonProps>(
   {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "4px",
-    "&:disabled": {
-      opacity: "50%",
-      cursor: "not-allowed",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '4px',
+    '&:disabled': {
+      opacity: '50%',
+      cursor: 'not-allowed',
     },
   },
   ({ size }) => ({
@@ -45,7 +45,7 @@ const StyledButton = styled("button")<StyledButtonProps>(
     paddingLeft: size && setSize(size).paddingLeft,
   }),
   ({ isFullWidth }) => ({
-    width: isFullWidth ? "100%" : "auto",
+    width: isFullWidth ? '100%' : 'auto',
   }),
   ({ theme, disabled }) => ({
     fontFamily: theme.typography.fontFamily,
@@ -56,7 +56,7 @@ const StyledButton = styled("button")<StyledButtonProps>(
     border: `2px solid ${theme.palette.common.border}`,
     borderRadius: theme.shape.borderRadius,
     boxShadow: `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
-    "&:hover": {
+    '&:hover': {
       background: !disabled
         ? theme.palette.primary.dark
         : theme.palette.primary.main,
@@ -64,7 +64,7 @@ const StyledButton = styled("button")<StyledButtonProps>(
         ? `${theme.elevation.two} ${theme.elevation.two} 0px 0px ${theme.palette.common.shadow}`
         : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
     },
-    "&:active": {
+    '&:active': {
       background: !disabled
         ? theme.palette.primary.darker
         : theme.palette.primary.main,
@@ -83,12 +83,16 @@ export type ButtonProps = {
   /**
    *  Here is a description for the data-testid prop.
    */
-  "data-testid"?: string
+  'data-testid'?: string
+  /**
+   *  Here is a description for the data-testid prop.
+   */
+  onClick?: () => void
 } & StyledButtonProps
 
 export default function Button({
   children,
-  size = "lg",
+  size = 'lg',
   disabled = false,
   isFullWidth = false,
   leftIcon,

@@ -1,19 +1,19 @@
-import React, { useState } from "react"
-import { Meta, StoryObj } from "@storybook/react"
-import Input from "./Input"
+import React, { useState } from 'react'
+import { Meta, StoryObj } from '@storybook/react'
+import Input from './Input'
 
 /**
  * Description copy for the component.
  */
 const meta: Meta<typeof Input> = {
-  title: "Components/Input",
+  title: 'Components/Input',
   component: Input,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 }
 
 const InputStoryTemplate: StoryObj<typeof Input> = {
   render: (args) => {
-    const [value, setValue] = useState("")
+    const [value, setValue] = useState('')
 
     return (
       <Input
@@ -47,7 +47,7 @@ export const Default = {
 export const Label = {
   ...InputStoryTemplate,
   args: {
-    label: "Label",
+    label: 'Label',
   },
 }
 
@@ -57,7 +57,7 @@ export const Label = {
 export const HelpText = {
   ...InputStoryTemplate,
   args: {
-    helperText: "This input has helper text and no label.",
+    helperText: 'This input has helper text and no label.',
   },
 }
 
@@ -67,9 +67,9 @@ export const HelpText = {
 export const Errors = {
   ...InputStoryTemplate,
   args: {
-    label: "Label",
+    label: 'Label',
     hasError: true,
-    helperText: "This input has errors.",
+    helperText: 'This input has errors.',
   },
 }
 
@@ -79,7 +79,7 @@ export const Errors = {
 export const Disabled = {
   ...InputStoryTemplate,
   args: {
-    label: "Label",
+    label: 'Label',
     disabled: true,
   },
 }
@@ -90,8 +90,8 @@ export const Disabled = {
 export const Placeholder = {
   ...InputStoryTemplate,
   args: {
-    label: "Label",
-    placeholder: "placeholder",
+    label: 'Label',
+    placeholder: 'placeholder',
   },
 }
 
@@ -101,9 +101,9 @@ export const Placeholder = {
 export const KitchenSink = {
   ...InputStoryTemplate,
   args: {
-    label: "Label",
+    label: 'Label',
     // placeholder: 'placeholder',
-    helperText: "This input has errors.",
+    helperText: 'This input has errors.',
   },
 }
 
