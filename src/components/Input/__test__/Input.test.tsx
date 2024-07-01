@@ -70,7 +70,7 @@ describe('Input', () => {
     })
 
     it('should call onChange when input change occurs', () => {
-      const mockOnChange = jest.fn(() => console.log('Mock onChange function fired'))
+      const mockOnChange = jest.fn()
       const component = render(<Input onchange={mockOnChange} />)
       const inputElement = component.getByTestId('testid-input')
 
