@@ -74,7 +74,7 @@ describe("Props", () => {
   })
 
   it("should fire the onClick when clicked", () => {
-    const mockOnClick = jest.fn(() => console.log("Mock function fired."))
+    const mockOnClick = jest.fn()
     render(
       <Button data-testid="button-test" onClick={mockOnClick}>
         Send
@@ -88,7 +88,7 @@ describe("Props", () => {
   })
 
   it("should not fire the onClick when clicked and button is disabled", () => {
-    const mockOnClick = jest.fn(() => console.log("Mock function fired."))
+    const mockOnClick = jest.fn()
     render(
       <Button disabled data-testid="button-test" onClick={mockOnClick}>
         Send

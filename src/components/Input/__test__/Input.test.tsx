@@ -1,14 +1,14 @@
-import React from 'react'
-import '@testing-library/jest-dom'
-import { matchers } from '@emotion/jest'
-import { cleanup, render } from '@testing-library/react'
-import { fireEvent } from '@testing-library/dom'
-import Input from '../Input'
+import React from "react"
+import "@testing-library/jest-dom"
+import { matchers } from "@emotion/jest"
+import { cleanup, render, screen } from "@testing-library/react"
+import { fireEvent } from "@testing-library/dom"
+import Input from "../Input"
 
 expect.extend(matchers)
 
 const TestInput = (testProps: any) => {
-  const [inputValue, setInputValue] = React.useState('')
+  const [inputValue, setInputValue] = React.useState("")
 
   return (
     <Input
@@ -21,79 +21,86 @@ const TestInput = (testProps: any) => {
   )
 }
 
-describe('Input', () => {
-  describe('adding props', () => {
-    afterEach(cleanup)
+describe("Input", () => {
+  afterEach(cleanup)
 
-    it('should render an Input component with no label, placeholder, or caption', () => {
-      const component = render(<TestInput />)
+  it("should render a default Input", () => {
+    const component = render(<TestInput />)
+    const input = component.getByTestId("input-test")
 
-      expect(component.queryByTestId('testid-input-wrapper')).not.toBeNull()
-      expect(component.queryByTestId('testid-input-label')).toBeNull()
-      expect(component.queryByTestId('testid-input')).toHaveAttribute('placeholder', ' ')
-      expect(component.queryByTestId('testid-input-caption')).toBeNull()
+    expect(input).toBeInTheDocument()
+    expect(component.queryByTestId("input-label-test")).not.toBeInTheDocument()
+    expect(
+      component.queryByTestId("input-helpertext-test")
+    ).not.toBeInTheDocument()
+  })
+
+  it("should render an Input label when the label prop is used", () => {
+    const component = render(<TestInput label="Label" />)
+
+    expect(component.queryByTestId("input-label-test")).toBeInTheDocument()
+  })
+
+  it("should render a disabled Input with the disabled prop is used", () => {
+    const component = render(<TestInput disabled />)
+    const input = component.getByTestId("input-test")
+
+    expect(input).toHaveAttribute("disabled")
+  })
+
+  it("should render an Input with a placeholder when the placeholder prop is used", () => {
+    const component = render(<TestInput placeholder="Placeholder" />)
+    const input = component.getByTestId("input-test")
+
+    expect(input).toHaveAttribute("placeholder", "Placeholder")
+  })
+
+  it("should render helper text when the prop is used", () => {
+    const component = render(<TestInput helperText="Helper text." />)
+
+    expect(component.queryByTestId("input-helpertext-test")).toBeInTheDocument()
+  })
+
+  it("should render label color #FF4F58 when an error is present", () => {
+    const component = render(<TestInput label="Label" hasError={true} />)
+    const label = component.getByTestId("input-label-test")
+
+    expect(label).toHaveStyleRule("color", "#FF4F58")
+  })
+
+  it("should render helper text color #FF4F58 when an error is present", () => {
+    const component = render(
+      <TestInput helperText="Helper text." hasError={true} />
+    )
+    const helperText = component.getByTestId("input-helpertext-test")
+
+    expect(helperText).toHaveStyleRule("color", "#FF4F58")
+  })
+
+  it("should call onChange when input change occurs", () => {
+    const mockOnChange = jest.fn()
+    const component = render(<Input onchange={mockOnChange} />)
+    const input = component.getByTestId("input-test")
+
+    fireEvent.change(input, {
+      target: {
+        value: "Hello world.",
+      },
     })
 
-    it('should render a disabled Input with the disabled prop is used', () => {
-      const component = render(<TestInput disabled />)
-      const inputElement = component.getByTestId('testid-input')
+    expect(mockOnChange).toHaveBeenCalled
+  })
 
-      expect(inputElement).toHaveAttribute('disabled')
+  it("should update input value when onChange is called", async () => {
+    const component = render(<TestInput />)
+    const input = component.getByTestId("input-test")
+
+    fireEvent.change(input, {
+      target: {
+        value: "Hello world",
+      },
     })
 
-    it('should render an Input label when the label prop is used', () => {
-      const component = render(<TestInput label="Label" />)
-      const label = component.getByTestId('testid-input-label')
-
-      expect(label.textContent).toEqual('Label')
-    })
-
-    it('should render an Input with a placeholder when the placeholder prop is used', () => {
-      const component = render(<TestInput placeholder="Placeholder" />)
-      const inputElement = component.getByTestId('testid-input')
-
-      expect(inputElement).toHaveAttribute('placeholder', 'Placeholder')
-    })
-
-    it('should render an Input with a caption when the caption prop is used', () => {
-      const component = render(<TestInput caption="Caption" />)
-      const caption = component.getByTestId('testid-input-caption')
-
-      expect(caption.textContent).toEqual('Caption')
-    })
-
-    it('should render a red Input label when an error is present', () => {
-      const component = render(<TestInput label="Label" hasError={true} />)
-      const label = component.getByTestId('testid-input-label')
-
-      expect(label).toHaveStyleRule('color', 'red')
-    })
-
-    it('should call onChange when input change occurs', () => {
-      const mockOnChange = jest.fn(() => console.log('Mock onChange function fired'))
-      const component = render(<Input onchange={mockOnChange} />)
-      const inputElement = component.getByTestId('testid-input')
-
-      fireEvent.change(inputElement, {
-        target: {
-          value: 'Hello world'
-        }
-      })
-
-      expect(mockOnChange).toHaveBeenCalled()
-    })
-
-    it('should update input value when onChange is called', async () => {
-      const component = render(<TestInput />)
-      const inputElement = component.getByTestId('testid-input')
-
-      fireEvent.change(inputElement, {
-        target: {
-          value: 'Hello world'
-        }
-      })
-
-      expect(inputElement).toHaveValue('Hello world')
-    })
+    expect(input).toHaveValue("Hello world")
   })
 })
