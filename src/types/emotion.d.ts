@@ -7,14 +7,26 @@ declare module '@emotion/react' {
         on: string
         border: string
         shadow: string
+        surface: string
       }
       primary: {
+        light: string
         main: string
-        contrastColor: string
+        dark: string
+        darker: string
+        contrastText: string
+      }
+      success: {
+        main: string
+        contrastText: string
+      }
+      warning: {
+        main: string
+        contrastText: string
       }
       error: {
         main: string
-        contrastColor: string
+        contrastText: string
       }
     }
     elevation: {

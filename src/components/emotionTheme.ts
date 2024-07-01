@@ -6,12 +6,23 @@ const palette = {
     shadow: '#000000'
   },
   primary: {
+    light: '#F6E0FF',
     main: '#E5A6FF',
-    contrastColor: 'white'
+    dark: '#DA80FF',
+    darker: '#D266FF',
+    contrastText: '#000000'
+  },
+  success: {
+    main: '#8DFF8C',
+    contrastText: '#000000'
+  },
+  warning: {
+    main: '#FF8673',
+    contrastText: '#000000'
   },
   error: {
-    main: '#FF8673',
-    contrastColor: 'white'
+    main: '#FF4F58',
+    contrastText: '#000000'
   }
 }
 
