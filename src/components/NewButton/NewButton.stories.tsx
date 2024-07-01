@@ -12,6 +12,7 @@ export const Default: StoryObj<typeof NewButton> = {
     label: "Button",
     size: "lg",
     disabled: false,
+    onClick: () => console.log("Button clicked."),
   },
 }
 
@@ -21,6 +22,7 @@ export const Disabled: StoryObj<typeof NewButton> = {
     label: "Button",
     size: "lg",
     disabled: true,
+    onClick: () => console.log("Button clicked."),
   },
 }
 

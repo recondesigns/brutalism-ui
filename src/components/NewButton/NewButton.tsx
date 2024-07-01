@@ -9,24 +9,16 @@ type Size = "xs" | "sm" | "md" | "lg" | "xl"
 type StyledButtonProps = {
   size: Size
   disabled?: boolean
-}
+} & React.HTMLAttributes<HTMLButtonElement>
 
 const StyledButton = styled("button")<StyledButtonProps>(
-  {
-    // padding: '12px 20px'
-    // border: '2px solid red'
-  },
   ({ size }) => ({
     paddingTop: size && setSize(size).paddingTop,
     paddingRight: size && setSize(size).paddingRight,
     paddingBottom: size && setSize(size).paddingBottom,
     paddingLeft: size && setSize(size).paddingLeft,
   }),
-  ({ disabled }) => ({
-    opacity: disabled ? "50%" : "initial",
-    cursor: disabled ? "not-allowed" : "pointer",
-  }),
-  ({ theme }) => ({
+  ({ theme, disabled }) => ({
     fontFamily: theme.typography.fontFamily,
     fontWeight: theme.typography.button.fontWeight,
     fontSize: theme.typography.button.fontSize,
@@ -36,14 +28,28 @@ const StyledButton = styled("button")<StyledButtonProps>(
     borderRadius: theme.shape.borderRadius,
     boxShadow: `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
     "&:hover": {
-      background: theme.palette.primary.dark,
-      boxShadow: `${theme.elevation.two} ${theme.elevation.two} 0px 0px ${theme.palette.common.shadow}`,
+      background: !disabled
+        ? theme.palette.primary.dark
+        : theme.palette.primary.main,
+      boxShadow: !disabled
+        ? `${theme.elevation.two} ${theme.elevation.two} 0px 0px ${theme.palette.common.shadow}`
+        : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
     },
     "&:active": {
-      background: theme.palette.primary.darker,
-      boxShadow: `${theme.elevation.none} ${theme.elevation.none} 0px 0px ${theme.palette.common.shadow}`,
+      background: !disabled
+        ? theme.palette.primary.darker
+        : theme.palette.primary.main,
+      boxShadow: !disabled
+        ? `${theme.elevation.none} ${theme.elevation.none} 0px 0px ${theme.palette.common.shadow}`
+        : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
     },
-  })
+  }),
+  {
+    "&:disabled": {
+      opacity: "50%",
+      cursor: "not-allowed",
+    },
+  }
 )
 
 type Props = {
@@ -58,12 +64,17 @@ export default function NewButton({
   label,
   size = "lg",
   disabled = false,
+  onClick,
+  ...otherProps
 }: Props) {
-  console.log(setSize(size))
-
   return (
     <ThemeProvider theme={defaultTheme}>
-      <StyledButton size={size} disabled={disabled}>
+      <StyledButton
+        size={size}
+        disabled={disabled}
+        onClick={onClick}
+        {...otherProps}
+      >
         {label}
       </StyledButton>
     </ThemeProvider>
