@@ -36,7 +36,13 @@ const elevation = {
 }
 
 const typography = {
-  fontFamily: 'sans-serif'
+  fontFamily: 'sans-serif',
+  button: {
+    fontFamily: 'sans-serif',
+    fontWeight: 700,
+    fontSize: '16px',
+    lineHeight: '24px'
+  }
 }
 
 const shape = {

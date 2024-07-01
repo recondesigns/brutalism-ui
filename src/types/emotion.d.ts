@@ -38,7 +38,13 @@ declare module '@emotion/react' {
       five: string
     }
     typography: {
-      fontFamily: string
+      fontFamily: string,
+      button: {
+        fontFamily: string
+        fontWeight: number
+        fontSize: string
+        lineHeight: string
+      }
     },
     shape: {
       borderRadius: string
