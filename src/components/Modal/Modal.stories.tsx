@@ -1,28 +1,21 @@
-import React from 'react'
-import { Meta, StoryObj } from '@storybook/react'
-import { Modal } from './Modal'
-import ModalHeader from './ModalHeader'
-import ModalContent from './ModalContent'
-import ModalFooter from './ModalFooter'
-import { Button } from '../../components'
+import React from "react"
+import { Meta, StoryObj } from "@storybook/react"
+import { Modal } from "./Modal"
+import ModalHeader from "./ModalHeader"
+import ModalContent from "./ModalContent"
+import ModalFooter from "./ModalFooter"
+import { Button } from "../../components"
 
-/**
- *  Here is a descreption for the component.
- */
 const meta: Meta<typeof Modal> = {
-  title: 'Components/Modal',
+  title: "Components/Modal",
   component: Modal,
-  tags: ['autodocs'],
   parameters: {
     controls: {
-      exclude: ['isOpen', 'onClose', 'children'],
+      exclude: ["isOpen", "onClose", "children"],
     },
   },
 }
 
-/**
- *  Here is a descreption for the default story.
- */
 export const Default: StoryObj<typeof Modal> = {
   render: (args) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false)
@@ -31,13 +24,13 @@ export const Default: StoryObj<typeof Modal> = {
       <>
         <div
           style={{
-            padding: '0px 0px 24px 0px',
-            display: 'flex',
-            justifyContent: 'center',
+            padding: "0px 0px 24px 0px",
+            display: "flex",
+            justifyContent: "center",
           }}
         >
           <Button onClick={() => setIsModalOpen(!isModalOpen)}>
-            {!isModalOpen ? 'Open modal' : 'Close modal'}
+            {!isModalOpen ? "Open modal" : "Close modal"}
           </Button>
         </div>
         <Modal {...args} isOpen={isModalOpen} onClose={setIsModalOpen}>
@@ -46,10 +39,10 @@ export const Default: StoryObj<typeof Modal> = {
             onClose={() => setIsModalOpen(!isModalOpen)}
           />
           <ModalContent>
-            <h3 style={{ fontFamily: 'sans-serif', margin: '0px 0px 8px 0px' }}>
+            <h3 style={{ fontFamily: "sans-serif", margin: "0px 0px 8px 0px" }}>
               Heading level four
             </h3>
-            <p style={{ fontFamily: 'sans-serif', margin: '0px 0px 4px 0px' }}>
+            <p style={{ fontFamily: "sans-serif", margin: "0px 0px 4px 0px" }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
               mollitia, molestiae quas vel sint commodi repudiandae consequuntur
               voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -67,9 +60,6 @@ export const Default: StoryObj<typeof Modal> = {
   },
 }
 
-/**
- *  Here is a descreption for the closeOnEsc story.
- */
 export const CloseOnEsc: StoryObj<typeof Modal> = {
   ...Default,
   args: {
@@ -77,14 +67,17 @@ export const CloseOnEsc: StoryObj<typeof Modal> = {
   },
   parameters: {
     controls: {
-      exclude: ['isOpen', 'onClose', 'shouldFitContent', 'closeOutsideClick'],
+      exclude: [
+        "isOpen",
+        "onClose",
+        "shouldFitContent",
+        "closeOutsideClick",
+        "children",
+      ],
     },
   },
 }
 
-/**
- *  Here is a descreption for the closeOnOutsideClick story.
- */
 export const CloseOnOutsideClick: StoryObj<typeof Modal> = {
   ...Default,
   args: {
@@ -92,7 +85,13 @@ export const CloseOnOutsideClick: StoryObj<typeof Modal> = {
   },
   parameters: {
     controls: {
-      exclude: ['isOpen', 'onClose', 'shouldFitContent', 'closeOnEsc'],
+      exclude: [
+        "isOpen",
+        "onClose",
+        "shouldFitContent",
+        "closeOnEsc",
+        "children",
+      ],
     },
   },
 }
@@ -144,62 +143,59 @@ export const CloseOnOutsideClick: StoryObj<typeof Modal> = {
 //   },
 // }
 
-/**
- *  Here is a descreption for the footer story.
- */
-export const Footer: StoryObj<typeof Modal> = {
-  render: (args) => {
-    const [isModalOpen, setIsModalOpen] = React.useState(false)
+// export const Footer: StoryObj<typeof Modal> = {
+//   render: (args) => {
+//     const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-    return (
-      <>
-        <div
-          style={{
-            padding: '0px 0px 24px 0px',
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <Button onClick={() => setIsModalOpen(!isModalOpen)}>
-            {!isModalOpen ? 'Open modal' : 'Close modal'}
-          </Button>
-        </div>
-        <Modal {...args} isOpen={isModalOpen} onClose={setIsModalOpen}>
-          <ModalHeader
-            title="Modal title"
-            onClose={() => setIsModalOpen(!isModalOpen)}
-          />
-          <ModalContent>
-            <h3 style={{ fontFamily: 'sans-serif', margin: '0px 0px 8px 0px' }}>
-              Heading level four
-            </h3>
-            <p style={{ fontFamily: 'sans-serif', margin: '0px 0px 4px 0px' }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-              mollitia, molestiae quas vel sint commodi repudiandae consequuntur
-              voluptatum laborum numquam blanditiis harum quisquam eius sed odit
-              fugiat iusto fuga praesentium optio,
-            </p>
-          </ModalContent>
-          <ModalFooter
-            actions={{
-              primaryAction: {
-                buttonLabel: 'Close modal',
-                onclick: () => setIsModalOpen(!isModalOpen),
-              },
-            }}
-          />
-        </Modal>
-      </>
-    )
-  },
-  args: {
-    closeOutsideClick: true,
-  },
-  parameters: {
-    controls: {
-      exclude: ['isOpen', 'onClose', 'shouldFitContent', 'closeOnEsc'],
-    },
-  },
-}
+//     return (
+//       <>
+//         <div
+//           style={{
+//             padding: "0px 0px 24px 0px",
+//             display: "flex",
+//             justifyContent: "center",
+//           }}
+//         >
+//           <Button onClick={() => setIsModalOpen(!isModalOpen)}>
+//             {!isModalOpen ? "Open modal" : "Close modal"}
+//           </Button>
+//         </div>
+//         <Modal {...args} isOpen={isModalOpen} onClose={setIsModalOpen}>
+//           <ModalHeader
+//             title="Modal title"
+//             onClose={() => setIsModalOpen(!isModalOpen)}
+//           />
+//           <ModalContent>
+//             <h3 style={{ fontFamily: "sans-serif", margin: "0px 0px 8px 0px" }}>
+//               Heading level four
+//             </h3>
+//             <p style={{ fontFamily: "sans-serif", margin: "0px 0px 4px 0px" }}>
+//               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+//               mollitia, molestiae quas vel sint commodi repudiandae consequuntur
+//               voluptatum laborum numquam blanditiis harum quisquam eius sed odit
+//               fugiat iusto fuga praesentium optio,
+//             </p>
+//           </ModalContent>
+//           <ModalFooter
+//             actions={{
+//               primaryAction: {
+//                 buttonLabel: "Close modal",
+//                 onclick: () => setIsModalOpen(!isModalOpen),
+//               },
+//             }}
+//           />
+//         </Modal>
+//       </>
+//     )
+//   },
+//   args: {
+//     closeOutsideClick: true,
+//   },
+//   parameters: {
+//     controls: {
+//       exclude: ["isOpen", "onClose", "shouldFitContent", "closeOnEsc"],
+//     },
+//   },
+// }
 
 export default meta

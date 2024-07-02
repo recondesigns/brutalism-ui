@@ -1,72 +1,72 @@
-import React from 'react'
-import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
-import ModalDialog from './ModalDialog'
-import ModalHeader from './ModalHeader'
-import ModalContent from './ModalContent'
-import { defaultTheme } from '../emotionTheme'
+import React from "react"
+import styled from "@emotion/styled"
+import { ThemeProvider } from "@emotion/react"
+import ModalDialog from "./ModalDialog"
+import ModalHeader from "./ModalHeader"
+import ModalContent from "./ModalContent"
+import { defaultTheme } from "../emotionTheme"
 
 type ModalWrapperProps = {
   isOpen?: boolean
 }
 
-const ModalWrapper = styled('div')<ModalWrapperProps>(
+const ModalWrapper = styled("div")<ModalWrapperProps>(
   {
-    boxSizing: 'border-box',
-    width: '100%',
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    boxSizing: "border-box",
+    width: "100%",
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   ({ isOpen }) => ({
-    display: !isOpen ? 'none' : 'block',
+    display: !isOpen ? "none" : "block",
   })
 )
 
-const ModalScrim = styled('div')({
-  position: 'absolute',
+const ModalScrim = styled("div")({
+  position: "absolute",
   top: 0,
   right: 0,
   bottom: 0,
   left: 0,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  background: 'rgba(0, 0, 0, 0.15)',
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  background: "rgba(0, 0, 0, 0.15)",
 })
 
 type ModalProps = {
   /**
-   *  Here is a descreption for the isOpen prop.
+   *  Sets if the Modal is open (visible), or not.
    *
    * @default false
    */
   isOpen?: boolean
   /**
-   *  Here is a descreption for the onClose prop.
+   *  Function that closes the Modal.
    */
   onClose?: any
   /**
-   *  Here is a descreption for the closeOnEsc prop.
+   *  Allows the user to close the Modal by using the Escape key.
    *
    * @default false
    */
   closeOnEsc?: boolean
   /**
-   *  Here is a descreption for the closeOutsideClick prop.
+   *  Allows the user to close the Modal by clicking anywhere outside the Modal dialog.
    *
    * @default false
    */
   closeOutsideClick?: boolean
   /**
-   *  Here is a descreption for the shouldFitContent prop.
+   *  Applies width styles that allows the Modal to grow with the content.
    *
    * @default false
    */
   shouldFitContent?: boolean
   /**
-   *  Here is a descreption for the children prop.
+   *  Content to be displayed in the Modal dialog.
    *
    * @default false
    */
@@ -84,7 +84,7 @@ function Modal({
 }: ModalProps) {
   React.useEffect(() => {
     const handleEsc = (e: any) => {
-      if (closeOnEsc && e.key === 'Escape') {
+      if (closeOnEsc && e.key === "Escape") {
         console.log(e.key)
         onClose(!isOpen)
       }
@@ -92,11 +92,11 @@ function Modal({
 
     if (isOpen) {
       // console.log('modal is open')
-      document.addEventListener('keydown', handleEsc)
+      document.addEventListener("keydown", handleEsc)
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEsc)
+      document.removeEventListener("keydown", handleEsc)
     }
     // console.log('fired')
   }, [isOpen])
