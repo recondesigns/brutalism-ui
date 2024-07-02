@@ -1,0 +1,48 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as ButtonStories from "./Button.stories"
+
+<Meta of={ButtonStories} />
+
+<Title>Button</Title>
+
+<Subtitle>Buttons are used as clickable elements to trigger actions.</Subtitle>
+
+<Canvas of={ButtonStories.Default} sourceState="shown" />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Button)
+&nbsp;|&nbsp;
+[Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=1-2&t=biW5RVaCBvNirs7P-1)
+
+Buttons are are the primary calls to action. Importance level can be conveyed with size and color. The button label should express what action will occur when the user clicks.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the component, and place it in the UI.
+
+```js
+import { Button } from "ubiq-ui"
+```
+
+### Full width
+
+By default, the width grows with the content of the label. Pass the `isFullWidth` prop to force the component's width to 100% of the parent container.
+
+<Canvas of={ButtonStories.FullWidth} />
+
+### Icon
+
+Pass an icon to the `iconLeft` prop to render a Button with a preceding icon.
+
+<Canvas of={ButtonStories.LeftIcon} />
+
+### Disabled
+
+Passing te `disabled` prop will apply an opacity to the Button to indicate it is not usable, and disables user interactions with the Button.
+
+<Canvas of={ButtonStories.Disabled} />
