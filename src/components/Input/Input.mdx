@@ -1,0 +1,64 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as InputStories from "./Input.stories"
+
+<Meta of={InputStories} />
+
+<Title>Input</Title>
+
+<Subtitle>A textfield that allows user to enter information.</Subtitle>
+
+<Canvas of={InputStories.Default} sourceState="shown" />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Input)
+&nbsp;|&nbsp;
+[Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=67-115&t=biW5RVaCBvNirs7P-1)
+
+Inputs are the primary way to capture data and information from users. Typically used in forms, users can
+type responses.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the component, and place it in the UI.
+
+```js
+import { Input } from "ubiq-ui"
+```
+
+### Label
+
+Passing a string to the `label` prop will add a label for the input.
+While the Input component does not render the label by default, it is
+recommended to include a label with inputs for accessibilty.
+
+<Canvas of={InputStories.Label} />
+
+### Helper text
+
+Adding helper text can assist users with the content required for the form.
+
+<Canvas of={InputStories.HelpText} />
+
+### Placeholder
+
+The optional placeholder text defines the required text when the Input has no value.
+
+<Canvas of={InputStories.Placeholder} />
+
+### Disabled
+
+Passing te `disabled` prop will apply an opacity to the Input to indicate it is not usable, and disables user interactions with the component.
+
+<Canvas of={InputStories.Disabled} />
+
+### Errors
+
+Passing te `hasError` prop will apply an error styles to the Input component to indicate there is an error, that or something is not valid.
+It is recommended to included helper text describing the error.
+
+<Canvas of={InputStories.Errors} />

@@ -7,39 +7,43 @@ import { defaultTheme } from '../emotionTheme'
 
 type Props = {
   /**
-   * Description copy for `label` prop.
+   * Applies a label to the input.
    */
   label?: string
   /**
-   * Description copy for `value` prop.
+   * Sets the current value of the input field.
    */
   value?: string
   /**
-   * Description copy for `placeholder` prop.
+   * Adds a placeholder when the user has not interacted with the input.
    */
   placeholder?: string
   /**
-   * Description copy for `disabled` prop.
+   * Disables user interaction with the input, and applies opacity as a visual indicator.
+   * 
+   * @default false
    */
   disabled?: boolean
   /**
-   * Description copy for `hasError` prop.
+   * Applies error styles when there is an error present.
+   * 
+   * @default false
    */
   hasError?: boolean
   /**
-   * Description copy for `onchange` prop.
+   * Function that is fired when a change event occurs in the input.
    */
   onchange?: () => void
   /**
-   * Description copy for `caption` prop.
+   * Applies a string of text to assist users.
    */
   helperText?: string
   /**
-   * Description copy for `id` prop.
+   * Applies an id to the core input element.
    */
   id?: string
   /**
-   * Description copy for `name` prop.
+   * Applies an name attribute to the label and the core input element.
    */
   name?: string
 }

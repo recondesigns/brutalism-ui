@@ -1,0 +1,45 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as ModalStories from "./Modal.stories"
+
+<Meta of={ModalStories} />
+
+<Title>Modal</Title>
+
+<Subtitle>
+  Modals are used as overlays that require action before continuing a task.
+</Subtitle>
+
+<Canvas of={ModalStories.Default} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Modal)
+&nbsp;|&nbsp;
+[Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=80-86&t=biW5RVaCBvNirs7P-1)
+
+An open Modal will cover the UI with a transparent scrim layer, containing the Modal
+dialog with content and actions for the user.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the component, and place it in the UI.
+
+```js
+import { Modal } from "ubiq-ui"
+```
+
+### Close with Esc key
+
+By passing the `closeOnEsc` prop, users can close the Modal by pressing the Escape key on their keyboard.
+
+<Canvas of={ModalStories.CloseOnEsc} />
+
+### Close with outside click
+
+By passing the `closeOutsideClick` prop, users can close the Modal clicking anywhere outside of the Modal dialog.
+
+<Canvas of={ModalStories.CloseOnOutsideClick} />

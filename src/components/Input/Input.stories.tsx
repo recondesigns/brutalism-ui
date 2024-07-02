@@ -1,19 +1,15 @@
-import React, { useState } from 'react'
-import { Meta, StoryObj } from '@storybook/react'
-import Input from './Input'
+import React, { useState } from "react"
+import { Meta, StoryObj } from "@storybook/react"
+import Input from "./Input"
 
-/**
- * Description copy for the component.
- */
 const meta: Meta<typeof Input> = {
-  title: 'Components/Input',
+  title: "Components/Input",
   component: Input,
-  tags: ['autodocs'],
 }
 
 const InputStoryTemplate: StoryObj<typeof Input> = {
   render: (args) => {
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState("")
 
     return (
       <Input
@@ -31,79 +27,46 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
   },
 }
 
-/**
- * Description copy for `Default` story and here is change.
- */
 export const Default = {
   ...InputStoryTemplate,
-  args: {
-    // label: "Label",
-  },
 }
 
-/**
- * Description copy for `Label` story and here is change.
- */
 export const Label = {
   ...InputStoryTemplate,
   args: {
-    label: 'Label',
+    label: "Label",
   },
 }
 
-/**
- * Description copy for `HelpText` story and here is change.
- */
 export const HelpText = {
   ...InputStoryTemplate,
   args: {
-    helperText: 'This input has helper text and no label.',
+    helperText: "This input has helper text and no label.",
   },
 }
 
-/**
- * Description copy for `Errors` story and here is change.
- */
 export const Errors = {
   ...InputStoryTemplate,
   args: {
-    label: 'Label',
+    label: "Label",
     hasError: true,
-    helperText: 'This input has errors.',
+    helperText: "This input has errors.",
   },
 }
 
-/**
- * Description copy for `Disabled` story and here is change.
- */
 export const Disabled = {
   ...InputStoryTemplate,
   args: {
-    label: 'Label',
+    label: "Label",
     disabled: true,
   },
 }
 
-/**
- * Description copy for `Placeholder` story and here is change.
- */
 export const Placeholder = {
   ...InputStoryTemplate,
   args: {
-    label: 'Label',
-    placeholder: 'placeholder',
-  },
-}
-
-/**
- * Description copy for `KitchenSink` story and here is change.
- */
-export const KitchenSink = {
-  ...InputStoryTemplate,
-  args: {
-    label: 'Label',
-    // placeholder: 'placeholder',
-    helperText: 'This input has errors.',
+    label: "Label",
+    placeholder: "placeholder",
   },
 }
 
