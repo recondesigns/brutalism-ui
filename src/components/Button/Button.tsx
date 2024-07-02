@@ -8,19 +8,19 @@ type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 type StyledButtonProps = {
   /**
-   *  Here is a description for the size prop.
+   *  Adds padding to the button to create different sizes.
    *
    * @default lg
    */
   size?: Size
   /**
-   *  Here is a description for the isFullWidth prop.
+   *  Forces the width to 100% of the parent container.
    *
    * @default false
    */
   isFullWidth?: boolean
   /**
-   *  Here is a description for the disabled prop.
+   *  Disables interaction with the Button and applies opacity as visual indicator.
    *
    * @default false
    */
@@ -77,15 +77,11 @@ const StyledButton = styled('button')<StyledButtonProps>(
 
 export type ButtonProps = {
   /**
-   *  Here is a description for the leftIcon prop.
+   *  Applies an optional preceding icon to the label.
    */
   leftIcon?: React.ReactNode
   /**
-   *  Here is a description for the data-testid prop.
-   */
-  'data-testid'?: string
-  /**
-   *  Here is a description for the data-testid prop.
+   *  The function called when the Button is clicked.
    */
   onClick?: () => void
 } & StyledButtonProps
