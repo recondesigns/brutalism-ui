@@ -71,6 +71,10 @@ type ModalProps = {
    * @default false
    */
   children: React.ReactElement | React.ReactElement[]
+  /**
+   *  Applies a classname to the component.
+   */
+  className?: string
 }
 
 function Modal({
@@ -80,6 +84,7 @@ function Modal({
   closeOutsideClick = false,
   shouldFitContent = false,
   children,
+  className,
   ...otherProps
 }: ModalProps) {
   React.useEffect(() => {
@@ -109,7 +114,7 @@ function Modal({
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ModalWrapper isOpen={isOpen} {...otherProps}>
+      <ModalWrapper className={className} isOpen={isOpen} {...otherProps}>
         <ModalScrim onClick={outsideClick}>
           <ModalDialog
             onClick={(e: React.MouseEvent) => e.stopPropagation()}

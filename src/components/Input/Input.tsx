@@ -20,13 +20,13 @@ type Props = {
   placeholder?: string
   /**
    * Disables user interaction with the input, and applies opacity as a visual indicator.
-   * 
+   *
    * @default false
    */
   disabled?: boolean
   /**
    * Applies error styles when there is an error present.
-   * 
+   *
    * @default false
    */
   hasError?: boolean
@@ -89,11 +89,12 @@ export default function Input({
   hasError = false,
   id,
   name,
+  className,
   ...otherProps
 }: InputProps) {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <InputWrapper data-testid="input-wrapper-test">
+      <InputWrapper className={className} data-testid="input-wrapper-test">
         {label && (
           <InputLabel hasError={hasError} data-testid="input-label-test">
             {label}
