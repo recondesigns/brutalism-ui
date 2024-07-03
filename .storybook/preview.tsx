@@ -1,6 +1,7 @@
 import React from "react"
 import { Preview } from "@storybook/react"
-import { Title, Subtitle, Primary, ArgTypes, Stories } from "@storybook/blocks"
+import { themes } from "@storybook/theming"
+// import { Title, Subtitle, Primary, ArgTypes, Stories } from "@storybook/blocks"
 
 const preview: Preview = {
   parameters: {
@@ -21,6 +22,7 @@ const preview: Preview = {
       argTypes: {
         sort: "requiredFirst",
       },
+      theme: themes.light,
       // page: () => (
       //   <>
       //     <Title />
