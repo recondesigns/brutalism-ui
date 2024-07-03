@@ -1,9 +1,9 @@
-import React, { HTMLAttributes } from "react"
-import styled from "@emotion/styled"
-import { ThemeProvider } from "@emotion/react"
-import InputLabel from "./Label"
-import HelperText from "./HelperText"
-import { defaultTheme } from "../emotionTheme"
+import React, { HTMLAttributes } from 'react'
+import styled from '@emotion/styled'
+import { ThemeProvider } from '@emotion/react'
+import InputLabel from './Label'
+import HelperText from './HelperText'
+import { defaultTheme } from '../emotionTheme'
 
 type Props = {
   /**
@@ -51,18 +51,18 @@ type Props = {
 export type InputProps = Props & HTMLAttributes<HTMLInputElement>
 
 const InputWrapper = styled.div<HTMLAttributes<HTMLDivElement>>({
-  padding: "12px 0px",
-  display: "flex",
-  flexDirection: "column",
+  padding: '12px 0px',
+  display: 'flex',
+  flexDirection: 'column',
 })
 
 const InputComponent = styled.input<InputProps>(
   {
-    padding: "16px 12px",
-    fontFamily: "Helvetica Neue",
-    fontSize: "16px",
-    lineHeight: "20px",
-    borderRadius: "4px",
+    padding: '16px 12px',
+    fontFamily: 'Helvetica Neue',
+    fontSize: '16px',
+    lineHeight: '20px',
+    borderRadius: '4px',
     // "&:focus": {
     //   outline: "1px solid #3391FF",
     // },
@@ -72,7 +72,7 @@ const InputComponent = styled.input<InputProps>(
     border: `2px solid ${theme.palette.common.border}`,
     boxShadow: `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
     background: theme.palette.common.white,
-    opacity: !disabled ? "initial" : "50%",
+    opacity: !disabled ? 'initial' : '50%',
     // "&:not(:placeholder-shown)": {
     //   border: !hasError ? "1px solid #0D0D0D" : "1px solid red",
     // },
@@ -83,7 +83,7 @@ export default function Input({
   label,
   value,
   onchange,
-  placeholder = " ",
+  placeholder = ' ',
   helperText,
   disabled = false,
   hasError = false,
