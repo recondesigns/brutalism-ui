@@ -18,6 +18,9 @@ const preview: Preview = {
         disabled: false,
         headingSelector: "h2, h3",
       },
+      argTypes: {
+        sort: "requiredFirst",
+      },
       // page: () => (
       //   <>
       //     <Title />
