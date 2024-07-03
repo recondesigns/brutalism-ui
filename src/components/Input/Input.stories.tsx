@@ -34,7 +34,7 @@ export const Default = {
 export const Label = {
   ...InputStoryTemplate,
   args: {
-    label: 'Labels',
+    label: 'Label',
   },
 }
 
