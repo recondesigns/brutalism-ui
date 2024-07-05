@@ -1,0 +1,40 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as ModalContentStories from "./ModalContent.stories"
+
+<Meta of={ModalContentStories} />
+
+<Title>ModalContent</Title>
+
+<Subtitle>
+  The ModalContent component serves a pre-styled box to contain the Modal
+  content .
+</Subtitle>
+
+<Canvas of={ModalContentStories.Default} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/ModalHeader)
+
+The ModalContainer requires at least one child component.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the component, and use it as a child of the `Modal` component.
+
+```js
+import { ModalContent } from "ubiq-ui"
+
+return (
+  <Modal>
+    <ModalContent>
+      <h3>Modal title</h3>
+      <Button>Button</Button>
+    </ModalContent
+  </ModalContent
+)
+```
