@@ -1,5 +1,8 @@
 import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
 import * as ModalStories from "./Modal.stories"
+import * as ModalHeaderStories from "./ModalHeader.stories"
+import * as ModalContentStories from "./ModalContent.stories"
+import * as ModalFooterStories from "./ModalFooter.stories"
 
 <Meta of={ModalStories} />
 
@@ -43,3 +46,36 @@ By passing the `closeOnEsc` prop, users can close the Modal by pressing the Esca
 By passing the `closeOutsideClick` prop, users can close the Modal clicking anywhere outside of the Modal dialog.
 
 <Canvas of={ModalStories.CloseOnOutsideClick} />
+
+## Building blocks
+
+By passing the `closeOnEsc` prop, users can close the Modal by pressing the Escape key on their keyboard.
+
+```js
+import { Modal, ModalHeader, ModalContent, ModalFooter } from "ubiq-ui"
+;<Modal>
+  <ModalHeader title="Modal title" onClose={closefunc} />
+  <ModalContent>// modal content</ModalContent>
+  <ModalFooter actions={footerActionsObj} />
+</Modal>
+```
+
+### ModalHeader
+
+The ModalHeader includes a required title and an optional close button. Using the building blocks
+is recommended for consistency, but not required.
+
+<Canvas of={ModalHeaderStories.Default} />
+
+### ModalContent
+
+The ModalContent component serves a pre-styled box to contain the Modal
+content.
+
+<Canvas of={ModalContentStories.Default} />
+
+### ModalFooter
+
+The ModalFooter component provides a pre-styled container with one, or two buttons.
+
+<Canvas of={ModalFooterStories.SingleAction} />
