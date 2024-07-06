@@ -46,18 +46,27 @@ const IconButton = styled('button')({
 })
 
 type ModalHeaderProps = {
-  onClose?: any
-  title?: string
+  /**
+   *  Applies a close button icon with the function that will be called when close button is clicked.
+   */
+  onClose?: () => void
+  /**
+   *  Passing a string to the `title` prop adds a pre-styled title.
+   */
+  title: string
 }
 
 export default function ModalHeader({ title, onClose }: ModalHeaderProps) {
+  console.log(onClose)
   return (
     <ThemeProvider theme={defaultTheme}>
       <ModalHeaderWrapper>
         <Title>{title}</Title>
-        <IconButton onClick={onClose}>
-          <CloseIcon />
-        </IconButton>
+        {onClose && (
+          <IconButton onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        )}
       </ModalHeaderWrapper>
     </ThemeProvider>
   )

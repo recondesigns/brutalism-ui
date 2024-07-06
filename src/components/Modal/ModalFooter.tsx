@@ -3,15 +3,18 @@ import { ThemeProvider } from '@emotion/react'
 import { Button } from '../../components'
 import { defaultTheme } from '../emotionTheme'
 
+type Label = string
+type Click = () => void
+
 export type ModalFooterProps = {
   actions: {
     primaryAction: {
-      buttonLabel: string
-      onclick: () => void
+      buttonLabel: Label
+      onclick: Click
     }
     secondaryAction?: {
-      buttonLabel: string
-      onclick: () => void
+      buttonLabel: Label
+      onclick: Click
     }
   }
 }
@@ -29,13 +32,6 @@ export default function ModalFooter({ actions }: ModalFooterProps) {
   return (
     <ThemeProvider theme={defaultTheme}>
       <FooterContainer data-testid="testid-modal-footer-container">
-        <Button
-          data-testid="testid-modal-footer-primary-button"
-          onClick={primaryAction?.onclick}
-          size="sm"
-        >
-          {primaryAction?.buttonLabel}
-        </Button>
         {secondaryAction && (
           <Button
             data-testid="testid-modal-footer-secondary-button"
@@ -45,6 +41,13 @@ export default function ModalFooter({ actions }: ModalFooterProps) {
             {secondaryAction?.buttonLabel}
           </Button>
         )}
+        <Button
+          data-testid="testid-modal-footer-primary-button"
+          onClick={primaryAction?.onclick}
+          size="sm"
+        >
+          {primaryAction?.buttonLabel}
+        </Button>
       </FooterContainer>
     </ThemeProvider>
   )

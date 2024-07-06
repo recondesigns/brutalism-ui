@@ -1,0 +1,51 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as ModalHeaderStories from "./ModalHeader.stories"
+
+<Meta of={ModalHeaderStories} />
+
+<Title>ModalHeader</Title>
+
+<Subtitle>
+  The ModalHeader component provides a consistent header for Modals.
+</Subtitle>
+
+<Canvas of={ModalHeaderStories.Default} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/ModalHeader)
+
+The ModalHeader includes a required title and an optional close button. Using the building blocks
+is recommended for consistency, but not required.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the component, and use it as a child of the `Modal` component.
+
+```js
+import { ModalHeader } from "ubiq-ui"
+
+return (
+  <Modal>
+    <ModalHeader title='Modal title' onClose={closeFunc} />
+  </Modal
+)
+```
+
+### Title
+
+Provide users with context by passing a string to the required `title` prop.
+
+<Canvas of={ModalHeaderStories.Default} />
+
+### No close button
+
+To prevent users from closing the Modal without completing the required actions,
+do not provide a function to the `onClose` prop. If the `onClose` prop is not used,
+the close button will not be rendered.
+
+<Canvas of={ModalHeaderStories.NoCloseButton} />

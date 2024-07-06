@@ -4,6 +4,9 @@ import { ThemeProvider } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
 
 export type ModalContainerProps = {
+  /**
+   * Components to be rendered as the Modal content.
+   */
   children: React.ReactElement | React.ReactElement[]
 } & React.HTMLAttributes<HTMLDivElement>
 
