@@ -5,7 +5,7 @@ import CardContent from '../CardContent'
 type CardContentStory = StoryObj<typeof CardContent>
 
 const meta: Meta<typeof CardContent> = {
-  title: 'Components/Building Blocks/CardContent',
+  title: 'Components/Card/Building Blocks/Card Content',
   component: CardContent,
 }
 
