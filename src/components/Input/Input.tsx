@@ -1,9 +1,9 @@
-import React, { HTMLAttributes } from 'react'
-import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
-import InputLabel from './Label'
-import HelperText from './HelperText'
-import { defaultTheme } from '../emotionTheme'
+import React, { HTMLAttributes } from "react"
+import styled from "@emotion/styled"
+import { ThemeProvider } from "@emotion/react"
+import InputLabel from "./Label"
+import HelperText from "./HelperText"
+import { defaultTheme } from "../emotionTheme"
 
 type Props = {
   /**
@@ -52,31 +52,41 @@ type Props = {
 export type InputProps = Props & HTMLAttributes<HTMLInputElement>
 
 const InputWrapper = styled.div<HTMLAttributes<HTMLDivElement>>({
-  padding: '12px 0px',
-  display: 'flex',
-  flexDirection: 'column',
+  padding: "12px 0px",
+  display: "flex",
+  flexDirection: "column",
 })
 
 const InputComponent = styled.input<InputProps>(
   {
-    padding: '16px 12px',
-    fontFamily: 'Helvetica Neue',
-    fontSize: '16px',
-    lineHeight: '20px',
-    borderRadius: '4px',
-    // "&:focus": {
-    //   outline: "1px solid #3391FF",
-    // },
+    padding: "16px 12px",
+    fontFamily: "Helvetica Neue",
+    fontSize: "16px",
+    lineHeight: "20px",
+    borderRadius: "4px",
   },
   ({ theme, hasError, disabled }) => ({
-    color: !hasError ? theme.palette.common.black : theme.palette.error.main,
-    border: `2px solid ${theme.palette.common.border}`,
+    color: theme.palette.common.black,
+    border: !hasError
+      ? `2px solid ${theme.palette.common.border}`
+      : `2px solid ${theme.palette.error.main}`,
     boxShadow: `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
     background: theme.palette.common.white,
-    opacity: !disabled ? 'initial' : '50%',
-    // "&:not(:placeholder-shown)": {
-    //   border: !hasError ? "1px solid #0D0D0D" : "1px solid red",
-    // },
+    opacity: !disabled ? "initial" : "50%",
+    "&:hover": {
+      background: !disabled
+        ? theme.palette.primary.light
+        : theme.palette.common.white,
+      boxShadow: !disabled
+        ? `${theme.elevation.two} ${theme.elevation.two} 0px 0px ${theme.palette.common.shadow}`
+        : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
+      cursor: !disabled ? "initial" : "not-allowed",
+    },
+    "&:focus": {
+      background: theme.palette.primary.light,
+      outline: "none",
+      boxShadow: `${theme.elevation.none} ${theme.elevation.none} 0px 0px ${theme.palette.common.shadow}`,
+    },
   })
 )
 
@@ -84,7 +94,7 @@ export default function Input({
   label,
   value,
   onchange,
-  placeholder = ' ',
+  placeholder = " ",
   helperText,
   disabled = false,
   hasError = false,
