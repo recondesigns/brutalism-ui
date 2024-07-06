@@ -13,6 +13,7 @@ type TestProps = {
   placeholder?: string
   helperText?: string
   hasError?: boolean
+  required?: boolean
 }
 
 const TestInput = (testProps: TestProps) => {
@@ -54,6 +55,14 @@ describe('Input', () => {
     const input = component.getByTestId('input-test')
 
     expect(input).toHaveAttribute('disabled')
+  })
+
+  it('should render an Input with the required attribute', () => {
+    const component = render(<TestInput required />)
+    const input = component.getByTestId('input-test')
+
+    expect(input).toBeInTheDocument()
+    expect(input).toHaveAttribute('required')
   })
 
   it('should render an Input with a placeholder when the placeholder prop is used', () => {

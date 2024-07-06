@@ -46,7 +46,14 @@ type Props = {
    * Applies an name attribute to the label and the core input element.
    */
   name?: string
+  /**
+   * Applies an type attribute to the base input element.
+   */
   type?: React.HTMLInputTypeAttribute
+  /**
+   * Adds the required attribute to the base input element and adds an asterisk to the label.
+   */
+  required?: boolean
 }
 
 export type InputProps = Props & HTMLAttributes<HTMLInputElement>
@@ -64,19 +71,29 @@ const InputComponent = styled.input<InputProps>(
     fontSize: '16px',
     lineHeight: '20px',
     borderRadius: '4px',
-    // "&:focus": {
-    //   outline: "1px solid #3391FF",
-    // },
   },
   ({ theme, hasError, disabled }) => ({
-    color: !hasError ? theme.palette.common.black : theme.palette.error.main,
-    border: `2px solid ${theme.palette.common.border}`,
+    color: theme.palette.common.black,
+    border: !hasError
+      ? `2px solid ${theme.palette.common.border}`
+      : `2px solid ${theme.palette.error.main}`,
     boxShadow: `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
     background: theme.palette.common.white,
     opacity: !disabled ? 'initial' : '50%',
-    // "&:not(:placeholder-shown)": {
-    //   border: !hasError ? "1px solid #0D0D0D" : "1px solid red",
-    // },
+    '&:hover': {
+      background: !disabled
+        ? theme.palette.primary.light
+        : theme.palette.common.white,
+      boxShadow: !disabled
+        ? `${theme.elevation.two} ${theme.elevation.two} 0px 0px ${theme.palette.common.shadow}`
+        : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
+      cursor: !disabled ? 'initial' : 'not-allowed',
+    },
+    '&:focus': {
+      background: theme.palette.primary.light,
+      outline: 'none',
+      boxShadow: `${theme.elevation.none} ${theme.elevation.none} 0px 0px ${theme.palette.common.shadow}`,
+    },
   })
 )
 
@@ -90,6 +107,7 @@ export default function Input({
   hasError = false,
   id,
   name,
+  required,
   className,
   ...otherProps
 }: InputProps) {
@@ -97,7 +115,11 @@ export default function Input({
     <ThemeProvider theme={defaultTheme}>
       <InputWrapper className={className} data-testid="input-wrapper-test">
         {label && (
-          <InputLabel hasError={hasError} data-testid="input-label-test">
+          <InputLabel
+            required={required}
+            hasError={hasError}
+            data-testid="input-label-test"
+          >
             {label}
           </InputLabel>
         )}
@@ -110,6 +132,7 @@ export default function Input({
           data-testid="input-test"
           id={id}
           name={name}
+          required={required}
           {...otherProps}
         />
         {helperText && (
