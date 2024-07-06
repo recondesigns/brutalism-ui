@@ -7,7 +7,15 @@ import Input from '../Input'
 
 expect.extend(matchers)
 
-const TestInput = (testProps: any) => {
+type TestProps = {
+  label?: string
+  disabled?: boolean
+  placeholder?: string
+  helperText?: string
+  hasError?: boolean
+}
+
+const TestInput = (testProps: TestProps) => {
   const [inputValue, setInputValue] = React.useState('')
 
   return (

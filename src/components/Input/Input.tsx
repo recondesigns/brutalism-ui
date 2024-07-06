@@ -33,7 +33,7 @@ type Props = {
   /**
    * Function that is fired when a change event occurs in the input.
    */
-  onchange?: () => void
+  onchange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   /**
    * Applies a string of text to assist users.
    */
@@ -46,6 +46,7 @@ type Props = {
    * Applies an name attribute to the label and the core input element.
    */
   name?: string
+  type?: React.HTMLInputTypeAttribute
 }
 
 export type InputProps = Props & HTMLAttributes<HTMLInputElement>
