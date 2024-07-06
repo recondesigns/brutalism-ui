@@ -6,6 +6,9 @@ const ContentWrapper = styled('div')({
 })
 
 type CardContentProps = {
+  /**
+   * Child components to be rendered as the card content.
+   */
   children: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>
 

@@ -15,7 +15,13 @@ const ImageWrapper = styled('div')<ImageWrapperProps>({
 })
 
 type ImageProps = {
+  /**
+   * Applies a path to the base image's src attribute.
+   */
   src: string
+  /**
+   * Applies text to the base image's alt attribute.
+   */
   alt: string
 } & React.HTMLAttributes<HTMLImageElement>
 
