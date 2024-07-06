@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "@emotion/styled"
+import React from 'react'
+import styled from '@emotion/styled'
 
-const ContentWrapper = styled("div")({
-  padding: "24px 24px 12px 24px",
+const ContentWrapper = styled('div')({
+  padding: '24px 24px 12px 24px',
 })
 
 type CardContentProps = {

@@ -1,19 +1,19 @@
-import { Meta, StoryObj } from "@storybook/react"
-import styled from "@emotion/styled"
-import Card from "../Card"
-import CardImage from "../CardImage"
-import CardContent from "../CardContent"
-import CardActions from "../CardActions"
-import Button from "../../Button"
+import { Meta, StoryObj } from '@storybook/react'
+import styled from '@emotion/styled'
+import Card from '../Card'
+import CardImage from '../CardImage'
+import CardContent from '../CardContent'
+import CardActions from '../CardActions'
+import Button from '../../Button'
 
 const meta: Meta<typeof Card> = {
-  title: "Components/Card",
+  title: 'Components/Card',
   component: Card,
 }
 
 type CardStory = StoryObj<typeof Card>
 
-const CardTitle = styled("h4")`
+const CardTitle = styled('h4')`
   margin: 0px;
   padding: 0px 0px 24px 0px;
   font-size: 32px;
@@ -21,7 +21,7 @@ const CardTitle = styled("h4")`
   font-family: sans-serif;
 `
 
-const CardSubtitle = styled("p")`
+const CardSubtitle = styled('p')`
   margin: 0px;
   padding: 0px 0px 8px 0px;
   font-size: 16px;
@@ -30,7 +30,7 @@ const CardSubtitle = styled("p")`
   color: rgba(0, 0, 0, 0.7);
 `
 
-const CardParagraph = styled("p")`
+const CardParagraph = styled('p')`
   margin: 0px;
   padding: 0px 0px 0px 0px;
   font-size: 16px;
@@ -54,7 +54,7 @@ export const Default: CardStory = {
         <CardContent>
           <CardSubtitle>Subtitle</CardSubtitle>
           <CardTitle>Card Title</CardTitle>
-          <CardParagraph style={{ paddingBottom: "12px" }}>
+          <CardParagraph style={{ paddingBottom: '12px' }}>
             Neobrutalism is an aesthetic characterized by high contrast
             elements, bright colors, and bold shapes. It is often used to make a
             statement, as it is meant to be eye-catching and stand out to the
@@ -62,14 +62,14 @@ export const Default: CardStory = {
           </CardParagraph>
         </CardContent>
         <CardActions>
-          <Button onClick={() => clickFunc("Button")}>Button</Button>
+          <Button onClick={() => clickFunc('Button')}>Button</Button>
         </CardActions>
       </>
     ),
   },
   parameters: {
     controls: {
-      exclude: ["children", "onClick"],
+      exclude: ['children', 'onClick'],
     },
   },
 }
@@ -96,11 +96,11 @@ export const IsClickable: CardStory = {
         </CardContent>
       </>
     ),
-    onClick: () => clickFunc("Card"),
+    onClick: () => clickFunc('Card'),
   },
   parameters: {
     controls: {
-      exclude: ["children", "onClick", "disabled"],
+      exclude: ['children', 'onClick', 'disabled'],
     },
   },
 }
@@ -130,7 +130,7 @@ export const Disabled: CardStory = {
   },
   parameters: {
     controls: {
-      exclude: ["isClickable", "children", "onClick"],
+      exclude: ['isClickable', 'children', 'onClick'],
     },
   },
 }

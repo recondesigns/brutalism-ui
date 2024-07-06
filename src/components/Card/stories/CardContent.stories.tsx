@@ -1,16 +1,16 @@
-import { Meta, StoryObj } from "@storybook/react"
-import styled from "@emotion/styled"
-import Card from "../Card"
-import CardContent from "../CardContent"
+import { Meta, StoryObj } from '@storybook/react'
+import styled from '@emotion/styled'
+import Card from '../Card'
+import CardContent from '../CardContent'
 
 type CardContentStory = StoryObj<typeof CardContent>
 
 const meta: Meta<typeof CardContent> = {
-  title: "Components/Card/Building Blocks/Card Content",
+  title: 'Components/Card/Building Blocks/Card Content',
   component: CardContent,
 }
 
-const CardTitle = styled("h4")`
+const CardTitle = styled('h4')`
   margin: 0px;
   padding: 0px 0px 24px 0px;
   font-size: 32px;
@@ -18,7 +18,7 @@ const CardTitle = styled("h4")`
   font-family: sans-serif;
 `
 
-const CardSubtitle = styled("p")`
+const CardSubtitle = styled('p')`
   margin: 0px;
   padding: 0px 0px 8px 0px;
   font-size: 16px;
@@ -27,7 +27,7 @@ const CardSubtitle = styled("p")`
   color: rgba(0, 0, 0, 0.7);
 `
 
-const CardParagraph = styled("p")`
+const CardParagraph = styled('p')`
   margin: 0px;
   padding: 0px 0px 0px 0px;
   font-size: 16px;
@@ -47,7 +47,7 @@ export const Default: CardContentStory = {
         <CardContent>
           <CardSubtitle>Subtitle</CardSubtitle>
           <CardTitle>Card Title</CardTitle>
-          <CardParagraph style={{ paddingBottom: "12px" }}>
+          <CardParagraph style={{ paddingBottom: '12px' }}>
             Neobrutalism is an aesthetic characterized by high contrast
             elements, bright colors, and bold shapes. It is often used to make a
             statement, as it is meant to be eye-catching and stand out to the
