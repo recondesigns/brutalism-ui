@@ -14,7 +14,6 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
     return (
       <Input
         value={value}
-        // @ts-expect-error Type '(e: React.ChangeEvent<HTMLInputElement>) => void' is not (delete for full error)
         onchange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }
