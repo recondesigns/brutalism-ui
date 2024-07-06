@@ -11,7 +11,6 @@ type CardWrapper = {
 const CardWrapper = styled('div')<CardWrapper>(
   {
     width: '100%',
-
     background: 'none',
   },
   ({ theme, disabled, isClickable }) => ({
@@ -32,17 +31,6 @@ const CardWrapper = styled('div')<CardWrapper>(
           ? `${theme.elevation.none} ${theme.elevation.none} 0px 0px ${theme.palette.common.shadow}`
           : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
     },
-    // "&:hover": {
-    //   boxShadow: !disabled
-    //     ? `${theme.elevation.two} ${theme.elevation.two} 0px 0px ${theme.palette.common.shadow}`
-    //     : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
-    //   cursor: !disabled ? "pointer" : "not-allowed",
-    // },
-    // "&:active": {
-    //   boxShadow: !disabled
-    //     ? `${theme.elevation.none} ${theme.elevation.none} 0px 0px ${theme.palette.common.shadow}`
-    //     : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
-    // },
   })
 )
 
@@ -63,7 +51,6 @@ export default function Card({
   return (
     <ThemeProvider theme={defaultTheme}>
       <CardWrapper
-        // as={isClickable ? "button" : "div"}
         role={isClickable ? 'button' : 'div'}
         isClickable={isClickable}
         disabled={disabled}
