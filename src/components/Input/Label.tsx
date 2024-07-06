@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 type TextProps = {
+  required?: boolean
   hasError?: boolean
 } & React.HTMLAttributes<HTMLLabelElement>
 
@@ -20,16 +21,19 @@ const Text = styled.label<TextProps>(
 type LabelProps = {
   hasError?: boolean
   children: string
+  required?: boolean
 }
 
 export default function InputLabel({
   hasError,
   children,
+  required,
   ...otherProps
 }: LabelProps) {
   return (
-    <Text hasError={hasError} {...otherProps}>
-      {children}
+    <Text hasError={hasError} required={required} {...otherProps}>
+      {/* {children} */}
+      {!required ? children : `${children}*`}
     </Text>
   )
 }

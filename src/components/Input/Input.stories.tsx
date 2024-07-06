@@ -37,6 +37,14 @@ export const Label = {
   },
 }
 
+export const Required = {
+  ...InputStoryTemplate,
+  args: {
+    label: 'Label',
+    required: true,
+  },
+}
+
 export const HelpText = {
   ...InputStoryTemplate,
   args: {

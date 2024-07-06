@@ -46,7 +46,14 @@ type Props = {
    * Applies an name attribute to the label and the core input element.
    */
   name?: string
+  /**
+   * Applies an type attribute to the base input element.
+   */
   type?: React.HTMLInputTypeAttribute
+  /**
+   * Adds the required attribute to the base input element and adds an asterisk to the label.
+   */
+  required?: boolean
 }
 
 export type InputProps = Props & HTMLAttributes<HTMLInputElement>
@@ -100,6 +107,7 @@ export default function Input({
   hasError = false,
   id,
   name,
+  required,
   className,
   ...otherProps
 }: InputProps) {
@@ -107,7 +115,11 @@ export default function Input({
     <ThemeProvider theme={defaultTheme}>
       <InputWrapper className={className} data-testid="input-wrapper-test">
         {label && (
-          <InputLabel hasError={hasError} data-testid="input-label-test">
+          <InputLabel
+            required={required}
+            hasError={hasError}
+            data-testid="input-label-test"
+          >
             {label}
           </InputLabel>
         )}
@@ -120,6 +132,7 @@ export default function Input({
           data-testid="input-test"
           id={id}
           name={name}
+          required={required}
           {...otherProps}
         />
         {helperText && (
