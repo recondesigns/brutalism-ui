@@ -1,39 +1,39 @@
-import React from 'react'
-import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
-import ModalDialog from './ModalDialog'
-import ModalHeader from './ModalHeader'
-import ModalContent from './ModalContent'
-import { defaultTheme } from '../emotionTheme'
+import React from "react"
+import styled from "@emotion/styled"
+import { ThemeProvider } from "@emotion/react"
+import ModalDialog from "./ModalDialog"
+import ModalHeader from "./ModalHeader"
+import ModalContent from "./ModalContent"
+import { defaultTheme } from "../emotionTheme"
 
 type ModalWrapperProps = {
   isOpen?: boolean
 }
 
-const ModalWrapper = styled('div')<ModalWrapperProps>(
+const ModalWrapper = styled("div")<ModalWrapperProps>(
   {
-    boxSizing: 'border-box',
-    width: '100%',
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    boxSizing: "border-box",
+    width: "100%",
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   ({ isOpen }) => ({
-    display: !isOpen ? 'none' : 'block',
+    display: !isOpen ? "none" : "block",
   })
 )
 
-const ModalScrim = styled('div')({
-  position: 'absolute',
+const ModalScrim = styled("div")({
+  position: "absolute",
   top: 0,
   right: 0,
   bottom: 0,
   left: 0,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  background: 'rgba(0, 0, 0, 0.15)',
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  background: "rgba(0, 0, 0, 0.15)",
 })
 
 type ModalProps = {
@@ -88,18 +88,18 @@ function Modal({
   ...otherProps
 }: ModalProps) {
   React.useEffect(() => {
-    const handleEsc = (e: any) => {
-      if (closeOnEsc && onClose && e.key === 'Escape') {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (closeOnEsc && onClose && e.key === "Escape") {
         onClose(!isOpen)
       }
     }
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEsc)
+      document.addEventListener("keydown", handleEsc)
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEsc)
+      document.removeEventListener("keydown", handleEsc)
     }
   }, [isOpen])
 
