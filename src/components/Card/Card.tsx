@@ -5,7 +5,7 @@ import { defaultTheme } from '../emotionTheme'
 
 type CardWrapper = {
   disabled?: boolean
-}
+} & React.HTMLAttributes<HTMLDivElement>
 
 const CardWrapper = styled('div')<CardWrapper>({}, ({ theme, disabled }) => ({
   opacity: !disabled ? 'initial' : '50%',

@@ -3,20 +3,19 @@ import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render, screen } from '@testing-library/react'
 import Card from '../Card'
+import CardContent from '../CardContent'
 
 expect.extend(matchers)
-
-const component = (
-  <Card data-testid="card-test">
-    <p>Card content</p>
-  </Card>
-)
 
 describe('Props', () => {
   afterEach(cleanup)
 
   it('should render a card', () => {
-    render(component)
+    render(
+      <Card data-testid="card-test">
+        <p>Card content</p>
+      </Card>
+    )
     const card = screen.getByTestId('card-test')
 
     expect(card).toBeInTheDocument()
@@ -33,8 +32,25 @@ describe('Props', () => {
     expect(card).toHaveAttribute('disabled')
   })
 
+  it('should render a card containing a CardContent component', () => {
+    render(
+      <Card disabled>
+        <CardContent data-testid="card-content-test">
+          <p>Card content</p>
+        </CardContent>
+      </Card>
+    )
+    const cardContent = screen.getByTestId('card-content-test')
+
+    expect(cardContent).toBeInTheDocument()
+  })
+
   xit('should not change disabled card styles when hovering', () => {
-    render(component)
+    render(
+      <Card data-testid="card-test">
+        <p>Card content</p>
+      </Card>
+    )
     // use fireEvent or user-event
     const card = screen.getByTestId('card-test')
 
