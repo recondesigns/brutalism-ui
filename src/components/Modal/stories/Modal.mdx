@@ -49,11 +49,12 @@ By passing the `closeOutsideClick` prop, users can close the Modal clicking anyw
 
 ## Building blocks
 
-By passing the `closeOnEsc` prop, users can close the Modal by pressing the Escape key on their keyboard.
+Adding content with consistent padding can be done easily by using the Building block components.
 
 ```js
 import { Modal, ModalHeader, ModalContent, ModalFooter } from "ubiq-ui"
-;<Modal>
+
+<Modal>
   <ModalHeader title="Modal title" onClose={closefunc} />
   <ModalContent>// modal content</ModalContent>
   <ModalFooter actions={footerActionsObj} />
