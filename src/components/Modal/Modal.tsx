@@ -46,7 +46,7 @@ type ModalProps = {
   /**
    *  Function that closes the Modal.
    */
-  onClose?: any
+  onClose?: React.Dispatch<React.SetStateAction<boolean>>
   /**
    *  Allows the user to close the Modal by using the Escape key.
    *
@@ -89,25 +89,22 @@ function Modal({
 }: ModalProps) {
   React.useEffect(() => {
     const handleEsc = (e: any) => {
-      if (closeOnEsc && e.key === 'Escape') {
-        console.log(e.key)
+      if (closeOnEsc && onClose && e.key === 'Escape') {
         onClose(!isOpen)
       }
     }
 
     if (isOpen) {
-      // console.log('modal is open')
       document.addEventListener('keydown', handleEsc)
     }
 
     return () => {
       document.removeEventListener('keydown', handleEsc)
     }
-    // console.log('fired')
   }, [isOpen])
 
   const outsideClick = () => {
-    if (closeOutsideClick) {
+    if (closeOutsideClick && onClose) {
       onClose(!isOpen)
     }
   }
