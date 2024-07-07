@@ -2,6 +2,9 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { ThemeProvider } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
+import CardImage from './CardImage'
+import CardContent from './CardContent'
+import CardActions from './CardActions'
 
 type CardWrapper = {
   isClickable?: boolean
@@ -57,7 +60,7 @@ export type CardProps = {
   onClick?: React.MouseEventHandler<HTMLDivElement>
 }
 
-export default function Card({
+function Card({
   isClickable = true,
   disabled = false,
   children,
@@ -78,3 +81,5 @@ export default function Card({
     </ThemeProvider>
   )
 }
+
+export { Card, CardImage, CardContent, CardActions }
