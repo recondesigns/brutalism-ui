@@ -43,7 +43,6 @@ const clickFunc = (el: string) => alert(`${el} has been clicked.`)
 export const Default: CardStory = {
   render: (args) => <Card {...args} />,
   args: {
-    isClickable: false,
     disabled: false,
     children: (
       <>
