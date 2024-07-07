@@ -5,3 +5,5 @@ chromatic.log
 chromatic-build-*.xml
 chromatic-diagnostics.json
 .env
+.yalc
+yalc.lock
