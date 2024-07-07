@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import CardActions from '../CardActions'
-import Card from '../Card'
+import { Card } from '../Card'
 import Button from '../../Button'
 
 type CardActionsStory = StoryObj<typeof CardActions>

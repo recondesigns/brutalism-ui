@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import styled from '@emotion/styled'
-import Card from '../Card'
+import { Card } from '../Card'
 import CardImage from '../CardImage'
 import CardContent from '../CardContent'
 import CardActions from '../CardActions'
@@ -43,7 +43,6 @@ const clickFunc = (el: string) => alert(`${el} has been clicked.`)
 export const Default: CardStory = {
   render: (args) => <Card {...args} />,
   args: {
-    isClickable: false,
     disabled: false,
     children: (
       <>
