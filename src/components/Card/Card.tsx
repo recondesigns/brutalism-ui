@@ -61,7 +61,7 @@ export type CardProps = {
 }
 
 function Card({
-  isClickable = true,
+  isClickable = false,
   disabled = false,
   children,
   onClick,
