@@ -1,0 +1,93 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as CardStories from "./Card.stories"
+import * as CardImageStories from "./CardImage.stories"
+import * as CardContentStories from "./CardContent.stories"
+import * as CardActionsStories from "./CardActions.stories"
+
+<Meta of={CardStories} />
+
+<Title>Card</Title>
+
+<Subtitle>Cards confine content and actions for a topic.</Subtitle>
+
+<Canvas of={CardStories.Default} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Card)
+&nbsp;|&nbsp;
+[Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=80-86&t=biW5RVaCBvNirs7P-1)
+
+The Card component visually groups related information. The component can be built with custom content
+or with the Building Block components to provide consistency.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the Card component, and nest child components and content.
+
+```js
+import { Card } from "ubiq-ui"
+
+<Card>
+  <div>
+    <h4>Custom content</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+  </div>
+</Card>
+```
+
+### Clickable card
+
+Passing the `isClickable` prop, will add `:hover` and `:active` styles to
+the card component, and will call the function that is passed to the `onClick` prop.
+
+<Canvas of={CardStories.IsClickable} />
+
+### Disabled
+
+To disable user interaction with a clickable Card, passing the `disabled` prop. This
+adds an opacity to the component as a visual indicator to the user that interactions 
+are disabled.
+
+<Canvas of={CardStories.Disabled} />
+
+## Building blocks
+
+Adding content with consistent padding can be done easily by using the Building block components.
+
+```js
+import { Card, CardImage, CardContent, CardActions, Button } from "ubiq-ui"
+
+<Card>
+  <CardImage src={cardImage.png} alt={imageAltText} />
+  <CardContent>
+    <h4>Custom content</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+  </CardContent>
+  <CardActions>
+    <Button>Learn more</Button>
+  </CardActions>
+</Card>
+```
+
+### CardImage
+
+Include an image for added context.
+
+<Canvas of={CardImageStories.Default} />
+
+### CardContent
+
+Contains the content of the card and provides padding.
+
+<Canvas of={CardContentStories.Default} />
+
+### CardActions
+
+Container for calls to action.
+
+<Canvas of={CardActionsStories.Default} />

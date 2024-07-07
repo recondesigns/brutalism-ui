@@ -14,7 +14,6 @@ const InputStoryTemplate: StoryObj<typeof Input> = {
     return (
       <Input
         value={value}
-        // @ts-expect-error Type '(e: React.ChangeEvent<HTMLInputElement>) => void' is not (delete for full error)
         onchange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setValue(e.target.value)
         }
@@ -35,6 +34,14 @@ export const Label = {
   ...InputStoryTemplate,
   args: {
     label: 'Label',
+  },
+}
+
+export const Required = {
+  ...InputStoryTemplate,
+  args: {
+    label: 'Label',
+    required: true,
   },
 }
 

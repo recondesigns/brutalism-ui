@@ -1,0 +1,63 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as ModalFooterStories from "./ModalFooter.stories"
+
+<Meta of={ModalFooterStories} />
+
+<Title>ModalFooter</Title>
+
+<Subtitle>
+  The ModalFooter component provides a pre-styled container with one, or two
+  buttons.
+</Subtitle>
+
+<Canvas of={ModalFooterStories.SingleAction} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/ModalFooter)
+
+The ModalContainer requires at least one child component.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the component, and use it as a child of the `Modal` component. Each button action
+requires a value for the `buttonLabel` and `onClick` properties.
+
+```js
+import { ModalFooter } from "ubiq-ui"
+
+return (
+  <Modal>
+    <ModalContent>
+      <h3>Modal title</h3>
+    </ModalContent>
+    <ModalFooter actions={{
+      primaryAction: {
+        buttonLabel: 'Button',
+        onClick: onClickFunc
+      },
+      secondaryAction: {
+        buttonLabel: 'Button',
+        onClick: onClickFunc
+      }
+    }}>
+  </ModalContent>
+)
+```
+
+### Single action button
+
+Providing a single action renders a button.
+
+<Canvas of={ModalFooterStories.SingleAction} />
+
+### Two action buttons
+
+Providing a two actions will render a primary and a secondary button. The primary button
+will remain furthest to the right.
+
+<Canvas of={ModalFooterStories.TwoActions} />

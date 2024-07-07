@@ -25,6 +25,10 @@ type StyledButtonProps = {
    * @default false
    */
   disabled?: boolean
+  /**
+   *  Applies a classname to the component.
+   */
+  className?: string
 } & React.HTMLAttributes<HTMLButtonElement>
 
 const StyledButton = styled('button')<StyledButtonProps>(
@@ -84,6 +88,10 @@ export type ButtonProps = {
    *  The function called when the Button is clicked.
    */
   onClick?: () => void
+  /**
+   *  Applies a classname to the component.
+   */
+  className?: string
 } & StyledButtonProps
 
 export default function Button({
@@ -92,6 +100,7 @@ export default function Button({
   disabled = false,
   isFullWidth = false,
   leftIcon,
+  className,
   onClick,
   ...otherProps
 }: ButtonProps) {
@@ -103,6 +112,7 @@ export default function Button({
         disabled={disabled}
         onClick={onClick}
         type="button"
+        className={className}
         {...otherProps}
       >
         {leftIcon && leftIcon}
