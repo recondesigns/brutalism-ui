@@ -1,35 +1,33 @@
 import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
 import * as CardActionsStories from "./CardActions.stories"
+import * as CardStories from "./Card.stories"
 
 <Meta of={CardActionsStories} />
 
 <Title>CardActions</Title>
 
-<Subtitle>
-  Modals are used as overlays that require action before continuing a task.
-</Subtitle>
+<Subtitle>Provides a container for the call to action buttons.</Subtitle>
 
 <Canvas of={CardActionsStories.Default} />
 
 ## Overview
 
 [Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Card/CardActions)
-&nbsp;|&nbsp;
-[Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=80-86&t=biW5RVaCBvNirs7P-1)
 
-An open Modal will cover the UI with a transparent scrim layer, containing the Modal
-dialog with content and actions for the user.
+Adding content with consistent padding can be done easily by using the Building block components.
 
 ## Basic usage
 
-Import the component, and place it in the UI.
+Import the component and nest the content in the CardContent component.
 
 ```js
-import { CardActions } from "ubiq-ui"
+import { Card, CardActions, Button } from "ubiq-ui"
+
+<Card>
+  <CardActions>
+    <Button>Learn more</Button>
+  </CardActions>
+</Card>
 ```
 
-### Close with Esc key
-
-By passing the `closeOnEsc` prop, users can close the Modal by pressing the Escape key on their keyboard.
-
-<Canvas of={CardActionsStories.Default} />
+<Canvas of={CardStories.Default} sourceState="shown" />

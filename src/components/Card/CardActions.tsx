@@ -6,6 +6,9 @@ const ActionsWrapper = styled('div')({
 })
 
 type ActionsProps = {
+  /**
+   * Child components to be rendered as the card content.
+   */
   children: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>
 
