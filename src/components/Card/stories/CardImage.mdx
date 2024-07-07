@@ -1,0 +1,31 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as CardImageStories from "./CardImage.stories"
+import * as CardStories from "./Card.stories"
+
+<Meta of={CardImageStories} />
+
+<Title>CardImage</Title>
+
+<Subtitle>Include an image for added context.</Subtitle>
+
+<Canvas of={CardImageStories.Default} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Card/CardImage)
+
+Adding content with consistent padding can be done easily by using the Building block components.
+
+## Basic usage
+
+Import the CardImage component and apply the required `src` and `alt` props, then place in the UI.
+
+```js
+import { CardImage } from "ubiq-ui"
+
+<Card>
+  <CardImage src={cardImage.png} alt={imageAltText} />
+</Card>
+```
+
+<Canvas of={CardStories.Default} sourceState="shown" />

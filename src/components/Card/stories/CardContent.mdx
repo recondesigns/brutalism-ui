@@ -1,0 +1,41 @@
+import {
+  Meta,
+  Title,
+  Subtitle,
+  ArgTypes,
+  Source,
+  Canvas,
+} from "@storybook/blocks"
+import * as CardContentStories from "./CardContent.stories"
+import * as CardStories from "./Card.stories"
+
+<Meta of={CardContentStories} />
+
+<Title>CardContent</Title>
+
+<Subtitle>Contains the content of the card and provides padding.</Subtitle>
+
+<Canvas of={CardContentStories.Default} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Card/CardContent)
+
+Adding content with consistent padding can be done easily by using the Building block components.
+
+## Basic usage
+
+Import the component and nest the content in the CardContent component.
+
+```js
+import { Card, CardContent } from "ubiq-ui"
+
+<Card>
+  <CardContent>
+    <h4>Custom content</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+  </CardContent>
+</Card>
+```
+
+<Canvas of={CardStories.Default} sourceState="shown" />
