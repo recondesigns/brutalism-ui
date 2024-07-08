@@ -13,13 +13,9 @@ export const Default: ProgressStory = {
   args: {
     value: 20,
     max: 100,
-    completeMessage: 'Complete!',
     size: 'md',
-  },
-  parameters: {
-    controls: {
-      exclude: ['size'],
-    },
+    includeDecimals: 0,
+    completeMessage: 'Complete!',
   },
 }
 
@@ -27,8 +23,26 @@ export const Size = {
   ...Default,
   args: {
     value: 80,
+    size: 'lg',
+  },
+  parameters: {
+    controls: {
+      exclude: ['completeMessage', 'includeDecimals', 'max'],
+    },
+  },
+}
+
+export const IncludeDecimals = {
+  ...Default,
+  args: {
+    value: 83.222,
+    includeDecimals: 2,
     completeMessage: 'Complete!',
-    size: 'md',
+  },
+  parameters: {
+    controls: {
+      exclude: ['completeMessage', 'size', 'max'],
+    },
   },
 }
 
@@ -37,6 +51,11 @@ export const CompleteMessage = {
   args: {
     value: 100,
     completeMessage: 'Complete!',
+  },
+  parameters: {
+    controls: {
+      exclude: ['includeDecimals', 'size', 'max'],
+    },
   },
 }
 
