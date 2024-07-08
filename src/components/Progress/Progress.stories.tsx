@@ -27,7 +27,15 @@ export const Size: ProgressStory = {
   args: {
     percentage: 80,
     completeMessage: 'Complete!',
-    size: 'lg',
+    size: 'md',
+  },
+}
+
+export const CompleteMessage: ProgressStory = {
+  render: (args) => <Progress {...args} />,
+  args: {
+    percentage: 100,
+    completeMessage: 'Complete!',
   },
 }
 

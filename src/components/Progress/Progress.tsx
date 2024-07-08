@@ -7,6 +7,16 @@ const convertPercentage = (num: number) => {
   return num.toString()
 }
 
+const setSize = (size: 'sm' | 'md' | 'lg') => {
+  if (size === 'lg') {
+    return '40px'
+  } else if (size === 'md') {
+    return '32px'
+  } else if (size === 'sm') {
+    return '24px'
+  }
+}
+
 const ProgressContainer = styled('div')(
   {
     position: 'relative',
@@ -21,17 +31,20 @@ const ProgressContainer = styled('div')(
 )
 
 type ProgressIndicator = {
+  size?: string
   percentage: number
 }
 
 const ProgressIndicator = styled('div')<ProgressIndicator>(
   {
     position: 'relative',
-    height: '36px',
+    // height: '36px',
+    // padding: '4px 0px 4px 0px',
     background: 'rgba(141, 255, 140, 0.8)',
     borderRadius: '50px',
   },
-  ({ percentage }) => ({
+  ({ percentage, size }) => ({
+    height: size ? size : '36px',
     width: percentage ? `${percentage}%` : '10px',
   })
 )
@@ -63,7 +76,7 @@ export type ProgressProps = {
 
 export default function Progress({
   percentage,
-  // size = 'md',
+  size = 'md',
   completeMessage,
 }: ProgressProps) {
   return (
@@ -74,7 +87,7 @@ export default function Progress({
             ? `${convertPercentage(percentage)}%`
             : completeMessage}
         </ProgressLabel>
-        <ProgressIndicator percentage={percentage} />
+        <ProgressIndicator percentage={percentage} size={setSize(size)} />
       </ProgressContainer>
     </ThemeProvider>
   )
