@@ -1,13 +1,13 @@
 ---
-name: Bug report
-about: Report a bug.
-title: ""
+name: Report a bug
+about: Let us know about any bugs or fixes
+title: "Add a request title"
 labels: fix
-assignees: ""
+assignees: "recondesigns"
 ---
 
 **Describe the bug**
-A clear and concise description of what the bug is.
+Give a clear description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
@@ -18,14 +18,14 @@ Steps to reproduce the behavior:
 4. See error
 
 **Expected behavior**
-A clear and concise description of what you expected to happen.
+Give a clear description of the expected behavior.
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
+If applicable, add screenshots to help explain the issue.
 
 **Environment (please complete the following information):**
 
-- OS: [e.g., Windows, MacOS]
+- OS: [e.g., Windows, MacOS, iOS]
 - Browser [e.g., chrome, safari]
 - Version [e.g., 22]
 
