@@ -1,12 +1,12 @@
-import { Meta, StoryObj } from "@storybook/react"
-import ModalContent from "../ModalContent"
-import { Modal, ModalHeader } from "../Modal"
-import Button from "../../Button"
+import { Meta, StoryObj } from '@storybook/react'
+import ModalContent from '../ModalContent'
+import { Modal, ModalHeader } from '../Modal'
+import Button from '../../Button'
 
 type ModalContentStory = StoryObj<typeof ModalContent>
 
 const meta: Meta<typeof ModalContent> = {
-  title: "UI Components/Modal/Building Blocks/ModalContent",
+  title: 'UI Components/Modal/Building Blocks/ModalContent',
   component: ModalContent,
 }
 

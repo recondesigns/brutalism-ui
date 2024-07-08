@@ -1,18 +1,18 @@
-import React from "react"
-import { Meta, StoryObj } from "@storybook/react"
-import { Modal } from "../Modal"
-import ModalHeader from "../ModalHeader"
-import ModalContent from "../ModalContent"
-import { Button } from "../.."
+import React from 'react'
+import { Meta, StoryObj } from '@storybook/react'
+import { Modal } from '../Modal'
+import ModalHeader from '../ModalHeader'
+import ModalContent from '../ModalContent'
+import { Button } from '../..'
 
 type ModalStory = StoryObj<typeof Modal>
 
 const meta: Meta<typeof Modal> = {
-  title: "UI Components/Modal",
+  title: 'UI Components/Modal',
   component: Modal,
   parameters: {
     controls: {
-      exclude: ["isOpen", "onClose", "children"],
+      exclude: ['isOpen', 'onClose', 'children'],
     },
   },
 }
@@ -25,13 +25,13 @@ export const Default: ModalStory = {
       <>
         <div
           style={{
-            padding: "0px 0px 24px 0px",
-            display: "flex",
-            justifyContent: "center",
+            padding: '0px 0px 24px 0px',
+            display: 'flex',
+            justifyContent: 'center',
           }}
         >
           <Button onClick={() => setIsModalOpen(!isModalOpen)}>
-            {!isModalOpen ? "Open modal" : "Close modal"}
+            {!isModalOpen ? 'Open modal' : 'Close modal'}
           </Button>
         </div>
         <Modal {...args} isOpen={isModalOpen} onClose={setIsModalOpen}>
@@ -40,10 +40,10 @@ export const Default: ModalStory = {
             onClose={() => setIsModalOpen(!isModalOpen)}
           />
           <ModalContent>
-            <h3 style={{ fontFamily: "sans-serif", margin: "0px 0px 8px 0px" }}>
+            <h3 style={{ fontFamily: 'sans-serif', margin: '0px 0px 8px 0px' }}>
               Heading level four
             </h3>
-            <p style={{ fontFamily: "sans-serif", margin: "0px 0px 4px 0px" }}>
+            <p style={{ fontFamily: 'sans-serif', margin: '0px 0px 4px 0px' }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
               mollitia, molestiae quas vel sint commodi repudiandae consequuntur
               voluptatum laborum numquam blanditiis harum quisquam eius sed odit
@@ -69,11 +69,11 @@ export const CloseOnEsc = {
   parameters: {
     controls: {
       exclude: [
-        "isOpen",
-        "onClose",
-        "shouldFitContent",
-        "closeOutsideClick",
-        "children",
+        'isOpen',
+        'onClose',
+        'shouldFitContent',
+        'closeOutsideClick',
+        'children',
       ],
     },
   },
@@ -87,11 +87,11 @@ export const CloseOnOutsideClick = {
   parameters: {
     controls: {
       exclude: [
-        "isOpen",
-        "onClose",
-        "shouldFitContent",
-        "closeOnEsc",
-        "children",
+        'isOpen',
+        'onClose',
+        'shouldFitContent',
+        'closeOnEsc',
+        'children',
       ],
     },
   },

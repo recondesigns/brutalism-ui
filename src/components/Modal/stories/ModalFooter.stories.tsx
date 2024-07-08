@@ -1,11 +1,11 @@
-import { Meta, StoryObj } from "@storybook/react"
-import ModalFooter from "../ModalFooter"
-import { Modal, ModalHeader } from "../Modal"
+import { Meta, StoryObj } from '@storybook/react'
+import ModalFooter from '../ModalFooter'
+import { Modal, ModalHeader } from '../Modal'
 
 type ModalFooter = StoryObj<typeof ModalFooter>
 
 const meta: Meta<typeof ModalFooter> = {
-  title: "UI Components/Modal/Building Blocks/ModalFooter",
+  title: 'UI Components/Modal/Building Blocks/ModalFooter',
   component: ModalFooter,
   //   tags: ["autodocs"],
 }
@@ -22,8 +22,8 @@ export const SingleAction: ModalFooter = {
   args: {
     actions: {
       primaryAction: {
-        buttonLabel: "Primary",
-        onclick: () => alert("Primary button clicked"),
+        buttonLabel: 'Primary',
+        onclick: () => alert('Primary button clicked'),
       },
     },
   },
@@ -34,12 +34,12 @@ export const TwoActions = {
   args: {
     actions: {
       primaryAction: {
-        buttonLabel: "Primary",
-        onclick: () => alert("Primary button clicked"),
+        buttonLabel: 'Primary',
+        onclick: () => alert('Primary button clicked'),
       },
       secondaryAction: {
-        buttonLabel: "Secondary",
-        onclick: () => alert("Secondary button clicked"),
+        buttonLabel: 'Secondary',
+        onclick: () => alert('Secondary button clicked'),
       },
     },
   },
