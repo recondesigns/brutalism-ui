@@ -5,7 +5,9 @@ import * as ProgressStories from "./Progress.stories"
 
 <Title>Progress</Title>
 
-<Subtitle>A textfield that allows user to enter information.</Subtitle>
+<Subtitle>
+  Provides feedback about the duration and progression of a process.
+</Subtitle>
 
 <Canvas of={ProgressStories.Default} sourceState="shown" />
 
@@ -15,8 +17,7 @@ import * as ProgressStories from "./Progress.stories"
 &nbsp;|&nbsp;
 [Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=125-2434&t=AWkTgzaBH7e0k0uA-1)
 
-Inputs are the primary way to capture data and information from users. Typically used in forms, users can
-type responses.
+The Progress component is used to indicate how long a user will be waiting.
 
 ## Props
 
@@ -29,26 +30,23 @@ Import the component, and place it in the UI.
 ```js
 import { Progress } from "ubiq-ui"
 
-<Progress percentage={50} completeMessage="Complete!" />
+<Progress value={50} completeMessage="Complete!" />
 ```
 
-### Label
+### Value
 
-Passing a string to the `label` prop will add a label for the input.
-While the Input component does not render the label by default, it is
-recommended to include a label with inputs for accessibilty.
+The `value` prop sets the current progress value.
 
 <Canvas of={ProgressStories.Default} />
 
-### Required
+### Size
 
-The optional `required` prop adds the required attribute to the base input element and
-and adds an asterisk to the label to indicate the field is required.
+Optionally, the component can be give a `size` prop to make it larger, or smaller.
 
-<Canvas of={ProgressStories.Default} />
+<Canvas of={ProgressStories.Size} />
 
-### Helper text
+### Complete message
 
-Adding helper text can assist users with the content required for the form.
+Provide more context to users by applying a text string to let users know when the max number has been reached.
 
-<Canvas of={ProgressStories.Default} />
+<Canvas of={ProgressStories.CompleteMessage} />

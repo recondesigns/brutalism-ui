@@ -1,11 +1,6 @@
-import React from 'react'
 import styled from '@emotion/styled'
 import { ThemeProvider } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
-
-const convertPercentage = (num: number) => {
-  return num.toString()
-}
 
 const setSize = (size: 'sm' | 'md' | 'lg') => {
   if (size === 'lg') {
@@ -32,20 +27,18 @@ const ProgressContainer = styled('div')(
 
 type ProgressIndicator = {
   size?: string
-  percentage: number
+  value: string
 }
 
 const ProgressIndicator = styled('div')<ProgressIndicator>(
   {
     position: 'relative',
-    // height: '36px',
-    // padding: '4px 0px 4px 0px',
     background: 'rgba(141, 255, 140, 0.8)',
     borderRadius: '50px',
   },
-  ({ percentage, size }) => ({
+  ({ value, size }) => ({
     height: size ? size : '36px',
-    width: percentage ? `${percentage}%` : '10px',
+    width: value ? value : '10px',
   })
 )
 
@@ -72,7 +65,11 @@ export type ProgressProps = {
   /**
    * Sets the width of the filler and label text.
    */
-  percentage: number
+  value: number
+  /**
+   * Applies a maximum value.
+   */
+  max?: number
   /**
    * Applies height options.
    */
@@ -84,19 +81,31 @@ export type ProgressProps = {
 }
 
 export default function Progress({
-  percentage,
+  value,
+  max = 100,
   size = 'md',
   completeMessage,
 }: ProgressProps) {
+  const calculatePercentage = (val: number, max: number) => {
+    if (max <= 0) {
+      return '0%'
+    }
+
+    const percentage = (val / max) * 100
+
+    return `${Math.min(Math.max(percentage, 0), 100).toFixed(2)}%`
+  }
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <ProgressContainer>
         <ProgressLabel>
-          {percentage !== 100
-            ? `${convertPercentage(percentage)}%`
-            : completeMessage}
+          {value !== 100 ? calculatePercentage(value, max) : completeMessage}
         </ProgressLabel>
-        <ProgressIndicator percentage={percentage} size={setSize(size)} />
+        <ProgressIndicator
+          value={calculatePercentage(value, max)}
+          size={setSize(size)}
+        />
       </ProgressContainer>
     </ThemeProvider>
   )

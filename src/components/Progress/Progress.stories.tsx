@@ -11,7 +11,8 @@ const meta: Meta<typeof Progress> = {
 export const Default: ProgressStory = {
   render: (args) => <Progress {...args} />,
   args: {
-    percentage: 20,
+    value: 20,
+    max: 100,
     completeMessage: 'Complete!',
     size: 'md',
   },
@@ -22,19 +23,19 @@ export const Default: ProgressStory = {
   },
 }
 
-export const Size: ProgressStory = {
-  render: (args) => <Progress {...args} />,
+export const Size = {
+  ...Default,
   args: {
-    percentage: 80,
+    value: 80,
     completeMessage: 'Complete!',
     size: 'md',
   },
 }
 
-export const CompleteMessage: ProgressStory = {
-  render: (args) => <Progress {...args} />,
+export const CompleteMessage = {
+  ...Default,
   args: {
-    percentage: 100,
+    value: 100,
     completeMessage: 'Complete!',
   },
 }
