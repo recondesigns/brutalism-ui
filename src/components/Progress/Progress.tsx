@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from '@emotion/styled'
 import { ThemeProvider } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
@@ -102,13 +103,29 @@ export default function Progress({
   completeMessage = 'Complete!',
   ...otherProps
 }: ProgressProps) {
+  const setIndicatorText = (
+    val: number,
+    max: number,
+    msg: string,
+    decimals: number
+  ) => {
+    if (val >= max) {
+      return msg
+    }
+
+    if (val < max) {
+      return calculatePercentage(value, max, decimals)
+    }
+  }
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <ProgressContainer data-testid="progress-test" {...otherProps}>
         <ProgressIndicatorText data-testid="progress-indicator-text-test">
-          {value !== 100
+          {setIndicatorText(value, max, completeMessage, includeDecimals)}
+          {/* {value !== 100
             ? calculatePercentage(value, max, includeDecimals)
-            : completeMessage}
+            : completeMessage} */}
         </ProgressIndicatorText>
         <ProgressIndicator
           value={calculatePercentage(value, max, includeDecimals)}

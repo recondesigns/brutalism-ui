@@ -50,7 +50,7 @@ export const CompleteMessage = {
   ...Default,
   args: {
     value: 100,
-    completeMessage: 'Complete!',
+    completeMessage: 'Done!',
   },
   parameters: {
     controls: {
