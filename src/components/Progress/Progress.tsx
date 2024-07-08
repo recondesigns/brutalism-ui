@@ -69,8 +69,17 @@ const ProgressLabel = styled('p')(
 )
 
 export type ProgressProps = {
+  /**
+   * Sets the width of the filler and label text.
+   */
   percentage: number
+  /**
+   * Applies height options.
+   */
   size?: 'sm' | 'md' | 'lg'
+  /**
+   * Provides a string to let users know when progress has reached 100%.
+   */
   completeMessage?: string
 }
 

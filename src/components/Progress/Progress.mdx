@@ -1,0 +1,54 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as ProgressStories from "./Progress.stories"
+
+<Meta of={ProgressStories} />
+
+<Title>Progress</Title>
+
+<Subtitle>A textfield that allows user to enter information.</Subtitle>
+
+<Canvas of={ProgressStories.Default} sourceState="shown" />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Progress)
+&nbsp;|&nbsp;
+[Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=125-2434&t=AWkTgzaBH7e0k0uA-1)
+
+Inputs are the primary way to capture data and information from users. Typically used in forms, users can
+type responses.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the component, and place it in the UI.
+
+```js
+import { Progress } from "ubiq-ui"
+
+<Progress percentage={50} completeMessage="Complete!" />
+```
+
+### Label
+
+Passing a string to the `label` prop will add a label for the input.
+While the Input component does not render the label by default, it is
+recommended to include a label with inputs for accessibilty.
+
+<Canvas of={ProgressStories.Default} />
+
+### Required
+
+The optional `required` prop adds the required attribute to the base input element and
+and adds an asterisk to the label to indicate the field is required.
+
+<Canvas of={ProgressStories.Default} />
+
+### Helper text
+
+Adding helper text can assist users with the content required for the form.
+
+<Canvas of={ProgressStories.Default} />
