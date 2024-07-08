@@ -4,13 +4,31 @@ import Progress from './Progress'
 type ProgressStory = StoryObj<typeof Progress>
 
 const meta: Meta<typeof Progress> = {
-  title: 'Components/Progress',
-  component: Progress
+  title: 'UI Components/Progress',
+  component: Progress,
 }
 
 export const Default: ProgressStory = {
-  // @ts-expect-error ignoring for now is all
-  render: args => <Progress {...args} />
+  render: (args) => <Progress {...args} />,
+  args: {
+    percentage: 20,
+    completeMessage: 'Complete!',
+    size: 'md',
+  },
+  parameters: {
+    controls: {
+      exclude: ['size'],
+    },
+  },
+}
+
+export const Size: ProgressStory = {
+  render: (args) => <Progress {...args} />,
+  args: {
+    percentage: 80,
+    completeMessage: 'Complete!',
+    size: 'lg',
+  },
 }
 
 export default meta
