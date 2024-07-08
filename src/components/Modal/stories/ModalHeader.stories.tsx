@@ -1,14 +1,16 @@
-import React from 'react'
-import { Meta, StoryObj } from '@storybook/react'
-import ModalHeader from '../ModalHeader'
-import { Modal } from '../Modal'
+import React from "react"
+import { Meta, StoryObj } from "@storybook/react"
+import ModalHeader from "../ModalHeader"
+import { Modal } from "../Modal"
+
+type ModalHeaderStory = StoryObj<typeof ModalHeader>
 
 const meta: Meta<typeof ModalHeader> = {
-  title: 'Components/Modal/Building Blocks/ModalHeader',
+  title: "UI Components/Modal/Building Blocks/ModalHeader",
   component: ModalHeader,
 }
 
-export const Default: StoryObj<typeof ModalHeader> = {
+export const Default: ModalHeaderStory = {
   render: (args) => {
     const [isModalOpen, setIsModalOpen] = React.useState(true)
 
@@ -19,11 +21,11 @@ export const Default: StoryObj<typeof ModalHeader> = {
     )
   },
   args: {
-    title: 'Modal title',
+    title: "Modal title",
   },
 }
 
-export const NoCloseButton: StoryObj<typeof ModalHeader> = {
+export const NoCloseButton: ModalHeaderStory = {
   render: (args) => {
     return (
       <Modal isOpen>
@@ -32,7 +34,7 @@ export const NoCloseButton: StoryObj<typeof ModalHeader> = {
     )
   },
   args: {
-    title: 'Modal title',
+    title: "Modal title",
     // @ts-expect-error intentionally using null for this story
     onClose: null,
   },
