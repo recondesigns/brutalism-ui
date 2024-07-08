@@ -6,7 +6,7 @@ import Button from '../../Button'
 type CardActionsStory = StoryObj<typeof CardActions>
 
 const meta: Meta<typeof CardActions> = {
-  title: 'Components/Card/Building Blocks/Card Actions',
+  title: 'UI Components/Card/Building Blocks/Card Actions',
   component: CardActions,
 }
 

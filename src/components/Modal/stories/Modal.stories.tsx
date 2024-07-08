@@ -5,8 +5,10 @@ import ModalHeader from '../ModalHeader'
 import ModalContent from '../ModalContent'
 import { Button } from '../..'
 
+type ModalStory = StoryObj<typeof Modal>
+
 const meta: Meta<typeof Modal> = {
-  title: 'Components/Modal',
+  title: 'UI Components/Modal',
   component: Modal,
   parameters: {
     controls: {
@@ -15,7 +17,7 @@ const meta: Meta<typeof Modal> = {
   },
 }
 
-export const Default: StoryObj<typeof Modal> = {
+export const Default: ModalStory = {
   render: (args) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false)
 
@@ -59,7 +61,7 @@ export const Default: StoryObj<typeof Modal> = {
   },
 }
 
-export const CloseOnEsc: StoryObj<typeof Modal> = {
+export const CloseOnEsc = {
   ...Default,
   args: {
     closeOnEsc: true,
@@ -77,7 +79,7 @@ export const CloseOnEsc: StoryObj<typeof Modal> = {
   },
 }
 
-export const CloseOnOutsideClick: StoryObj<typeof Modal> = {
+export const CloseOnOutsideClick = {
   ...Default,
   args: {
     closeOutsideClick: true,

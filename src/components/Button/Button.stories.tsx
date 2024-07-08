@@ -2,46 +2,47 @@ import { Meta, StoryObj } from '@storybook/react'
 import Button from './Button'
 import { CloseIcon } from '../../assets'
 
+type ButtonStory = StoryObj<typeof Button>
+
+const clickFunc = (msg: string) => alert(`${msg} was clicked.`)
+
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: 'Form elements/Button',
   component: Button,
 }
 
-export const Default: StoryObj<typeof Button> = {
+export const Default: ButtonStory = {
   render: (args) => <Button {...args} />,
   args: {
     children: 'Button',
-    size: 'lg',
-    isFullWidth: false,
-    disabled: false,
-    onClick: () => console.log('Button clicked.'),
+    onClick: () => clickFunc('Button was clicked.'),
   },
 }
 
-export const FullWidth: StoryObj<typeof Button> = {
-  render: (args) => <Button {...args} />,
+export const FullWidth = {
+  ...Default,
   args: {
     children: 'Button',
     isFullWidth: true,
-    onClick: () => console.log('Button clicked.'),
+    onClick: () => clickFunc('Full width button was clicked.'),
   },
 }
 
-export const LeftIcon: StoryObj<typeof Button> = {
-  render: (args) => <Button {...args} />,
+export const LeftIcon = {
+  ...Default,
   args: {
     children: 'Button',
     leftIcon: <CloseIcon />,
-    onClick: () => console.log('Button clicked.'),
+    onClick: () => clickFunc('Left icon button was clicked.'),
   },
 }
 
-export const Disabled: StoryObj<typeof Button> = {
-  render: (args) => <Button {...args} />,
+export const Disabled = {
+  ...Default,
   args: {
     children: 'Button',
     disabled: true,
-    onClick: () => console.log('Button clicked.'),
+    onClick: () => clickFunc('Disabled button was clicked.'),
   },
 }
 

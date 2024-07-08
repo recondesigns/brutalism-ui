@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import Input from './Input'
 
+type InputStory = StoryObj<typeof Input>
+
 const meta: Meta<typeof Input> = {
-  title: 'Components/Input',
+  title: 'Form elements/Input',
   component: Input,
 }
 
-const InputStoryTemplate: StoryObj<typeof Input> = {
+const InputStoryTemplate: InputStory = {
   render: (args) => {
     const [value, setValue] = useState('')
 
