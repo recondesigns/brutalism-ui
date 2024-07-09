@@ -5,9 +5,6 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { Card, CardImage, CardContent, CardActions } from '../Card'
 import Button from '../../Button'
 
-// import CardImage from "../Card"
-// import CardContent from "../CardContent"
-
 expect.extend(matchers)
 
 describe('Card', () => {
