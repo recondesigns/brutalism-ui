@@ -1,3 +1,4 @@
+import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import styled from '@emotion/styled'
 import { Card } from '../Card'
@@ -6,9 +7,10 @@ import CardContent from '../CardContent'
 import CardActions from '../CardActions'
 import Button from '../../Button'
 
-const cardImage = 'https://images.unsplash.com/photo-1720206811364-684e8f8e803f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+const cardImage =
+  'https://images.unsplash.com/photo-1720206811364-684e8f8e803f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
-type CardStory = StoryObj<typeof Card>
+type CardStory = StoryObj<typeof Card>;
 
 const meta: Meta<typeof Card> = {
   title: 'UI Components/Card',
