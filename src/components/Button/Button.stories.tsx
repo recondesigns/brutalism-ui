@@ -1,8 +1,9 @@
+import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import Button from './Button'
 import { CloseIcon } from '../../assets'
 
-type ButtonStory = StoryObj<typeof Button>
+type ButtonStory = StoryObj<typeof Button>;
 
 const clickFunc = (msg: string) => alert(`${msg} was clicked.`)
 

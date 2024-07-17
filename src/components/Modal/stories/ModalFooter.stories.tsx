@@ -1,8 +1,9 @@
+import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import ModalFooter from '../ModalFooter'
 import { Modal, ModalHeader } from '../Modal'
 
-type ModalFooter = StoryObj<typeof ModalFooter>
+type ModalFooter = StoryObj<typeof ModalFooter>;
 
 const meta: Meta<typeof ModalFooter> = {
   title: 'UI Components/Modal/Building Blocks/ModalFooter',

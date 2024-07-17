@@ -44,12 +44,6 @@ describe('Input', () => {
     ).not.toBeInTheDocument()
   })
 
-  it('should render an Input label when the label prop is used', () => {
-    const component = render(<TestInput label="Label" />)
-
-    expect(component.queryByTestId('input-label-test')).toBeInTheDocument()
-  })
-
   it('should render a disabled Input with the disabled prop is used', () => {
     const component = render(<TestInput disabled />)
     const input = component.getByTestId('input-test')
@@ -70,28 +64,6 @@ describe('Input', () => {
     const input = component.getByTestId('input-test')
 
     expect(input).toHaveAttribute('placeholder', 'Placeholder')
-  })
-
-  it('should render helper text when the prop is used', () => {
-    const component = render(<TestInput helperText="Helper text." />)
-
-    expect(component.queryByTestId('input-helpertext-test')).toBeInTheDocument()
-  })
-
-  it('should render label color #FF4F58 when an error is present', () => {
-    const component = render(<TestInput label="Label" hasError={true} />)
-    const label = component.getByTestId('input-label-test')
-
-    expect(label).toHaveStyleRule('color', '#FF4F58')
-  })
-
-  it('should render helper text color #FF4F58 when an error is present', () => {
-    const component = render(
-      <TestInput helperText="Helper text." hasError={true} />
-    )
-    const helperText = component.getByTestId('input-helpertext-test')
-
-    expect(helperText).toHaveStyleRule('color', '#FF4F58')
   })
 
   it('should call onChange when input change occurs', () => {

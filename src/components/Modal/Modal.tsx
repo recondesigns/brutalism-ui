@@ -4,6 +4,7 @@ import { ThemeProvider } from '@emotion/react'
 import ModalDialog from './ModalDialog'
 import ModalHeader from './ModalHeader'
 import ModalContent from './ModalContent'
+import ModalFooter from './ModalFooter'
 import { defaultTheme } from '../emotionTheme'
 
 type ModalWrapperProps = {
@@ -125,4 +126,4 @@ function Modal({
   )
 }
 
-export { Modal, ModalHeader, ModalContent }
+export { Modal, ModalHeader, ModalContent, ModalFooter }
