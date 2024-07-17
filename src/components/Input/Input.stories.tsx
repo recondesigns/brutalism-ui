@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import Input from './Input'
 
-type InputStory = StoryObj<typeof Input>
+type InputStory = StoryObj<typeof Input>;
 
 const meta: Meta<typeof Input> = {
   title: 'Form elements/Input',

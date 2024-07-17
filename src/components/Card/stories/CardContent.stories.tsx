@@ -1,9 +1,10 @@
+import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import styled from '@emotion/styled'
 import { Card } from '../Card'
 import CardContent from '../CardContent'
 
-type CardContentStory = StoryObj<typeof CardContent>
+type CardContentStory = StoryObj<typeof CardContent>;
 
 const meta: Meta<typeof CardContent> = {
   title: 'UI Components/Card/Building Blocks/Card Content',

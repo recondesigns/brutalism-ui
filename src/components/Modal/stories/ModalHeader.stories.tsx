@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import ModalHeader from '../ModalHeader'
 import { Modal } from '../Modal'
 
-type ModalHeaderStory = StoryObj<typeof ModalHeader>
+type ModalHeaderStory = StoryObj<typeof ModalHeader>;
 
 const meta: Meta<typeof ModalHeader> = {
   title: 'UI Components/Modal/Building Blocks/ModalHeader',

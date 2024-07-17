@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from '@emotion/styled'
 import { ThemeProvider } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
@@ -57,7 +58,6 @@ type ModalHeaderProps = {
 }
 
 export default function ModalHeader({ title, onClose }: ModalHeaderProps) {
-  console.log(onClose)
   return (
     <ThemeProvider theme={defaultTheme}>
       <ModalHeaderWrapper>
