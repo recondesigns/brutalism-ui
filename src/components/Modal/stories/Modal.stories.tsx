@@ -5,7 +5,7 @@ import ModalHeader from '../ModalHeader'
 import ModalContent from '../ModalContent'
 import { Button } from '../..'
 
-type ModalStory = StoryObj<typeof Modal>
+type ModalStory = StoryObj<typeof Modal>;
 
 const meta: Meta<typeof Modal> = {
   title: 'UI Components/Modal',

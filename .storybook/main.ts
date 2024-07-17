@@ -7,15 +7,16 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
-    "@storybook/addon-themes"
+    "@storybook/addon-themes",
+    "@storybook/addon-webpack5-compiler-babel",
+    "@chromatic-com/storybook"
   ],
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
   },
   docs: {
-    autodocs: "tag",
-    defaultName: "Docs",
+    defaultName: "Docs"
   },
   staticDirs: ['./public']
 }
