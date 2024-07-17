@@ -61,9 +61,12 @@ export default function ModalHeader({ title, onClose }: ModalHeaderProps) {
   return (
     <ThemeProvider theme={defaultTheme}>
       <ModalHeaderWrapper>
-        <Title>{title}</Title>
+        <Title data-testid="modal-modalheader-title">{title}</Title>
         {onClose && (
-          <IconButton onClick={onClose}>
+          <IconButton
+            onClick={onClose}
+            data-testid="modal-modalheader-close-button"
+          >
             <CloseIcon />
           </IconButton>
         )}
