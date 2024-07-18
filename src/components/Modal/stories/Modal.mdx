@@ -12,7 +12,7 @@ import * as ModalFooterStories from "./ModalFooter.stories"
   Modals are used as overlays that require action before continuing a task.
 </Subtitle>
 
-<Canvas of={ModalStories.Default} />
+<Canvas of={ModalStories.Demo} />
 
 ## Overview
 
@@ -56,7 +56,7 @@ import { Modal, ModalHeader, ModalContent, ModalFooter } from "ubiq-ui"
 
 <Modal>
   <ModalHeader title="Modal title" onClose={closefunc} />
-  <ModalContent>// modal content</ModalContent>
+  <ModalContent>...modal content</ModalContent>
   <ModalFooter actions={footerActionsObj} />
 </Modal>
 ```
@@ -66,17 +66,17 @@ import { Modal, ModalHeader, ModalContent, ModalFooter } from "ubiq-ui"
 The ModalHeader includes a required title and an optional close button. Using the building blocks
 is recommended for consistency, but not required.
 
-<Canvas of={ModalHeaderStories.Default} />
+<Canvas of={ModalHeaderStories.Demo} />
 
 ### ModalContent
 
 The ModalContent component serves a pre-styled box to contain the Modal
 content.
 
-<Canvas of={ModalContentStories.Default} />
+<Canvas of={ModalContentStories.Demo} />
 
 ### ModalFooter
 
 The ModalFooter component provides a pre-styled container with one, or two buttons.
 
-<Canvas of={ModalFooterStories.SingleAction} />
+<Canvas of={ModalFooterStories.Demo} />

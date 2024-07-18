@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import Button from './Button'
 import { CloseIcon } from '../../assets'
 
-type ButtonStory = StoryObj<typeof Button>;
+type ButtonStory = StoryObj<typeof Button>
 
 const clickFunc = (msg: string) => alert(`${msg} was clicked.`)
 
@@ -22,11 +22,43 @@ const meta: Meta<typeof Button> = {
   },
 }
 
+export const Demo: ButtonStory = {
+  render: (args) => (
+    <div
+      style={{
+        padding: '4px 0px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '24px',
+        overflow: 'hidden',
+      }}
+    >
+      <Button size="lg" onClick={args.onClick}>
+        {args.children}
+      </Button>
+      <Button size="lg" leftIcon={<CloseIcon />} onClick={args.onClick}>
+        {args.children}
+      </Button>
+      <Button size="lg" buttonType="rounded" onClick={args.onClick}>
+        {args.children}
+      </Button>
+    </div>
+  ),
+  args: {
+    children: 'Button',
+    onClick: () => clickFunc('Disabled button was clicked.'),
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+}
+
 export const Default: ButtonStory = {
   render: (args) => <Button {...args} />,
   args: {
-    buttonType: 'block',
-    size: 'md',
     isFullWidth: false,
     disabled: false,
     children: 'Button',
@@ -35,27 +67,6 @@ export const Default: ButtonStory = {
   parameters: {
     controls: {
       exclude: ['leftIcon', 'className', 'onClick'],
-    },
-  },
-}
-
-export const ButtonType = {
-  ...Default,
-  args: {
-    buttonType: 'rounded',
-    children: 'Button',
-    onClick: () => clickFunc('Full width button was clicked.'),
-  },
-  parameters: {
-    controls: {
-      exclude: [
-        'disabled',
-        'isFullWidth',
-        'leftIcon',
-        'className',
-        'onClick',
-        'size',
-      ],
     },
   },
 }
@@ -76,6 +87,28 @@ export const Size = {
         'onClick',
         'isFullWidth',
         'buttonType',
+      ],
+    },
+  },
+}
+
+export const ButtonType = {
+  ...Default,
+  name: 'Rounded',
+  args: {
+    buttonType: 'rounded',
+    children: 'Button',
+    onClick: () => clickFunc('Full width button was clicked.'),
+  },
+  parameters: {
+    controls: {
+      exclude: [
+        'disabled',
+        'isFullWidth',
+        'leftIcon',
+        'className',
+        'onClick',
+        'size',
       ],
     },
   },

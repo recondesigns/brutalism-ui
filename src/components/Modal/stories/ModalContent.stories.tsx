@@ -11,7 +11,7 @@ const meta: Meta<typeof ModalContent> = {
   component: ModalContent,
 }
 
-export const Default: ModalContentStory = {
+export const Demo: ModalContentStory = {
   render: (args) => {
     return (
       <Modal isOpen>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import Input from './Input'
 
-type InputStory = StoryObj<typeof Input>;
+type InputStory = StoryObj<typeof Input>
 
 const meta: Meta<typeof Input> = {
   title: 'Form elements/Input',
@@ -14,18 +14,72 @@ const InputStoryTemplate: InputStory = {
     const [value, setValue] = useState('')
 
     return (
-      <Input
-        value={value}
-        onchange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setValue(e.target.value)
-        }
-        id="inputStory"
-        name="inputStory"
-        type="text"
-        {...args}
-      />
+      <div
+        style={{
+          minWidth: '320px',
+          maxWidth: '320px',
+        }}
+      >
+        <Input
+          value={value}
+          onchange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setValue(e.target.value)
+          }
+          id="inputStory"
+          name="inputStory"
+          type="text"
+          {...args}
+        />
+      </div>
     )
   },
+}
+
+export const Demo: InputStory = {
+  render: (args) => {
+    const [value, setValue] = useState('')
+
+    return (
+      <div
+        style={{
+          minWidth: '320px',
+          maxWidth: '320px',
+        }}
+      >
+        <Input
+          id="inputStory"
+          name="inputStory"
+          type="text"
+          label="Label"
+          placeholder="placeholder"
+          helperText="Helper text."
+          value={value}
+          onchange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setValue(e.target.value)
+          }
+          {...args}
+        />
+      </div>
+    )
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 }
 
 export const Default = {

@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import { Card } from '../Card'
 import CardContent from '../CardContent'
 
-type CardContentStory = StoryObj<typeof CardContent>;
+type CardContentStory = StoryObj<typeof CardContent>
 
 const meta: Meta<typeof CardContent> = {
   title: 'UI Components/Card/Building Blocks/Card Content',
@@ -36,6 +36,54 @@ const CardParagraph = styled('p')`
   font-family: sans-serif;
 `
 
+export const Demo: CardContentStory = {
+  render: (args) => (
+    <Card>
+      <CardContent {...args} />
+    </Card>
+  ),
+  args: {
+    children: (
+      <>
+        <CardContent>
+          <CardSubtitle>Subtitle</CardSubtitle>
+          <CardTitle>Card Title</CardTitle>
+          <CardParagraph style={{ paddingBottom: '12px' }}>
+            Neobrutalism is an aesthetic characterized by high contrast
+            elements, bright colors, and bold shapes. It is often used to make a
+            statement, as it is meant to be eye-catching and stand out to the
+            viewer.
+          </CardParagraph>
+        </CardContent>
+      </>
+    ),
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '360px',
+            minWidth: '360px',
+          }}
+        >
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+}
+
 export const Default: CardContentStory = {
   render: (args) => (
     <Card>
@@ -58,6 +106,25 @@ export const Default: CardContentStory = {
       </>
     ),
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-start',
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '360px',
+            minWidth: '360px',
+          }}
+        >
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 }
 
 export default meta

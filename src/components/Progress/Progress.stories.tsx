@@ -2,11 +2,46 @@ import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import Progress from './Progress'
 
-type ProgressStory = StoryObj<typeof Progress>;
+type ProgressStory = StoryObj<typeof Progress>
 
 const meta: Meta<typeof Progress> = {
   title: 'UI Components/Progress',
   component: Progress,
+}
+
+export const Demo: ProgressStory = {
+  render: (args) => <Progress {...args} />,
+  args: {
+    value: 20,
+    max: 100,
+    size: 'md',
+    includeDecimals: 0,
+    completeMessage: 'Complete!',
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '360px',
+            minWidth: '360px',
+          }}
+        >
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 }
 
 export const Default: ProgressStory = {
@@ -18,6 +53,25 @@ export const Default: ProgressStory = {
     includeDecimals: 0,
     completeMessage: 'Complete!',
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-start',
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '360px',
+            minWidth: '360px',
+          }}
+        >
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 }
 
 export const Size = {

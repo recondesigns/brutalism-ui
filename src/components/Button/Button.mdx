@@ -7,7 +7,7 @@ import * as ButtonStories from "./Button.stories"
 
 <Subtitle>Buttons are used as clickable elements to trigger actions.</Subtitle>
 
-<Canvas of={ButtonStories.Default} sourceState="shown" />
+<Canvas of={ButtonStories.Demo} />
 
 ## Overview
 
@@ -23,17 +23,15 @@ Buttons are are the primary calls to action. Importance level can be conveyed wi
 
 ## Basic usage
 
-Import the component, and place it in the UI.
+Import the component, and place it in the UI with the desired props.
 
 ```js
 import { Button } from "ubiq-ui"
-
-<Button>
-  Send
-</Button>
 ```
 
-### Button type
+<Canvas of={ButtonStories.Default} sourceState='shown' />
+
+### Rounded button
 
 Apply rounded or straight edges to the Button.
 
