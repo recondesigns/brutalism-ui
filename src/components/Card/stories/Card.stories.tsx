@@ -10,7 +10,7 @@ import Button from '../../Button'
 const cardImage =
   'https://images.unsplash.com/photo-1720206811364-684e8f8e803f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
-type CardStory = StoryObj<typeof Card>;
+type CardStory = StoryObj<typeof Card>
 
 const meta: Meta<typeof Card> = {
   title: 'UI Components/Card',
@@ -44,6 +44,50 @@ const CardParagraph = styled('p')`
 
 const clickFunc = (el: string) => alert(`${el} has been clicked.`)
 
+export const Demo: CardStory = {
+  render: (args) => <Card {...args} />,
+  args: {
+    disabled: false,
+    children: (
+      <>
+        <CardImage src={cardImage} alt="Card image" />
+        <CardContent>
+          <CardSubtitle>Subtitle</CardSubtitle>
+          <CardTitle>Card Title</CardTitle>
+          <CardParagraph style={{ paddingBottom: '12px' }}>
+            Neobrutalism is an aesthetic characterized by high contrast
+            elements, bright colors, and bold shapes. It is often used to make a
+            statement, as it is meant to be eye-catching and stand out to the
+            viewer.
+          </CardParagraph>
+        </CardContent>
+        <CardActions>
+          <Button onClick={() => clickFunc('Button')}>Button</Button>
+        </CardActions>
+      </>
+    ),
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <div style={{ maxWidth: '360px' }}>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+}
+
 export const Default: CardStory = {
   render: (args) => <Card {...args} />,
   args: {
@@ -72,6 +116,15 @@ export const Default: CardStory = {
       exclude: ['children', 'onClick'],
     },
   },
+  decorators: [
+    (Story) => (
+      <div>
+        <div style={{ maxWidth: '360px' }}>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 }
 
 export const IsClickable: CardStory = {

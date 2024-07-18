@@ -10,7 +10,7 @@ import * as CardActionsStories from "./CardActions.stories"
 
 <Subtitle>Cards confine content and actions for a topic.</Subtitle>
 
-<Canvas of={CardStories.Default} />
+<Canvas of={CardStories.Demo} />
 
 ## Overview
 
@@ -27,18 +27,13 @@ or with the Building Block components to provide consistency.
 
 ## Basic usage
 
-Import the Card component, and nest child components and content.
+Import the Card component, and nest child components and content. Custom elements or the Building blocks can be used
 
 ```js
 import { Card } from "ubiq-ui"
-
-<Card>
-  <div>
-    <h4>Custom content</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-  </div>
-</Card>
 ```
+
+<Canvas of={CardContentStories.Default} sourceState="shown" />
 
 ### Clickable card
 
@@ -50,7 +45,7 @@ the card component, and will call the function that is passed to the `onClick` p
 ### Disabled
 
 To disable user interaction with a clickable Card, passing the `disabled` prop. This
-adds an opacity to the component as a visual indicator to the user that interactions 
+adds an opacity to the component as a visual indicator to the user that interactions
 are disabled.
 
 <Canvas of={CardStories.Disabled} />
