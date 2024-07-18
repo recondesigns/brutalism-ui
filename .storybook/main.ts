@@ -9,15 +9,16 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-themes",
     "@storybook/addon-webpack5-compiler-babel",
-    "@chromatic-com/storybook"
+    "@chromatic-com/storybook",
+    "@storybook/addon-a11y",
   ],
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
   },
   docs: {
-    defaultName: "Docs"
+    defaultName: "Docs",
   },
-  staticDirs: ['./public']
+  staticDirs: ["./public"],
 }
 export default config
