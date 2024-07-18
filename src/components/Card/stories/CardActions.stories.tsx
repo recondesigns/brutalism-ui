@@ -4,14 +4,14 @@ import CardActions from '../CardActions'
 import { Card } from '../Card'
 import Button from '../../Button'
 
-type CardActionsStory = StoryObj<typeof CardActions>;
+type CardActionsStory = StoryObj<typeof CardActions>
 
 const meta: Meta<typeof CardActions> = {
   title: 'UI Components/Card/Building Blocks/Card Actions',
   component: CardActions,
 }
 
-export const Default: CardActionsStory = {
+export const Demo: CardActionsStory = {
   render: (args) => (
     <Card>
       <CardActions {...args} />
@@ -19,9 +19,7 @@ export const Default: CardActionsStory = {
   ),
   args: {
     children: (
-      <Button onClick={() => alert('Button has been clicked.')}>
-        Click me
-      </Button>
+      <Button onClick={() => alert('Button has been clicked.')}>Button</Button>
     ),
   },
 }
