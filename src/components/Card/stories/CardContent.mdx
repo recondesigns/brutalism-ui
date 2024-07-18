@@ -15,7 +15,7 @@ import * as CardStories from "./Card.stories"
 
 <Subtitle>Contains the content of the card and provides padding.</Subtitle>
 
-<Canvas of={CardContentStories.Default} />
+<Canvas of={CardContentStories.Demo} />
 
 ## Overview
 
@@ -29,13 +29,6 @@ Import the component and nest the content in the CardContent component.
 
 ```js
 import { Card, CardContent } from "ubiq-ui"
-
-<Card>
-  <CardContent>
-    <h4>Custom content</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-  </CardContent>
-</Card>
 ```
 
-<Canvas of={CardStories.Default} sourceState="shown" />
+<Canvas of={CardContentStories.Default} sourceState="shown" />

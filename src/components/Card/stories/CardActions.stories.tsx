@@ -22,6 +22,57 @@ export const Demo: CardActionsStory = {
       <Button onClick={() => alert('Button has been clicked.')}>Button</Button>
     ),
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '360px',
+            minWidth: '360px',
+          }}
+        >
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
+}
+
+export const Default: CardActionsStory = {
+  render: (args) => (
+    <Card>
+      <CardActions {...args} />
+    </Card>
+  ),
+  args: {
+    children: (
+      <Button onClick={() => alert('Button has been clicked.')}>Button</Button>
+    ),
+  },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-start',
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '360px',
+            minWidth: '360px',
+          }}
+        >
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 }
 
 export default meta
