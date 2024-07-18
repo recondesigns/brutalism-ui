@@ -22,6 +22,11 @@ export const Demo: CardActionsStory = {
       <Button onClick={() => alert('Button has been clicked.')}>Button</Button>
     ),
   },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
   decorators: [
     (Story) => (
       <div

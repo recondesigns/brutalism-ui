@@ -23,6 +23,11 @@ export const Demo: CardImageStory = {
     src: cardImage,
     alt: 'Card image',
   },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
   decorators: [
     (Story) => (
       <div

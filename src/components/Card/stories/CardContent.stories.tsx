@@ -58,6 +58,11 @@ export const Demo: CardContentStory = {
       </>
     ),
   },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
   decorators: [
     (Story) => (
       <div
