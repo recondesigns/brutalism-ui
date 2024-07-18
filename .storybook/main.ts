@@ -6,11 +6,11 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
-    "@storybook/addon-interactions",
+    "@storybook/addon-a11y",
+    // "@storybook/addon-interactions",
     "@storybook/addon-themes",
     "@storybook/addon-webpack5-compiler-babel",
     "@chromatic-com/storybook",
-    "@storybook/addon-a11y",
   ],
   framework: {
     name: "@storybook/react-webpack5",
