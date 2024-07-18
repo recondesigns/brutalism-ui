@@ -10,6 +10,21 @@ const meta: Meta<typeof ModalHeader> = {
   component: ModalHeader,
 }
 
+export const Demo: ModalHeaderStory = {
+  render: (args) => {
+    const [isModalOpen, setIsModalOpen] = React.useState(true)
+
+    return (
+      <Modal isOpen={isModalOpen}>
+        <ModalHeader {...args} onClose={() => setIsModalOpen(!isModalOpen)} />
+      </Modal>
+    )
+  },
+  args: {
+    title: 'Modal title',
+  },
+}
+
 export const Default: ModalHeaderStory = {
   render: (args) => {
     const [isModalOpen, setIsModalOpen] = React.useState(true)

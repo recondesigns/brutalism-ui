@@ -17,7 +17,7 @@ const meta: Meta<typeof Modal> = {
   },
 }
 
-export const Default: ModalStory = {
+export const Demo: ModalStory = {
   render: (args) => {
     const [isModalOpen, setIsModalOpen] = React.useState(false)
 
@@ -62,7 +62,7 @@ export const Default: ModalStory = {
 }
 
 export const CloseOnEsc = {
-  ...Default,
+  ...Demo,
   args: {
     closeOnEsc: true,
   },
@@ -80,7 +80,7 @@ export const CloseOnEsc = {
 }
 
 export const CloseOnOutsideClick = {
-  ...Default,
+  ...Demo,
   args: {
     closeOutsideClick: true,
   },

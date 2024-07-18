@@ -8,7 +8,25 @@ type ModalFooter = StoryObj<typeof ModalFooter>;
 const meta: Meta<typeof ModalFooter> = {
   title: 'UI Components/Modal/Building Blocks/ModalFooter',
   component: ModalFooter,
-  //   tags: ["autodocs"],
+}
+
+export const Demo: ModalFooter = {
+  render: (args) => {
+    return (
+      <Modal isOpen>
+        <ModalHeader title="Modal title" />
+        <ModalFooter {...args} />
+      </Modal>
+    )
+  },
+  args: {
+    actions: {
+      primaryAction: {
+        buttonLabel: 'Primary',
+        onclick: () => alert('Primary button clicked'),
+      },
+    },
+  },
 }
 
 export const SingleAction: ModalFooter = {
