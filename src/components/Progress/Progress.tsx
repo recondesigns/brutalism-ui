@@ -23,13 +23,11 @@ const setSize = (size: 'sm' | 'md' | 'lg') => {
   }
 }
 
-const Container = styled('div')(
-  {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-  }
-)
+const Container = styled('div')({
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+})
 
 const ProgressContainer = styled('div')(
   {
@@ -80,8 +78,9 @@ const ProgressIndicatorText = styled('p')(
   })
 )
 
-const LabelText = styled('label')(
+const LabelText = styled('p')(
   {
+    margin: '0px',
     paddingBottom: '8px',
     fontFamily: 'sans-serif',
     fontSize: '15px',
