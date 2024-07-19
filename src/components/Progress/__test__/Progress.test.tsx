@@ -61,4 +61,47 @@ describe('Props', () => {
 
     expect(indicatorText).toHaveTextContent('Done!')
   })
+
+  it('should have a title with the text "Label"', () => {
+    render(
+      <Progress label="Label" value={100} max={100} completeMessage="Done!" />
+    )
+
+    const progressLabel = screen.queryByText('Label')
+
+    expect(progressLabel).toBeInTheDocument()
+  })
+
+  it('should have helper text with the text "Helper text."', () => {
+    render(
+      <Progress
+        helperText="Helper text."
+        value={100}
+        max={100}
+        completeMessage="Done!"
+      />
+    )
+
+    const progressHelperText = screen.queryByText('Helper text.')
+
+    expect(progressHelperText).toBeInTheDocument()
+  })
+
+  it('should have helper text and label text"', () => {
+    render(
+      <Progress
+        label="Label"
+        helperText="Helper text."
+        value={100}
+        max={100}
+        completeMessage="Done!"
+      />
+    )
+
+    const progressLabel = screen.queryByText('Label')
+    const progressHelperText = screen.queryByText('Helper text.')
+
+    expect(progressLabel).toBeInTheDocument()
+    expect(progressHelperText).toBeInTheDocument()
+  })
 })

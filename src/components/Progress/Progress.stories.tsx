@@ -12,9 +12,11 @@ const meta: Meta<typeof Progress> = {
 export const Demo: ProgressStory = {
   render: (args) => <Progress {...args} />,
   args: {
+    label: 'Label',
+    size: 'md',
+    helperText: 'Helper text.',
     value: 20,
     max: 100,
-    size: 'md',
     includeDecimals: 0,
     completeMessage: 'Complete!',
   },
@@ -74,6 +76,25 @@ export const Default: ProgressStory = {
   ],
 }
 
+export const Label = {
+  ...Default,
+  args: {
+    label: 'Label',
+    value: 50,
+  },
+  parameters: {
+    controls: {
+      exclude: [
+        'size',
+        'helperText',
+        'completeMessage',
+        'includeDecimals',
+        'max',
+      ],
+    },
+  },
+}
+
 export const Size = {
   ...Default,
   args: {
@@ -82,7 +103,26 @@ export const Size = {
   },
   parameters: {
     controls: {
-      exclude: ['completeMessage', 'includeDecimals', 'max'],
+      exclude: [
+        'helperText',
+        'label',
+        'completeMessage',
+        'includeDecimals',
+        'max',
+      ],
+    },
+  },
+}
+
+export const HelperText = {
+  ...Default,
+  args: {
+    value: 50,
+    helperText: 'Here is some helper text.',
+  },
+  parameters: {
+    controls: {
+      exclude: ['label', 'size', 'completeMessage', 'includeDecimals', 'max'],
     },
   },
 }
@@ -96,7 +136,7 @@ export const IncludeDecimals = {
   },
   parameters: {
     controls: {
-      exclude: ['completeMessage', 'size', 'max'],
+      exclude: ['helperText', 'label', 'completeMessage', 'size', 'max'],
     },
   },
 }
@@ -109,7 +149,7 @@ export const CompleteMessage = {
   },
   parameters: {
     controls: {
-      exclude: ['includeDecimals', 'size', 'max'],
+      exclude: ['helperText', 'label', 'includeDecimals', 'size', 'max'],
     },
   },
 }

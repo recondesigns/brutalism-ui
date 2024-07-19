@@ -23,6 +23,12 @@ const setSize = (size: 'sm' | 'md' | 'lg') => {
   }
 }
 
+const Container = styled('div')({
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+})
+
 const ProgressContainer = styled('div')(
   {
     position: 'relative',
@@ -72,19 +78,54 @@ const ProgressIndicatorText = styled('p')(
   })
 )
 
+const LabelText = styled('p')(
+  {
+    margin: '0px',
+    paddingBottom: '8px',
+    fontFamily: 'sans-serif',
+    fontSize: '15px',
+    lineHeight: '16px',
+  },
+  ({ theme }) => ({
+    color: theme.palette.common.black,
+  })
+)
+
+const HelperText = styled('p')(
+  {
+    margin: '0px',
+    paddingTop: '8px',
+    fontFamily: 'sans-serif',
+    fontSize: '14px',
+    lineHeight: '20px',
+    textAlign: 'left',
+  },
+  ({ theme }) => ({
+    color: theme.palette.common.black,
+  })
+)
+
 export type ProgressProps = {
+  /**
+   * Applies a label to the progress bar.
+   */
+  label?: string
+  /**
+   * Applies height options.
+   */
+  size?: 'sm' | 'md' | 'lg'
   /**
    * Sets the width of the filler and label text.
    */
   value: number
   /**
+   * Adds helper text for added user context.
+   */
+  helperText?: string
+  /**
    * Applies a maximum value.
    */
   max?: number
-  /**
-   * Applies height options.
-   */
-  size?: 'sm' | 'md' | 'lg'
   /**
    * Sets how many decimal places will be appended to the label.
    */
@@ -96,9 +137,11 @@ export type ProgressProps = {
 }
 
 export default function Progress({
+  label,
   value,
   max = 100,
   size = 'md',
+  helperText,
   includeDecimals = 0,
   completeMessage = 'Complete!',
   ...otherProps
@@ -120,19 +163,20 @@ export default function Progress({
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ProgressContainer data-testid="progress-test" {...otherProps}>
-        <ProgressIndicatorText data-testid="progress-indicator-text-test">
-          {setIndicatorText(value, max, completeMessage, includeDecimals)}
-          {/* {value !== 100
-            ? calculatePercentage(value, max, includeDecimals)
-            : completeMessage} */}
-        </ProgressIndicatorText>
-        <ProgressIndicator
-          value={calculatePercentage(value, max, includeDecimals)}
-          size={setSize(size)}
-          data-testid="progress-indicator-test"
-        />
-      </ProgressContainer>
+      <Container data-testid="progress-test">
+        {label && <LabelText>{label}</LabelText>}
+        <ProgressContainer {...otherProps}>
+          <ProgressIndicatorText data-testid="progress-indicator-text-test">
+            {setIndicatorText(value, max, completeMessage, includeDecimals)}
+          </ProgressIndicatorText>
+          <ProgressIndicator
+            value={calculatePercentage(value, max, includeDecimals)}
+            size={setSize(size)}
+            data-testid="progress-indicator-test"
+          />
+        </ProgressContainer>
+        {helperText && <HelperText>{helperText}</HelperText>}
+      </Container>
     </ThemeProvider>
   )
 }
