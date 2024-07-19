@@ -1,22 +1,24 @@
-import React from 'react'
-import { Meta, StoryObj } from '@storybook/react'
-import Progress from './Progress'
+import React from "react"
+import { Meta, StoryObj } from "@storybook/react"
+import Progress from "./Progress"
 
 type ProgressStory = StoryObj<typeof Progress>
 
 const meta: Meta<typeof Progress> = {
-  title: 'UI Components/Progress',
+  title: "UI Components/Progress",
   component: Progress,
 }
 
 export const Demo: ProgressStory = {
   render: (args) => <Progress {...args} />,
   args: {
+    label: "Label",
+    size: "md",
+    helperText: "Helper text.",
     value: 20,
     max: 100,
-    size: 'md',
     includeDecimals: 0,
-    completeMessage: 'Complete!',
+    completeMessage: "Complete!",
   },
   parameters: {
     controls: {
@@ -27,14 +29,14 @@ export const Demo: ProgressStory = {
     (Story) => (
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'center',
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <div
           style={{
-            maxWidth: '360px',
-            minWidth: '360px',
+            maxWidth: "360px",
+            minWidth: "360px",
           }}
         >
           <Story />
@@ -49,22 +51,22 @@ export const Default: ProgressStory = {
   args: {
     value: 20,
     max: 100,
-    size: 'md',
+    size: "md",
     includeDecimals: 0,
-    completeMessage: 'Complete!',
+    completeMessage: "Complete!",
   },
   decorators: [
     (Story) => (
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'flex-start',
+          display: "flex",
+          justifyContent: "flex-start",
         }}
       >
         <div
           style={{
-            maxWidth: '360px',
-            minWidth: '360px',
+            maxWidth: "360px",
+            minWidth: "360px",
           }}
         >
           <Story />
@@ -74,15 +76,53 @@ export const Default: ProgressStory = {
   ],
 }
 
+export const Label = {
+  ...Default,
+  args: {
+    label: "Label",
+    value: 50,
+  },
+  parameters: {
+    controls: {
+      exclude: [
+        "size",
+        "helperText",
+        "completeMessage",
+        "includeDecimals",
+        "max",
+      ],
+    },
+  },
+}
+
 export const Size = {
   ...Default,
   args: {
     value: 80,
-    size: 'lg',
+    size: "lg",
   },
   parameters: {
     controls: {
-      exclude: ['completeMessage', 'includeDecimals', 'max'],
+      exclude: [
+        "helperText",
+        "label",
+        "completeMessage",
+        "includeDecimals",
+        "max",
+      ],
+    },
+  },
+}
+
+export const HelperText = {
+  ...Default,
+  args: {
+    value: 50,
+    helperText: "Here is some helper text.",
+  },
+  parameters: {
+    controls: {
+      exclude: ["label", "size", "completeMessage", "includeDecimals", "max"],
     },
   },
 }
@@ -92,11 +132,11 @@ export const IncludeDecimals = {
   args: {
     value: 83.222,
     includeDecimals: 2,
-    completeMessage: 'Complete!',
+    completeMessage: "Complete!",
   },
   parameters: {
     controls: {
-      exclude: ['completeMessage', 'size', 'max'],
+      exclude: ["helperText", "label", "completeMessage", "size", "max"],
     },
   },
 }
@@ -105,11 +145,11 @@ export const CompleteMessage = {
   ...Default,
   args: {
     value: 100,
-    completeMessage: 'Done!',
+    completeMessage: "Done!",
   },
   parameters: {
     controls: {
-      exclude: ['includeDecimals', 'size', 'max'],
+      exclude: ["helperText", "label", "includeDecimals", "size", "max"],
     },
   },
 }
