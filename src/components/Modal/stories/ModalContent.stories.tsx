@@ -1,14 +1,17 @@
+import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import ModalContent from '../ModalContent'
 import { Modal, ModalHeader } from '../Modal'
 import Button from '../../Button'
 
+type ModalContentStory = StoryObj<typeof ModalContent>;
+
 const meta: Meta<typeof ModalContent> = {
-  title: 'Components/Modal/Building Blocks/ModalContent',
+  title: 'UI Components/Modal/Building Blocks/ModalContent',
   component: ModalContent,
 }
 
-export const Default: StoryObj<typeof ModalContent> = {
+export const Demo: ModalContentStory = {
   render: (args) => {
     return (
       <Modal isOpen>

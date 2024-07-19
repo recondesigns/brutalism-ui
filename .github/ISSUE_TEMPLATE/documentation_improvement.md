@@ -1,9 +1,9 @@
 ---
-name: Documentation improvement
-about: Suggest documentation improvements.
-title: "Docs title here"
-labels: documentation
-assignees: ""
+name: Docs improvement
+about: Recommend changes to documentation
+title: "Add a request title"
+labels: docs
+assignees: "recondesigns"
 ---
 
 **What part of the documentation needs improvement?**

@@ -1,28 +1,25 @@
 ---
 name: Feature request
-about: Add a new feature.
-title: "Title here"
+about: Request a new feature
+title: "Add a request title"
 labels: feat
-assignees: "@recondesigns"
+assignees: "recondesigns"
 ---
 
 **Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+Give a clear description of what the issue, or new feature is. Ex. I'm always frustrated when [...]
 
 **Describe the solution you'd like**
-A clear and concise description of what you want to happen. Ex. I would like to see [...]
+Give a clear description of what you would like to happen. Ex. I would like to see [...]
 
 **Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered. Ex. I've also tried [...]
+Give a clear description of of any alternative solutions or features you've considered. Ex. I've also tried [...]
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
 
 **Priority**
 How important is this feature to you? (e.g., Low, Medium, High, Critical)
-
-**Describe the bug**
-A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
@@ -31,9 +28,6 @@ Steps to reproduce the behavior:
 2. Click on '...'
 3. Scroll down to '...'
 4. See error
-
-**Expected behavior**
-A clear and concise description of what you expected to happen.
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.

@@ -5,8 +5,15 @@ import { setSize } from './utils'
 import { defaultTheme } from '../emotionTheme'
 
 type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+type ButtonType = 'block' | 'rounded'
 
 type StyledButtonProps = {
+  /**
+   *  Adds rounded or straight cornders.
+   *
+   * @default block
+   */
+  buttonType?: ButtonType
   /**
    *  Adds padding to the button to create different sizes.
    *
@@ -51,14 +58,14 @@ const StyledButton = styled('button')<StyledButtonProps>(
   ({ isFullWidth }) => ({
     width: isFullWidth ? '100%' : 'auto',
   }),
-  ({ theme, disabled }) => ({
+  ({ theme, buttonType, disabled }) => ({
     fontFamily: theme.typography.fontFamily,
     fontWeight: theme.typography.button.fontWeight,
     fontSize: theme.typography.button.fontSize,
     color: theme.palette.primary.contrastText,
     background: theme.palette.primary.main,
     border: `2px solid ${theme.palette.common.border}`,
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: buttonType === 'block' ? theme.shape.borderRadius : '50px',
     boxShadow: `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
     '&:hover': {
       background: !disabled
@@ -81,6 +88,12 @@ const StyledButton = styled('button')<StyledButtonProps>(
 
 export type ButtonProps = {
   /**
+   *  Adds rounded or straight cornders.
+   *
+   * @default block
+   */
+  buttonType?: ButtonType
+  /**
    *  Applies an optional preceding icon to the label.
    */
   leftIcon?: React.ReactNode
@@ -96,6 +109,7 @@ export type ButtonProps = {
 
 export default function Button({
   children,
+  buttonType = 'block',
   size = 'lg',
   disabled = false,
   isFullWidth = false,
@@ -107,6 +121,7 @@ export default function Button({
   return (
     <ThemeProvider theme={defaultTheme}>
       <StyledButton
+        buttonType={buttonType}
         size={size}
         isFullWidth={isFullWidth}
         disabled={disabled}

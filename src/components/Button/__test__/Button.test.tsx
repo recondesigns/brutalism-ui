@@ -73,6 +73,83 @@ describe('Props', () => {
     expect(icon).toBeInTheDocument()
   })
 
+  it('should have border-radius: 4px when buttonType is "block"', () => {
+    render(
+      <Button buttonType="block" data-testid="button-test">
+        Send
+      </Button>
+    )
+    const buttonComponent = screen.getByTestId('button-test')
+
+    expect(buttonComponent).toHaveStyleRule('border-radius', '4px')
+  })
+
+  it('should have border-radius: 50px when buttonType is "rounded"', () => {
+    render(
+      <Button buttonType="rounded" data-testid="button-test">
+        Send
+      </Button>
+    )
+    const buttonComponent = screen.getByTestId('button-test')
+
+    expect(buttonComponent).toHaveStyleRule('border-radius', '50px')
+  })
+
+  it('should have padding-top: 16px when size prop is "xl"', () => {
+    render(
+      <Button size="xl" data-testid="button-test">
+        Send
+      </Button>
+    )
+    const buttonComponent = screen.getByTestId('button-test')
+
+    expect(buttonComponent).toHaveStyleRule('padding-top', '16px')
+  })
+
+  it('should have padding-top: 12px when size prop is "lg"', () => {
+    render(
+      <Button size="lg" data-testid="button-test">
+        Send
+      </Button>
+    )
+    const buttonComponent = screen.getByTestId('button-test')
+
+    expect(buttonComponent).toHaveStyleRule('padding-top', '12px')
+  })
+
+  it('should have padding-top: 8px when size prop is "md"', () => {
+    render(
+      <Button size="md" data-testid="button-test">
+        Send
+      </Button>
+    )
+    const buttonComponent = screen.getByTestId('button-test')
+
+    expect(buttonComponent).toHaveStyleRule('padding-top', '8px')
+  })
+
+  it('should have padding-top: 6px when size prop is "sm"', () => {
+    render(
+      <Button size="sm" data-testid="button-test">
+        Send
+      </Button>
+    )
+    const buttonComponent = screen.getByTestId('button-test')
+
+    expect(buttonComponent).toHaveStyleRule('padding-top', '6px')
+  })
+
+  it('should have padding-top: 4px when size prop is "xs"', () => {
+    render(
+      <Button size="xs" data-testid="button-test">
+        Send
+      </Button>
+    )
+    const buttonComponent = screen.getByTestId('button-test')
+
+    expect(buttonComponent).toHaveStyleRule('padding-top', '4px')
+  })
+
   it('should fire the onClick when clicked', () => {
     const mockOnClick = jest.fn()
     render(

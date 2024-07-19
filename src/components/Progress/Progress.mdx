@@ -1,0 +1,70 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as ProgressStories from "./Progress.stories"
+
+<Meta of={ProgressStories} />
+
+<Title>Progress</Title>
+
+<Subtitle>
+  Provides feedback about the duration and progression of a process.
+</Subtitle>
+
+<Canvas of={ProgressStories.Demo} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Progress)
+&nbsp;|&nbsp;
+[Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=125-2434&t=J6rcRMxLnt8P1Icn-1)
+
+The Progress component is used to indicate how long a user will be waiting.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the component, and place it in the UI.
+
+```js
+import { Progress } from "ubiq-ui"
+```
+
+<Canvas of={ProgressStories.Default} sourceState="shown" />
+
+### Label
+
+The `value` prop sets the current progress value.
+
+<Canvas of={ProgressStories.Label} />
+
+### Size
+
+Optionally, the component can be give a `size` prop to make it larger, or smaller.
+
+<Canvas of={ProgressStories.Size} />
+
+### Helper text
+
+The `value` prop sets the current progress value.
+
+<Canvas of={ProgressStories.HelperText} />
+
+### Value
+
+The `value` prop sets the current progress value.
+
+<Canvas of={ProgressStories.Default} />
+
+### Include decimals
+
+To include decimal places in the progress label, pass a number to the `IncludeDecimals` prop.
+
+<Canvas of={ProgressStories.IncludeDecimals} />
+
+### Complete message
+
+Provide more context to users by applying a text string to let users know when the max number has been reached.
+
+<Canvas of={ProgressStories.CompleteMessage} />
