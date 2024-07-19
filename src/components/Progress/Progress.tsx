@@ -1,11 +1,11 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { ThemeProvider } from "@emotion/react"
-import { defaultTheme } from "../emotionTheme"
+import React from 'react'
+import styled from '@emotion/styled'
+import { ThemeProvider } from '@emotion/react'
+import { defaultTheme } from '../emotionTheme'
 
 const calculatePercentage = (val: number, max: number, decimals: number) => {
   if (max <= 0) {
-    return "0%"
+    return '0%'
   }
 
   const percentage = (val / max) * 100
@@ -13,30 +13,29 @@ const calculatePercentage = (val: number, max: number, decimals: number) => {
   return `${Math.min(Math.max(percentage, 0), 100).toFixed(decimals)}%`
 }
 
-const setSize = (size: "sm" | "md" | "lg") => {
-  if (size === "lg") {
-    return "40px"
-  } else if (size === "md") {
-    return "32px"
-  } else if (size === "sm") {
-    return "24px"
+const setSize = (size: 'sm' | 'md' | 'lg') => {
+  if (size === 'lg') {
+    return '40px'
+  } else if (size === 'md') {
+    return '32px'
+  } else if (size === 'sm') {
+    return '24px'
   }
 }
 
-const Container = styled("div")(
+const Container = styled('div')(
   {
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
-  },
-  ({}) => ({})
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+  }
 )
 
-const ProgressContainer = styled("div")(
+const ProgressContainer = styled('div')(
   {
-    position: "relative",
-    borderRadius: "50px",
-    overflow: "hidden",
+    position: 'relative',
+    borderRadius: '50px',
+    overflow: 'hidden',
   },
   ({ theme }) => ({
     backround: theme.palette.common.white,
@@ -50,30 +49,30 @@ type ProgressIndicator = {
   value: string
 }
 
-const ProgressIndicator = styled("div")<ProgressIndicator>(
+const ProgressIndicator = styled('div')<ProgressIndicator>(
   {
-    position: "relative",
-    background: "rgba(141, 255, 140, 0.8)",
-    borderRadius: "50px",
+    position: 'relative',
+    background: 'rgba(141, 255, 140, 0.8)',
+    borderRadius: '50px',
   },
   ({ value, size }) => ({
-    height: size ? size : "36px",
-    width: value ? value : "10px",
+    height: size ? size : '36px',
+    width: value ? value : '10px',
   })
 )
 
-const ProgressIndicatorText = styled("p")(
+const ProgressIndicatorText = styled('p')(
   {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    right: "0px",
-    transform: "translate(-50%, -50%)",
-    margin: "0px",
-    padding: "0px",
-    fontFamily: "sans-serif",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    right: '0px',
+    transform: 'translate(-50%, -50%)',
+    margin: '0px',
+    padding: '0px',
+    fontFamily: 'sans-serif',
     fontWeight: 700,
-    textAlign: "center",
+    textAlign: 'center',
     zIndex: 10,
   },
   ({ theme }) => ({
@@ -81,26 +80,26 @@ const ProgressIndicatorText = styled("p")(
   })
 )
 
-const LabelText = styled("label")(
+const LabelText = styled('label')(
   {
-    paddingBottom: "8px",
-    fontFamily: "sans-serif",
-    fontSize: "15px",
-    lineHeight: "16px",
+    paddingBottom: '8px',
+    fontFamily: 'sans-serif',
+    fontSize: '15px',
+    lineHeight: '16px',
   },
   ({ theme }) => ({
     color: theme.palette.common.black,
   })
 )
 
-const HelperText = styled("p")(
+const HelperText = styled('p')(
   {
-    margin: "0px",
-    paddingTop: "8px",
-    fontFamily: "sans-serif",
-    fontSize: "14px",
-    lineHeight: "20px",
-    textAlign: "left",
+    margin: '0px',
+    paddingTop: '8px',
+    fontFamily: 'sans-serif',
+    fontSize: '14px',
+    lineHeight: '20px',
+    textAlign: 'left',
   },
   ({ theme }) => ({
     color: theme.palette.common.black,
@@ -115,7 +114,7 @@ export type ProgressProps = {
   /**
    * Applies height options.
    */
-  size?: "sm" | "md" | "lg"
+  size?: 'sm' | 'md' | 'lg'
   /**
    * Sets the width of the filler and label text.
    */
@@ -142,10 +141,10 @@ export default function Progress({
   label,
   value,
   max = 100,
-  size = "md",
+  size = 'md',
   helperText,
   includeDecimals = 0,
-  completeMessage = "Complete!",
+  completeMessage = 'Complete!',
   ...otherProps
 }: ProgressProps) {
   const setIndicatorText = (
