@@ -1,28 +1,27 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
-import ModalContent from '../ModalContent'
-import { Modal, ModalHeader } from '../Modal'
+import Modal from '../../Modal'
 import Button from '../../Button'
 
-type ModalContentStory = StoryObj<typeof ModalContent>;
+type ModalContentStory = StoryObj<typeof Modal.Content>
 
-const meta: Meta<typeof ModalContent> = {
+const meta: Meta<typeof Modal.Content> = {
   title: 'UI Components/Modal/Building Blocks/ModalContent',
-  component: ModalContent,
+  component: Modal.Content,
 }
 
 export const Demo: ModalContentStory = {
   render: (args) => {
     return (
       <Modal isOpen>
-        <ModalContent {...args} />
+        <Modal.Content {...args} />
       </Modal>
     )
   },
   args: {
     children: (
       <>
-        <ModalHeader title="Modal" />
+        <Modal.Header title="Modal" />
         <Button isFullWidth>Button</Button>
       </>
     ),

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import ModalHeader from '../ModalHeader'
-import { Modal } from '../Modal'
+import Modal from '../../Modal'
 
-type ModalHeaderStory = StoryObj<typeof ModalHeader>;
+type ModalHeaderStory = StoryObj<typeof ModalHeader>
 
 const meta: Meta<typeof ModalHeader> = {
   title: 'UI Components/Modal/Building Blocks/ModalHeader',
@@ -16,7 +16,7 @@ export const Demo: ModalHeaderStory = {
 
     return (
       <Modal isOpen={isModalOpen}>
-        <ModalHeader {...args} onClose={() => setIsModalOpen(!isModalOpen)} />
+        <Modal.Header {...args} onClose={() => setIsModalOpen(!isModalOpen)} />
       </Modal>
     )
   },
@@ -31,7 +31,7 @@ export const Default: ModalHeaderStory = {
 
     return (
       <Modal isOpen={isModalOpen}>
-        <ModalHeader {...args} onClose={() => setIsModalOpen(!isModalOpen)} />
+        <Modal.Header {...args} onClose={() => setIsModalOpen(!isModalOpen)} />
       </Modal>
     )
   },
@@ -44,7 +44,7 @@ export const NoCloseButton: ModalHeaderStory = {
   render: (args) => {
     return (
       <Modal isOpen>
-        <ModalHeader {...args} />
+        <Modal.Header {...args} />
       </Modal>
     )
   },

@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { Modal, ModalHeader } from '../Modal'
+import Modal from '../../Modal'
 
 expect.extend(matchers)
 
@@ -15,7 +15,7 @@ describe('ModalHeader', () => {
   it('should a modal header with a title of "Modal header', () => {
     const component = render(
       <Modal isOpen data-testid="modal-test">
-        <ModalHeader title="Modal header" onClose={mockOnClose}></ModalHeader>
+        <Modal.Header title="Modal header" onClose={mockOnClose}></Modal.Header>
       </Modal>
     )
 
@@ -29,7 +29,7 @@ describe('ModalHeader', () => {
 
     const component = render(
       <Modal isOpen data-testid="modal-test">
-        <ModalHeader title="Modal header" onClose={mockOnClose}></ModalHeader>
+        <Modal.Header title="Modal header" onClose={mockOnClose}></Modal.Header>
       </Modal>
     )
 

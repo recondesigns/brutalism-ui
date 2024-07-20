@@ -27,15 +27,12 @@ The ModalContainer requires at least one child component.
 Import the component, and use it as a child of the `Modal` component. Each button action
 requires a value for the `buttonLabel` and `onClick` properties.
 
-```js
-import { ModalFooter } from "ubiq-ui"
+```jsx
+import { Modal } from "ubiq-ui"
 
 return (
   <Modal>
-    <ModalContent>
-      <h3>Modal title</h3>
-    </ModalContent>
-    <ModalFooter actions={{
+    <Modal.Footer actions={{
       primaryAction: {
         buttonLabel: 'Button',
         onClick: onClickFunc
@@ -45,7 +42,7 @@ return (
         onClick: onClickFunc
       }
     }}>
-  </ModalContent>
+  </Modal>
 )
 ```
 
@@ -53,11 +50,45 @@ return (
 
 Providing a single action renders a button.
 
+```jsx
+import { Modal } from "ubiq-ui"
+
+return (
+  <Modal>
+    <Modal.Footer actions={{
+      primaryAction: {
+        buttonLabel: 'Button',
+        onClick: onClickFunc
+      }
+    }}>
+  </Modal>
+)
+```
+
 <Canvas of={ModalFooterStories.SingleAction} />
 
 ### Two action buttons
 
 Providing a two actions will render a primary and a secondary button. The primary button
 will remain furthest to the right.
+
+```jsx
+import { Modal } from "ubiq-ui"
+
+return (
+  <Modal>
+    <Modal.Footer actions={{
+      primaryAction: {
+        buttonLabel: 'Button',
+        onClick: onClickFunc
+      },
+      secondaryAction: {
+        buttonLabel: 'Button',
+        onClick: onClickFunc
+      }
+    }}>
+  </Modal>
+)
+```
 
 <Canvas of={ModalFooterStories.TwoActions} />

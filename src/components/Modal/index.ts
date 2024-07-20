@@ -1,1 +1,1 @@
-export { Modal, ModalHeader, ModalContent, ModalFooter } from './Modal'
+export { default, ModalProps } from './Modal'

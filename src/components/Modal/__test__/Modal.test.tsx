@@ -2,7 +2,8 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Modal } from '../Modal'
+import Modal from '../../Modal'
+// import { Modal } from '../Modal'
 
 expect.extend(matchers)
 

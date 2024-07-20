@@ -1,9 +1,9 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import ModalFooter from '../ModalFooter'
-import { Modal, ModalHeader } from '../Modal'
+import Modal from '../../Modal'
 
-type ModalFooter = StoryObj<typeof ModalFooter>;
+type ModalFooter = StoryObj<typeof ModalFooter>
 
 const meta: Meta<typeof ModalFooter> = {
   title: 'UI Components/Modal/Building Blocks/ModalFooter',
@@ -14,7 +14,7 @@ export const Demo: ModalFooter = {
   render: (args) => {
     return (
       <Modal isOpen>
-        <ModalHeader title="Modal title" />
+        <Modal.Header title="Modal title" />
         <ModalFooter {...args} />
       </Modal>
     )
@@ -33,7 +33,7 @@ export const SingleAction: ModalFooter = {
   render: (args) => {
     return (
       <Modal isOpen>
-        <ModalHeader title="Modal title" />
+        <Modal.Header title="Modal title" />
         <ModalFooter {...args} />
       </Modal>
     )
