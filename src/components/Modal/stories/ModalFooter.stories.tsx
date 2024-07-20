@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import ModalFooter from '../ModalFooter'
-import Modal from '../../Modal'
+import { Modal } from '../../Modal'
 
 type ModalFooter = StoryObj<typeof ModalFooter>
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
-import Modal from '../../Modal'
+import { Modal } from '../../Modal'
 import Button from '../../Button'
 
 type ModalContentStory = StoryObj<typeof Modal.Content>
