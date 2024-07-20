@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Modal from '../../Modal'
+import {Modal} from '../../Modal'
 
 expect.extend(matchers)
 
