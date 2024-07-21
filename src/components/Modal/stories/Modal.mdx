@@ -29,9 +29,9 @@ dialog with content and actions for the user.
 
 ## Basic usage
 
-Import the component, and place it in the UI.
+Import the component, and add custom content, or use the Modal's Building blocks.
 
-```js
+```jsx
 import { Modal } from "ubiq-ui"
 ```
 
@@ -51,13 +51,13 @@ By passing the `closeOutsideClick` prop, users can close the Modal clicking anyw
 
 Adding content with consistent padding can be done easily by using the Building block components.
 
-```js
-import { Modal, ModalHeader, ModalContent, ModalFooter } from "ubiq-ui"
+```jsx
+import { Modal } from "ubiq-ui"
 
 <Modal>
-  <ModalHeader title="Modal title" onClose={closefunc} />
-  <ModalContent>...modal content</ModalContent>
-  <ModalFooter actions={footerActionsObj} />
+  <Modal.Header title="Modal title" onClose={closefunc} />
+  <Modal.Content>...modal content</Modal.Content>
+  <Modal.Footer actions={footerActionsObj} />
 </Modal>
 ```
 
@@ -66,6 +66,14 @@ import { Modal, ModalHeader, ModalContent, ModalFooter } from "ubiq-ui"
 The ModalHeader includes a required title and an optional close button. Using the building blocks
 is recommended for consistency, but not required.
 
+```jsx
+import { Modal } from "ubiq-ui"
+
+<Modal>
+  <Modal.Header title="Modal title" onClose={closefunc} />
+</Modal>
+```
+
 <Canvas of={ModalHeaderStories.Demo} />
 
 ### ModalContent
@@ -73,10 +81,28 @@ is recommended for consistency, but not required.
 The ModalContent component serves a pre-styled box to contain the Modal
 content.
 
+```jsx
+import { Modal } from "ubiq-ui"
+
+<Modal>
+  <Modal.Content>
+    ...content
+  </Modal.Content>
+</Modal>
+```
+
 <Canvas of={ModalContentStories.Demo} />
 
 ### ModalFooter
 
 The ModalFooter component provides a pre-styled container with one, or two buttons.
+
+```jsx
+import { Modal } from "ubiq-ui"
+
+<Modal>
+  <Modal.Footer actions={footerActions} />
+</Modal>
+```
 
 <Canvas of={ModalFooterStories.Demo} />
