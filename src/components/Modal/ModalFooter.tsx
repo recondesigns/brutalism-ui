@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { ThemeProvider } from '@emotion/react'
-import { Button } from '../../components'
+import Button from '../Button'
 import { defaultTheme } from '../emotionTheme'
 
 type Label = string
