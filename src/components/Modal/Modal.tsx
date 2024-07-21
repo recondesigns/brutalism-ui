@@ -37,7 +37,7 @@ const ModalScrim = styled('div')({
   background: 'rgba(0, 0, 0, 0.15)',
 })
 
-type ModalProps = {
+export type ModalProps = {
   /**
    *  Sets if the Modal is open (visible), or not.
    *
@@ -126,4 +126,8 @@ function Modal({
   )
 }
 
-export { Modal, ModalHeader, ModalContent, ModalFooter }
+Modal.Header = ModalHeader
+Modal.Content = ModalContent
+Modal.Footer = ModalFooter
+
+export default Modal

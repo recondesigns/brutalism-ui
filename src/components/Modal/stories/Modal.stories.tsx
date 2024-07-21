@@ -1,8 +1,6 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
-import { Modal } from '../Modal'
-import ModalHeader from '../ModalHeader'
-import ModalContent from '../ModalContent'
+import { Modal } from '../../Modal'
 import { Button } from '../..'
 
 type ModalStory = StoryObj<typeof Modal>
@@ -35,11 +33,11 @@ export const Demo: ModalStory = {
           </Button>
         </div>
         <Modal {...args} isOpen={isModalOpen} onClose={setIsModalOpen}>
-          <ModalHeader
+          <Modal.Header
             title="Modal title"
             onClose={() => setIsModalOpen(!isModalOpen)}
           />
-          <ModalContent>
+          <Modal.Content>
             <h3 style={{ fontFamily: 'sans-serif', margin: '0px 0px 8px 0px' }}>
               Heading level four
             </h3>
@@ -49,7 +47,7 @@ export const Demo: ModalStory = {
               voluptatum laborum numquam blanditiis harum quisquam eius sed odit
               fugiat iusto fuga praesentium optio,
             </p>
-          </ModalContent>
+          </Modal.Content>
         </Modal>
       </>
     )
