@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Card, CardImage, CardContent } from '../Card'
+import Card from '../Card'
 
 expect.extend(matchers)
 
@@ -15,14 +15,14 @@ describe('CardImage', () => {
 
     render(
       <Card>
-        <CardImage
+        <Card.Image
           src={cardImageSrc}
           alt="Card image"
           data-testid="card-image-test"
         />
-        <CardContent data-testid="card-content-test">
+        <Card.Content data-testid="card-content-test">
           <p>Card content</p>
-        </CardContent>
+        </Card.Content>
       </Card>
     )
     const cardImage = screen.getByTestId('card-image-test')

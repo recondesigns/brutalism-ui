@@ -1,5 +1,5 @@
 export { default as Button, ButtonProps } from './Button'
 export { default as Input, InputProps } from './Input'
 export { Modal, ModalProps } from './Modal'
-export { Card, CardImage, CardContent, CardActions, CardProps } from './Card'
+export { Card, CardProps } from './Card'
 export { default as Progress, ProgressProps } from './Progress'

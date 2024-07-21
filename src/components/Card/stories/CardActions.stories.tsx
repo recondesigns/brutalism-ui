@@ -1,20 +1,19 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
-import CardActions from '../CardActions'
-import { Card } from '../Card'
+import Card from '../Card'
 import Button from '../../Button'
 
-type CardActionsStory = StoryObj<typeof CardActions>
+type CardActionsStory = StoryObj<typeof Card.Actions>
 
-const meta: Meta<typeof CardActions> = {
+const meta: Meta<typeof Card.Actions> = {
   title: 'UI Components/Card/Building Blocks/Card Actions',
-  component: CardActions,
+  component: Card.Actions,
 }
 
 export const Demo: CardActionsStory = {
   render: (args) => (
     <Card>
-      <CardActions {...args} />
+      <Card.Actions {...args} />
     </Card>
   ),
   args: {
@@ -51,7 +50,7 @@ export const Demo: CardActionsStory = {
 export const Default: CardActionsStory = {
   render: (args) => (
     <Card>
-      <CardActions {...args} />
+      <Card.Actions {...args} />
     </Card>
   ),
   args: {
