@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Card } from '../Card'
+import Card from '../Card'
 
 expect.extend(matchers)
 

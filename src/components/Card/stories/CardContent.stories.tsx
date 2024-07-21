@@ -1,14 +1,13 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import styled from '@emotion/styled'
-import { Card } from '../Card'
-import CardContent from '../CardContent'
+import Card from '../Card'
 
-type CardContentStory = StoryObj<typeof CardContent>
+type CardContentStory = StoryObj<typeof Card.Content>
 
-const meta: Meta<typeof CardContent> = {
+const meta: Meta<typeof Card.Content> = {
   title: 'UI Components/Card/Building Blocks/Card Content',
-  component: CardContent,
+  component: Card.Content,
 }
 
 const CardTitle = styled('h4')`
@@ -39,13 +38,13 @@ const CardParagraph = styled('p')`
 export const Demo: CardContentStory = {
   render: (args) => (
     <Card>
-      <CardContent {...args} />
+      <Card.Content {...args} />
     </Card>
   ),
   args: {
     children: (
       <>
-        <CardContent>
+        <Card.Content>
           <CardSubtitle>Subtitle</CardSubtitle>
           <CardTitle>Card Title</CardTitle>
           <CardParagraph style={{ paddingBottom: '12px' }}>
@@ -54,7 +53,7 @@ export const Demo: CardContentStory = {
             statement, as it is meant to be eye-catching and stand out to the
             viewer.
           </CardParagraph>
-        </CardContent>
+        </Card.Content>
       </>
     ),
   },
@@ -87,13 +86,13 @@ export const Demo: CardContentStory = {
 export const Default: CardContentStory = {
   render: (args) => (
     <Card>
-      <CardContent {...args} />
+      <Card.Content {...args} />
     </Card>
   ),
   args: {
     children: (
       <>
-        <CardContent>
+        <Card.Content>
           <CardSubtitle>Subtitle</CardSubtitle>
           <CardTitle>Card Title</CardTitle>
           <CardParagraph style={{ paddingBottom: '12px' }}>
@@ -102,7 +101,7 @@ export const Default: CardContentStory = {
             statement, as it is meant to be eye-catching and stand out to the
             viewer.
           </CardParagraph>
-        </CardContent>
+        </Card.Content>
       </>
     ),
   },
