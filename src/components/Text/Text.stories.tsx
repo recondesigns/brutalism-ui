@@ -1,61 +1,88 @@
-import React from 'react'
-import { Meta, StoryObj } from '@storybook/react'
-import Text from './Text'
+import React from "react"
+import { Meta, StoryObj } from "@storybook/react"
+import Text from "./Text"
 
 const meta: Meta<typeof Text> = {
-  title: 'Foundations/Text',
+  title: "Foundations/Text",
   component: Text,
 }
 
 type TextStory = StoryObj<typeof Text>
 
 export const Demo: TextStory = {
-  render: (args) => <Text {...args} />,
-  args: {
-    variant: 'h1',
-    gutterBottom: false,
-    children: 'Text component',
-    asElement: 'h5',
+  render: (args) => (
+    <>
+      <Text {...args} variant="h4" gutterBottom>
+        Heading text
+      </Text>
+      <Text {...args} variant="body2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+        mollitia, molestiae quas vel sint commodi repudiandae consequuntur
+        voluptatum laborum numquam blanditiis harum quisquam eius sed odit
+        fugiat iusto fuga praesentium optio, eaque rerum!
+      </Text>
+    </>
+  ),
+  parameters: {
+    controls: {
+      disable: true,
+    },
   },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: "20px 0px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ maxWidth: "400px" }}>
+          <Story />
+        </div>
+      </div>
+    ),
+  ],
 }
 
 export const Variant: TextStory = {
-  ...Demo,
+  render: (args) => <Text {...args} />,
   args: {
-    variant: 'body1',
-    children: 'Text component',
+    variant: "h6",
+    children: "Text component",
   },
   parameters: {
     controls: {
-      exclude: ['asElement', 'gutterBottom'],
+      exclude: ["asElement", "gutterBottom"],
     },
   },
 }
 
 export const AsElement: TextStory = {
-  ...Demo,
+  ...Variant,
   args: {
-    variant: 'h6',
-    children: 'Text component',
-    asElement: 'p',
+    variant: "h6",
+    children: "Text component",
+    asElement: "p",
   },
   parameters: {
     controls: {
-      exclude: ['gutterBottom', 'variant'],
+      exclude: ["gutterBottom", "variant"],
     },
   },
 }
 
 export const GutterBottom: TextStory = {
-  ...Demo,
+  ...Variant,
   args: {
-    variant: 'h4',
-    children: 'Text component',
+    variant: "h6",
+    children: "Text component",
     gutterBottom: true,
   },
   parameters: {
     controls: {
-      exclude: ['asElement', 'variant'],
+      exclude: ["asElement", "variant"],
     },
   },
 }
