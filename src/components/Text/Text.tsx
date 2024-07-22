@@ -57,7 +57,7 @@ function setFontSize(textVariant: Variant) {
   }
 }
 
-const TextRoot = styled('div')<TypographyProps>(
+const TextRoot = styled('div')<TextProps>(
   ({ theme, variant = 'body1' }) => ({
     fontFamily: theme.typography.fontFamily,
     fontSize: setFontSize(variant),
@@ -68,7 +68,7 @@ const TextRoot = styled('div')<TypographyProps>(
   })
 )
 
-export type TypographyProps = {
+export type TextProps = {
   /**
    * Sets the text variant.
    *
@@ -92,7 +92,7 @@ export default function Text({
   asElement,
   gutterBottom = false,
   ...otherProps
-}: TypographyProps) {
+}: TextProps) {
   const Component = asElement || variantMap[variant] || 'p'
 
   return (
