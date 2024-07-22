@@ -53,7 +53,7 @@ function setFontSize(textVariant: Variant) {
   case 'body2':
     return '0.875rem'
   case 'caption':
-    return '00.75rem'
+    return '0.75rem'
   }
 }
 
