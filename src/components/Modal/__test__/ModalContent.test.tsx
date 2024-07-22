@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Modal, ModalContent } from '../Modal'
+import {Modal} from '../../Modal'
 
 expect.extend(matchers)
 
@@ -12,9 +12,9 @@ describe('ModalContent', () => {
   it('should render ModalContent component', () => {
     render(
       <Modal isOpen data-testid="modal-test">
-        <ModalContent data-testid="modal-modalcontent-test">
+        <Modal.Content data-testid="modal-modalcontent-test">
           <p>Modal children</p>
-        </ModalContent>
+        </Modal.Content>
       </Modal>
     )
 

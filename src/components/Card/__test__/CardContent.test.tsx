@@ -2,7 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render, screen } from '@testing-library/react'
-import { Card, CardContent } from '../Card'
+import Card from '../Card'
 
 expect.extend(matchers)
 
@@ -12,9 +12,9 @@ describe('CardContent', () => {
   it('should render a card containing a CardContent component', () => {
     render(
       <Card disabled>
-        <CardContent data-testid="card-content-test">
+        <Card.Content data-testid="card-content-test">
           <p>Card content</p>
-        </CardContent>
+        </Card.Content>
       </Card>
     )
     const cardContent = screen.getByTestId('card-content-test')

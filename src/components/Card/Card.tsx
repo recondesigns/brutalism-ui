@@ -82,4 +82,8 @@ function Card({
   )
 }
 
-export { Card, CardImage, CardContent, CardActions }
+Card.Image = CardImage
+Card.Content = CardContent
+Card.Actions = CardActions
+
+export default Card

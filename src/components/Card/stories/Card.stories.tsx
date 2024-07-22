@@ -1,10 +1,7 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import styled from '@emotion/styled'
-import { Card } from '../Card'
-import CardImage from '../CardImage'
-import CardContent from '../CardContent'
-import CardActions from '../CardActions'
+import Card from '../Card'
 import Button from '../../Button'
 
 const cardImage =
@@ -50,8 +47,8 @@ export const Demo: CardStory = {
     disabled: false,
     children: (
       <>
-        <CardImage src={cardImage} alt="Card image" />
-        <CardContent>
+        <Card.Image src={cardImage} alt="Card image" />
+        <Card.Content>
           <CardSubtitle>Subtitle</CardSubtitle>
           <CardTitle>Card Title</CardTitle>
           <CardParagraph style={{ paddingBottom: '12px' }}>
@@ -60,10 +57,10 @@ export const Demo: CardStory = {
             statement, as it is meant to be eye-catching and stand out to the
             viewer.
           </CardParagraph>
-        </CardContent>
-        <CardActions>
+        </Card.Content>
+        <Card.Actions>
           <Button onClick={() => clickFunc('Button')}>Button</Button>
-        </CardActions>
+        </Card.Actions>
       </>
     ),
   },
@@ -94,8 +91,8 @@ export const Default: CardStory = {
     disabled: false,
     children: (
       <>
-        <CardImage src={cardImage} alt="Card image" />
-        <CardContent>
+        <Card.Image src={cardImage} alt="Card image" />
+        <Card.Content>
           <CardSubtitle>Subtitle</CardSubtitle>
           <CardTitle>Card Title</CardTitle>
           <CardParagraph style={{ paddingBottom: '12px' }}>
@@ -104,10 +101,10 @@ export const Default: CardStory = {
             statement, as it is meant to be eye-catching and stand out to the
             viewer.
           </CardParagraph>
-        </CardContent>
-        <CardActions>
+        </Card.Content>
+        <Card.Actions>
           <Button onClick={() => clickFunc('Button')}>Button</Button>
-        </CardActions>
+        </Card.Actions>
       </>
     ),
   },
@@ -133,8 +130,8 @@ export const IsClickable: CardStory = {
     isClickable: true,
     children: (
       <>
-        <CardImage src={cardImage} alt="Card image" />
-        <CardContent>
+        <Card.Image src={cardImage} alt="Card image" />
+        <Card.Content>
           <CardSubtitle>Subtitle</CardSubtitle>
           <CardTitle>Card Title</CardTitle>
           <CardParagraph>
@@ -143,7 +140,7 @@ export const IsClickable: CardStory = {
             statement, as it is meant to be eye-catching and stand out to the
             viewer.
           </CardParagraph>
-        </CardContent>
+        </Card.Content>
       </>
     ),
     onClick: () => clickFunc('Card'),
@@ -161,8 +158,8 @@ export const Disabled: CardStory = {
     disabled: true,
     children: (
       <>
-        <CardImage src={cardImage} alt="Card image" />
-        <CardContent>
+        <Card.Image src={cardImage} alt="Card image" />
+        <Card.Content>
           <CardSubtitle>Subtitle</CardSubtitle>
           <CardTitle>Card Title</CardTitle>
           <CardParagraph>
@@ -171,7 +168,7 @@ export const Disabled: CardStory = {
             statement, as it is meant to be eye-catching and stand out to the
             viewer.
           </CardParagraph>
-        </CardContent>
+        </Card.Content>
       </>
     ),
   },

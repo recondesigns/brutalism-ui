@@ -2,6 +2,7 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render, fireEvent, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import Button from '../Button'
 import { AlertIcon } from '../../../assets'
 
@@ -196,5 +197,56 @@ describe('Props', () => {
     expect(button).toHaveStyleRule('background', '#D266FF', {
       target: ':active',
     })
+  })
+})
+
+describe('Accessibility', () => {
+  afterEach(cleanup)
+
+  it('should apply focus when tab key is pressed', async () => {
+    const user = userEvent.setup()
+    render(<Button>Apply</Button>)
+
+    const button = screen.getByText('Apply')
+    expect(button).not.toHaveFocus()
+
+    await user.tab()
+    expect(button).toHaveFocus()
+
+    await user.tab()
+    expect(button).not.toHaveFocus()
+  })
+
+  it('should fire onclick the button is tabbed to and enter key is pressed', async () => {
+    const mockOnClick = jest.fn()
+    const user = userEvent.setup()
+    render(<Button onClick={mockOnClick}>Apply</Button>)
+
+    const button = screen.getByText('Apply')
+    expect(button).toBeInTheDocument()
+
+    await user.tab()
+    expect(button).toHaveFocus()
+
+    await user.keyboard('{Enter}')
+    expect(mockOnClick).toHaveBeenCalled()
+  })
+
+  it('should fire onclick the button is tabbed to and space key is pressed', async () => {
+    const mockOnClick = jest.fn()
+    const user = userEvent.setup()
+    render(<Button onClick={mockOnClick}>Apply</Button>)
+
+    // Make sure the button element is in document
+    const button = screen.getByText('Apply')
+    expect(button).toBeInTheDocument()
+
+    // User tabs to the button and button has focus
+    await user.tab()
+    expect(button).toHaveFocus()
+
+    // User presses space key while button has focus and onClick is called
+    await user.keyboard(' ')
+    expect(mockOnClick).toHaveBeenCalled()
   })
 })

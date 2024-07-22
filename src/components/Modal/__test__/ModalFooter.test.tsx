@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { Modal, ModalHeader, ModalFooter } from '../Modal'
+import {Modal} from '../../Modal'
 
 expect.extend(matchers)
 
@@ -34,8 +34,8 @@ describe('ModalFooter', () => {
   it('should render a ModalFooter', () => {
     const component = render(
       <Modal isOpen data-testid="modal-test">
-        <ModalHeader title="Modal header" />
-        <ModalFooter actions={doubleFooterActions} />
+        <Modal.Header title="Modal header" />
+        <Modal.Footer actions={doubleFooterActions} />
       </Modal>
     )
 
@@ -47,8 +47,8 @@ describe('ModalFooter', () => {
   it('should render a ModalFooter with one button', () => {
     const component = render(
       <Modal isOpen data-testid="modal-test">
-        <ModalHeader title="Modal header" />
-        <ModalFooter actions={singleFooterAction} />
+        <Modal.Header title="Modal header" />
+        <Modal.Footer actions={singleFooterAction} />
       </Modal>
     )
 
@@ -66,8 +66,8 @@ describe('ModalFooter', () => {
   it('should render a ModalFooter with one button two buttons', () => {
     const component = render(
       <Modal isOpen data-testid="modal-test">
-        <ModalHeader title="Modal header" />
-        <ModalFooter actions={doubleFooterActions} />
+        <Modal.Header title="Modal header" />
+        <Modal.Footer actions={doubleFooterActions} />
       </Modal>
     )
 
@@ -88,8 +88,8 @@ describe('ModalFooter', () => {
 
     const component = render(
       <Modal isOpen data-testid="modal-test">
-        <ModalHeader title="Modal header" />
-        <ModalFooter actions={singleFooterAction} />
+        <Modal.Header title="Modal header" />
+        <Modal.Footer actions={singleFooterAction} />
       </Modal>
     )
 
@@ -107,8 +107,8 @@ describe('ModalFooter', () => {
 
     const component = render(
       <Modal isOpen data-testid="modal-test">
-        <ModalHeader title="Modal header" />
-        <ModalFooter actions={doubleFooterActions} />
+        <Modal.Header title="Modal header" />
+        <Modal.Footer actions={doubleFooterActions} />
       </Modal>
     )
 
@@ -126,8 +126,8 @@ describe('ModalFooter', () => {
 
     const component = render(
       <Modal isOpen data-testid="modal-test">
-        <ModalHeader title="Modal header" />
-        <ModalFooter actions={doubleFooterActions} />
+        <Modal.Header title="Modal header" />
+        <Modal.Footer actions={doubleFooterActions} />
       </Modal>
     )
 
