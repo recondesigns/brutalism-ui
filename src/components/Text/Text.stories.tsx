@@ -1,9 +1,9 @@
-import React from "react"
-import { Meta, StoryObj } from "@storybook/react"
-import Text from "./Text"
+import React from 'react'
+import { Meta, StoryObj } from '@storybook/react'
+import Text from './Text'
 
 const meta: Meta<typeof Text> = {
-  title: "Foundations/Text",
+  title: 'Foundations/Text',
   component: Text,
 }
 
@@ -32,13 +32,13 @@ export const Demo: TextStory = {
     (Story) => (
       <div
         style={{
-          padding: "20px 0px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          padding: '20px 0px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <div style={{ maxWidth: "400px" }}>
+        <div style={{ maxWidth: '400px' }}>
           <Story />
         </div>
       </div>
@@ -49,12 +49,12 @@ export const Demo: TextStory = {
 export const Variant: TextStory = {
   render: (args) => <Text {...args} />,
   args: {
-    variant: "h6",
-    children: "Text component",
+    variant: 'h6',
+    children: 'Text component',
   },
   parameters: {
     controls: {
-      exclude: ["asElement", "gutterBottom"],
+      exclude: ['asElement', 'gutterBottom'],
     },
   },
 }
@@ -62,13 +62,13 @@ export const Variant: TextStory = {
 export const AsElement: TextStory = {
   ...Variant,
   args: {
-    variant: "h6",
-    children: "Text component",
-    asElement: "p",
+    variant: 'h6',
+    children: 'Text component',
+    asElement: 'p',
   },
   parameters: {
     controls: {
-      exclude: ["gutterBottom", "variant"],
+      exclude: ['gutterBottom', 'variant'],
     },
   },
 }
@@ -76,13 +76,13 @@ export const AsElement: TextStory = {
 export const GutterBottom: TextStory = {
   ...Variant,
   args: {
-    variant: "h6",
-    children: "Text component",
+    variant: 'h6',
+    children: 'Text component',
     gutterBottom: true,
   },
   parameters: {
     controls: {
-      exclude: ["asElement", "variant"],
+      exclude: ['asElement', 'variant'],
     },
   },
 }
