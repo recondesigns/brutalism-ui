@@ -1,0 +1,53 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as TextStories from "./Text.stories"
+
+<Meta of={TextStories} />
+
+<Title>Text</Title>
+
+<Subtitle>
+  Use the Text component to present content clearly and consistently.
+</Subtitle>
+
+<Canvas of={TextStories.Demo} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Text)
+&nbsp;|&nbsp;
+[Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=1-2&t=biW5RVaCBvNirs7P-1)
+
+The Typography component follows the Material Design typographic scale that provides a limited set of type sizes that work well together for a consistent layout.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the component, and place it in the UI with the desired props.
+
+```jsx
+import { Text } from "ubiq-ui"
+```
+
+<Canvas of={TextStories.Demo} sourceState="shown" />
+
+### Variants
+
+Use the pre-styled variants to maintain consistency.
+
+<Canvas of={TextStories.Variant} />
+
+### asElement
+
+The Text components can be used with their semantic markup, or you can specify
+what the root element should be by using the `asElement` prop.
+
+<Canvas of={TextStories.AsElement} />
+
+### gutterBottom
+
+Optionally apply a bottom margin to the root element to add spacing.
+
+<Canvas of={TextStories.GutterBottom} />
