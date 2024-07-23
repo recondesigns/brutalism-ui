@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react'
 import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
+// import { ThemeProvider } from '@emotion/react'
 import InputLabel from './Label'
 import HelperText from './HelperText'
 import { defaultTheme } from '../emotionTheme'
@@ -67,32 +67,45 @@ const InputWrapper = styled.div<HTMLAttributes<HTMLDivElement>>({
 const InputComponent = styled.input<InputProps>(
   {
     padding: '16px 12px',
+    background: defaultTheme.palette.common.white,
     fontFamily: 'Helvetica Neue',
     fontSize: '16px',
     lineHeight: '20px',
+    color: defaultTheme.palette.common.black,
+    border: `2px solid ${defaultTheme.palette.common.border}`,
     borderRadius: '4px',
+    boxShadow: `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`,
+    '&:hover': {
+      background: defaultTheme.palette.primary.light,
+      boxShadow: `${defaultTheme.elevation.two} ${defaultTheme.elevation.two} 0px 0px ${defaultTheme.palette.common.shadow}`,
+    },
+    '&:focus': {
+      background: defaultTheme.palette.primary.light,
+      outline: 'none',
+      boxShadow: `${defaultTheme.elevation.none} ${defaultTheme.elevation.none} 0px 0px ${defaultTheme.palette.common.shadow}`,
+    },
   },
   ({ theme, hasError, disabled }) => ({
-    color: theme.palette.common.black,
+    color: theme?.palette?.common?.black,
     border: !hasError
-      ? `2px solid ${theme.palette.common.border}`
-      : `2px solid ${theme.palette.error.main}`,
-    boxShadow: `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
-    background: theme.palette.common.white,
+      ? `2px solid ${theme?.palette?.common?.border}`
+      : `2px solid ${theme?.palette?.error?.main}`,
+    boxShadow: `${theme?.elevation?.three} ${theme?.elevation?.three} 0px 0px ${theme?.palette?.common?.shadow}`,
+    background: theme?.palette?.common?.white,
     opacity: !disabled ? 'initial' : '50%',
     '&:hover': {
       background: !disabled
-        ? theme.palette.primary.light
-        : theme.palette.common.white,
+        ? theme?.palette?.primary?.light
+        : theme?.palette?.common?.white,
       boxShadow: !disabled
-        ? `${theme.elevation.two} ${theme.elevation.two} 0px 0px ${theme.palette.common.shadow}`
-        : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
+        ? `${theme?.elevation?.two} ${theme.elevation?.two} 0px 0px ${theme?.palette?.common?.shadow}`
+        : `${theme?.elevation?.three} ${theme.elevation?.three} 0px 0px ${theme?.palette?.common?.shadow}`,
       cursor: !disabled ? 'initial' : 'not-allowed',
     },
     '&:focus': {
-      background: theme.palette.primary.light,
+      background: theme?.palette?.primary?.light,
       outline: 'none',
-      boxShadow: `${theme.elevation.none} ${theme.elevation.none} 0px 0px ${theme.palette.common.shadow}`,
+      boxShadow: `${theme?.elevation?.none} ${theme?.elevation?.none} 0px 0px ${theme?.palette?.common?.shadow}`,
     },
   })
 )
@@ -112,35 +125,35 @@ export default function Input({
   ...otherProps
 }: InputProps) {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <InputWrapper className={className} data-testid="input-wrapper-test">
-        {label && (
-          <InputLabel
-            required={required}
-            hasError={hasError}
-            data-testid="input-label-test"
-          >
-            {label}
-          </InputLabel>
-        )}
-        <InputComponent
-          value={value}
-          placeholder={placeholder}
-          hasError={hasError}
-          disabled={disabled}
-          onChange={onchange}
-          data-testid="input-test"
-          id={id}
-          name={name}
+    // <ThemeProvider theme={defaultTheme}>
+    <InputWrapper className={className} data-testid="input-wrapper-test">
+      {label && (
+        <InputLabel
           required={required}
-          {...otherProps}
-        />
-        {helperText && (
-          <HelperText hasError={hasError} data-testid="input-helpertext-test">
-            {helperText}
-          </HelperText>
-        )}
-      </InputWrapper>
-    </ThemeProvider>
+          hasError={hasError}
+          data-testid="input-label-test"
+        >
+          {label}
+        </InputLabel>
+      )}
+      <InputComponent
+        value={value}
+        placeholder={placeholder}
+        hasError={hasError}
+        disabled={disabled}
+        onChange={onchange}
+        data-testid="input-test"
+        id={id}
+        name={name}
+        required={required}
+        {...otherProps}
+      />
+      {helperText && (
+        <HelperText hasError={hasError} data-testid="input-helpertext-test">
+          {helperText}
+        </HelperText>
+      )}
+    </InputWrapper>
+    // </ThemeProvider>
   )
 }
