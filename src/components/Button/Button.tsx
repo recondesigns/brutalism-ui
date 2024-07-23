@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
 import { setSize } from './utils'
 import { defaultTheme } from '../emotionTheme'
 
@@ -44,10 +43,19 @@ const StyledButton = styled('button')<StyledButtonProps>(
     justifyContent: 'center',
     alignItems: 'center',
     gap: '4px',
+    cursor: 'pointer',
     '&:disabled': {
       opacity: '50%',
       cursor: 'not-allowed',
     },
+    fontFamily: defaultTheme.typography.fontFamily,
+    fontWeight: defaultTheme.typography.button.fontWeight,
+    fontSize: defaultTheme.typography.button.fontSize,
+    color: defaultTheme.palette.primary.contrastText,
+    background: defaultTheme.palette.primary.main,
+    border: `2px solid ${defaultTheme.palette.common.border}`,
+    borderRadius: defaultTheme.shape.borderRadius,
+    boxShadow: `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`,
   },
   ({ size }) => ({
     paddingTop: size && setSize(size).paddingTop,
@@ -59,29 +67,45 @@ const StyledButton = styled('button')<StyledButtonProps>(
     width: isFullWidth ? '100%' : 'auto',
   }),
   ({ theme, buttonType, disabled }) => ({
-    fontFamily: theme.typography.fontFamily,
-    fontWeight: theme.typography.button.fontWeight,
-    fontSize: theme.typography.button.fontSize,
-    color: theme.palette.primary.contrastText,
-    background: theme.palette.primary.main,
-    border: `2px solid ${theme.palette.common.border}`,
-    borderRadius: buttonType === 'block' ? theme.shape.borderRadius : '50px',
-    boxShadow: `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
+    fontFamily: theme?.typography?.fontFamily,
+    fontWeight: theme?.typography?.button?.fontWeight,
+    fontSize: theme?.typography?.button?.fontSize,
+    color: theme?.palette?.primary?.contrastText,
+    background: theme?.palette?.primary?.main,
+    border: `2px solid ${theme?.palette?.common?.border}`,
+    borderRadius: buttonType === 'block' ? theme?.shape?.borderRadius : '50px',
+    boxShadow: `${theme?.elevation?.three} ${theme?.elevation?.three} 0px 0px ${theme?.palette?.common?.shadow}`,
     '&:hover': {
       background: !disabled
-        ? theme.palette.primary.dark
-        : theme.palette.primary.main,
+        ? theme?.palette?.primary?.dark || defaultTheme.palette.primary.dark
+        : theme?.palette?.primary?.main || defaultTheme.palette.primary.main,
       boxShadow: !disabled
-        ? `${theme.elevation.two} ${theme.elevation.two} 0px 0px ${theme.palette.common.shadow}`
-        : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
+        ? `${theme?.elevation?.two || defaultTheme.elevation.two} ${
+          theme?.elevation?.two || defaultTheme.elevation.two
+        } 0px 0px ${
+          theme?.palette?.common?.shadow || defaultTheme.palette.common.shadow
+        }`
+        : `${theme?.elevation?.three || defaultTheme.elevation.three} ${
+          theme?.elevation?.three || defaultTheme.elevation.three
+        } 0px 0px ${
+          theme?.palette?.common?.shadow || defaultTheme.palette.common.shadow
+        }`,
     },
     '&:active': {
       background: !disabled
-        ? theme.palette.primary.darker
-        : theme.palette.primary.main,
+        ? theme?.palette?.primary?.darker || defaultTheme.palette.primary.darker
+        : theme?.palette?.primary?.main || defaultTheme.palette.primary.main,
       boxShadow: !disabled
-        ? `${theme.elevation.none} ${theme.elevation.none} 0px 0px ${theme.palette.common.shadow}`
-        : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
+        ? `${theme?.elevation?.none || defaultTheme.elevation.none} ${
+          theme?.elevation?.none || defaultTheme.elevation.none
+        } 0px 0px ${
+          theme?.palette?.common?.shadow || defaultTheme.palette.common.shadow
+        }`
+        : `${theme?.elevation?.three || defaultTheme.elevation.three} ${
+          theme?.elevation?.three || defaultTheme.elevation.three
+        } 0px 0px ${
+          theme?.palette?.common?.shadow || defaultTheme.palette.common.shadow
+        }`,
     },
   })
 )
@@ -119,20 +143,18 @@ export default function Button({
   ...otherProps
 }: ButtonProps) {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <StyledButton
-        buttonType={buttonType}
-        size={size}
-        isFullWidth={isFullWidth}
-        disabled={disabled}
-        onClick={onClick}
-        type="button"
-        className={className}
-        {...otherProps}
-      >
-        {leftIcon && leftIcon}
-        {children}
-      </StyledButton>
-    </ThemeProvider>
+    <StyledButton
+      buttonType={buttonType}
+      size={size}
+      isFullWidth={isFullWidth}
+      disabled={disabled}
+      onClick={onClick}
+      type="button"
+      className={className}
+      {...otherProps}
+    >
+      {leftIcon && leftIcon}
+      {children}
+    </StyledButton>
   )
 }
