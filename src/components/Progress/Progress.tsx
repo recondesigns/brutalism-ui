@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
 
 const calculatePercentage = (val: number, max: number, decimals: number) => {
@@ -34,11 +33,14 @@ const ProgressContainer = styled('div')(
     position: 'relative',
     borderRadius: '50px',
     overflow: 'hidden',
+    backround: defaultTheme.palette.common.white,
+    border: `2px solid ${defaultTheme.palette.common.border}`,
+    boxShadow: `3px 3px 0px 0px ${defaultTheme.palette.common.shadow}`,
   },
   ({ theme }) => ({
-    backround: theme.palette.common.white,
-    border: `2px solid ${theme.palette.common.border}`,
-    boxShadow: `3px 3px 0px 0px ${theme.palette.common.shadow}`,
+    backround: theme?.palette?.common?.white,
+    border: `2px solid ${theme?.palette?.common?.border}`,
+    boxShadow: `3px 3px 0px 0px ${theme?.palette?.common?.shadow}`,
   })
 )
 
@@ -70,11 +72,12 @@ const ProgressIndicatorText = styled('p')(
     padding: '0px',
     fontFamily: 'sans-serif',
     fontWeight: 700,
+    color: defaultTheme.palette.common.black,
     textAlign: 'center',
     zIndex: 10,
   },
   ({ theme }) => ({
-    color: theme.palette.common.black,
+    color: theme?.palette?.common?.black,
   })
 )
 
@@ -85,9 +88,10 @@ const LabelText = styled('p')(
     fontFamily: 'sans-serif',
     fontSize: '15px',
     lineHeight: '16px',
+    color: defaultTheme.palette.common.black,
   },
   ({ theme }) => ({
-    color: theme.palette.common.black,
+    color: theme?.palette?.common?.black,
   })
 )
 
@@ -99,9 +103,10 @@ const HelperText = styled('p')(
     fontSize: '14px',
     lineHeight: '20px',
     textAlign: 'left',
+    color: defaultTheme.palette.common.black,
   },
   ({ theme }) => ({
-    color: theme.palette.common.black,
+    color: theme?.palette?.common?.black,
   })
 )
 
@@ -162,21 +167,19 @@ export default function Progress({
   }
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container data-testid="progress-test">
-        {label && <LabelText>{label}</LabelText>}
-        <ProgressContainer {...otherProps}>
-          <ProgressIndicatorText data-testid="progress-indicator-text-test">
-            {setIndicatorText(value, max, completeMessage, includeDecimals)}
-          </ProgressIndicatorText>
-          <ProgressIndicator
-            value={calculatePercentage(value, max, includeDecimals)}
-            size={setSize(size)}
-            data-testid="progress-indicator-test"
-          />
-        </ProgressContainer>
-        {helperText && <HelperText>{helperText}</HelperText>}
-      </Container>
-    </ThemeProvider>
+    <Container data-testid="progress-test">
+      {label && <LabelText>{label}</LabelText>}
+      <ProgressContainer {...otherProps}>
+        <ProgressIndicatorText data-testid="progress-indicator-text-test">
+          {setIndicatorText(value, max, completeMessage, includeDecimals)}
+        </ProgressIndicatorText>
+        <ProgressIndicator
+          value={calculatePercentage(value, max, includeDecimals)}
+          size={setSize(size)}
+          data-testid="progress-indicator-test"
+        />
+      </ProgressContainer>
+      {helperText && <HelperText>{helperText}</HelperText>}
+    </Container>
   )
 }
