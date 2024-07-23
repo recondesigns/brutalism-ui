@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { defaultTheme } from "../emotionTheme"
+import React from 'react'
+import styled from '@emotion/styled'
+import { defaultTheme } from '../emotionTheme'
 
 type TextProps = {
   hasError?: boolean
@@ -8,12 +8,12 @@ type TextProps = {
 
 const Text = styled.p<TextProps>(
   {
-    marginTop: "8px",
-    fontFamily: "sans-serif",
-    fontSize: "14px",
-    lineHeight: "20px",
+    marginTop: '8px',
+    fontFamily: 'sans-serif',
+    fontSize: '14px',
+    lineHeight: '20px',
     color: defaultTheme.palette.common.black,
-    textAlign: "left",
+    textAlign: 'left',
   },
   ({ theme, hasError }) => ({
     color: hasError
