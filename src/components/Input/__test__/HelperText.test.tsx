@@ -59,7 +59,7 @@ describe('HelperText', () => {
   it('should render helper text color #FF4F58 when an error is present', () => {
     const component = render(
       <ThemeProvider theme={defaultTheme}>
-      <TestInput helperText="Helper text with error." hasError={true} />
+        <TestInput helperText="Helper text with error." hasError={true} />
 
       </ThemeProvider>
     )
