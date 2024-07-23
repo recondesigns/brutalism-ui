@@ -2,6 +2,8 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render } from '@testing-library/react'
+import { ThemeProvider } from '@emotion/react'
+import { defaultTheme } from '../../emotionTheme'
 import Input from '../Input'
 
 expect.extend(matchers)
@@ -47,7 +49,11 @@ describe('Label', () => {
   })
 
   it('should render label color #FF4F58 when an error is present', () => {
-    const component = render(<TestInput label="Label" hasError={true} />)
+    const component = render(
+      <ThemeProvider theme={defaultTheme}>
+        <TestInput label="Label" hasError={true} />
+      </ThemeProvider>
+    )
     const label = component.queryByTestId('input-label-test')
 
     expect(label).toHaveStyleRule('color', '#FF4F58')

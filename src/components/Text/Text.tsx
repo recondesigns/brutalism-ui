@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
 
 type Variant =
@@ -58,10 +57,16 @@ function setFontSize(textVariant: Variant) {
 }
 
 const TextRoot = styled('div')<TextProps>(
+  {
+    fontFamily: defaultTheme.typography.fontFamily,
+    fontSize: setFontSize('body1'),
+    color: defaultTheme.palette.common.black,
+    margin: 0,
+  },
   ({ theme, variant = 'body1' }) => ({
-    fontFamily: theme.typography.fontFamily,
+    fontFamily: theme?.typography?.fontFamily,
     fontSize: setFontSize(variant),
-    color: theme.palette.common.black,
+    color: theme?.palette?.common?.black,
   }),
   ({ gutterBottom }) => ({
     margin: gutterBottom ? '0 0 0.35em 0' : '0',
@@ -96,13 +101,11 @@ export default function Text({
   const Component = asElement || variantMap[variant] || 'p'
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <TextRoot
-        as={Component}
-        variant={variant}
-        gutterBottom={gutterBottom}
-        {...otherProps}
-      />
-    </ThemeProvider>
+    <TextRoot
+      as={Component}
+      variant={variant}
+      gutterBottom={gutterBottom}
+      {...otherProps}
+    />
   )
 }
