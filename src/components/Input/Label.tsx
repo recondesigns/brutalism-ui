@@ -32,7 +32,6 @@ export default function InputLabel({
 }: LabelProps) {
   return (
     <Text hasError={hasError} required={required} {...otherProps}>
-      {/* {children} */}
       {!required ? children : `${children}*`}
     </Text>
   )

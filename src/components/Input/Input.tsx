@@ -1,6 +1,5 @@
 import React, { HTMLAttributes } from 'react'
 import styled from '@emotion/styled'
-// import { ThemeProvider } from '@emotion/react'
 import InputLabel from './Label'
 import HelperText from './HelperText'
 import { defaultTheme } from '../emotionTheme'
@@ -125,7 +124,6 @@ export default function Input({
   ...otherProps
 }: InputProps) {
   return (
-    // <ThemeProvider theme={defaultTheme}>
     <InputWrapper className={className} data-testid="input-wrapper-test">
       {label && (
         <InputLabel
@@ -154,6 +152,5 @@ export default function Input({
         </HelperText>
       )}
     </InputWrapper>
-    // </ThemeProvider>
   )
 }

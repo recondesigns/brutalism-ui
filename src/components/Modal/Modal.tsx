@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
 import ModalDialog from './ModalDialog'
 import ModalHeader from './ModalHeader'
 import ModalContent from './ModalContent'
 import ModalFooter from './ModalFooter'
-import { defaultTheme } from '../emotionTheme'
 
 type ModalWrapperProps = {
   isOpen?: boolean
@@ -111,18 +109,16 @@ function Modal({
   }
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <ModalWrapper className={className} isOpen={isOpen} {...otherProps}>
-        <ModalScrim onClick={outsideClick}>
-          <ModalDialog
-            onClick={(e: React.MouseEvent) => e.stopPropagation()}
-            shouldFitContent={shouldFitContent}
-          >
-            {children}
-          </ModalDialog>
-        </ModalScrim>
-      </ModalWrapper>
-    </ThemeProvider>
+    <ModalWrapper className={className} isOpen={isOpen} {...otherProps}>
+      <ModalScrim onClick={outsideClick}>
+        <ModalDialog
+          onClick={(e: React.MouseEvent) => e.stopPropagation()}
+          shouldFitContent={shouldFitContent}
+        >
+          {children}
+        </ModalDialog>
+      </ModalScrim>
+    </ModalWrapper>
   )
 }
 
