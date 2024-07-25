@@ -56,6 +56,7 @@ export default function Dropdown({
       {label && <LabelText variant="body2">{label}</LabelText>}
       <DropdownMenu
         value={value}
+        isFlyoutOpen={isFlyoutOpen}
         onClick={() => setUncontrolledIsOpen(!uncontrolledIsOpen)}
       />
       {helperText && <HelpText variant="caption">{helperText}</HelpText>}

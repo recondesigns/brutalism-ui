@@ -48,7 +48,7 @@ export const UnControlled: DropdownStory = {
   args: {
     options: optionsList,
     label: 'Brand',
-    helperText: 'Select one vehicle brand.',
+    helperText: 'Select a vehicle brand.',
     hasError: false,
     disabled: false,
   },
@@ -71,7 +71,7 @@ export const Controlled: DropdownStory = {
   args: {
     options: optionsList,
     label: 'Brand',
-    helperText: 'Select one vehicle brand.',
+    helperText: 'Select a vehicle brand.',
     hasError: false,
     disabled: false,
   },
