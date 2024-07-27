@@ -3,11 +3,14 @@ import styled from '@emotion/styled'
 import Text from '../Text'
 import { defaultTheme } from '../emotionTheme'
 
-const ListItemContainer = styled('div')(
+type ListItemContainerProps = {
+  disabled?: boolean
+}
+
+const ListItemContainer = styled('div')<ListItemContainerProps>(
   {
     padding: '8px 20px',
     background: defaultTheme.palette.common.white,
-    cursor: 'pointer',
     '&:hover': {
       background: defaultTheme.palette.primary.light,
     },
@@ -15,28 +18,44 @@ const ListItemContainer = styled('div')(
       background: defaultTheme.palette.primary.main,
     },
   },
-  ({ theme }) => ({
+  ({ theme, disabled }) => ({
     background: theme?.palette?.common?.white,
     borderBottom: '2px solid black',
+    cursor: !disabled ? 'pointer' : 'not-allowed',
+    opacity: !disabled ? 'initial' : '50%',
     '&:hover': {
-      background: theme?.palette?.primary?.light,
+      background: !disabled ? theme?.palette?.primary?.light : 'white',
     },
     '&:active': {
-      background: theme?.palette?.primary?.main,
+      background: !disabled ? theme?.palette?.primary?.main : 'white',
     },
   })
 )
 
 const ListItemText = styled(Text)({})
 
-type Props = {
-  children: React.ReactNode
+type DropdownListItemProps = {
+  option: {
+    name: string
+    value: string
+    disabled: boolean
+  }
+  disabled?: boolean
   onClick: () => void
+  children: React.ReactNode
 }
 
-export default function DropdownListItem({ onClick, children }: Props) {
+export default function DropdownListItem({
+  option,
+  onClick,
+  children,
+}: DropdownListItemProps) {
+  // console.log(111, option)
   return (
-    <ListItemContainer onClick={onClick}>
+    <ListItemContainer
+      disabled={option.disabled}
+      onClick={!option.disabled ? onClick : undefined}
+    >
       <ListItemText>{children}</ListItemText>
     </ListItemContainer>
   )

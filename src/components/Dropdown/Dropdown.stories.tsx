@@ -1,6 +1,8 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
 import Dropdown from './Dropdown'
+import { defaultTheme } from '../emotionTheme'
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Form elements/Dropdown',
@@ -8,34 +10,41 @@ const meta: Meta<typeof Dropdown> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
-        <Story />
-      </div>
+      <ThemeProvider theme={defaultTheme}>
+        <div style={{ width: '300px' }}>
+          <Story />
+        </div>
+      </ThemeProvider>
     ),
   ],
 }
 
 type Option = {
-  title: string
+  name: string
   value: string
+  disabled: boolean
 }
 
 const optionsList: Option[] = [
   {
-    title: 'Ford',
+    name: 'Ford',
     value: 'ford',
+    disabled: false,
   },
   {
-    title: 'Dodge',
+    name: 'Dodge',
     value: 'dodge',
+    disabled: true,
   },
   {
-    title: 'Chevy',
+    name: 'Chevy',
     value: 'chevy',
+    disabled: false,
   },
   {
-    title: 'GMC',
+    name: 'GMC',
     value: 'gmc',
+    disabled: false,
   },
 ]
 
@@ -56,9 +65,9 @@ export const UnControlled: DropdownStory = {
 
 export const Controlled: DropdownStory = {
   render: (args) => {
-    const [storyValue, setStoryValue] = React.useState<string | null>(null)
+    const [storyValue, setStoryValue] = React.useState<Option | null>(null)
     const [isOpen] = React.useState(false)
-    console.log(storyValue)
+    console.log(333, storyValue)
 
     return (
       <Dropdown

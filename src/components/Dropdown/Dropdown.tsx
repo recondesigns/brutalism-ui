@@ -16,8 +16,9 @@ const LabelText = styled(Text)({
 const HelpText = styled(Text)({})
 
 type Option = {
-  title: string
+  name: string
   value: string
+  disabled: boolean
 }
 
 export type DropdownProps = {
@@ -29,7 +30,7 @@ export type DropdownProps = {
   // initialValue?: string | number
   // value?: string | number
   isOpen?: boolean
-  onSelect?: (arg1: string) => void
+  onSelect?: (arg1: Option) => void
 }
 
 export default function Dropdown({
@@ -43,11 +44,12 @@ export default function Dropdown({
 }: DropdownProps) {
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = React.useState(false)
   const isFlyoutOpen = controlledIsOpen ? controlledIsOpen : uncontrolledIsOpen
-  const [value, setValue] = React.useState<string | null>(null)
+  const [value, setValue] = React.useState<Option | null>(null)
+  console.log(222, value)
 
-  const handleOptionClick = (newValue: string) => {
-    setValue(newValue)
-    onSelect && onSelect(newValue)
+  const newHandle = (selectedOption: Option) => {
+    setValue(selectedOption)
+    onSelect && onSelect(selectedOption)
     setUncontrolledIsOpen(!uncontrolledIsOpen)
   }
 
@@ -65,9 +67,10 @@ export default function Dropdown({
           {options.map((option) => (
             <DropdownListItem
               key={option.value}
-              onClick={() => handleOptionClick(option.title)}
+              option={option}
+              onClick={() => newHandle(option)}
             >
-              {option.title}
+              {option.name}
             </DropdownListItem>
           ))}
         </DropdownFlyout>

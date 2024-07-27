@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { defaultTheme } from '../emotionTheme'
 // import { defaultTheme } from '../emotionTheme'
 
 const DropdownFlyoutContainer = styled('div')(
@@ -8,16 +9,18 @@ const DropdownFlyoutContainer = styled('div')(
     top: 76,
     left: 0,
     right: 0,
-    // use this
-    border: '2px solid black',
-    borderRadius: '4px',
-    boxShadow: '3px 3px 0px 0px black',
-  }
-  // ({ theme }) => ({
-  //   border: '2px solid black',
-  //   borderRadius: '4px',
-  //   boxShadow: '3px 3px 0px 0px black',
-  // })
+  },
+  ({ theme }) => ({
+    border: theme.palette
+      ? `2px solid ${theme?.palette?.common?.border}`
+      : `2px solid ${defaultTheme.palette.common.border}`,
+    borderRadius: theme.palette
+      ? theme.shape.borderRadius
+      : defaultTheme.shape.borderRadius,
+    boxShadow: theme.palette
+      ? `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`
+      : `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`,
+  })
 )
 
 type Props = {
