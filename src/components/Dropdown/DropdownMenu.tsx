@@ -26,7 +26,7 @@ const DropdownMenuContainer = styled('button')<DropdownMenuContainerProps>(
       : `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`
     const boxShadowHover = theme.palette
       ? `${theme.elevation.two} ${theme.elevation.two} 0px 0px ${theme.palette.common.shadow}`
-      : `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`
+      : `${defaultTheme.elevation.two} ${defaultTheme.elevation.two} 0px 0px ${defaultTheme.palette.common.shadow}`
     const boxShadowOpen = theme.palette
       ? `${theme.elevation.none} ${theme.elevation.none} 0px 0px none`
       : `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px none`
