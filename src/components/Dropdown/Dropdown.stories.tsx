@@ -46,6 +46,26 @@ const optionsList: Option[] = [
     value: 'gmc',
     disabled: false,
   },
+  {
+    name: 'Toyota',
+    value: 'toyota',
+    disabled: false,
+  },
+  {
+    name: 'Honda',
+    value: 'honda',
+    disabled: false,
+  },
+  {
+    name: 'Mazda',
+    value: 'mazda',
+    disabled: false,
+  },
+  {
+    name: 'Chrysler',
+    value: 'chrysler',
+    disabled: false,
+  },
 ]
 
 type DropdownStory = StoryObj<typeof Dropdown>

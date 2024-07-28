@@ -4,6 +4,7 @@ import Text from '../Text'
 import { defaultTheme } from '../emotionTheme'
 
 type ListItemContainerProps = {
+  isSelected?: boolean
   disabled?: boolean
 }
 
@@ -11,10 +12,14 @@ const ListItemContainer = styled('div')<ListItemContainerProps>(
   {
     padding: '8px 20px',
   },
-  ({ theme, disabled }) => ({
-    background: theme.palette
-      ? theme.palette.common.white
-      : defaultTheme.palette.common.white,
+  ({ theme, isSelected, disabled }) => ({
+    background: !isSelected
+      ? theme.palette
+        ? theme.palette.common.white
+        : defaultTheme.palette.common.white
+      : theme.palette
+        ? theme.palette.primary.main
+        : defaultTheme.palette.primary.main,
     borderBottom: theme.palette
       ? `2px solid ${theme.palette.common.border}`
       : `2px solid ${defaultTheme.palette.common.border}`,
@@ -25,9 +30,13 @@ const ListItemContainer = styled('div')<ListItemContainerProps>(
         ? theme.palette
           ? theme.palette.common.white
           : defaultTheme.palette.common.white
-        : theme.palette
-          ? theme?.palette?.primary?.light
-          : defaultTheme.palette.primary.light,
+        : !isSelected
+          ? theme.palette
+            ? theme?.palette?.primary?.light
+            : defaultTheme.palette.primary.light
+          : theme.palette
+            ? theme.palette.primary.main
+            : defaultTheme.palette.primary.main,
     },
     '&:active': {
       background: disabled
@@ -35,8 +44,8 @@ const ListItemContainer = styled('div')<ListItemContainerProps>(
           ? theme.palette.common.white
           : defaultTheme.palette.common.white
         : theme.palette
-          ? theme.palette.primary.main
-          : defaultTheme.palette.primary.main,
+          ? theme.palette.primary.dark
+          : defaultTheme.palette.primary.dark,
     },
   })
 )
@@ -49,6 +58,7 @@ type DropdownListItemProps = {
     value: string
     disabled: boolean
   }
+  isSelected?: boolean
   disabled?: boolean
   onClick: () => void
   children: React.ReactNode
@@ -56,12 +66,14 @@ type DropdownListItemProps = {
 
 export default function DropdownListItem({
   option,
+  isSelected,
   onClick,
   children,
 }: DropdownListItemProps) {
   return (
     <ListItemContainer
       disabled={option.disabled}
+      isSelected={isSelected}
       onClick={!option.disabled ? onClick : undefined}
     >
       <ListItemText>{children}</ListItemText>

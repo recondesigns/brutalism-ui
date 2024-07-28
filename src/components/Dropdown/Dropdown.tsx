@@ -45,7 +45,7 @@ export default function Dropdown({
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = React.useState(false)
   const isFlyoutOpen = controlledIsOpen ? controlledIsOpen : uncontrolledIsOpen
   const [value, setValue] = React.useState<Option | null>(null)
-  console.log(222, value)
+  // console.log(222, value)
 
   const newHandle = (selectedOption: Option) => {
     setValue(selectedOption)
@@ -64,15 +64,31 @@ export default function Dropdown({
       {helperText && <HelpText variant="caption">{helperText}</HelpText>}
       {isFlyoutOpen && (
         <DropdownFlyout>
-          {options.map((option) => (
-            <DropdownListItem
-              key={option.value}
-              option={option}
-              onClick={() => newHandle(option)}
-            >
-              {option.name}
-            </DropdownListItem>
-          ))}
+          {options.map((option) => {
+            if (value && value.value === option.value) {
+              return (
+                <DropdownListItem
+                  key={option.value}
+                  option={option}
+                  isSelected={true}
+                  onClick={() => newHandle(option)}
+                >
+                  {option.name}
+                </DropdownListItem>
+              )
+            }
+
+            return (
+              <DropdownListItem
+                key={option.value}
+                option={option}
+                isSelected={false}
+                onClick={() => newHandle(option)}
+              >
+                {option.name}
+              </DropdownListItem>
+            )
+          })}
         </DropdownFlyout>
       )}
     </DropdownContainer>
