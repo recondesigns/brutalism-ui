@@ -106,4 +106,14 @@ export const Controlled: DropdownStory = {
   },
 }
 
+export const Disabled: DropdownStory = {
+  ...UnControlled,
+  args: {
+    options: optionsList,
+    label: 'Brand',
+    helperText: 'Select a vehicle brand.',
+    disabled: true,
+  },
+}
+
 export default meta

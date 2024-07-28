@@ -38,6 +38,7 @@ export default function Dropdown({
   label,
   helperText,
   isOpen: controlledIsOpen,
+  disabled = false,
   // onClick,
   // value,
   onSelect,
@@ -58,6 +59,7 @@ export default function Dropdown({
       <DropdownMenu
         value={value}
         isFlyoutOpen={isFlyoutOpen}
+        disabled={disabled}
         onClick={() => setUncontrolledIsOpen(!uncontrolledIsOpen)}
       />
       {helperText && <HelpText variant="caption">{helperText}</HelpText>}
