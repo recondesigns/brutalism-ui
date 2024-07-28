@@ -4,16 +4,43 @@ import Text from '../Text'
 import DropdownMenu from './DropdownMenu'
 import DropdownFlyout from './DropdownFlyout'
 import DropdownListItem from './DropdownListItem'
+import { defaultTheme } from '../emotionTheme'
 
 const DropdownContainer = styled('div')({
   position: 'relative',
 })
 
-const LabelText = styled(Text)({
-  paddingBottom: '4px',
-})
+type LabelTextProps = {
+  disabled?: boolean
+}
 
-const HelpText = styled(Text)({})
+const LabelText = styled(Text)<LabelTextProps>(
+  {
+    paddingBottom: '4px',
+  },
+  ({ theme, disabled }) => ({
+    color: theme.palette
+      ? theme.palette.common.black
+      : defaultTheme.palette.common.black,
+    opacity: disabled ? '50%' : 'initial',
+  })
+)
+
+type HelpTextProps = {
+  disabled?: boolean
+}
+
+const HelpText = styled(Text)<HelpTextProps>(
+  {
+    // color: "red",
+  },
+  ({ theme, disabled }) => ({
+    color: theme.palette
+      ? theme.palette.common.black
+      : defaultTheme.palette.common.black,
+    opacity: disabled ? '50%' : 'initial',
+  })
+)
 
 type Option = {
   name: string
@@ -55,14 +82,22 @@ export default function Dropdown({
 
   return (
     <DropdownContainer>
-      {label && <LabelText variant="body2">{label}</LabelText>}
+      {label && (
+        <LabelText variant="body2" disabled={disabled}>
+          {label}
+        </LabelText>
+      )}
       <DropdownMenu
         value={value}
         isFlyoutOpen={isFlyoutOpen}
         disabled={disabled}
         onClick={() => setUncontrolledIsOpen(!uncontrolledIsOpen)}
       />
-      {helperText && <HelpText variant="caption">{helperText}</HelpText>}
+      {helperText && (
+        <HelpText variant="caption" disabled={disabled}>
+          {helperText}
+        </HelpText>
+      )}
       {isFlyoutOpen && (
         <DropdownFlyout>
           {options.map((option) => {
