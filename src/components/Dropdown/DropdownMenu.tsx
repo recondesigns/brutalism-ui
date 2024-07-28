@@ -5,6 +5,7 @@ import { ChevronIcon } from '../../assets'
 import { defaultTheme } from '../emotionTheme'
 
 type DropdownMenuContainerProps = {
+  hasError?: boolean
   disabled?: boolean
   isFlyoutOpen?: boolean
 }
@@ -20,7 +21,7 @@ const DropdownMenuContainer = styled('button')<DropdownMenuContainerProps>(
     alignItems: 'center',
     textAlign: 'left',
   },
-  ({ theme, isFlyoutOpen, disabled }) => {
+  ({ theme, isFlyoutOpen, hasError, disabled }) => {
     const boxShadowClosed = theme.palette
       ? `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`
       : `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`
@@ -36,9 +37,13 @@ const DropdownMenuContainer = styled('button')<DropdownMenuContainerProps>(
         : theme.palette
           ? theme.palette.primary.light
           : defaultTheme.palette.primary.light,
-      border: theme.palette
-        ? `${theme.elevation.two} solid ${theme.palette.common.border}`
-        : `${defaultTheme.elevation.two} solid ${defaultTheme.palette.common.border}`,
+      border: !hasError
+        ? theme.palette
+          ? `${theme.elevation.two} solid ${theme.palette.common.border}`
+          : `${defaultTheme.elevation.two} solid ${defaultTheme.palette.common.border}`
+        : theme.palette
+          ? `${theme.elevation.two} solid ${theme.palette.error.main}`
+          : `${defaultTheme.elevation.two} solid ${defaultTheme.palette.error.main}`,
       borderRadius: theme.palette
         ? theme.shape.borderRadius
         : defaultTheme.shape.borderRadius,
@@ -80,15 +85,20 @@ type DropdownMenuProps = {
   value?: Option | null
   isFlyoutOpen?: boolean
   disabled?: boolean
+  hasError?: boolean
   onClick?: () => void
 }
 
 const DropdownMenu = React.forwardRef<HTMLButtonElement, DropdownMenuProps>(
-  ({ value, isFlyoutOpen, disabled = false, onClick }, ref) => {
+  (
+    { value, isFlyoutOpen, hasError = false, disabled = false, onClick },
+    ref
+  ) => {
     return (
       <DropdownMenuContainer
         ref={ref}
         isFlyoutOpen={isFlyoutOpen}
+        hasError={hasError}
         disabled={disabled}
         onClick={onClick}
       >

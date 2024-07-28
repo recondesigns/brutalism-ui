@@ -27,15 +27,22 @@ const LabelText = styled(Text)<LabelTextProps>(
 )
 
 type HelpTextProps = {
+  hasError?: boolean
   disabled?: boolean
 }
 
-const HelpText = styled(Text)<HelpTextProps>(({ theme, disabled }) => ({
-  color: theme.palette
-    ? theme.palette.common.black
-    : defaultTheme.palette.common.black,
-  opacity: disabled ? '50%' : 'initial',
-}))
+const HelpText = styled(Text)<HelpTextProps>(
+  ({ theme, hasError, disabled }) => ({
+    color: !hasError
+      ? theme.palette
+        ? theme.palette.common.black
+        : defaultTheme.palette.common.black
+      : theme.palette
+        ? theme.palette.error.main
+        : defaultTheme.palette.error.main,
+    opacity: disabled ? '50%' : 'initial',
+  })
+)
 
 type Option = {
   name: string
@@ -60,8 +67,9 @@ export default function Dropdown({
   options,
   label,
   helperText,
-  isOpen: controlledIsOpen,
+  hasError = false,
   disabled = false,
+  isOpen: controlledIsOpen,
   closeOnOutsideClick = true,
   // onClick,
   // value,
@@ -113,11 +121,12 @@ export default function Dropdown({
         ref={menuRef}
         value={value}
         isFlyoutOpen={isFlyoutOpen}
+        hasError={hasError}
         disabled={disabled}
         onClick={() => setUncontrolledIsOpen(!uncontrolledIsOpen)}
       />
       {helperText && (
-        <HelpText variant="caption" disabled={disabled}>
+        <HelpText variant="caption" hasError={hasError} disabled={disabled}>
           {helperText}
         </HelpText>
       )}

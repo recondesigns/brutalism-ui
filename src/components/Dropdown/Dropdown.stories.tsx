@@ -126,4 +126,14 @@ export const CloseOnOutsideClick: DropdownStory = {
   },
 }
 
+export const HasError: DropdownStory = {
+  ...UnControlled,
+  args: {
+    options: optionsList,
+    label: 'Brand',
+    helperText: 'Something happened to cause an error.',
+    hasError: true,
+  },
+}
+
 export default meta
