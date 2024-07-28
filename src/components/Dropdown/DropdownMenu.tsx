@@ -71,6 +71,21 @@ const DropdownMenuContainer = styled('button')<DropdownMenuContainerProps>(
   }
 )
 
+type IconContainerProps = {
+  isOpen?: boolean
+}
+
+const IconContainer = styled('div')<IconContainerProps>(
+  {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  ({ isOpen }) => ({
+    transform: isOpen ? 'rotate(180deg)' : 'initial',
+  })
+)
+
 const ButtonText = styled(Text)({
   width: '100%',
 })
@@ -105,7 +120,9 @@ const DropdownMenu = React.forwardRef<HTMLButtonElement, DropdownMenuProps>(
         <ButtonText variant="body1">
           {value ? value.name : 'Choose an option...'}
         </ButtonText>
-        <ChevronIcon />
+        <IconContainer isOpen={isFlyoutOpen}>
+          <ChevronIcon />
+        </IconContainer>
       </DropdownMenuContainer>
     )
   }
