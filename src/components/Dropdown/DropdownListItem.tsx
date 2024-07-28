@@ -10,24 +10,33 @@ type ListItemContainerProps = {
 const ListItemContainer = styled('div')<ListItemContainerProps>(
   {
     padding: '8px 20px',
-    background: defaultTheme.palette.common.white,
-    '&:hover': {
-      background: defaultTheme.palette.primary.light,
-    },
-    '&:active': {
-      background: defaultTheme.palette.primary.main,
-    },
   },
   ({ theme, disabled }) => ({
-    background: theme?.palette?.common?.white,
-    borderBottom: '2px solid black',
+    background: theme.palette
+      ? theme.palette.common.white
+      : defaultTheme.palette.common.white,
+    borderBottom: theme.palette
+      ? `2px solid ${theme.palette.common.border}`
+      : `2px solid ${defaultTheme.palette.common.border}`,
     cursor: !disabled ? 'pointer' : 'not-allowed',
     opacity: !disabled ? 'initial' : '50%',
     '&:hover': {
-      background: !disabled ? theme?.palette?.primary?.light : 'white',
+      background: disabled
+        ? theme.palette
+          ? theme.palette.common.white
+          : defaultTheme.palette.common.white
+        : theme.palette
+          ? theme?.palette?.primary?.light
+          : defaultTheme.palette.primary.light,
     },
     '&:active': {
-      background: !disabled ? theme?.palette?.primary?.main : 'white',
+      background: disabled
+        ? theme.palette
+          ? theme.palette.common.white
+          : defaultTheme.palette.common.white
+        : theme.palette
+          ? theme.palette.primary.main
+          : defaultTheme.palette.primary.main,
     },
   })
 )
@@ -50,7 +59,6 @@ export default function DropdownListItem({
   onClick,
   children,
 }: DropdownListItemProps) {
-  // console.log(111, option)
   return (
     <ListItemContainer
       disabled={option.disabled}
