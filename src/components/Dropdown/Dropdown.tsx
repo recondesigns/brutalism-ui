@@ -30,17 +30,12 @@ type HelpTextProps = {
   disabled?: boolean
 }
 
-const HelpText = styled(Text)<HelpTextProps>(
-  {
-    // color: "red",
-  },
-  ({ theme, disabled }) => ({
-    color: theme.palette
-      ? theme.palette.common.black
-      : defaultTheme.palette.common.black,
-    opacity: disabled ? '50%' : 'initial',
-  })
-)
+const HelpText = styled(Text)<HelpTextProps>(({ theme, disabled }) => ({
+  color: theme.palette
+    ? theme.palette.common.black
+    : defaultTheme.palette.common.black,
+  opacity: disabled ? '50%' : 'initial',
+}))
 
 type Option = {
   name: string
@@ -73,12 +68,37 @@ export default function Dropdown({
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = React.useState(false)
   const isFlyoutOpen = controlledIsOpen ? controlledIsOpen : uncontrolledIsOpen
   const [value, setValue] = React.useState<Option | null>(null)
+  const flyoutRef = React.useRef<HTMLDivElement | null>(null)
+  const menuRef = React.useRef<HTMLButtonElement | null>(null)
 
   const newHandle = (selectedOption: Option) => {
     setValue(selectedOption)
     onSelect && onSelect(selectedOption)
     setUncontrolledIsOpen(!uncontrolledIsOpen)
   }
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      flyoutRef.current &&
+      !flyoutRef.current.contains(event.target as Node) &&
+      menuRef.current &&
+      !menuRef.current.contains(event.target as Node)
+    ) {
+      setUncontrolledIsOpen(false)
+    }
+  }
+
+  React.useEffect(() => {
+    if (isFlyoutOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isFlyoutOpen])
 
   return (
     <DropdownContainer>
@@ -88,6 +108,7 @@ export default function Dropdown({
         </LabelText>
       )}
       <DropdownMenu
+        ref={menuRef}
         value={value}
         isFlyoutOpen={isFlyoutOpen}
         disabled={disabled}
@@ -99,7 +120,7 @@ export default function Dropdown({
         </HelpText>
       )}
       {isFlyoutOpen && (
-        <DropdownFlyout>
+        <DropdownFlyout ref={flyoutRef}>
           {options.map((option) => {
             if (value && value.value === option.value) {
               return (

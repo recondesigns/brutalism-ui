@@ -27,6 +27,14 @@ type Props = {
   children: React.ReactNode
 }
 
-export default function DropdownFlyout({ children }: Props) {
-  return <DropdownFlyoutContainer>{children}</DropdownFlyoutContainer>
-}
+const DropdownFlyout = React.forwardRef<HTMLDivElement, Props>(
+  ({ children }, ref) => {
+    return (
+      <DropdownFlyoutContainer ref={ref}>{children}</DropdownFlyoutContainer>
+    )
+  }
+)
+
+DropdownFlyout.displayName = 'DropdownFlyout'
+
+export default DropdownFlyout

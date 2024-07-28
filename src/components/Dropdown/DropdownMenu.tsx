@@ -19,7 +19,6 @@ const DropdownMenuContainer = styled('button')<DropdownMenuContainerProps>(
     justifyContent: 'space-between',
     alignItems: 'center',
     textAlign: 'left',
-    // cursor: "pointer",
   },
   ({ theme, isFlyoutOpen, disabled }) => {
     const boxShadowClosed = theme.palette
@@ -84,22 +83,24 @@ type DropdownMenuProps = {
   onClick?: () => void
 }
 
-export default function DropdownMenu({
-  value,
-  isFlyoutOpen,
-  disabled = false,
-  onClick,
-}: DropdownMenuProps) {
-  return (
-    <DropdownMenuContainer
-      isFlyoutOpen={isFlyoutOpen}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      <ButtonText variant="body1">
-        {value ? value.name : 'Choose an option...'}
-      </ButtonText>
-      <ChevronIcon />
-    </DropdownMenuContainer>
-  )
-}
+const DropdownMenu = React.forwardRef<HTMLButtonElement, DropdownMenuProps>(
+  ({ value, isFlyoutOpen, disabled = false, onClick }, ref) => {
+    return (
+      <DropdownMenuContainer
+        ref={ref}
+        isFlyoutOpen={isFlyoutOpen}
+        disabled={disabled}
+        onClick={onClick}
+      >
+        <ButtonText variant="body1">
+          {value ? value.name : 'Choose an option...'}
+        </ButtonText>
+        <ChevronIcon />
+      </DropdownMenuContainer>
+    )
+  }
+)
+
+DropdownMenu.displayName = 'DropdownMenu'
+
+export default DropdownMenu
