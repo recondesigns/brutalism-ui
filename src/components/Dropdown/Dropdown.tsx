@@ -45,7 +45,6 @@ export default function Dropdown({
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = React.useState(false)
   const isFlyoutOpen = controlledIsOpen ? controlledIsOpen : uncontrolledIsOpen
   const [value, setValue] = React.useState<Option | null>(null)
-  // console.log(222, value)
 
   const newHandle = (selectedOption: Option) => {
     setValue(selectedOption)

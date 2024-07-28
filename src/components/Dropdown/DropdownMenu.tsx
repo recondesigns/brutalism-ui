@@ -29,9 +29,13 @@ const DropdownMenuContainer = styled('button')<DropdownMenuContainerProps>(
       : `${defaultTheme.elevation.two} ${defaultTheme.elevation.two} 0px 0px ${defaultTheme.palette.common.shadow}`
 
     return {
-      background: theme.palette
-        ? theme.palette.common.white
-        : defaultTheme.palette.common.white,
+      background: !isFlyoutOpen
+        ? theme.palette
+          ? theme.palette.common.white
+          : defaultTheme.palette.common.white
+        : theme.palette
+          ? theme.palette.primary.light
+          : defaultTheme.palette.primary.light,
       border: theme.palette
         ? `${theme.elevation.two} solid ${theme.palette.common.border}`
         : `${defaultTheme.elevation.two} solid ${defaultTheme.palette.common.border}`,
@@ -40,6 +44,9 @@ const DropdownMenuContainer = styled('button')<DropdownMenuContainerProps>(
         : defaultTheme.shape.borderRadius,
       boxShadow: isFlyoutOpen ? 'none' : boxShadowClosed,
       '&:hover': {
+        background: theme.palette
+          ? theme.palette.primary.light
+          : defaultTheme.palette.primary.light,
         boxShadow: isFlyoutOpen ? 'none' : boxShadowHover,
       },
       '&:active': {
