@@ -116,4 +116,14 @@ export const Disabled: DropdownStory = {
   },
 }
 
+export const CloseOnOutsideClick: DropdownStory = {
+  ...UnControlled,
+  args: {
+    options: optionsList,
+    label: 'Brand',
+    helperText: 'Select a vehicle brand.',
+    closeOnOutsideClick: false,
+  },
+}
+
 export default meta

@@ -49,6 +49,7 @@ export type DropdownProps = {
   helperText?: string
   hasError?: boolean
   disabled?: boolean
+  closeOnOutsideClick?: boolean
   // initialValue?: string | number
   // value?: string | number
   isOpen?: boolean
@@ -61,6 +62,7 @@ export default function Dropdown({
   helperText,
   isOpen: controlledIsOpen,
   disabled = false,
+  closeOnOutsideClick = true,
   // onClick,
   // value,
   onSelect,
@@ -89,7 +91,7 @@ export default function Dropdown({
   }
 
   React.useEffect(() => {
-    if (isFlyoutOpen) {
+    if (isFlyoutOpen && closeOnOutsideClick) {
       document.addEventListener('mousedown', handleClickOutside)
     } else {
       document.removeEventListener('mousedown', handleClickOutside)
@@ -98,7 +100,7 @@ export default function Dropdown({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [isFlyoutOpen])
+  }, [isFlyoutOpen, closeOnOutsideClick])
 
   return (
     <DropdownContainer>
