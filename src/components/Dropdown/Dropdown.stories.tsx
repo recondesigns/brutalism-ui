@@ -122,7 +122,19 @@ export const CloseOnOutsideClick: DropdownStory = {
     options: optionsList,
     label: 'Brand',
     helperText: 'Select a vehicle brand.',
+    closeOnOutsideClick: true,
+    closeOnEsc: false,
+  },
+}
+
+export const CloseOnEsc: DropdownStory = {
+  ...UnControlled,
+  args: {
+    options: optionsList,
+    label: 'Brand',
+    helperText: 'Select a vehicle brand.',
     closeOnOutsideClick: false,
+    closeOnEsc: true,
   },
 }
 

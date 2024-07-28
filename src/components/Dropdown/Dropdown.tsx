@@ -57,6 +57,7 @@ export type DropdownProps = {
   hasError?: boolean
   disabled?: boolean
   closeOnOutsideClick?: boolean
+  closeOnEsc?: boolean
   // initialValue?: string | number
   // value?: string | number
   isOpen?: boolean
@@ -71,6 +72,7 @@ export default function Dropdown({
   disabled = false,
   isOpen: controlledIsOpen,
   closeOnOutsideClick = true,
+  closeOnEsc = true,
   // onClick,
   // value,
   onSelect,
@@ -98,17 +100,31 @@ export default function Dropdown({
     }
   }
 
+  const handleEscapeKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setUncontrolledIsOpen(false)
+    }
+  }
+
   React.useEffect(() => {
-    if (isFlyoutOpen && closeOnOutsideClick) {
-      document.addEventListener('mousedown', handleClickOutside)
+    if (isFlyoutOpen) {
+      if (closeOnOutsideClick) {
+        document.addEventListener('mousedown', handleClickOutside)
+      }
+
+      if (closeOnEsc) {
+        document.addEventListener('keydown', handleEscapeKeydown)
+      }
     } else {
       document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscapeKeydown)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscapeKeydown)
     }
-  }, [isFlyoutOpen, closeOnOutsideClick])
+  }, [isFlyoutOpen, closeOnOutsideClick, closeOnEsc])
 
   return (
     <DropdownContainer>
