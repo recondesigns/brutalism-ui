@@ -5,6 +5,7 @@ import { defaultTheme } from '../emotionTheme'
 
 type ListItemContainerProps = {
   isSelected?: boolean
+  isHighlighted?: boolean
   disabled?: boolean
 }
 
@@ -12,14 +13,16 @@ const ListItemContainer = styled('div')<ListItemContainerProps>(
   {
     padding: '8px 20px',
   },
-  ({ theme, isSelected, disabled }) => ({
-    background: !isSelected
-      ? theme.palette
-        ? theme.palette.common.white
-        : defaultTheme.palette.common.white
-      : theme.palette
-        ? theme.palette.primary.main
-        : defaultTheme.palette.primary.main,
+  ({ theme, isSelected, disabled, isHighlighted }) => ({
+    background: isHighlighted
+      ? defaultTheme.palette.primary.light
+      : !isSelected
+        ? theme.palette
+          ? theme.palette.common.white
+          : defaultTheme.palette.common.white
+        : theme.palette
+          ? theme.palette.primary.main
+          : defaultTheme.palette.primary.main,
     borderBottom: theme.palette
       ? `2px solid ${theme.palette.common.border}`
       : `2px solid ${defaultTheme.palette.common.border}`,
@@ -59,8 +62,11 @@ type DropdownListItemProps = {
     disabled: boolean
   }
   isSelected?: boolean
+  isHighlighted?: boolean
   disabled?: boolean
   onClick: () => void
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
   children: React.ReactNode
 }
 
@@ -69,12 +75,16 @@ export default function DropdownListItem({
   isSelected,
   onClick,
   children,
+  isHighlighted = false,
+  ...otherProps
 }: DropdownListItemProps) {
   return (
     <ListItemContainer
       disabled={option.disabled}
       isSelected={isSelected}
+      isHighlighted={isHighlighted}
       onClick={!option.disabled ? onClick : undefined}
+      {...otherProps}
     >
       <ListItemText>{children}</ListItemText>
     </ListItemContainer>

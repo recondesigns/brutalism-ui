@@ -79,6 +79,9 @@ export default function Dropdown({
 }: DropdownProps) {
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = React.useState(false)
   const isFlyoutOpen = controlledIsOpen ? controlledIsOpen : uncontrolledIsOpen
+  const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(
+    null
+  )
   const [value, setValue] = React.useState<Option | null>(null)
   const flyoutRef = React.useRef<HTMLDivElement | null>(null)
   const menuRef = React.useRef<HTMLButtonElement | null>(null)
@@ -106,6 +109,40 @@ export default function Dropdown({
     }
   }
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    switch (event.key) {
+    // case 'Enter':
+    //   setUncontrolledIsOpen(!uncontrolledIsOpen)
+    //   break
+    case 'ArrowDown':
+      if (!isFlyoutOpen) {
+        setUncontrolledIsOpen(true)
+      } else {
+        setHighlightedIndex((prevIndex) =>
+          prevIndex === null ? 0 : (prevIndex + 1) % options.length
+        )
+      }
+      break
+    case 'ArrowUp':
+      if (isFlyoutOpen) {
+        setHighlightedIndex((prevIndex) =>
+          prevIndex === null
+            ? options.length - 1
+            : (prevIndex - 1 + options.length) % options.length
+        )
+      }
+      break
+    case 'Escape':
+      setUncontrolledIsOpen(false)
+      break
+      // case 'Tab':
+      //   setUncontrolledIsOpen(false)
+      //   break
+    default:
+      break
+    }
+  }
+
   React.useEffect(() => {
     if (isFlyoutOpen) {
       if (closeOnOutsideClick) {
@@ -126,6 +163,16 @@ export default function Dropdown({
     }
   }, [isFlyoutOpen, closeOnOutsideClick, closeOnEsc])
 
+  React.useEffect(() => {
+    if (isFlyoutOpen) {
+      setHighlightedIndex(-1)
+    } else {
+      setHighlightedIndex(null)
+    }
+  }, [isFlyoutOpen])
+
+  console.log(isFlyoutOpen)
+
   return (
     <DropdownContainer>
       {label && (
@@ -140,6 +187,7 @@ export default function Dropdown({
         hasError={hasError}
         disabled={disabled}
         onClick={() => setUncontrolledIsOpen(!uncontrolledIsOpen)}
+        onKeyDown={handleKeyDown}
       />
       {helperText && (
         <HelpText variant="caption" hasError={hasError} disabled={disabled}>
@@ -148,26 +196,15 @@ export default function Dropdown({
       )}
       {isFlyoutOpen && (
         <DropdownFlyout ref={flyoutRef}>
-          {options.map((option) => {
-            if (value && value.value === option.value) {
-              return (
-                <DropdownListItem
-                  key={option.value}
-                  option={option}
-                  isSelected={true}
-                  onClick={() => newHandle(option)}
-                >
-                  {option.name}
-                </DropdownListItem>
-              )
-            }
-
+          {options.map((option, idx) => {
             return (
               <DropdownListItem
                 key={option.value}
                 option={option}
-                isSelected={false}
+                isSelected={value?.value === option.value}
+                isHighlighted={highlightedIndex === idx}
                 onClick={() => newHandle(option)}
+                onMouseEnter={() => setHighlightedIndex(idx)}
               >
                 {option.name}
               </DropdownListItem>

@@ -102,11 +102,12 @@ type DropdownMenuProps = {
   disabled?: boolean
   hasError?: boolean
   onClick?: () => void
+  onKeyDown?: (e: React.KeyboardEvent) => void
 }
 
 const DropdownMenu = React.forwardRef<HTMLButtonElement, DropdownMenuProps>(
   (
-    { value, isFlyoutOpen, hasError = false, disabled = false, onClick },
+    { value, isFlyoutOpen, hasError = false, disabled = false, onClick, onKeyDown },
     ref
   ) => {
     return (
@@ -116,6 +117,7 @@ const DropdownMenu = React.forwardRef<HTMLButtonElement, DropdownMenuProps>(
         hasError={hasError}
         disabled={disabled}
         onClick={onClick}
+        onKeyDown={onKeyDown}
       >
         <ButtonText variant="body1">
           {value ? value.name : 'Choose an option...'}
