@@ -106,6 +106,22 @@ export const Controlled: DropdownStory = {
   },
 }
 
+export const Label: DropdownStory = {
+  ...UnControlled,
+  args: {
+    options: optionsList,
+    label: 'Brand',
+  },
+}
+
+export const HelperText: DropdownStory = {
+  ...UnControlled,
+  args: {
+    options: optionsList,
+    helperText: 'Select a vehicle brand.',
+  },
+}
+
 export const Disabled: DropdownStory = {
   ...UnControlled,
   args: {
