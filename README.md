@@ -7,7 +7,7 @@
 
 <br />
 
-<h1>Be-Ubiquitous</h1>
+<h1>Brutalism-UI</h1>
 <h3>A brutalist-<em>ish</em> component library</h3>
 <a href="#"><strong>Explore the docs »</strong></a>
 <br />
