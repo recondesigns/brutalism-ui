@@ -58,8 +58,6 @@ export type DropdownProps = {
   disabled?: boolean
   closeOnOutsideClick?: boolean
   closeOnEsc?: boolean
-  // initialValue?: string | number
-  // value?: string | number
   isOpen?: boolean
   onSelect?: (arg1: Option) => void
 }
@@ -73,12 +71,10 @@ export default function Dropdown({
   isOpen: controlledIsOpen,
   closeOnOutsideClick = true,
   closeOnEsc = true,
-  // onClick,
-  // value,
   onSelect,
 }: DropdownProps) {
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = React.useState(false)
-  const isFlyoutOpen = controlledIsOpen ? controlledIsOpen : uncontrolledIsOpen
+  const isFlyoutOpen = controlledIsOpen ?? uncontrolledIsOpen
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(
     null
   )
@@ -89,7 +85,9 @@ export default function Dropdown({
   const newHandle = (selectedOption: Option) => {
     setValue(selectedOption)
     onSelect && onSelect(selectedOption)
-    setUncontrolledIsOpen(!uncontrolledIsOpen)
+    if (!controlledIsOpen) {
+      setUncontrolledIsOpen(false)
+    }
   }
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -111,9 +109,6 @@ export default function Dropdown({
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     switch (event.key) {
-    // case 'Enter':
-    //   setUncontrolledIsOpen(!uncontrolledIsOpen)
-    //   break
     case 'ArrowDown':
       if (!isFlyoutOpen) {
         setUncontrolledIsOpen(true)
@@ -132,12 +127,19 @@ export default function Dropdown({
         )
       }
       break
+    case 'Enter':
+      if (isFlyoutOpen && highlightedIndex !== null) {
+        const selectedOption = options[highlightedIndex]
+        setValue(selectedOption)
+        onSelect && onSelect(selectedOption)
+        newHandle(selectedOption)
+        // TODO: why does this aslso need to be used to close the flyout on 'Enter'
+        setUncontrolledIsOpen((prevIsOpen) => !prevIsOpen)
+      }
+      break
     case 'Escape':
       setUncontrolledIsOpen(false)
       break
-      // case 'Tab':
-      //   setUncontrolledIsOpen(false)
-      //   break
     default:
       break
     }
@@ -170,8 +172,6 @@ export default function Dropdown({
       setHighlightedIndex(null)
     }
   }, [isFlyoutOpen])
-
-  console.log(isFlyoutOpen)
 
   return (
     <DropdownContainer>
