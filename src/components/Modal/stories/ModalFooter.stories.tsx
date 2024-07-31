@@ -1,13 +1,22 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
 import ModalFooter from '../ModalFooter'
 import { Modal } from '../../Modal'
+import { defaultTheme } from '../../emotionTheme'
 
 type ModalFooter = StoryObj<typeof ModalFooter>
 
 const meta: Meta<typeof ModalFooter> = {
   title: 'UI Components/Modal/Building Blocks/ModalFooter',
   component: ModalFooter,
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={defaultTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 }
 
 export const Demo: ModalFooter = {

@@ -1,7 +1,9 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
 import { Modal } from '../../Modal'
 import { Button } from '../..'
+import { defaultTheme } from '../../emotionTheme'
 
 type ModalStory = StoryObj<typeof Modal>
 
@@ -13,6 +15,13 @@ const meta: Meta<typeof Modal> = {
       exclude: ['isOpen', 'onClose', 'children'],
     },
   },
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={defaultTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 }
 
 export const Demo: ModalStory = {
