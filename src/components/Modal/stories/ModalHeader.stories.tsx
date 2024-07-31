@@ -1,12 +1,21 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
 import { Modal } from '../../Modal'
+import { defaultTheme } from '../../emotionTheme'
 
 type ModalHeaderStory = StoryObj<typeof Modal.Header>
 
 const meta: Meta<typeof Modal.Header> = {
   title: 'UI Components/Modal/Building Blocks/ModalHeader',
   component: Modal.Header,
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={defaultTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 }
 
 export const Demo: ModalHeaderStory = {

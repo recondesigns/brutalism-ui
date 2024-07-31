@@ -1,13 +1,22 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 import Card from '../Card'
+import { defaultTheme } from '../../emotionTheme'
 
 type CardContentStory = StoryObj<typeof Card.Content>
 
 const meta: Meta<typeof Card.Content> = {
   title: 'UI Components/Card/Building Blocks/Card Content',
   component: Card.Content,
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={defaultTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 }
 
 const CardTitle = styled('h4')`

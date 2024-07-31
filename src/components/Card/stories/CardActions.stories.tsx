@@ -1,13 +1,22 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
 import Card from '../Card'
 import Button from '../../Button'
+import { defaultTheme } from '../../emotionTheme'
 
 type CardActionsStory = StoryObj<typeof Card.Actions>
 
 const meta: Meta<typeof Card.Actions> = {
   title: 'UI Components/Card/Building Blocks/Card Actions',
   component: Card.Actions,
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={defaultTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 }
 
 export const Demo: CardActionsStory = {

@@ -1,7 +1,9 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
 import Button from './Button'
 import { CloseIcon } from '../../assets'
+import { defaultTheme } from '../emotionTheme'
 
 type ButtonStory = StoryObj<typeof Button>
 
@@ -20,6 +22,13 @@ const meta: Meta<typeof Button> = {
       control: { type: 'inline-radio' },
     },
   },
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={defaultTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 }
 
 export const Demo: ButtonStory = {
