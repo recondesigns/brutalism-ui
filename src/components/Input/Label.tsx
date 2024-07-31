@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { defaultTheme } from '../emotionTheme'
 
 type TextProps = {
   required?: boolean
@@ -12,9 +13,12 @@ const Text = styled.label<TextProps>(
     fontFamily: 'sans-serif',
     fontSize: '15px',
     lineHeight: '16px',
+    color: defaultTheme.palette.common.black,
   },
   ({ theme, hasError }) => ({
-    color: hasError ? theme.palette.error.main : 'black',
+    color: hasError
+      ? theme?.palette?.error?.main
+      : theme?.palette?.common?.black,
   })
 )
 
@@ -32,7 +36,6 @@ export default function InputLabel({
 }: LabelProps) {
   return (
     <Text hasError={hasError} required={required} {...otherProps}>
-      {/* {children} */}
       {!required ? children : `${children}*`}
     </Text>
   )

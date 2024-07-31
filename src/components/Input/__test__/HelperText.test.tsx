@@ -2,6 +2,8 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { matchers } from '@emotion/jest'
 import { cleanup, render } from '@testing-library/react'
+import { ThemeProvider } from '@emotion/react'
+import { defaultTheme } from '../../emotionTheme'
 import Input from '../Input'
 
 expect.extend(matchers)
@@ -56,7 +58,10 @@ describe('HelperText', () => {
 
   it('should render helper text color #FF4F58 when an error is present', () => {
     const component = render(
-      <TestInput helperText="Helper text with error." hasError={true} />
+      <ThemeProvider theme={defaultTheme}>
+        <TestInput helperText="Helper text with error." hasError={true} />
+
+      </ThemeProvider>
     )
 
     expect(component.queryByTestId('input-helpertext-test')).toHaveStyleRule(

@@ -1,29 +1,24 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
 import { CloseIcon } from '../../assets'
 
-const ModalHeaderWrapper = styled('div')(
-  {
-    position: 'relative',
-    paddingBottom: '8px',
-  },
-  ({ theme }) => ({
-    fontFamily: theme.typography.fontFamily,
-  })
-)
+const ModalHeaderWrapper = styled('div')({
+  position: 'relative',
+  paddingBottom: '8px',
+})
 
 const Title = styled('h3')(
   {
     position: 'relative',
     margin: '0px',
     width: '85%',
+    fontFamily: defaultTheme.typography.fontFamily,
     fontSize: '24px',
     lineHeight: '32px',
   },
   ({ theme }) => ({
-    fontFamily: theme.typography.fontFamily,
+    fontFamily: theme?.typography?.fontFamily,
   })
 )
 
@@ -59,18 +54,16 @@ type ModalHeaderProps = {
 
 export default function ModalHeader({ title, onClose }: ModalHeaderProps) {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <ModalHeaderWrapper>
-        <Title data-testid="modal-modalheader-title">{title}</Title>
-        {onClose && (
-          <IconButton
-            onClick={onClose}
-            data-testid="modal-modalheader-close-button"
-          >
-            <CloseIcon />
-          </IconButton>
-        )}
-      </ModalHeaderWrapper>
-    </ThemeProvider>
+    <ModalHeaderWrapper>
+      <Title data-testid="modal-modalheader-title">{title}</Title>
+      {onClose && (
+        <IconButton
+          onClick={onClose}
+          data-testid="modal-modalheader-close-button"
+        >
+          <CloseIcon />
+        </IconButton>
+      )}
+    </ModalHeaderWrapper>
   )
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
+import { defaultTheme } from '../emotionTheme'
 import Input from './Input'
 
 type InputStory = StoryObj<typeof Input>
@@ -7,6 +9,13 @@ type InputStory = StoryObj<typeof Input>
 const meta: Meta<typeof Input> = {
   title: 'Form elements/Input',
   component: Input,
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={defaultTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 }
 
 const InputStoryTemplate: InputStory = {

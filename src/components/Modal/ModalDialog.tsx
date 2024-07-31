@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
 
 type ModalDialogWrapperProps = {
@@ -14,15 +13,18 @@ const ModalDialogWrapper = styled('div')<ModalDialogWrapperProps>(
     maxHeight: '80%',
     background: 'white',
     overflow: 'scroll',
+    border: `1px solid ${defaultTheme.palette.common.border}`,
+    borderRadius: defaultTheme.shape.borderRadius,
+    boxShadow: `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`,
   },
   ({ shouldFitContent }) => ({
     maxWidth: !shouldFitContent ? '40%' : 'none',
     width: !shouldFitContent ? '100%' : 'auto',
   }),
   ({ theme }) => ({
-    border: `1px solid ${theme.palette.common.border}`,
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
+    border: `1px solid ${theme?.palette?.common?.border}`,
+    borderRadius: theme?.shape?.borderRadius,
+    boxShadow: `${theme?.elevation?.three} ${theme?.elevation?.three} 0px 0px ${theme?.palette?.common?.shadow}`,
   })
 )
 
@@ -37,10 +39,8 @@ export default function ModalDialog({
   children,
 }: ModalDialogProps) {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <ModalDialogWrapper shouldFitContent={shouldFitContent} role="dialog">
-        {children}
-      </ModalDialogWrapper>
-    </ThemeProvider>
+    <ModalDialogWrapper shouldFitContent={shouldFitContent} role="dialog">
+      {children}
+    </ModalDialogWrapper>
   )
 }

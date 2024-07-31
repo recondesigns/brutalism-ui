@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { defaultTheme } from '../emotionTheme'
 
 type TextProps = {
   hasError?: boolean
@@ -11,10 +12,13 @@ const Text = styled.p<TextProps>(
     fontFamily: 'sans-serif',
     fontSize: '14px',
     lineHeight: '20px',
+    color: defaultTheme.palette.common.black,
     textAlign: 'left',
   },
   ({ theme, hasError }) => ({
-    color: hasError ? theme.palette.error.main : 'black',
+    color: hasError
+      ? theme?.palette?.error?.main
+      : theme?.palette?.common?.black,
   })
 )
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { ThemeProvider } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
 import CardImage from './CardImage'
 import CardContent from './CardContent'
@@ -14,25 +13,40 @@ type CardWrapper = {
 const CardWrapper = styled('div')<CardWrapper>(
   {
     width: '100%',
-    background: 'none',
+    background: defaultTheme.palette.common.white,
+    border: `2px solid ${defaultTheme.palette.common.border}`,
+    borderRadius: defaultTheme.shape.borderRadius,
+    transform: 'translate(-3px, -3px)',
+    transition:
+      'box-shadow 150ms cubic-bezier(.645, .045, .355, 1), transform 150ms cubic-bezier(.645,.045,.355,1)',
+    boxShadow: `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`,
+    '&:hover': {
+      transform: 'translate(-2px, -2px)',
+      boxShadow: `${defaultTheme.elevation.two} ${defaultTheme.elevation.two} 0px 0px ${defaultTheme.palette.common.shadow}`,
+    },
+    '&:active': {
+      transform: 'translate(-0px, -0px)',
+      boxShadow: `${defaultTheme.elevation.none} ${defaultTheme.elevation.none} 0px 0px ${defaultTheme.palette.common.shadow}`,
+    },
   },
   ({ theme, disabled, isClickable }) => ({
+    background: theme?.palette?.common?.white,
     opacity: !disabled ? 'initial' : '50%',
-    border: `2px solid ${theme.palette.common.border}`,
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
+    border: `2px solid ${theme?.palette?.common?.border}`,
+    borderRadius: theme?.shape?.borderRadius,
+    boxShadow: `${theme?.elevation?.three} ${theme?.elevation?.three} 0px 0px ${theme?.palette?.common?.shadow}`,
     '&:hover': {
       boxShadow:
         isClickable && !disabled
-          ? `${theme.elevation.two} ${theme.elevation.two} 0px 0px ${theme.palette.common.shadow}`
-          : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
+          ? `${theme?.elevation?.two} ${theme?.elevation?.two} 0px 0px ${theme?.palette?.common?.shadow}`
+          : `${theme?.elevation?.three} ${theme?.elevation?.three} 0px 0px ${theme?.palette?.common?.shadow}`,
       cursor: disabled ? 'not-allowed' : isClickable ? 'pointer' : 'initial',
     },
     '&:active': {
       boxShadow:
         isClickable && !disabled
-          ? `${theme.elevation.none} ${theme.elevation.none} 0px 0px ${theme.palette.common.shadow}`
-          : `${theme.elevation.three} ${theme.elevation.three} 0px 0px ${theme.palette.common.shadow}`,
+          ? `${theme?.elevation?.none} ${theme?.elevation?.none} 0px 0px ${theme?.palette?.common?.shadow}`
+          : `${theme?.elevation?.three} ${theme?.elevation?.three} 0px 0px ${theme?.palette?.common?.shadow}`,
     },
   })
 )
@@ -68,17 +82,15 @@ function Card({
   ...otherProps
 }: CardProps) {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <CardWrapper
-        role={isClickable ? 'button' : 'div'}
-        isClickable={isClickable}
-        disabled={disabled}
-        onClick={isClickable && !disabled ? onClick : undefined}
-        {...otherProps}
-      >
-        {children}
-      </CardWrapper>
-    </ThemeProvider>
+    <CardWrapper
+      role={isClickable ? 'button' : 'div'}
+      isClickable={isClickable}
+      disabled={disabled}
+      onClick={isClickable && !disabled ? onClick : undefined}
+      {...otherProps}
+    >
+      {children}
+    </CardWrapper>
   )
 }
 

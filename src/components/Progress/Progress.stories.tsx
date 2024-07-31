@@ -1,12 +1,21 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
 import Progress from './Progress'
+import { defaultTheme } from '../emotionTheme'
 
 type ProgressStory = StoryObj<typeof Progress>
 
 const meta: Meta<typeof Progress> = {
   title: 'UI Components/Progress',
   component: Progress,
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={defaultTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 }
 
 export const Demo: ProgressStory = {
