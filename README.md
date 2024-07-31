@@ -19,15 +19,15 @@
 ### Install package
 
 ```sh
-npm install be-ubiquitous
+npm install brutalism-ui
 ```
 
 ### Usage
 
 In the consuming app, import the components as needed.
 
-```js
-import { Button } from "be-ubiquitous"
+```jsx
+import { Button } from "brutalism-ui"
 
 export const Form = () => {
   return (
@@ -58,12 +58,12 @@ Distributed under the MIT License.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[contributors-shield]: https://img.shields.io/github/contributors/recondesigns/be-ubiquitous.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/recondesigns/brutalism-ui.svg?style=for-the-badge
 [contributors-url]: https://github.com/recondesigns/
-[issues-shield]: https://img.shields.io/github/issues/recondesigns/be-ubiquitous.svg?style=for-the-badge
-[issues-url]: https://github.com/recondesigns/be-ubiquitous/issues
-[license-shield]: https://img.shields.io/github/license/recondesigns/be-ubiquitous.svg?style=for-the-badge
-[license-url]: https://github.com/recondesigns/be-ubiquitous/blob/main/LICENSE.txt
+[issues-shield]: https://img.shields.io/github/issues/recondesigns/brutalism-ui.svg?style=for-the-badge
+[issues-url]: https://github.com/recondesigns/brutalism-ui/issues
+[license-shield]: https://img.shields.io/github/license/recondesigns/brutalism-ui.svg?style=for-the-badge
+[license-url]: https://github.com/recondesigns/brutalism-ui/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/stedman/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
