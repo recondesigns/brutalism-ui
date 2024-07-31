@@ -1,10 +1,19 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
 import Text from './Text'
+import { defaultTheme } from '../emotionTheme'
 
 const meta: Meta<typeof Text> = {
   title: 'Foundations/Text',
   component: Text,
+  decorators: [
+    (Story) => (
+      <ThemeProvider theme={defaultTheme}>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 }
 
 type TextStory = StoryObj<typeof Text>
