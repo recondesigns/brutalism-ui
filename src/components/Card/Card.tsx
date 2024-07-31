@@ -16,11 +16,16 @@ const CardWrapper = styled('div')<CardWrapper>(
     background: defaultTheme.palette.common.white,
     border: `2px solid ${defaultTheme.palette.common.border}`,
     borderRadius: defaultTheme.shape.borderRadius,
+    transform: 'translate(-3px, -3px)',
+    transition:
+      'box-shadow 150ms cubic-bezier(.645, .045, .355, 1), transform 150ms cubic-bezier(.645,.045,.355,1)',
     boxShadow: `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`,
     '&:hover': {
+      transform: 'translate(-2px, -2px)',
       boxShadow: `${defaultTheme.elevation.two} ${defaultTheme.elevation.two} 0px 0px ${defaultTheme.palette.common.shadow}`,
     },
     '&:active': {
+      transform: 'translate(-0px, -0px)',
       boxShadow: `${defaultTheme.elevation.none} ${defaultTheme.elevation.none} 0px 0px ${defaultTheme.palette.common.shadow}`,
     },
   },

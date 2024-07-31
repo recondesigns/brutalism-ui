@@ -74,11 +74,17 @@ const InputComponent = styled.input<InputProps>(
     border: `2px solid ${defaultTheme.palette.common.border}`,
     borderRadius: '4px',
     boxShadow: `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`,
+    transform: 'translate(-3px, -3px)',
+    transition:
+      'box-shadow 150ms cubic-bezier(.645, .045, .355, 1), transform 150ms cubic-bezier(.645,.045,.355,1)',
+
     '&:hover': {
+      transform: 'translate(-2px, -2px)',
       background: defaultTheme.palette.primary.light,
       boxShadow: `${defaultTheme.elevation.two} ${defaultTheme.elevation.two} 0px 0px ${defaultTheme.palette.common.shadow}`,
     },
     '&:focus': {
+      transform: 'translate(-0px, -0px)',
       background: defaultTheme.palette.primary.light,
       outline: 'none',
       boxShadow: `${defaultTheme.elevation.none} ${defaultTheme.elevation.none} 0px 0px ${defaultTheme.palette.common.shadow}`,

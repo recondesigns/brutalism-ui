@@ -56,6 +56,9 @@ const StyledButton = styled('button')<StyledButtonProps>(
     border: `2px solid ${defaultTheme.palette.common.border}`,
     borderRadius: defaultTheme.shape.borderRadius,
     boxShadow: `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`,
+    transform: 'translate(-3px, -3px)',
+    transition:
+      'box-shadow 150ms cubic-bezier(.645, .045, .355, 1), transform 150ms cubic-bezier(.645,.045,.355,1)',
   },
   ({ size }) => ({
     paddingTop: size && setSize(size).paddingTop,
@@ -76,6 +79,7 @@ const StyledButton = styled('button')<StyledButtonProps>(
     borderRadius: buttonType === 'block' ? theme?.shape?.borderRadius : '50px',
     boxShadow: `${theme?.elevation?.three} ${theme?.elevation?.three} 0px 0px ${theme?.palette?.common?.shadow}`,
     '&:hover': {
+      transform: 'translate(-2px, -2px)',
       background: !disabled
         ? theme?.palette?.primary?.dark || defaultTheme.palette.primary.dark
         : theme?.palette?.primary?.main || defaultTheme.palette.primary.main,
@@ -92,6 +96,7 @@ const StyledButton = styled('button')<StyledButtonProps>(
         }`,
     },
     '&:active': {
+      transform: 'translate(-0px, -0px)',
       background: !disabled
         ? theme?.palette?.primary?.darker || defaultTheme.palette.primary.darker
         : theme?.palette?.primary?.main || defaultTheme.palette.primary.main,
