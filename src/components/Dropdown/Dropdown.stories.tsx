@@ -7,11 +7,21 @@ import { defaultTheme } from '../emotionTheme'
 const meta: Meta<typeof Dropdown> = {
   title: 'Form elements/Dropdown',
   component: Dropdown,
+  excludeStories: ['UnControlled', 'Controlled'],
   decorators: [
     (Story) => (
       <ThemeProvider theme={defaultTheme}>
-        <div style={{ width: '300px' }}>
-          <Story />
+        <div
+          style={{
+            height: '300px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+          }}
+        >
+          <div style={{ width: '300px' }}>
+            <Story />
+          </div>
         </div>
       </ThemeProvider>
     ),
@@ -45,29 +55,42 @@ const optionsList: Option[] = [
     value: 'gmc',
     disabled: false,
   },
-  {
-    name: 'Toyota',
-    value: 'toyota',
-    disabled: false,
-  },
-  {
-    name: 'Honda',
-    value: 'honda',
-    disabled: false,
-  },
-  {
-    name: 'Mazda',
-    value: 'mazda',
-    disabled: false,
-  },
-  {
-    name: 'Chrysler',
-    value: 'chrysler',
-    disabled: false,
-  },
+  // {
+  //   name: "Toyota",
+  //   value: "toyota",
+  //   disabled: false,
+  // },
+  // {
+  //   name: "Honda",
+  //   value: "honda",
+  //   disabled: false,
+  // },
+  // {
+  //   name: "Mazda",
+  //   value: "mazda",
+  //   disabled: false,
+  // },
+  // {
+  //   name: "Chrysler",
+  //   value: "chrysler",
+  //   disabled: false,
+  // },
 ]
 
 type DropdownStory = StoryObj<typeof Dropdown>
+
+export const Demo: DropdownStory = {
+  render: (args) => {
+    return <Dropdown {...args} />
+  },
+  args: {
+    options: optionsList,
+    label: 'Brand',
+    helperText: 'Select a vehicle brand.',
+    hasError: false,
+    disabled: false,
+  },
+}
 
 export const UnControlled: DropdownStory = {
   render: (args) => {
