@@ -7,7 +7,6 @@ import { defaultTheme } from '../emotionTheme'
 const meta: Meta<typeof Dropdown> = {
   title: 'Form elements/Dropdown',
   component: Dropdown,
-  tags: ['autodocs'],
   decorators: [
     (Story) => (
       <ThemeProvider theme={defaultTheme}>

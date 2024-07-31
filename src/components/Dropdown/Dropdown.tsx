@@ -51,14 +51,53 @@ type Option = {
 }
 
 export type DropdownProps = {
+  /**
+   * Options to be rendered as list items in the Dropdown.
+   */
   options: Option[]
+  /**
+   * Applies a label to the input.
+   */
   label?: string
+  /**
+   * Applies a string of text to assist users.
+   */
   helperText?: string
+  /**
+   * Applies error styles when there is an error present.
+   *
+   * @default false
+   */
   hasError?: boolean
+  /**
+   * Disables user interaction with the Dropdown, and applies opacity as a visual indicator.
+   *
+   * @default false
+   */
   disabled?: boolean
+  /**
+   * Allows users to optionally set if the menu closes when clicking outside of menu.
+   *
+   * @default true
+   */
   closeOnOutsideClick?: boolean
+  /**
+   * Allows users to optionally set if the menu closes when Escape key is pressed.
+   *
+   * @default true
+   */
   closeOnEsc?: boolean
+  /**
+   * Use with controlled Dropdown component to set if the menu flyout is open or closed.
+   *
+   * @default false
+   */
   isOpen?: boolean
+  /**
+   * Function that is called when a selection has been made.
+   *
+   * @default false
+   */
   onSelect?: (arg1: Option) => void
 }
 

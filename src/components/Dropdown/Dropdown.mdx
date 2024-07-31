@@ -1,0 +1,86 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as DropdownStories from "./Dropdown.stories"
+
+<Meta of={DropdownStories} />
+
+<Title>Dropdown</Title>
+
+<Subtitle>
+  Dropdowns present a list of options from which a user can select one option,
+  or several. A selected option can represent a value in a form, or can be used
+  as an action to filter or sort existing content.
+</Subtitle>
+
+<Canvas of={DropdownStories.UnControlled} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/be-ubiquitous/tree/main/src/components/Dropdown)
+&nbsp;|&nbsp;
+[Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=224-1971&t=CyoOKG08WesONLwt-1)
+
+There are three different variants of dropdowns that support various kinds of functionality—dropdown, multiselect, and combo box.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Import the Dropdown component, provide the options, and place it in the UI.
+
+```jsx
+import { Dropdown } from "brutalist-ui"
+```
+
+<Canvas of={DropdownStories.UnControlled} />
+
+### Label
+
+Adds a string as a label for the Dropdown. Can be used without a label, but it is
+recommended to use a label.
+
+<Canvas of={DropdownStories.Label} />
+
+### Helper text
+
+Adds a string as a helper text string to the Dropdown for added context for users.
+
+<Canvas of={DropdownStories.HelperText} />
+
+### Has error
+
+Sets error styles on component.
+
+<Canvas of={DropdownStories.HasError} />
+
+### Disabled
+
+Disabled interaction with the component, and adds an opacity to alert the user.
+
+<Canvas of={DropdownStories.Disabled} />
+
+### Uncontrolled
+
+The Dropdown can be used by itself as an uncontrolled component.
+
+<Canvas of={DropdownStories.UnControlled} />
+
+### Uncontrolled
+
+The Dropdown can be used itself as a controlled component by using the `isOpen`
+and `onSelect` props.
+
+<Canvas of={DropdownStories.Controlled} />
+
+### Close menu when clicking outside component
+
+Closes the menu when the user clicks anywhere outside of the flyout.
+
+<Canvas of={DropdownStories.CloseOnOutsideClick} />
+
+### Close menu using escape
+
+Closes the menu when the user presses the Escape key.
+
+<Canvas of={DropdownStories.CloseOnEsc} />
