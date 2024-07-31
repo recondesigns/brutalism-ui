@@ -2,8 +2,8 @@ import { create } from "@storybook/theming"
 
 export default create({
   base: "light",
-  brandTitle: "Be-Ubiquitous",
-  brandUrl: "https://github.com/recondesigns/be-ubiquitous",
+  brandTitle: "brutalism-ui",
+  brandUrl: "https://github.com/recondesigns/brutalism-ui#readme",
   //   brandImage: logo,
   brandTarget: "_self",
 
