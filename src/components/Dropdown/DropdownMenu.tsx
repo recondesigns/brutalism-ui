@@ -20,7 +20,6 @@ const DropdownMenuContainer = styled('button')<DropdownMenuContainerProps>(
     justifyContent: 'space-between',
     alignItems: 'center',
     textAlign: 'left',
-    // transform: 'translate(-3px, -3px)',
     transition:
       'box-shadow 150ms cubic-bezier(.645, .045, .355, 1), transform 150ms cubic-bezier(.645,.045,.355,1)',
     '&:hover': {
@@ -64,9 +63,11 @@ const DropdownMenuContainer = styled('button')<DropdownMenuContainerProps>(
       opacity: disabled ? '50%' : 'initial',
       cursor: !disabled ? 'pointer' : 'not-allowed',
       '&:hover': {
-        transform: !isFlyoutOpen
-          ? 'translate(-2px, -2px)'
-          : 'translate(0px, 0px)',
+        transform: disabled
+          ? 'translate(-3px, -3px)'
+          : !isFlyoutOpen
+            ? 'translate(-2px, -2px)'
+            : 'translate(0px, 0px)',
         background: !disabled
           ? theme.palette
             ? theme.palette.primary.light
@@ -81,9 +82,11 @@ const DropdownMenuContainer = styled('button')<DropdownMenuContainerProps>(
             : '3px 3px 0px 0px black',
       },
       '&:active': {
-        transform: !isFlyoutOpen
-          ? 'translate(0px, 0px)'
-          : 'translate(0px, 0px)',
+        transform: disabled
+          ? 'translate(-3px, -3px)'
+          : !isFlyoutOpen
+            ? 'translate(0px, 0px)'
+            : 'translate(0px, 0px)',
         boxShadow: !disabled ? 'none' : '3px 3px 0px 0px black',
       },
     }
