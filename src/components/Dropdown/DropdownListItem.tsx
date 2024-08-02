@@ -27,7 +27,6 @@ const ListItemContainer = styled('div')<ListItemContainerProps>(
       ? `2px solid ${theme.palette.common.border}`
       : `2px solid ${defaultTheme.palette.common.border}`,
     cursor: !disabled ? 'pointer' : 'not-allowed',
-    opacity: !disabled ? 'initial' : '50%',
     '&:hover': {
       background: disabled
         ? theme.palette
@@ -53,7 +52,13 @@ const ListItemContainer = styled('div')<ListItemContainerProps>(
   })
 )
 
-const ListItemText = styled(Text)({})
+type ListItemTextProps = {
+  disabled?: boolean
+}
+
+const ListItemText = styled(Text)<ListItemTextProps>(({ disabled }) => ({
+  opacity: !disabled ? 'inherit' : '50%',
+}))
 
 type DropdownListItemProps = {
   option: {
@@ -86,7 +91,7 @@ export default function DropdownListItem({
       onClick={!option.disabled ? onClick : undefined}
       {...otherProps}
     >
-      <ListItemText>{children}</ListItemText>
+      <ListItemText disabled={option.disabled}>{children}</ListItemText>
     </ListItemContainer>
   )
 }

@@ -60,6 +60,12 @@ Disabled interaction with the component, and adds an opacity to alert the user.
 
 <Canvas of={DropdownStories.Disabled} />
 
+### Max height
+
+Sets the maximum height of the flyout, and allows scrolling.
+
+<Canvas of={DropdownStories.MaxHeight} />
+
 ### Close menu when clicking outside component
 
 Closes the menu when the user clicks anywhere outside of the flyout.
@@ -71,3 +77,7 @@ Closes the menu when the user clicks anywhere outside of the flyout.
 Closes the menu when the user presses the Escape key.
 
 <Canvas of={DropdownStories.CloseOnEsc} />
+
+## Known issues
+
+- When using the `flyoutMaxHeight` prop, keyboard navigation is not scrolling through the options.

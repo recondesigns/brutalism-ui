@@ -76,6 +76,10 @@ export type DropdownProps = {
    */
   disabled?: boolean
   /**
+   * Sets the maximum height of the flyout container, and allows scrolling.
+   */
+  flyoutMaxHeight?: string
+  /**
    * Allows users to optionally set if the menu closes when clicking outside of menu.
    *
    * @default true
@@ -107,6 +111,7 @@ export default function Dropdown({
   helperText,
   hasError = false,
   disabled = false,
+  flyoutMaxHeight,
   isOpen: controlledIsOpen,
   closeOnOutsideClick = true,
   closeOnEsc = true,
@@ -234,7 +239,7 @@ export default function Dropdown({
         </HelpText>
       )}
       {isFlyoutOpen && (
-        <DropdownFlyout ref={flyoutRef}>
+        <DropdownFlyout ref={flyoutRef} flyoutMaxHeight={flyoutMaxHeight}>
           {options.map((option, idx) => {
             return (
               <DropdownListItem

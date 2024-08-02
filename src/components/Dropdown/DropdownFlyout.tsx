@@ -1,15 +1,22 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { defaultTheme } from '../emotionTheme'
-// import { defaultTheme } from '../emotionTheme'
 
-const DropdownFlyoutContainer = styled('div')(
+type DropdownFlyoutContainerProps = {
+  flyoutMaxHeight?: string
+}
+
+const DropdownFlyoutContainer = styled('div')<DropdownFlyoutContainerProps>(
   {
     position: 'absolute',
     top: 76,
     left: 0,
     right: 0,
+    overflow: 'scroll',
   },
+  ({ flyoutMaxHeight }) => ({
+    maxHeight: flyoutMaxHeight ? flyoutMaxHeight : 'initial',
+  }),
   ({ theme }) => ({
     border: theme.palette
       ? `2px solid ${theme?.palette?.common?.border}`
@@ -24,13 +31,16 @@ const DropdownFlyoutContainer = styled('div')(
 )
 
 type Props = {
+  flyoutMaxHeight?: string
   children: React.ReactNode
 }
 
 const DropdownFlyout = React.forwardRef<HTMLDivElement, Props>(
-  ({ children }, ref) => {
+  ({ flyoutMaxHeight, children }, ref) => {
     return (
-      <DropdownFlyoutContainer ref={ref}>{children}</DropdownFlyoutContainer>
+      <DropdownFlyoutContainer ref={ref} flyoutMaxHeight={flyoutMaxHeight}>
+        {children}
+      </DropdownFlyoutContainer>
     )
   }
 )
