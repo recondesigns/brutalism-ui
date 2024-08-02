@@ -34,6 +34,69 @@ type Option = {
   disabled: boolean
 }
 
+const longOptionsList: Option[] = [
+  {
+    name: 'Ford',
+    value: 'ford',
+    disabled: false,
+  },
+  {
+    name: 'Dodge',
+    value: 'dodge',
+    disabled: true,
+  },
+  {
+    name: 'Chevy',
+    value: 'chevy',
+    disabled: false,
+  },
+  {
+    name: 'GMC',
+    value: 'gmc',
+    disabled: false,
+  },
+  {
+    name: 'Toyota',
+    value: 'toyota',
+    disabled: false,
+  },
+  {
+    name: 'Honda',
+    value: 'honda',
+    disabled: false,
+  },
+  {
+    name: 'Mazda',
+    value: 'mazda',
+    disabled: false,
+  },
+  {
+    name: 'Chrysler',
+    value: 'chrysler',
+    disabled: false,
+  },
+  {
+    name: 'BMW',
+    value: 'bmw',
+    disabled: false,
+  },
+  {
+    name: 'Buick',
+    value: 'buick',
+    disabled: false,
+  },
+  {
+    name: 'Cadillac',
+    value: 'cadillac',
+    disabled: false,
+  },
+  {
+    name: 'Audi',
+    value: 'audi',
+    disabled: false,
+  },
+]
+
 const optionsList: Option[] = [
   {
     name: 'Ford',
@@ -55,26 +118,6 @@ const optionsList: Option[] = [
     value: 'gmc',
     disabled: false,
   },
-  // {
-  //   name: "Toyota",
-  //   value: "toyota",
-  //   disabled: false,
-  // },
-  // {
-  //   name: "Honda",
-  //   value: "honda",
-  //   disabled: false,
-  // },
-  // {
-  //   name: "Mazda",
-  //   value: "mazda",
-  //   disabled: false,
-  // },
-  // {
-  //   name: "Chrysler",
-  //   value: "chrysler",
-  //   disabled: false,
-  // },
 ]
 
 type DropdownStory = StoryObj<typeof Dropdown>
@@ -151,6 +194,16 @@ export const Disabled: DropdownStory = {
     label: 'Brand',
     helperText: 'Select a vehicle brand.',
     disabled: true,
+  },
+}
+
+export const MaxHeight: DropdownStory = {
+  ...UnControlled,
+  args: {
+    options: longOptionsList,
+    label: 'Brand',
+    helperText: 'Select a vehicle brand.',
+    flyoutMaxHeight: '225px',
   },
 }
 
