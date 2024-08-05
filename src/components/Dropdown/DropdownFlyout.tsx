@@ -1,8 +1,33 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { css, keyframes } from '@emotion/react'
 import { defaultTheme } from '../emotionTheme'
 
+const slideIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`
+
+const slideOut = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+`
+
 type DropdownFlyoutContainerProps = {
+  isOpen?: boolean
+  isClosing?: boolean
   flyoutMaxHeight?: string
 }
 
@@ -12,11 +37,17 @@ const DropdownFlyoutContainer = styled('div')<DropdownFlyoutContainerProps>(
     top: 76,
     left: 0,
     right: 0,
-    overflow: 'scroll',
+    overflowY: 'scroll',
+    opacity: 0,
+    transition: 'transform 0.3s ease-out, opacity 0.3s ease-out',
   },
   ({ flyoutMaxHeight }) => ({
     maxHeight: flyoutMaxHeight ? flyoutMaxHeight : 'initial',
   }),
+  ({ isOpen, isClosing }) => css`
+    animation: ${isOpen && !isClosing ? slideIn : slideOut} 0.3s ease-out
+      forwards;
+  `,
   ({ theme }) => ({
     border: theme.palette
       ? `2px solid ${theme?.palette?.common?.border}`
@@ -31,14 +62,21 @@ const DropdownFlyoutContainer = styled('div')<DropdownFlyoutContainerProps>(
 )
 
 type Props = {
+  isOpen?: boolean
+  isClosing?: boolean
   flyoutMaxHeight?: string
   children: React.ReactNode
 }
 
 const DropdownFlyout = React.forwardRef<HTMLDivElement, Props>(
-  ({ flyoutMaxHeight, children }, ref) => {
+  ({ flyoutMaxHeight, isOpen, isClosing, children }, ref) => {
     return (
-      <DropdownFlyoutContainer ref={ref} flyoutMaxHeight={flyoutMaxHeight}>
+      <DropdownFlyoutContainer
+        ref={ref}
+        isOpen={isOpen}
+        isClosing={isClosing}
+        flyoutMaxHeight={flyoutMaxHeight}
+      >
         {children}
       </DropdownFlyoutContainer>
     )

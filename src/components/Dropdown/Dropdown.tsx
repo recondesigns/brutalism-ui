@@ -117,8 +117,10 @@ export default function Dropdown({
   closeOnEsc = true,
   onSelect,
 }: DropdownProps) {
-  const [uncontrolledIsOpen, setUncontrolledIsOpen] = React.useState(false)
+  const [uncontrolledIsOpen, setUncontrolledIsOpen] =
+    React.useState<boolean>(false)
   const isFlyoutOpen = controlledIsOpen ?? uncontrolledIsOpen
+  const [isClosing, setIsClosing] = React.useState<boolean>(false)
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(
     null
   )
@@ -130,7 +132,11 @@ export default function Dropdown({
     setValue(selectedOption)
     onSelect && onSelect(selectedOption)
     if (!controlledIsOpen) {
-      setUncontrolledIsOpen(false)
+      setIsClosing(true)
+      setTimeout(() => {
+        setUncontrolledIsOpen(false)
+        setIsClosing(false)
+      }, 100)
     }
   }
 
@@ -141,13 +147,21 @@ export default function Dropdown({
       menuRef.current &&
       !menuRef.current.contains(event.target as Node)
     ) {
-      setUncontrolledIsOpen(false)
+      setIsClosing(true)
+      setTimeout(() => {
+        setUncontrolledIsOpen(false)
+        setIsClosing(false)
+      }, 300)
     }
   }
 
   const handleEscapeKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      setUncontrolledIsOpen(false)
+      setIsClosing(true)
+      setTimeout(() => {
+        setUncontrolledIsOpen(false)
+        setIsClosing(false)
+      }, 300)
     }
   }
 
@@ -239,7 +253,12 @@ export default function Dropdown({
         </HelpText>
       )}
       {isFlyoutOpen && (
-        <DropdownFlyout ref={flyoutRef} flyoutMaxHeight={flyoutMaxHeight}>
+        <DropdownFlyout
+          ref={flyoutRef}
+          isOpen={isFlyoutOpen}
+          isClosing={isClosing}
+          flyoutMaxHeight={flyoutMaxHeight}
+        >
           {options.map((option, idx) => {
             return (
               <DropdownListItem
