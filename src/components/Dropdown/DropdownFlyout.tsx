@@ -76,6 +76,8 @@ const DropdownFlyout = React.forwardRef<HTMLDivElement, Props>(
         isOpen={isOpen}
         isClosing={isClosing}
         flyoutMaxHeight={flyoutMaxHeight}
+        role='listbox'
+        data-testid='dropdown-flyout-test'
       >
         {children}
       </DropdownFlyoutContainer>
