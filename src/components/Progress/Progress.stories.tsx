@@ -1,29 +1,29 @@
-import React from "react"
-import { Meta, StoryObj } from "@storybook/react"
-import { ThemeProvider } from "@emotion/react"
-import styled from "@emotion/styled"
-import Progress from "./Progress"
-import Button from "../Button"
-import { defaultTheme } from "../emotionTheme"
+import React from 'react'
+import { Meta, StoryObj } from '@storybook/react'
+import { ThemeProvider } from '@emotion/react'
+import styled from '@emotion/styled'
+import Progress from './Progress'
+import Button from '../Button'
+import { defaultTheme } from '../emotionTheme'
 
 type StyledButtonProps = {
-  color: "green" | "red"
+  color: 'green' | 'red'
 }
 
 const StyledButton = styled(Button)<StyledButtonProps>(({ theme, color }) => ({
   background:
-    color === "green"
+    color === 'green'
       ? theme?.palette?.success?.main
       : theme?.palette?.error?.main,
-  "&:hover": {
+  '&:hover': {
     background:
-      color === "green"
+      color === 'green'
         ? theme?.palette?.success?.main
         : theme?.palette?.error?.main,
   },
-  "&:active": {
+  '&:active': {
     background:
-      color === "green"
+      color === 'green'
         ? theme?.palette?.success?.main
         : theme?.palette?.error?.main,
   },
@@ -32,7 +32,7 @@ const StyledButton = styled(Button)<StyledButtonProps>(({ theme, color }) => ({
 type ProgressStory = StoryObj<typeof Progress>
 
 const meta: Meta<typeof Progress> = {
-  title: "UI Components/Progress",
+  title: 'UI Components/Progress',
   component: Progress,
   decorators: [
     (Story) => (
@@ -52,12 +52,12 @@ export const Demo: ProgressStory = {
         <Progress {...args} value={progressValue} />
         <div
           style={{
-            paddingTop: "20px",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "16px",
+            paddingTop: '20px',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '16px',
           }}
         >
           <StyledButton
@@ -79,26 +79,26 @@ export const Demo: ProgressStory = {
     )
   },
   args: {
-    label: "Label",
-    size: "md",
-    helperText: "Helper text.",
+    label: 'Label',
+    size: 'md',
+    helperText: 'Helper text.',
     value: 40,
     max: 100,
     includeDecimals: 0,
-    completeMessage: "Complete!",
+    completeMessage: 'Complete!',
   },
   decorators: [
     (Story) => (
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
+          display: 'flex',
+          justifyContent: 'center',
         }}
       >
         <div
           style={{
-            maxWidth: "360px",
-            minWidth: "360px",
+            maxWidth: '360px',
+            minWidth: '360px',
           }}
         >
           <Story />
@@ -113,22 +113,22 @@ export const Default: ProgressStory = {
   args: {
     value: 20,
     max: 100,
-    size: "md",
+    size: 'md',
     includeDecimals: 0,
-    completeMessage: "Complete!",
+    completeMessage: 'Complete!',
   },
   decorators: [
     (Story) => (
       <div
         style={{
-          display: "flex",
-          justifyContent: "flex-start",
+          display: 'flex',
+          justifyContent: 'flex-start',
         }}
       >
         <div
           style={{
-            maxWidth: "360px",
-            minWidth: "360px",
+            maxWidth: '360px',
+            minWidth: '360px',
           }}
         >
           <Story />
@@ -141,17 +141,17 @@ export const Default: ProgressStory = {
 export const Label = {
   ...Default,
   args: {
-    label: "Label",
+    label: 'Label',
     value: 50,
   },
   parameters: {
     controls: {
       exclude: [
-        "size",
-        "helperText",
-        "completeMessage",
-        "includeDecimals",
-        "max",
+        'size',
+        'helperText',
+        'completeMessage',
+        'includeDecimals',
+        'max',
       ],
     },
   },
@@ -161,16 +161,16 @@ export const Size = {
   ...Default,
   args: {
     value: 80,
-    size: "lg",
+    size: 'lg',
   },
   parameters: {
     controls: {
       exclude: [
-        "helperText",
-        "label",
-        "completeMessage",
-        "includeDecimals",
-        "max",
+        'helperText',
+        'label',
+        'completeMessage',
+        'includeDecimals',
+        'max',
       ],
     },
   },
@@ -180,11 +180,11 @@ export const HelperText = {
   ...Default,
   args: {
     value: 50,
-    helperText: "Here is some helper text.",
+    helperText: 'Here is some helper text.',
   },
   parameters: {
     controls: {
-      exclude: ["label", "size", "completeMessage", "includeDecimals", "max"],
+      exclude: ['label', 'size', 'completeMessage', 'includeDecimals', 'max'],
     },
   },
 }
@@ -194,11 +194,11 @@ export const IncludeDecimals = {
   args: {
     value: 83.222,
     includeDecimals: 2,
-    completeMessage: "Complete!",
+    completeMessage: 'Complete!',
   },
   parameters: {
     controls: {
-      exclude: ["helperText", "label", "completeMessage", "size", "max"],
+      exclude: ['helperText', 'label', 'completeMessage', 'size', 'max'],
     },
   },
 }
@@ -207,11 +207,11 @@ export const CompleteMessage = {
   ...Default,
   args: {
     value: 100,
-    completeMessage: "Done!",
+    completeMessage: 'Done!',
   },
   parameters: {
     controls: {
-      exclude: ["helperText", "label", "includeDecimals", "size", "max"],
+      exclude: ['helperText', 'label', 'includeDecimals', 'size', 'max'],
     },
   },
 }
