@@ -76,6 +76,10 @@ export type DropdownProps = {
    */
   disabled?: boolean
   /**
+   * Sets the maximum height of the flyout container, and allows scrolling.
+   */
+  flyoutMaxHeight?: string
+  /**
    * Allows users to optionally set if the menu closes when clicking outside of menu.
    *
    * @default true
@@ -107,13 +111,16 @@ export default function Dropdown({
   helperText,
   hasError = false,
   disabled = false,
+  flyoutMaxHeight,
   isOpen: controlledIsOpen,
   closeOnOutsideClick = true,
   closeOnEsc = true,
   onSelect,
 }: DropdownProps) {
-  const [uncontrolledIsOpen, setUncontrolledIsOpen] = React.useState(false)
+  const [uncontrolledIsOpen, setUncontrolledIsOpen] =
+    React.useState<boolean>(false)
   const isFlyoutOpen = controlledIsOpen ?? uncontrolledIsOpen
+  const [isClosing, setIsClosing] = React.useState<boolean>(false)
   const [highlightedIndex, setHighlightedIndex] = React.useState<number | null>(
     null
   )
@@ -125,7 +132,11 @@ export default function Dropdown({
     setValue(selectedOption)
     onSelect && onSelect(selectedOption)
     if (!controlledIsOpen) {
-      setUncontrolledIsOpen(false)
+      setIsClosing(true)
+      setTimeout(() => {
+        setUncontrolledIsOpen(false)
+        setIsClosing(false)
+      }, 100)
     }
   }
 
@@ -136,13 +147,21 @@ export default function Dropdown({
       menuRef.current &&
       !menuRef.current.contains(event.target as Node)
     ) {
-      setUncontrolledIsOpen(false)
+      setIsClosing(true)
+      setTimeout(() => {
+        setUncontrolledIsOpen(false)
+        setIsClosing(false)
+      }, 300)
     }
   }
 
   const handleEscapeKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      setUncontrolledIsOpen(false)
+      setIsClosing(true)
+      setTimeout(() => {
+        setUncontrolledIsOpen(false)
+        setIsClosing(false)
+      }, 300)
     }
   }
 
@@ -234,7 +253,12 @@ export default function Dropdown({
         </HelpText>
       )}
       {isFlyoutOpen && (
-        <DropdownFlyout ref={flyoutRef}>
+        <DropdownFlyout
+          ref={flyoutRef}
+          isOpen={isFlyoutOpen}
+          isClosing={isClosing}
+          flyoutMaxHeight={flyoutMaxHeight}
+        >
           {options.map((option, idx) => {
             return (
               <DropdownListItem
