@@ -52,12 +52,12 @@ type ProgressIndicator = {
 const ProgressIndicator = styled('div')<ProgressIndicator>(
   {
     position: 'relative',
-    background: 'rgba(141, 255, 140, 0.8)',
     borderRadius: '50px',
   },
-  ({ value, size }) => ({
+  ({ value, size, theme }) => ({
     height: size ? size : '36px',
     width: value ? value : '10px',
+    background: theme?.palette?.success?.main,
   })
 )
 
