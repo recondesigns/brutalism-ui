@@ -35,8 +35,9 @@ export const Demo: RadioButtonStory = {
     )
   },
   args: {
-    label: 'Option one',
-    value: 'option one',
+    label: 'Label',
+    value: 'label',
+    disabled: false,
   },
   parameters: {
     controls: {
@@ -45,38 +46,46 @@ export const Demo: RadioButtonStory = {
   },
 }
 
-export const Unselected: RadioButtonStory = {
+export const Default: RadioButtonStory = {
   render: (args) => {
     return (
       <RadioGroup>
-        <RadioButton {...args} />
+        <RadioButton {...args} label="Unselected" value="unselected" />
+        <RadioButton
+          {...args}
+          label="Selected"
+          value="selected"
+          selected={true}
+        />
       </RadioGroup>
     )
   },
-  args: {
-    label: 'Option one',
-    value: 'option one',
-    selected: false,
-  },
   parameters: {
-    controls: {
-      exclude: ['key', 'onClick', 'selected'],
-    },
+    controls: { disable: true },
   },
 }
 
-export const Selected: RadioButtonStory = {
+export const Disabled: RadioButtonStory = {
   render: (args) => {
     return (
       <RadioGroup>
-        <RadioButton {...args} />
+        <RadioButton
+          disabled={args.disabled}
+          label="Unselected"
+          value="unselected"
+          selected={false}
+        />
+        <RadioButton
+          disabled={args.disabled}
+          label="Selected"
+          value="selected"
+          selected={true}
+        />
       </RadioGroup>
     )
   },
   args: {
-    label: 'Option one',
-    value: 'option one',
-    selected: true,
+    disabled: true,
   },
   parameters: {
     controls: {

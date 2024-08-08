@@ -71,4 +71,36 @@ export const Demo: RadioGroupStory = {
   },
 }
 
+export const Direction: RadioGroupStory = {
+  render: (args) => {
+    const [selectedValue, setSelectedValue] = React.useState<string | null>(
+      null
+    )
+
+    return (
+      <RadioGroup {...args}>
+        {options.map((option, idx) => {
+          return (
+            <RadioButton
+              key={idx}
+              label={option.label}
+              value={option.value}
+              selected={selectedValue === option.value}
+              onClick={() => setSelectedValue(`${option.value}`)}
+            />
+          )
+        })}
+      </RadioGroup>
+    )
+  },
+  args: {
+    direction: 'vertical',
+  },
+  parameters: {
+    controls: {
+      exclude: ['children'],
+    },
+  },
+}
+
 export default meta

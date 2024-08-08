@@ -2,15 +2,21 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Text from '../Text'
 
-const RadioContainer = styled('button')({
-  padding: '8px 8px 8px 8px',
-  display: 'flex',
-  alignItems: 'center',
-  gap: '6px',
-  background: 'none',
-  border: 'none',
-  cursor: 'pointer',
-})
+const RadioContainer = styled('button')(
+  {
+    padding: '8px 8px 8px 8px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+  },
+  ({ disabled }) => ({
+    opacity: !disabled ? 'initial' : '50%',
+    cursor: !disabled ? 'pointer' : 'not-allowed',
+  })
+)
 
 const OuterRadio = styled('div')({
   padding: '4px',
@@ -34,6 +40,7 @@ export type RadioButtonProps = {
   label: string
   value: string
   selected: boolean
+  disabled?: boolean
   key?: string | number
   onClick?: () => void
 }
@@ -42,6 +49,7 @@ export default function RadioButton({
   label,
   selected = false,
   key,
+  disabled = false,
   onClick,
 }: RadioButtonProps) {
   return (
@@ -49,6 +57,7 @@ export default function RadioButton({
       key={key}
       role="radio"
       aria-checked={selected}
+      disabled={disabled}
       onClick={onClick}
     >
       <OuterRadio>

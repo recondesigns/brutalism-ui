@@ -13,10 +13,7 @@ const RadioGroupContainer = styled('div')<RadioGroupContainerProps>(
   },
   ({ direction }) => ({
     flexDirection: direction === 'horizontal' ? 'row' : 'column',
-  }),
-  // ({ theme }) => ({
-  //   // border: "2px solid orange",
-  // })
+  })
 )
 
 type RadioGroupProps = {
