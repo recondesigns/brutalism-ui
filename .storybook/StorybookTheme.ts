@@ -1,10 +1,12 @@
 import { create } from "@storybook/theming"
+// @ts-expect-error Cannot find module '../assets/readme-logo.svg' or its corresponding type declarations
+import temporaryLogo from "../assets/readme-logo.svg"
 
 export default create({
   base: "light",
   brandTitle: "brutalism-ui",
   brandUrl: "https://github.com/recondesigns/brutalism-ui#readme",
-  //   brandImage: logo,
+  brandImage: temporaryLogo,
   brandTarget: "_self",
 
   // colorPrimary: "#000000",

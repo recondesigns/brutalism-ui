@@ -7,7 +7,7 @@
 
 <br />
 <div style='display: flex; justify-content: center; align-items: center;'>
-  <img src='./assets/images/readme-logo.svg' width='500'>
+  <img src='./assets/readme-logo.svg' width='500'>
 </div>
 <h3 style='text-align: center'>A brutalist-<em>ish</em> component library</h3>
 <a href="https://brutalism-ui.vercel.app/?path=/docs/form-elements-input--docs" style='display: block; text-align: center'><strong>View in Storybook »</strong></a>
