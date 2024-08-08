@@ -6,10 +6,11 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <br />
-
-<h1>brutalism-ui</h1>
-<h3>A brutalist-<em>ish</em> component library</h3>
-<a href="https://brutalism-ui.vercel.app/?path=/docs/form-elements-input--docs"><strong>View in Storybook »</strong></a>
+<div style='display: flex; justify-content: center; align-items: center;'>
+  <img src='./assets/readme-logo.svg' width='500'>
+</div>
+<h3 style='text-align: center'>A brutalist-<em>ish</em> component library</h3>
+<a href="https://brutalism-ui.vercel.app/?path=/docs/form-elements-input--docs" style='display: block; text-align: center'><strong>View in Storybook »</strong></a>
 <!-- <br />
 <a href="#">View Demo »</a>
 <br /> -->

@@ -7,7 +7,6 @@ assignees: "recondesigns"
 ---
 
 **Describe the bug**
-Give a clear description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
@@ -18,10 +17,8 @@ Steps to reproduce the behavior:
 4. See error
 
 **Expected behavior**
-Give a clear description of the expected behavior.
 
 **Screenshots**
-If applicable, add screenshots to help explain the issue.
 
 **Environment (please complete the following information):**
 
@@ -30,4 +27,3 @@ If applicable, add screenshots to help explain the issue.
 - Version [e.g., 22]
 
 **Additional context**
-Add any other context about the problem here.
