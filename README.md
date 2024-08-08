@@ -9,10 +9,10 @@
 
 <h1>brutalism-ui</h1>
 <h3>A brutalist-<em>ish</em> component library</h3>
-<a href="#"><strong>Explore the docs »</strong></a>
-<br />
+<a href="https://brutalism-ui.vercel.app/?path=/docs/form-elements-input--docs"><strong>View in Storybook »</strong></a>
+<!-- <br />
 <a href="#">View Demo »</a>
-<br />
+<br /> -->
 
 ## Getting Started
 
