@@ -1,0 +1,53 @@
+import { Meta, Title, Subtitle, ArgTypes, Canvas } from "@storybook/blocks"
+import * as RadioGroupStories from "./RadioGroup.stories"
+
+<Meta of={RadioGroupStories} />
+
+<Title>Radio group</Title>
+
+<Subtitle>
+  Use radio buttons when you have a group of mutually exclusive choices and only
+  one selection from the group is allowed.
+</Subtitle>
+
+<Canvas of={RadioGroupStories.Demo} />
+
+## Overview
+
+[Github](https://github.com/recondesigns/brutalism-ui/tree/main/src/components/RadioGroup/RadioGroup.tsx)
+&nbsp;|&nbsp;
+[Figma](https://www.figma.com/design/oEgm5fOGH5sZg86NnViCvo/Components?node-id=288-2025&t=DFhN0C4UKHwigl5J-1)
+
+Radio buttons are used for mutually exclusive choices, not for multiple choices. Only one radio button can be selected at a time. When a user chooses a new item, the previous choice is automatically deselected.
+
+## Props
+
+<ArgTypes />
+
+## Basic usage
+
+Wrap a list of RadioButtons components with the RadioGroup component.
+
+```tsx
+import { RadioGroup, RadioButton } from "ubiq-ui"
+
+<RadioGroup>
+  {options.map(option, idx) => (
+    <RadioButton
+      key={idx}
+      label={option.label}
+      value={option.value}
+      selected={selectedValue === option.value}
+      onClick={() => handleClick()}
+    />
+  )}
+</RadioGroup>
+```
+
+<Canvas of={RadioGroupStories.Demo} />
+
+### Direction
+
+Allows the radio button options to be display horizontally or vertically.
+
+<Canvas of={RadioGroupStories.Direction} />

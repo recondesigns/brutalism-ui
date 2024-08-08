@@ -1,16 +1,16 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import { ThemeProvider } from '@emotion/react'
-import RadioGroup from './RadioGroup'
-import RadioButton from './RadioButton'
-import { defaultTheme } from '../emotionTheme'
+import RadioGroup from '../RadioGroup'
+import RadioButton from '../RadioButton'
+import { defaultTheme } from '../../emotionTheme'
 
 type RadioButtonStory = StoryObj<typeof RadioButton>
 
 const meta: Meta<typeof RadioButton> = {
   title: 'Form elements/Radio Group/Radio Button',
   component: RadioButton,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
   decorators: [
     (Story) => (
       <ThemeProvider theme={defaultTheme}>

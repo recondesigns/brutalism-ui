@@ -1,9 +1,9 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import { ThemeProvider } from '@emotion/react'
-import RadioGroup from './RadioGroup'
-import RadioButton from './RadioButton'
-import { defaultTheme } from '../emotionTheme'
+import RadioGroup from '../RadioGroup'
+import RadioButton from '../RadioButton'
+import { defaultTheme } from '../../emotionTheme'
 
 const options = [
   {
@@ -29,7 +29,7 @@ type RadioGroupStory = StoryObj<typeof RadioGroup>
 const meta: Meta<typeof RadioGroup> = {
   title: 'Form elements/Radio group',
   component: RadioGroup,
-  tags: ['autodocs'],
+  // tags: ['autodocs'],
   decorators: [
     (Story) => (
       <ThemeProvider theme={defaultTheme}>
@@ -62,7 +62,7 @@ export const Demo: RadioGroupStory = {
     )
   },
   args: {
-    direction: 'vertical',
+    direction: 'horizontal',
   },
   parameters: {
     controls: {
