@@ -10,7 +10,6 @@ type RadioButtonStory = StoryObj<typeof RadioButton>
 const meta: Meta<typeof RadioButton> = {
   title: 'Form elements/Radio Group/Radio Button',
   component: RadioButton,
-  // tags: ['autodocs'],
   decorators: [
     (Story) => (
       <ThemeProvider theme={defaultTheme}>
@@ -25,13 +24,25 @@ export const Demo: RadioButtonStory = {
     const [isSelected, setIsSelected] = React.useState<boolean>(false)
 
     return (
-      <RadioGroup>
-        <RadioButton
-          {...args}
-          selected={isSelected}
-          onClick={() => setIsSelected(!isSelected)}
-        />
-      </RadioGroup>
+      <div
+        style={{
+          paddingTop: '8px',
+          paddingBottom: '8px',
+          display: 'flex',
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+        }}
+      >
+        <div style={{ display: 'inline-block' }}>
+          <RadioGroup>
+            <RadioButton
+              {...args}
+              selected={isSelected}
+              onClick={() => setIsSelected(!isSelected)}
+            />
+          </RadioGroup>
+        </div>
+      </div>
     )
   },
   args: {

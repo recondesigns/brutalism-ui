@@ -7,20 +7,20 @@ import { defaultTheme } from '../../emotionTheme'
 
 const options = [
   {
-    label: 'one',
-    value: 'one',
+    label: 'Option one',
+    value: 'option one',
   },
   {
-    label: 'two',
-    value: 'two',
+    label: 'Option two',
+    value: 'option two',
   },
   {
-    label: 'three',
-    value: 'three',
+    label: 'Option three',
+    value: 'option three',
   },
   {
-    label: 'four',
-    value: 'four',
+    label: 'Option four',
+    value: 'option four',
   },
 ]
 
@@ -29,7 +29,6 @@ type RadioGroupStory = StoryObj<typeof RadioGroup>
 const meta: Meta<typeof RadioGroup> = {
   title: 'Form elements/Radio group',
   component: RadioGroup,
-  // tags: ['autodocs'],
   decorators: [
     (Story) => (
       <ThemeProvider theme={defaultTheme}>
@@ -46,19 +45,31 @@ export const Demo: RadioGroupStory = {
     )
 
     return (
-      <RadioGroup {...args}>
-        {options.map((option, idx) => {
-          return (
-            <RadioButton
-              key={idx}
-              label={option.label}
-              value={option.value}
-              selected={selectedValue === option.value}
-              onClick={() => setSelectedValue(`${option.value}`)}
-            />
-          )
-        })}
-      </RadioGroup>
+      <div
+        style={{
+          paddingTop: '8px',
+          paddingBottom: '8px',
+          display: 'flex',
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+        }}
+      >
+        <div style={{ display: 'inline-block' }}>
+          <RadioGroup {...args}>
+            {options.map((option, idx) => {
+              return (
+                <RadioButton
+                  key={idx}
+                  label={option.label}
+                  value={option.value}
+                  selected={selectedValue === option.value}
+                  onClick={() => setSelectedValue(`${option.value}`)}
+                />
+              )
+            })}
+          </RadioGroup>
+        </div>
+      </div>
     )
   },
   args: {
