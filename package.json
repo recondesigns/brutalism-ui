@@ -17,7 +17,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "storybook": "storybook dev -p 6002 -s public",
+    "storybook": "storybook dev -p 6002 public",
     "build-storybook": "storybook build public",
     "lint": "npx eslint src/ --ext .js,.jsx,.ts,.tsx --fix",
     "svgr": "svgr --icon '20px' --title-prop --replace-attr-values '#002D62=currentColor' --typescript -d src/assets assets",
