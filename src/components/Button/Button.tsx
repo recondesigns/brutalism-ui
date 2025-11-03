@@ -14,19 +14,19 @@ type StyledButtonProps = {
    *
    * @default block
    */
-  buttonType?: ButtonType;
+  buttonType: ButtonType;
   /**
    *  Forces the width to 100% of the parent container.
    *
    * @default false
    */
-  fullWidth?: boolean;
+  fullWidth: boolean;
   /**
    *  Adds padding to the button to create different sizes.
    *
    * @default md
    */
-  size?: Size;
+  size: Size;
 };
 
 const StyledButton = styled("button")<StyledButtonProps>(
@@ -98,7 +98,7 @@ const StyledButton = styled("button")<StyledButtonProps>(
   })
 );
 
-type ButtonPropsWithAria = {
+export type ButtonPropsWithAria = {
   /**
    *  Applies an optional preceding icon to the label.
    */

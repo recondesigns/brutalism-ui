@@ -14,13 +14,32 @@ const meta: Meta<typeof Button> = {
   component: Button,
   argTypes: {
     buttonType: {
+      description: 'Adds rounded or straight cornders',
       options: ["block", "rounded"],
       control: { type: "inline-radio" },
     },
+    children: {
+      description: 'Child node to be rendered as the button label'
+    },
+    fullWidth: {
+      description: 'Forces the width to 100% of the parent container'
+    },
+    icon: {
+      //TODO: Come up with a list of icons for a dropdown
+      description: 'Applies an optional preceding icon to the label',
+    },
     size: {
+      description: 'Adds padding to the button to create different sizes',
       options: ["xs", "sm", "md", "lg", "xl"],
       control: { type: "inline-radio" },
     },
+  },
+  args: {
+    buttonType: 'block',
+    children: 'Button',
+    className: 'storybook-btn-class',
+    fullWidth: false,
+    size: 'md',
   },
   decorators: [
     (Story) => (
@@ -31,54 +50,14 @@ const meta: Meta<typeof Button> = {
   ],
 };
 
-export const Demo: ButtonStory = {
-  render: (args) => (
-    <div
-      style={{
-        padding: "4px 0px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "24px",
-        overflow: "hidden",
-      }}
-    >
-      <Button size="lg" onClick={args.onClick}>
-        {args.children}
-      </Button>
-      <Button size="lg" icon={<CloseIcon />} onClick={args.onClick}>
-        {args.children}
-      </Button>
-      <Button size="lg" buttonType="rounded" onClick={args.onClick}>
-        {args.children}
-      </Button>
-    </div>
-  ),
-  args: {
-    children: "Button",
-    onClick: () => clickFunc("Disabled button was clicked."),
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
-};
-
 export const Default: ButtonStory = {
   render: (args) => <Button {...args} />,
   args: {
-    // fullWidth: false,
-    // disabled: false,
-    // size: 'lg',
-    className: "storybook-test-class-name",
-    // isDisabled: false,
-    children: "Button",
     onClick: () => clickFunc("Button was clicked."),
   },
   parameters: {
     controls: {
-      exclude: ["leftIcon", "className", "onClick"],
+      exclude: ["buttonType", "icon", "className", "onClick", "size", "fullWidth"],
     },
   },
 };
@@ -86,18 +65,16 @@ export const Default: ButtonStory = {
 export const Size = {
   ...Default,
   args: {
-    size: "xl",
-    children: "Button",
     onClick: () => clickFunc("Full width button was clicked."),
   },
   parameters: {
     controls: {
       exclude: [
         "disabled",
-        "leftIcon",
+        "icon",
         "className",
         "onClick",
-        "isFullWidth",
+        "fullWidth",
         "buttonType",
       ],
     },
@@ -109,15 +86,14 @@ export const ButtonType = {
   name: "Rounded",
   args: {
     buttonType: "rounded",
-    children: "Button",
     onClick: () => clickFunc("Full width button was clicked."),
   },
   parameters: {
     controls: {
       exclude: [
         "disabled",
-        "isFullWidth",
-        "leftIcon",
+        "fullWidth",
+        "icon",
         "className",
         "onClick",
         "size",
@@ -129,15 +105,14 @@ export const ButtonType = {
 export const FullWidth = {
   ...Default,
   args: {
-    children: "Button",
-    isFullWidth: true,
+    fullWidth: true,
     onClick: () => clickFunc("Full width button was clicked."),
   },
   parameters: {
     controls: {
       exclude: [
         "disabled",
-        "leftIcon",
+        "icon",
         "className",
         "onClick",
         "size",
@@ -147,17 +122,17 @@ export const FullWidth = {
   },
 };
 
-export const LeftIcon = {
+export const Icon = {
   ...Default,
   args: {
-    children: "Button",
-    leftIcon: <CloseIcon />,
+    children: "Close",
+    icon: <CloseIcon />,
     onClick: () => clickFunc("Left icon button was clicked."),
   },
   parameters: {
     controls: {
       exclude: [
-        "isFullWidth",
+        "fullWidth",
         "disabled",
         "className",
         "onClick",
@@ -171,7 +146,6 @@ export const LeftIcon = {
 export const Disabled = {
   ...Default,
   args: {
-    children: "Button",
     disabled: true,
     onClick: () => clickFunc("Disabled button was clicked."),
   },
@@ -179,12 +153,12 @@ export const Disabled = {
     controls: {
       exclude: [
         "buttonType",
-        "leftIcon",
+        "icon",
         "className",
         "onClick",
         "size",
         "buttonType",
-        "isFullWidth",
+        "fullWidth",
       ],
     },
   },
