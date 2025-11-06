@@ -14,19 +14,19 @@ type StyledButtonProps = {
    *
    * @default block
    */
-  buttonType: ButtonType;
+  buttonType?: ButtonType;
   /**
    *  Forces the width to 100% of the parent container.
    *
    * @default false
    */
-  fullWidth: boolean;
+  fullWidth?: boolean;
   /**
    *  Adds padding to the button to create different sizes.
    *
    * @default md
    */
-  size: Size;
+  size?: Size;
 };
 
 const StyledButton = styled("button")<StyledButtonProps>(
@@ -98,7 +98,7 @@ const StyledButton = styled("button")<StyledButtonProps>(
   })
 );
 
-export type ButtonPropsWithAria = {
+export type ButtonProps = {
   /**
    *  Applies an optional preceding icon to the label.
    */
@@ -107,7 +107,7 @@ export type ButtonPropsWithAria = {
   React.ButtonHTMLAttributes<HTMLButtonElement> &
   AriaButtonProps;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonPropsWithAria>(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (baseProps, forwardedRef) => {
     const internalRef = React.useRef<HTMLButtonElement | null>(null);
     const ref = useObjectRef(forwardedRef) || internalRef;
