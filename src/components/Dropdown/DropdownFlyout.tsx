@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from '@emotion/styled'
-import { css, keyframes } from '@emotion/react'
-import { defaultTheme } from '../emotionTheme'
+import React from "react"
+import styled from "@emotion/styled"
+import { css, keyframes } from "@emotion/react"
+import { defaultTheme } from "../emotionTheme"
 
 const slideIn = keyframes`
   from {
@@ -31,18 +31,19 @@ type DropdownFlyoutContainerProps = {
   flyoutMaxHeight?: string
 }
 
-const DropdownFlyoutContainer = styled('div')<DropdownFlyoutContainerProps>(
+const DropdownFlyoutContainer = styled("div")<DropdownFlyoutContainerProps>(
   {
-    position: 'absolute',
+    position: "absolute",
     top: 76,
     left: 0,
     right: 0,
-    overflowY: 'scroll',
+    overflowY: "scroll",
     opacity: 0,
-    transition: 'transform 0.3s ease-out, opacity 0.3s ease-out',
+    transition: "transform 0.3s ease-out, opacity 0.3s ease-out",
+    zIndex: 100,
   },
   ({ flyoutMaxHeight }) => ({
-    maxHeight: flyoutMaxHeight ? flyoutMaxHeight : 'initial',
+    maxHeight: flyoutMaxHeight ? flyoutMaxHeight : "initial",
   }),
   ({ isOpen, isClosing }) => css`
     animation: ${isOpen && !isClosing ? slideIn : slideOut} 0.3s ease-out
@@ -76,8 +77,8 @@ const DropdownFlyout = React.forwardRef<HTMLDivElement, Props>(
         isOpen={isOpen}
         isClosing={isClosing}
         flyoutMaxHeight={flyoutMaxHeight}
-        role='listbox'
-        data-testid='dropdown-flyout-test'
+        role="listbox"
+        data-testid="dropdown-flyout-test"
       >
         {children}
       </DropdownFlyoutContainer>
@@ -85,6 +86,6 @@ const DropdownFlyout = React.forwardRef<HTMLDivElement, Props>(
   }
 )
 
-DropdownFlyout.displayName = 'DropdownFlyout'
+DropdownFlyout.displayName = "DropdownFlyout"
 
 export default DropdownFlyout
