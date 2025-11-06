@@ -31,7 +31,7 @@ export const Demo: ModalContentStory = {
     children: (
       <>
         <Modal.Header title="Modal" />
-        <Button isFullWidth>Button</Button>
+        <Button fullWidth>Button</Button>
       </>
     ),
   },
