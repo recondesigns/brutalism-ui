@@ -58,6 +58,9 @@
     "@storybook/types": "^8.2.4",
     "@svgr/cli": "^8.1.0",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/dom": "^9.3.3",
+    "@testing-library/jest-dom": "^6.1.4",
+    "jest-environment-jsdom": "^29.7.0",
     "@types/jest": "^29.5.6",
     "@types/react": "^18.2.21",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -76,7 +79,8 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^8.2.4",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "dotenv": "^16.3.1"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -87,11 +91,5 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",
-  "dependencies": {
-    "@testing-library/dom": "^9.3.3",
-    "@testing-library/jest-dom": "^6.1.4",
-    "dotenv": "^16.3.1",
-    "jest-environment-jsdom": "^29.7.0"
-  }
+  "types": "dist/index.d.ts"
 }
