@@ -28,6 +28,7 @@ export default [
         minimize: true
       }),
       babel({
+        babelHelpers: 'bundled',
         exclude: 'node_modules/**',
         presets: ['@babel/preset-react', '@babel/preset-typescript']
       }),
@@ -36,6 +37,16 @@ export default [
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
     ],
+    onwarn(warning, warn) {
+      // Ignore circular dependency warnings from @internationalized/date
+      if (
+        warning.code === 'CIRCULAR_DEPENDENCY' &&
+        /@internationalized\/date/.test(warning.importer)
+      ) {
+        return
+      }
+      warn(warning)
+    },
   },
   {
     input: "dist/esm/types/index.d.ts",

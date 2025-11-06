@@ -1,10 +1,12 @@
-import React from 'react'
-import styled from '@emotion/styled'
-import { setSize } from './utils'
-import { defaultTheme } from '../emotionTheme'
+import React from "react";
+import styled from "@emotion/styled";
+import { useButton, type AriaButtonProps } from "@react-aria/button";
+import { useObjectRef } from "@react-aria/utils";
+import { setSize } from "./utils";
+import { defaultTheme } from "../emotionTheme";
 
-type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-type ButtonType = 'block' | 'rounded'
+type Size = "xs" | "sm" | "md" | "lg" | "xl";
+type ButtonType = "block" | "rounded";
 
 type StyledButtonProps = {
   /**
@@ -12,53 +14,34 @@ type StyledButtonProps = {
    *
    * @default block
    */
-  buttonType?: ButtonType
-  /**
-   *  Adds padding to the button to create different sizes.
-   *
-   * @default lg
-   */
-  size?: Size
+  buttonType?: ButtonType;
   /**
    *  Forces the width to 100% of the parent container.
    *
    * @default false
    */
-  isFullWidth?: boolean
+  fullWidth?: boolean;
   /**
-   *  Disables interaction with the Button and applies opacity as visual indicator.
+   *  Adds padding to the button to create different sizes.
    *
-   * @default false
+   * @default md
    */
-  disabled?: boolean
-  /**
-   *  Applies a classname to the component.
-   */
-  className?: string
-} & React.HTMLAttributes<HTMLButtonElement>
+  size?: Size;
+};
 
-const StyledButton = styled('button')<StyledButtonProps>(
+const StyledButton = styled("button")<StyledButtonProps>(
   {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '4px',
-    cursor: 'pointer',
-    '&:disabled': {
-      opacity: '50%',
-      cursor: 'not-allowed',
-    },
-    fontFamily: defaultTheme.typography.fontFamily,
-    fontWeight: defaultTheme.typography.button.fontWeight,
-    fontSize: defaultTheme.typography.button.fontSize,
-    color: defaultTheme.palette.primary.contrastText,
-    background: defaultTheme.palette.primary.main,
-    border: `2px solid ${defaultTheme.palette.common.border}`,
-    borderRadius: defaultTheme.shape.borderRadius,
-    boxShadow: `${defaultTheme.elevation.three} ${defaultTheme.elevation.three} 0px 0px ${defaultTheme.palette.common.shadow}`,
-    transform: 'translate(-3px, -3px)',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "4px",
+    cursor: "pointer",
     transition:
-      'box-shadow 150ms cubic-bezier(.645, .045, .355, 1), transform 150ms cubic-bezier(.645,.045,.355,1)',
+      "box-shadow 150ms cubic-bezier(.645, .045, .355, 1), transform 150ms cubic-bezier(.645,.045,.355,1)",
+    "&:disabled": {
+      opacity: "50%",
+      cursor: "not-allowed",
+    },
   },
   ({ size }) => ({
     paddingTop: size && setSize(size).paddingTop,
@@ -66,8 +49,8 @@ const StyledButton = styled('button')<StyledButtonProps>(
     paddingBottom: size && setSize(size).paddingBottom,
     paddingLeft: size && setSize(size).paddingLeft,
   }),
-  ({ isFullWidth }) => ({
-    width: isFullWidth ? '100%' : 'auto',
+  ({ fullWidth }) => ({
+    width: fullWidth ? "100%" : "auto",
   }),
   ({ theme, buttonType, disabled }) => ({
     fontFamily: theme?.typography?.fontFamily,
@@ -76,10 +59,10 @@ const StyledButton = styled('button')<StyledButtonProps>(
     color: theme?.palette?.primary?.contrastText,
     background: theme?.palette?.primary?.main,
     border: `2px solid ${theme?.palette?.common?.border}`,
-    borderRadius: buttonType === 'block' ? theme?.shape?.borderRadius : '50px',
+    borderRadius: buttonType === "block" ? theme?.shape?.borderRadius : "50px",
     boxShadow: `${theme?.elevation?.three} ${theme?.elevation?.three} 0px 0px ${theme?.palette?.common?.shadow}`,
-    '&:hover': {
-      transform: 'translate(-2px, -2px)',
+    "&:hover": {
+      transform: "translate(-2px, -2px)",
       background: !disabled
         ? theme?.palette?.primary?.dark || defaultTheme.palette.primary.dark
         : theme?.palette?.primary?.main || defaultTheme.palette.primary.main,
@@ -95,8 +78,8 @@ const StyledButton = styled('button')<StyledButtonProps>(
           theme?.palette?.common?.shadow || defaultTheme.palette.common.shadow
         }`,
     },
-    '&:active': {
-      transform: 'translate(-0px, -0px)',
+    "&:active": {
+      transform: "translate(-0px, -0px)",
       background: !disabled
         ? theme?.palette?.primary?.darker || defaultTheme.palette.primary.darker
         : theme?.palette?.primary?.main || defaultTheme.palette.primary.main,
@@ -113,53 +96,51 @@ const StyledButton = styled('button')<StyledButtonProps>(
         }`,
     },
   })
-)
+);
 
 export type ButtonProps = {
   /**
-   *  Adds rounded or straight cornders.
-   *
-   * @default block
-   */
-  buttonType?: ButtonType
-  /**
    *  Applies an optional preceding icon to the label.
    */
-  leftIcon?: React.ReactNode
-  /**
-   *  The function called when the Button is clicked.
-   */
-  onClick?: () => void
-  /**
-   *  Applies a classname to the component.
-   */
-  className?: string
-} & StyledButtonProps
+  icon?: React.ReactNode;
+} & StyledButtonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> &
+  AriaButtonProps;
 
-export default function Button({
-  children,
-  buttonType = 'block',
-  size = 'lg',
-  disabled = false,
-  isFullWidth = false,
-  leftIcon,
-  className,
-  onClick,
-  ...otherProps
-}: ButtonProps) {
-  return (
-    <StyledButton
-      buttonType={buttonType}
-      size={size}
-      isFullWidth={isFullWidth}
-      disabled={disabled}
-      onClick={onClick}
-      type="button"
-      className={className}
-      {...otherProps}
-    >
-      {leftIcon && leftIcon}
-      {children}
-    </StyledButton>
-  )
-}
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (baseProps, forwardedRef) => {
+    const internalRef = React.useRef<HTMLButtonElement | null>(null);
+    const ref = useObjectRef(forwardedRef) || internalRef;
+    const {
+      buttonType = "block",
+      children,
+      className,
+      disabled = false,
+      fullWidth = false,
+      icon,
+      size = "md",
+    } = baseProps;
+    const { buttonProps } = useButton(
+      { ...baseProps, isDisabled: disabled },
+      ref
+    );
+
+    return (
+      <StyledButton
+        ref={ref}
+        buttonType={buttonType}
+        className={className}
+        fullWidth={fullWidth}
+        size={size}
+        {...buttonProps}
+      >
+        {icon && icon}
+        {children}
+      </StyledButton>
+    );
+  }
+);
+
+Button.displayName = "Button";
+
+export default Button;

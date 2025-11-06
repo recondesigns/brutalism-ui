@@ -1,26 +1,45 @@
-import React from 'react'
-import { Meta, StoryObj } from '@storybook/react'
-import { ThemeProvider } from '@emotion/react'
-import Button from './Button'
-import { CloseIcon } from '../../assets'
-import { defaultTheme } from '../emotionTheme'
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { ThemeProvider } from "@emotion/react";
+import Button from "./Button";
+import { CloseIcon } from "../../assets";
+import { defaultTheme } from "../emotionTheme";
 
-type ButtonStory = StoryObj<typeof Button>
+type ButtonStory = StoryObj<typeof Button>;
 
-const clickFunc = (msg: string) => alert(`${msg} was clicked.`)
+const clickFunc = (msg: string) => alert(`${msg} was clicked.`);
 
 const meta: Meta<typeof Button> = {
-  title: 'Form elements/Button',
+  title: "Form elements/Button",
   component: Button,
   argTypes: {
     buttonType: {
-      options: ['block', 'rounded'],
-      control: { type: 'inline-radio' },
+      description: 'Adds rounded or straight cornders',
+      options: ["block", "rounded"],
+      control: { type: "inline-radio" },
+    },
+    children: {
+      description: 'Child node to be rendered as the button label'
+    },
+    fullWidth: {
+      description: 'Forces the width to 100% of the parent container'
+    },
+    icon: {
+      //TODO: Come up with a list of icons for a dropdown
+      description: 'Applies an optional preceding icon to the label',
     },
     size: {
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      control: { type: 'inline-radio' },
+      description: 'Adds padding to the button to create different sizes',
+      options: ["xs", "sm", "md", "lg", "xl"],
+      control: { type: "inline-radio" },
     },
+  },
+  args: {
+    buttonType: 'block',
+    children: 'Button',
+    className: 'storybook-btn-class',
+    fullWidth: false,
+    size: 'md',
   },
   decorators: [
     (Story) => (
@@ -29,162 +48,120 @@ const meta: Meta<typeof Button> = {
       </ThemeProvider>
     ),
   ],
-}
-
-export const Demo: ButtonStory = {
-  render: (args) => (
-    <div
-      style={{
-        padding: '4px 0px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '24px',
-        overflow: 'hidden',
-      }}
-    >
-      <Button size="lg" onClick={args.onClick}>
-        {args.children}
-      </Button>
-      <Button size="lg" leftIcon={<CloseIcon />} onClick={args.onClick}>
-        {args.children}
-      </Button>
-      <Button size="lg" buttonType="rounded" onClick={args.onClick}>
-        {args.children}
-      </Button>
-    </div>
-  ),
-  args: {
-    children: 'Button',
-    onClick: () => clickFunc('Disabled button was clicked.'),
-  },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
-}
+};
 
 export const Default: ButtonStory = {
   render: (args) => <Button {...args} />,
   args: {
-    isFullWidth: false,
-    disabled: false,
-    children: 'Button',
-    onClick: () => clickFunc('Button was clicked.'),
+    onClick: () => clickFunc("Button was clicked."),
   },
   parameters: {
     controls: {
-      exclude: ['leftIcon', 'className', 'onClick'],
+      exclude: ["buttonType", "icon", "className", "onClick", "size", "fullWidth"],
     },
   },
-}
+};
 
 export const Size = {
   ...Default,
   args: {
-    size: 'xl',
-    children: 'Button',
-    onClick: () => clickFunc('Full width button was clicked.'),
+    onClick: () => clickFunc("Full width button was clicked."),
   },
   parameters: {
     controls: {
       exclude: [
-        'disabled',
-        'leftIcon',
-        'className',
-        'onClick',
-        'isFullWidth',
-        'buttonType',
+        "disabled",
+        "icon",
+        "className",
+        "onClick",
+        "fullWidth",
+        "buttonType",
       ],
     },
   },
-}
+};
 
 export const ButtonType = {
   ...Default,
-  name: 'Rounded',
+  name: "Rounded",
   args: {
-    buttonType: 'rounded',
-    children: 'Button',
-    onClick: () => clickFunc('Full width button was clicked.'),
+    buttonType: "rounded",
+    onClick: () => clickFunc("Full width button was clicked."),
   },
   parameters: {
     controls: {
       exclude: [
-        'disabled',
-        'isFullWidth',
-        'leftIcon',
-        'className',
-        'onClick',
-        'size',
+        "disabled",
+        "fullWidth",
+        "icon",
+        "className",
+        "onClick",
+        "size",
       ],
     },
   },
-}
+};
 
 export const FullWidth = {
   ...Default,
   args: {
-    children: 'Button',
-    isFullWidth: true,
-    onClick: () => clickFunc('Full width button was clicked.'),
+    fullWidth: true,
+    onClick: () => clickFunc("Full width button was clicked."),
   },
   parameters: {
     controls: {
       exclude: [
-        'disabled',
-        'leftIcon',
-        'className',
-        'onClick',
-        'size',
-        'buttonType',
+        "disabled",
+        "icon",
+        "className",
+        "onClick",
+        "size",
+        "buttonType",
       ],
     },
   },
-}
+};
 
-export const LeftIcon = {
+export const Icon = {
   ...Default,
   args: {
-    children: 'Button',
-    leftIcon: <CloseIcon />,
-    onClick: () => clickFunc('Left icon button was clicked.'),
+    children: "Close",
+    icon: <CloseIcon />,
+    onClick: () => clickFunc("Left icon button was clicked."),
   },
   parameters: {
     controls: {
       exclude: [
-        'isFullWidth',
-        'disabled',
-        'className',
-        'onClick',
-        'size',
-        'buttonType',
+        "fullWidth",
+        "disabled",
+        "className",
+        "onClick",
+        "size",
+        "buttonType",
       ],
     },
   },
-}
+};
 
 export const Disabled = {
   ...Default,
   args: {
-    children: 'Button',
     disabled: true,
-    onClick: () => clickFunc('Disabled button was clicked.'),
+    onClick: () => clickFunc("Disabled button was clicked."),
   },
   parameters: {
     controls: {
       exclude: [
-        'buttonType',
-        'leftIcon',
-        'className',
-        'onClick',
-        'size',
-        'buttonType',
-        'isFullWidth',
+        "buttonType",
+        "icon",
+        "className",
+        "onClick",
+        "size",
+        "buttonType",
+        "fullWidth",
       ],
     },
   },
-}
+};
 
-export default meta
+export default meta;
